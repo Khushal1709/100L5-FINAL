@@ -1,8 +1,12 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { User,MessageSquare} from "lucide-react"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const ContactInfo = () => {
   return (
+    <>
+    <Header/>
     <div className="bg-[#EBFFF6] py-12">
       <div className="px-30 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
         
@@ -179,6 +183,8 @@ const ContactInfo = () => {
                 </div>
             </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

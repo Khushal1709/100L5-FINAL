@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Check from "../image/Check.svg";
+import Header from "../components/Header";
+;import Footer from "../components/Footer";
 
 const Checkout = () => {
   const [quantities, setQuantities] = useState([1, 1]);
@@ -13,6 +15,8 @@ const Checkout = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="bg-[#EBFFF6] p-15 flex justify-center">
       <div className="w-full max-w-9xl grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Section - Contact & Shipping Information */}
@@ -84,6 +88,8 @@ const Checkout = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

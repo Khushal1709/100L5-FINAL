@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import pro from "../image/pro.svg";
 import { User, MessageSquare, Mail, Phone, MapPin } from "lucide-react";
 import { IconButton } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 
 const products = [
   {
@@ -69,11 +73,11 @@ const products = [
 const ProductCard = ({ product }) => (
   <div className="bg-[#EBFFF6]">
     <div className="ring-1 ring-[#74B6A9] p-4 bg-[#EBFFF6] rounded-lg">
-      <img
+      <Link to ="/Single"><img
         src={product.image}
         alt={product.title}
         className="w-full h-auto mb-2 md:mb-4 rounded"
-      />
+      /></Link>
       <div className="flex justify-between items-center">
         <h3 className="text-[#1B342F] text-base md:text-lg font-semibold">{product.title}</h3>
         <p className="text-gray-700 md:text-xl font-bold">₹{product.price}</p>
@@ -93,6 +97,8 @@ const ProductList = () => {
   const filteredProducts = products.filter((product) => product.price <= price);
 
   return (
+    <>
+   <Header/>
     <div className="bg-[#EBFFF6] p-4 md:p-8 min-h-screen">
         
       <h1 className="text-xl md:text-2xl text-[#1B342F] mb-4 px-2 md:px-19">Home/Dress(Vagha)</h1>
@@ -247,6 +253,8 @@ const ProductList = () => {
                       </div>
                   </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

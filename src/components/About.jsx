@@ -2,55 +2,60 @@ import React from "react";
 import { CheckCircle } from "lucide-react";
 import About from "../image/About.svg";
 import { User, Mail, Phone, MessageSquare, MapPin } from "lucide-react"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const KrishnaGrace = () => {
   return (
-    <div className="bg-[#EBFFF6] ">
-      <div className="w-full py-10 px-20 mx-auto flex flex-col md:flex-row items-center gap-8">
-        {/* Left Side - Image */}
-        <div className=" md:w-1/2 flex">
-          <img
-            src={About}
-            alt="Krishna's Grace"
-            className="w-200 h-200 rounded-lg"
-          />
-        </div>
+    <>
+    <Header/> 
+    <div className="bg-[#EBFFF6] py-10 px-4 md:px-10">
+    <div className="md:max-w-screen-xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      
+      {/* Left Side - Image */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <img
+          src={About}
+          alt="Krishna's Grace"
+          className="w-full max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-lg"
+        />
+      </div>
 
-        {/* Right Side - Text Content */}
-        <div className="w-full md:w-1/2">
-          <h3 className="text-[#1B342F] text-xl font-semibold">Who We Are</h3>
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mt-2 ">
-            Krishna's Grace, Timeless Divine Beauty!
-          </h2>
-          <p className="text-[#1B342F] text-xl mt-4 text-justify">
-            Experience the divine charm and timeless elegance of the Sri Krishna Collection—
-            where spirituality meets artistry. Inspired by the essence of Lord Krishna, each piece
-            in our collection is a tribute to devotion, grace, and tradition.
-          </p>
-          <p className="text-[#1B342F] text-xl mt-4 text-justify">
-            Our designs reflect the beauty of Indian heritage, blending exquisite craftsmanship
-            with intricate details that resonate with the soulful presence of Sri Krishna. Whether
-            it’s jewelry, clothing, or decor, every creation is infused with devotion and a deep
-            connection to divine aesthetics.
-          </p>
+      {/* Right Side - Text Content */}
+      <div className="w-full md:w-1/2 text-center md:text-left">
+        <h3 className="text-[#1B342F] text-lg md:text-xl font-semibold">
+          Who We Are
+        </h3>
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mt-2">
+          Krishna's Grace, Timeless Divine Beauty!
+        </h2>
+        <p className="text-[#1B342F] text-base md:text-lg mt-4 text-justify">
+          Experience the divine charm and timeless elegance of the Sri Krishna Collection—where 
+          spirituality meets artistry. Inspired by the essence of Lord Krishna, each piece in our 
+          collection is a tribute to devotion, grace, and tradition.
+        </p>
+        <p className="text-[#1B342F] text-base md:text-lg mt-4 text-justify">
+          Our designs reflect the beauty of Indian heritage, blending exquisite craftsmanship 
+          with intricate details that resonate with the soulful presence of Sri Krishna. Whether 
+          it’s jewelry, clothing, or decor, every creation is infused with devotion and a deep 
+          connection to divine aesthetics.
+        </p>
 
-          {/* Bullet Points */}
-          <div className="mt-6 space-y-3">
-            <div className="flex items-center text-[#1B342F] text-xl">
+        {/* Bullet Points */}
+        <div className="mt-6 space-y-3">
+          {[
+            "Timeless Elegance, Divine Inspiration",
+            "Graceful Craftsmanship, Spiritual Essence",
+            "Celebrate Tradition with Sri Krishna’s Charm",
+          ].map((item, index) => (
+            <div key={index} className="flex items-center text-[#1B342F] text-base md:text-lg">
               <CheckCircle className="h-5 w-5 text-[#1a3b39] mr-2" />
-              <span>Timeless Elegance, Divine Inspiration</span>
+              <span>{item}</span>
             </div>
-            <div className="flex items-center text-[#1B342F] text-xl">
-              <CheckCircle className="h-5 w-5 text-[#1a3b39] mr-2" />
-              <span>Graceful Craftsmanship, Spiritual Essence</span>
-            </div>
-            <div className="flex items-center text-[#1B342F] text-xl">
-              <CheckCircle className="h-5 w-5 text-[#1a3b39] mr-2" />
-              <span>Celebrate Tradition with Sri Krishna’s Charm</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+    </div>
       <br></br>
       <br></br>
       <div className="flex flex-col md:flex-row w-full  absoulate">
@@ -173,6 +178,8 @@ const KrishnaGrace = () => {
                 </div>
             </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

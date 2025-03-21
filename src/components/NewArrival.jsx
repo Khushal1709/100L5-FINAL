@@ -1,6 +1,10 @@
 import React from 'react';
 import pro from "../image/pro.svg";
 import { User,MessageSquare,Mail,Phone,MapPin} from "lucide-react"
+import { Link } from 'react-router-dom';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 
 const HeroSection = () => {
 const product = [
@@ -87,6 +91,8 @@ const product = [
 
 
 return (
+    <>
+    <Header/>
     <div className="bg-[#EBFFF6]">
   <div className="px-5 md:px-6 lg:px-30 bg-[#EBFFF6] mx-auto py-4 md:py-6 lg:py-10">
     <h2 className="text-[#1B342F] text-lg md:text-2xl lg:text-3xl">
@@ -104,11 +110,11 @@ return (
                 className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-2 md:py-3 lg:py-4 px-2 md:px-4 lg:px-6 outline-none rounded-lg shadow-md p-2 md:p-4"
             >
                 {/* Product Image */}
-                <img
+                <Link to ="/Multi"><img
                     src={products.image}
                     alt={products.title}
                     className="rounded-lg w-full h-auto mb-2 md:mb-4"
-                />
+                /></Link>
 
                 {/* Product Details */}
                 <div className='flex justify-between'>
@@ -247,6 +253,8 @@ return (
                 </div>
             </div>
     </div>
+    <Footer/>
+    </>
 );
 };
 export default HeroSection;

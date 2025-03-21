@@ -9,6 +9,8 @@ import Home from "../image/Home.svg";
 import pro from "../image/pro.svg";
 import user from "../image/user.svg";
 import { User, Mail, Phone, MessageSquare, MapPin } from "lucide-react"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const HeroSection = () => {
     const products = [
@@ -162,10 +164,19 @@ const HeroSection = () => {
             rating: 5,
             image: "https://via.placeholder.com/50", // Replace with actual image URL
         },
+        {
+            name: "Krushant Vamja",
+            review:
+                "Experience the divine elegance of our Sri Krishna Collection! Inspired by timeless devotion, each piece radiates grace, spirituality, and tradition. Embrace the essence of Lord Krishna with exquisite craftsmanship and beauty.",
+            rating: 5,
+            image: "https://via.placeholder.com/50", // Replace with actual image URL
+        },
     ];
 
 
     return (
+        <>
+        <Header/>
         <div className="bg-[#EBFFF6]">
             {/* Category Navigation */}
             <nav className="flex justify-center space-x-6 py-4">
@@ -234,24 +245,26 @@ const HeroSection = () => {
             </div>
 
             {/* Footer Section */}
-            <footer className="bg-[#1B342F] py-4 text-center text-white text-sm">
+            <footer className="bg-[#1B342F] py-4 text-white text-sm">
                 Experience the divine elegance of our Sri Krishna Collection! Inspired
                 by timeless devotion.
             </footer>
-            <div className="max-w-7xl mx-auto bg-green-50 py-10 px-6">
-                <h2 className="text-[#1B342F] text-2xl">
-                    Best sellers </h2>
-                <h2 className='text-[#1B342F] text-4xl mb-6 font-bold'>Krishna's Grace, Timeless Divine Beauty!</h2>
+            <div className="mx-auto bg-green-50 py-10 px-4 sm:px-6 lg:px-12">
+                <h2 className="text-[#1B342F] text-2xl  sm:text-left">
+                    Best Sellers
+                </h2>
+                <h2 className="text-[#1B342F] text-3xl sm:text-4xl font-bold mb-6 sm:text-left">
+                    Krishna's Grace, Timeless Divine Beauty!
+                </h2>
 
-
-                {/*Buttons*/}
-                <div className="flex mb-8">
+                {/* Buttons */}
+                <div className="flex sm:justify-start mb-8">
                     <div className="flex bg-[#1B342F] rounded-full p-1">
                         {buttons.map((button) => (
                             <button
                                 key={button}
                                 onClick={() => setActiveButton(button)}
-                                className={`px-7 py-2 rounded-full text-sm font-medium ${activeButton === button
+                                className={`px-5 sm:px-7 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeButton === button
                                     ? "bg-white text-green-900"
                                     : "text-white hover:bg-green-700"
                                     }`}
@@ -263,27 +276,28 @@ const HeroSection = () => {
                 </div>
 
                 {/* Products Grid */}
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {products.map((product) => (
                         <div
                             key={product.id}
-                            className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none rounded-lg shadow-md p-4"
+                            className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-4 px-5 outline-none rounded-lg shadow-md"
                         >
                             {/* Product Image */}
                             <img
                                 src={product.image}
                                 alt={product.title}
-                                className="rounded-lg w-full h-auto mb-4"
+                                className="rounded-lg w-full h-auto mb-4 object-cover"
                             />
 
                             {/* Product Details */}
-                            <h3 className="text-lg font-semibold">{product.title}</h3>
-                            <p className="text-xl font-bold mt-2">{product.price}</p>
+                            <div className='flex justify-between'>
+                                <h3 className="text-lg font-semibold">{product.title}</h3>
+                                <p className="text-xl font-bold">{product.price}</p>
+                            </div>
                             <p className="text-sm text-gray-600">{product.description}</p>
 
-
                             {/* Rating */}
-                            <div className="flex items-center mt-2">
+                            <div className="flex items-center justify-between mt-2">
                                 <span className="text-yellow-500 text-lg">★★★★★</span>
                                 <span className="ml-1 text-sm">{product.rating} ({product.reviews})</span>
                             </div>
@@ -292,36 +306,39 @@ const HeroSection = () => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto bg-green-50 py-10 px-6">
-                <h2 className="text-[#1B342F] text-2xl">
-                    New Arrivals </h2>
-                <h2 className='text-[#1B342F] text-4xl mb-6 font-bold'>Krishna's Grace, Timeless Divine Beauty!</h2>
-
+            <div className="mx-auto bg-green-50  px-4 sm:px-6 lg:px-12">
+                <h2 className="text-[#1B342F] text-2xl  sm:text-left">
+                    New Arrivals
+                </h2>
+                <h2 className="text-[#1B342F] text-3xl sm:text-4xl font-bold mb-6  sm:text-left">
+                    Krishna's Grace, Timeless Divine Beauty!
+                </h2>
 
                 {/* Products Grid */}
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-                    {product.map((products) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {products.map((product) => (
                         <div
-                            key={products.id}
-                            className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none rounded-lg shadow-md  p-4"
+                            key={product.id}
+                            className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-4 px-5 outline-none rounded-lg shadow-md"
                         >
                             {/* Product Image */}
                             <img
-                                src={products.image}
-                                alt={products.title}
-                                className="rounded-lg w-full h-auto mb-4"
+                                src={product.image}
+                                alt={product.title}
+                                className="rounded-lg w-full h-auto mb-4 object-cover"
                             />
 
                             {/* Product Details */}
-                            <h3 className="text-lg font-semibold">{products.title}</h3>
-                            <p className="text-xl font-bold mt-2">{products.price}</p>
-                            <p className="text-sm text-gray-600">{products.description}</p>
-
+                            <div className='flex justify-between'>
+                                <h3 className="text-lg font-semibold">{product.title}</h3>
+                                <p className="text-xl font-bold">{product.price}</p>
+                            </div>
+                            <p className="text-sm text-gray-600">{product.description}</p>
 
                             {/* Rating */}
-                            <div className="flex items-center mt-2">
+                            <div className="flex items-center justify-between mt-2">
                                 <span className="text-yellow-500 text-lg">★★★★★</span>
-                                <span className="ml-1 text-sm">{products.rating} ({products.reviews})</span>
+                                <span className="ml-1 text-sm">{product.rating} ({product.reviews})</span>
                             </div>
                         </div>
                     ))}
@@ -330,23 +347,22 @@ const HeroSection = () => {
             <div className="bg-[#EBFFF6]">
 
                 {/* Testimonial Section */}
-                <section className="bg-[#EBFFF6] py-12">
-                    <h2 className="text-center text-[#1B342F] text-xl font-medium mb-2">Review</h2>
-                    <h2 className="text-center text-[#1B342F] text-3xl font-bold mb-8">
+                <section className="bg-[#EBFFF6]  px-6 mx-auto mt-12 ">
+                    <h2 className="sm:text-center text-[#1B342F] text-2xl font-medium mb-2">Review</h2>
+                    <h2 className="sm:text-center text-[#1B342F] text-3xl font-bold mb-8">
                         Krishna's Grace, Timeless Divine Beauty!
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-screen-lg mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-auto">
                         {testimonials.map((testimonial, index) => (
                             <div
                                 key={index}
-                                className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none rounded-lg p-6 flex flex-col items-center text-center"
+                                className="ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-4 px-6 outline-none rounded-lg flex flex-col items-center text-center shadow-md"
                             >
                                 {/* Rating */}
-                                <div className="flex mt-4 mr-45">
-                                    {Array.from({ length: testimonial.rating }).map((_, index) => (
+                                <div className="flex mt-4 lg:mr-70 ">
+                                    {Array.from({ length: testimonial.rating }).map((_, idx) => (
                                         <svg
-
-                                            key={index}
+                                            key={idx}
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="#FFD700"
                                             viewBox="0 0 24 24"
@@ -356,34 +372,33 @@ const HeroSection = () => {
                                         </svg>
                                     ))}
                                 </div>
-                                <br></br>
 
                                 {/* Review Text */}
-                                <p className="text-[#1B342F] text-sm mt-2 text-justify whitespace-normal">{testimonial.review}</p>
-                                <br></br>
-                                <div className='flex mr-25 gap-2'>
+                                <p className="text-[#1B342F] text-lg mt-2 text-justify ">{testimonial.review}</p>
+
+                                <div className='flex items-center sm:mr-50 gap-2 mt-4'>
                                     {/* Profile Image */}
                                     <img
                                         src={user}
                                         alt={testimonial.name}
-                                        className="w-12 h-12 rounded-full mb-4"
+                                        className="w-12 h-12 rounded-full"
                                     />
 
                                     {/* Name */}
-                                    <h3 className="font-semibold mt-2 text-[#1B342F]">{testimonial.name}</h3>
+                                    <h3 className="font-semibold text-[#1B342F]">{testimonial.name}</h3>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
             </div>
-            <div className="flex flex-col md:flex-row w-full  absoulate">
+            <div className="flex flex-col md:flex-row py-7 absoulate">
                 {/* Left side - Form */}
-                <div className="flex-[2] h-200 bg-[#e8f7f2] p-6 md:p-12">
+                <div className="flex-[2] h-200 bg-[#e8f7f2] p-6 md:p-12 mr-30">
                     <div className="max-w-md mx-auto mr-150">
                         <div className="text-center mb-8">
-                            <h2 className="text-gray-800 text-lg font-medium ">Contact</h2>
-                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Connect With Us Today!</h1>
+                            <h2 className="text-gray-800 text-2xl font-medium ">Contact</h2>
+                            <h1 className="text-2xl text-3xl font-bold text-gray-800">Connect With Us Today!</h1>
                         </div>
 
                         <form className="space-y-6">
@@ -454,6 +469,9 @@ const HeroSection = () => {
                                     />
                                 </div>
                             </div>
+                            <button className="w-200 mt-2 bg-[#1B342F] text-white py-3 rounded cursor-pointer  space-y-2">
+            Enter Your Mobile Number
+          </button>
                         </form>
                     </div>
                 </div>
@@ -497,6 +515,8 @@ const HeroSection = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaInstagram, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import logo from "../image/logo.svg"; // Replace with your logo path
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -9,7 +10,7 @@ const Footer = () => {
                 {/* Logo and Navigation Links */}
                 <div className="md:flex-row justify-between items-center">
                     <div className="md:flex md:items-center md:justify-center">
-                        <img src={logo} alt="Logo" className="h-16 w-auto md:items-center md:justify-center" />
+                        <Link to ="/"><img src={logo} alt="Logo" className="h-16 w-auto md:items-center md:justify-center" /></Link>
                     </div>
                     <br></br>
 

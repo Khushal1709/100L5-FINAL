@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Cart from "../image/Cart.svg";
 import { User, Mail, Phone, MessageSquare, MapPin } from "lucide-react"
 import pro from "../image/pro.svg";
+import Header from "../components/Header";
 
 
 const App = () => {
@@ -133,6 +134,8 @@ const App = () => {
   ];
 
   return (
+    <>
+    <Header/>
     <div className="bg-[#EBFFF6] min-h-screen p-4 md:p-6 lg:p-10 xl:p-12">
       {/* Breadcrumb */}
       <div className="text-gray-600 text-lg md:text-2xl lg:text-2xl xl:text-3xl mb-4">Home / Cart</div>
@@ -352,6 +355,7 @@ const App = () => {
                      </div>
                  </div> 
     </div>
+    </>
   );
 };
 

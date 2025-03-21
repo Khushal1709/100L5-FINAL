@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo Section */}
           <div className="flex items-center">
-            <img src={logo} alt="Logo" className="h-16 w-auto" />
+            <Link to ="/"><img src={logo} alt="Logo" className="h-16 w-auto" /></Link>
           </div>
 
           {/* Navigation Links */}
@@ -25,7 +25,7 @@ const Navbar = () => {
             <Link to="/NewArrival" className="text-gray-800 hover:text-green-600 font-medium">
               New Arrival
             </Link>
-            <Link to="/offer" className="text-gray-800 hover:text-green-600 font-medium">
+            <Link to="/Multi" className="text-gray-800 hover:text-green-600 font-medium">
               Offer
             </Link>
             <Link to ="/Contact" className="text-gray-800 hover:text-green-600 font-medium">
@@ -36,7 +36,7 @@ const Navbar = () => {
           {/* Icons Section */}
           <div className="hidden md:flex space-x-4 items-center">
             <button className="p-2 ring-1 ring-green-300 hover:bg-[#1B342F] rounded-full cursor-pointer">
-              <FaShoppingCart size={20} className="text-gray-800 hover:text-white" />
+              <Link to ="/Cart"><FaShoppingCart size={20} className="text-gray-800 hover:text-white" /></Link>
             </button>
             <button className="p-2 ring-1 ring-green-300 hover:bg-[#1B342F] rounded-full cursor-pointer">
               <FaUserCircle size={20} className="text-gray-800 hover:text-white"/>
@@ -78,27 +78,27 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-green-100 p-4 space-y-2">
-            <a href="#home" className="block text-gray-800 hover:text-green-600 font-medium">
+          <div className="md:hidden bg-[#EBFFF6]  p-4 space-y-2">
+            <Link to="/" className="block text-gray-800 hover:text-green-600 font-medium">
               Home
-            </a>
-            <a href="#about" className="block text-gray-800 hover:text-green-600 font-medium">
+            </Link>
+            <Link to ="/About" className="block text-gray-800 hover:text-green-600 font-medium">
               About Us
-            </a>
-            <a href="#new-arrival" className="block text-gray-800 hover:text-green-600 font-medium">
+            </Link>
+            <Link to ="/NewArrival" className="block text-gray-800 hover:text-green-600 font-medium">
               New Arrival
-            </a>
-            <a href="#offer" className="block text-gray-800 hover:text-green-600 font-medium">
+            </Link>
+            <Link to="/Multi" className="block text-gray-800 hover:text-green-600 font-medium">
               Offer
-            </a>
-            <a href="#contact" className="block text-gray-800 hover:text-green-600 font-medium">
+            </Link>
+            <a href="/Contact" className="block text-gray-800 hover:text-green-600 font-medium">
               Contact Us
             </a>
 
             {/* Icons in Mobile Menu */}
             <div className="flex space-x-4 mt-4">
               <button className="p-2 ring-1 ring-green-300 hover:bg-[#1B342F] rounded-full cursor-pointer flex items-center justify-center w-full">
-                <FaShoppingCart size={20} className="text-gray-800 hover:text-white" />
+                <Link to ="/Cart"><FaShoppingCart size={20} className="text-gray-800 hover:text-white" /></Link>
               </button>
               <button className="p-2 ring-1 ring-green-300 hover:bg-[#1B342F] rounded-full cursor-pointer flex items-center justify-center w-full">
                 <FaUserCircle size={20} className="text-gray-800 hover:text-white" />
