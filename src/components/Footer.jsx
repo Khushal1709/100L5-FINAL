@@ -1,69 +1,205 @@
-import React from "react";
-import { FaInstagram, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
-import logo from "../image/logo.svg"; // Replace with your logo path
-import { Link } from "react-router-dom";
+import { Mail, MapPin, Phone } from "lucide-react"
+import { Link } from "react-router-dom"
+import logo from "../image/Flogo.svg"
+import facebook from "../image/facebook.svg"
+import linkedin from "../image/linkedin.svg"
+import twitter from "../image/twitter.svg"
+import bg from "../image/bg.svg";
+import bg2 from "../image/bg2.svg";
+import Contact from "../components/Contact";
+import About from "../components/About";
 
-const Footer = () => {
-    return (
-        <footer className="bg-[#EBFFF6]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Logo and Navigation Links */}
-                <div className="md:flex-row justify-between items-center">
-                    <div className="md:flex md:items-center md:justify-center">
-                        <Link to ="/"><img src={logo} alt="Logo" className="h-16 w-auto md:items-center md:justify-center" /></Link>
-                    </div>
-                    <br></br>
+export default function Footer() {
+  return (
+    <footer className="w-full">
+      <div className="bg-[#002c6d] text-white py-12 px-4 md:px-8 relative overflow-hidden ">
+        {/* Background SVG 1 - positioned in top right */}
+        <div className="absolute top-0 right-2 z-0">
+          <img src={bg2} alt="bg" className="" />
+        </div>
 
-                    {/* Navigation Links */}
-                    <div className="flex flex-wrap justify-center space-x-6 mt-4 md:mt-0">
-                        <a href="#home" className="text-gray-800 hover:text-green-600 font-medium">
-                            Home
-                        </a>
-                        <a href="#about" className="text-gray-800 hover:text-green-600 font-medium">
-                            About Us
-                        </a>
-                        <a href="#category" className="text-gray-800 hover:text-green-600 font-medium">
-                            Category
-                        </a>
-                        <a href="#new-arrival" className="text-gray-800 hover:text-green-600 font-medium">
-                            New Arrival
-                        </a>
-                        <a href="#offer" className="text-gray-800 hover:text-green-600 font-medium">
-                            Offer
-                        </a>
-                        <a href="#contact" className="text-gray-800 hover:text-green-600 font-medium">
-                            Contact Us
-                        </a>
-                    </div>
+        {/* Background SVG 2 - positioned in bottom left */}
+        <div className="absolute bottom-40 left-78 z-0"> 
+          <img src={bg} alt="bg" className="" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-16">
+            {/* Logo and Description */}
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <div className="text-blue-900 font-bold text-2xl p-2 w-16 flex justify-center">
+                  <img src={logo || "/placeholder.svg"} alt="CS" />
                 </div>
-
-                {/* Copyright and Social Media Section */}
-                <div className="flex flex-col md:flex-row justify-between items-center mt-6">
-                    {/* Copyright Text */}
-                    <div className="text-center text-gray-600 text-sm md:text-left md:w-1/2">
-                        &copy; 2025 All rights reserved by Kanha Collection
-                    </div>
-
-                    {/* Social Media Icons */}
-                    <div className="flex justify-center md:justify-end space-x-4 mt-4 md:mt-0">
-                        <button className="p-3 bg-green-700 text-white rounded-full shadow hover:bg-green-600">
-                            <FaInstagram size={20} />
-                        </button>
-                        <button className="p-3 bg-green-700 text-white rounded-full shadow hover:bg-green-600">
-                            <FaFacebook size={20} />
-                        </button>
-                        <button className="p-3 bg-green-700 text-white rounded-full shadow hover:bg-green-600">
-                            <FaLinkedin size={20} />
-                        </button>
-                        <button className="p-3 bg-green-700 text-white rounded-full shadow hover:bg-green-600">
-                            <FaTwitter size={20} />
-                        </button>
-                    </div>
-                </div>
+              </div>
+              <p className="text-sm text-gray-300 mt-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore.{" "}
+                <Link to="#" className="underline hover:text-gray-100">
+                  Learn more
+                </Link>
+              </p>
+              <div className="flex space-x-2 mt-4">
+                <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
+                  <img
+                    src={facebook || "/placeholder.svg"}
+                    className="h-8 w-8 text-blue-900"
+                  />
+                </Link>
+                <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
+                  <img
+                    src={linkedin || "/placeholder.svg"}
+                    className="h-8 w-8 text-blue-900"
+                  />
+                </Link>
+                <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
+                  <img
+                    src={twitter || "/placeholder.svg"}
+                    className="h-8 w-8 text-blue-900"
+                  />
+                </Link>
+              </div>
             </div>
-        </footer>
-    );
-};
 
-export default Footer;
- 
+            {/* Our Services */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold mb-4">OUR SERVICES</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Company Registration
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Compliances
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Trademark
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Accounting
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Closure of Company
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Know Us */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold mb-4">KNOW US</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/About" className="text-gray-300 hover:text-white">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Contact" className="text-gray-300 hover:text-white">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Support Us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Policies */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold mb-4">POLICIES</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Terms & Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Privacy & Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    Refund Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="#" className="text-gray-300 hover:text-white">
+                    FAQ&apos;s
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Us */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold mb-4">CONTACT US</h3>
+              <div className="flex items-start space-x-3">
+                <div className="bg-white h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <MapPin className="text-blue-900 h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-gray-300">220, Melbourne, Australia</p>
+                  <p className="text-gray-300">City-250XXX</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="bg-white h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="text-blue-900 h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-gray-300">(123) 456 7890</p>
+                  <p className="text-gray-300">+87 8787 87670</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="bg-white h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Mail className="text-blue-900 h-5 w-5" />
+                </div>
+                <p className="text-gray-300">xyz@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Footer */}
+      <div className="bg-gray-100 py-4 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-blue-900">
+            <b>©</b> 2025 All Right Reserved. Designed by <b>xyz</b>
+          </p>
+          <div className="flex space-x-2 mt-2 md:mt-0">
+            <Link to="#" className="text-sm text-blue-900 hover:text-gray-900">
+              Home
+            </Link>
+            <span className="text-blue-900">/</span>
+            <Link to="/About" className="text-sm text-blue-900 hover:text-gray-900">
+              About Us
+            </Link>
+            <span className="text-blue-900">/</span>
+            <Link to="/Contact" className="text-sm text-blue-900 hover:text-gray-900">
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}

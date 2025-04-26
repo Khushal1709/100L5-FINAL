@@ -1,191 +1,168 @@
-import { MapPin, Phone, Mail } from "lucide-react";
-import { User,MessageSquare} from "lucide-react"
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { MapPin, Twitter, Phone } from "lucide-react";
+import bg from "../image/contactbg.svg";
+import c1 from "../image/c1.svg";
+import bg1 from "../image/bg.svg";
 
-const ContactInfo = () => {
+
+export default function ContactPage() {
   return (
-    <>
-    <Header/>
-    <div className="bg-[#EBFFF6] py-12">
-      <div className="px-30 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-        
-        {/* Location Section */}
-        <div className="shadow-lg p-6 text-center ring-1 ring-[#74B6A9] bg-[#EBFFF6]">
-        <div className="flex justify-center">
-            <div className="flex justify-center items-center w-16 h-16 bg-green-900 text-white rounded-full">
-              <MapPin className="h-8 w-8 text-white" />
+    <div className="flex flex-col mx-auto">
+      {/* Hero Section */}
+      <div
+        className="relative h-120 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div className="absolute inset-0  flex items-center justify-start max-w-7xl mx-auto">
+          <div className="text-white text-left">
+            <div className="absolute top-40 right-280 rotate-360 z-0 ">
+              <img src={bg1} alt="bg" className="" />
             </div>
-          </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Our Location</h3>
-          <p className="text-gray-700 leading-relaxed">
-            123 Industrial Area, Textile Hub
-            <br />
-            New Delhi, 110001
-            <br />
-            India
-          </p>
-        </div>
+            <h1 className="text-6xl font-bold">CONTACT US</h1>
 
-        {/* Phone Section */}
-        <div className="shadow-lg p-6 text-center ring-1 ring-[#74B6A9] bg-[#EBFFF6]">
-        <div className="flex justify-center">
-          <div className="flex justify-center items-center w-16 h-16 bg-green-900 text-white rounded-full mb-4">
-            <Phone className="h-8 w-8 text-white" />
+            <p className="mt-4">Get in Touch with Us</p>
           </div>
-          </div>
-          <h3 className="text-lg font-semibold text-[#1B342F] mb-2">Phone</h3>
-          <p className="text-[#1B342F] leading-relaxed">
-            Sales: +91 98765 43210
-            <br />
-            Support: +91 98765 43211
-            <br />
-            Office: +91 11 2345 6789
-          </p>
-        </div>
-
-        {/* Email Section */}
-        <div className="shadow-lg  p-6 text-center ring-1 ring-[#74B6A9] bg-[#EBFFF6]">
-        <div className="flex justify-center">
-          <div className="flex justify-center items-center w-16 h-16 bg-green-900 text-white rounded-full mb-4">
-            <Mail className="h-8 w-8 text-white" />
-          </div>
-          </div>
-          <h3 className="text-lg font-semibold text-[#1B342F] mb-2">Email</h3>
-          <p className="text-[#1B342F] leading-relaxed">
-            Sales: sales@vaibhavinternational.com
-            <br />
-            Support: support@vaibhavinternational.com
-            <br />
-            Info: info@vaibhavinternational.com
-          </p>
         </div>
       </div>
-      <br></br>
-      <br></br>
-      <div className="flex flex-col md:flex-row w-full  absoulate">
-                {/* Left side - Form */}
-                <div className="flex-[2] h-200 bg-[#EBFFF6] p-6 md:p-12">
-                    <div className="max-w-md mx-auto mr-150">
-                        <div className="text-center mb-8">
-                            <h2 className="text-gray-800 text-lg font-medium ">Contact</h2>
-                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Connect With Us Today!</h1>
-                        </div>
 
-                        <form className="space-y-6">
-                            <div className="space-y-2">
-                                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                                    Full Name
-                                </label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-3 flex items-center">
-                                        <User className="h-5 w-5 text-gray-400" />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        id="fullName"
-                                        placeholder="Enter Your Full Name"
-                                        className="pl-10 w-200 ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none focus:ring-2 focus:ring-[#74B6A9] focus:border-transparent"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    Email
-                                </label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                                        <Mail className="h-5 w-5 text-gray-400" />
-                                    </div>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        placeholder="Enter Your Gmail Address"
-                                        className="pl-10 w-200 ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none focus:ring-2 focus:ring-[#74B6A9] focus:border-transparent"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">
-                                    Mobile Number
-                                </label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                                        <Phone className="h-5 w-5 text-gray-400" />
-                                    </div>
-                                    <input
-                                        type="tel"
-                                        id="mobile"
-                                        placeholder="Enter Your Mobile Number"
-                                        className="pl-10 w-200 ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none focus:ring-2 focus:ring-[#74B6A9] focus:border-transparent"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                                    Send Message
-                                </label>
-                                <div className="relative">
-                                    <div className="absolute top-3 left-3 flex items-start pointer-events-none">
-                                        <MessageSquare className="h-5 w-5 text-gray-400" />
-                                    </div>
-                                    <textarea
-                                        id="message"
-                                        rows={4}
-                                        placeholder="Send Your message"
-                                        className="pl-10 w-200 ring-1 ring-[#74B6A9] bg-[#EBFFF6] py-3 px-4 outline-none focus:ring-2 focus:ring-[#74B6A9] focus:border-transparent"
-                                    />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-
-                {/* Right side - Contact Info */}
-                <div className="flex-1 bg-[#1a3b39] h-200 md:p-15 flex items-center justify-center relative">
-                    <div className="bg-[#EBFFF6] mt-10 ring-1 ring-[#74B6A9] p-9 max-w-sm w-full absolute mr-150">
-                        <div className="space-y-7">
-                            <div className="flex items-center gap-4">
-                                <div className="bg-[#1a3b39] rounded-full p-2 flex items-center justify-center">
-                                    <Mail className="h-5 w-5 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Email Address</p>
-                                    <p className="font-medium">xyztechnology04@gmail.com</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-4">
-                                <div className="bg-[#1a3b39] rounded-full p-2 flex items-center justify-center">
-                                    <Phone className="h-5 w-5 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Phone Number</p>
-                                    <p className="font-medium">+91 83000 00042</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-4">
-                                <div className="bg-[#1a3b39] rounded-full p-2 flex items-center justify-center">
-                                    <MapPin className="h-5 w-5 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Location</p>
-                                    <p className="font-medium">B-8, 210, Township-2 Sarthana Jakatnaka, Surat Gujarat 395008</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      {/* Contact Content */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left Column - Info */}
+          <div className="space-y-8">
+            <div>
+              <img
+                src={c1}
+                alt="Business meeting"
+                className="rounded-md object-cover w-full h-auto"
+              />
             </div>
-    </div>
-    <Footer/>
-    </>
-  );
-};
 
-export default ContactInfo;
+            <div className="flex items-start space-x-4">
+              <div className="bg-[#002C6D] p-3 rounded-full">
+                <MapPin className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-blue-900 uppercase">
+                  Our Headquarters
+                </h3>
+                <p className="text-gray-600">220 MELBOURNE, AUSTRALIA</p>
+                <p className="text-gray-600">CITY-250XXX</p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="bg-[#002C6D] p-3 rounded-full">
+                <Twitter className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-blue-900 uppercase">
+                  Follow on Twitter
+                </h3>
+                <p className="text-gray-600">2.2M FOLLOWERS</p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="bg-[#002C6D] p-3 rounded-full">
+                <Phone className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-blue-900 uppercase">
+                  Speak to us
+                </h3>
+                <p className="text-gray-600">(123) 456 7890</p>
+                <p className="text-gray-600">+87 878 87870</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Form */}
+          <div className="md:col-span-2 flex justify-center">
+            <div className="w-full max-w-2xl">
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                {[
+                  { label: "Name", type: "text" },
+                  { label: "Mobile", type: "tel" },
+                  { label: "Company Name", type: "text" },
+                  { label: "Email", type: "email" },
+                ].map((field, index) => (
+                  <div key={index}>
+                    <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
+                      {field.label}
+                    </label>
+                    <input
+                      type={field.type}
+                      className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                ))}
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
+                    State
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
+                    Message
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  ></textarea>
+                </div>
+
+                <div className="md:col-span-2">
+                  <button
+                    type="submit"
+                    className="w-full bg-[#002C6D] text-white py-3 rounded-md hover:bg-[#001A4A] transition-colors"
+                  >
+                    LET&apos;S CONNECT
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Map Section */}
+      <div className="w-full h-96 relative mt-8">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d805196.5096411199!2d144.49268362290042!3d-37.97015407788675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  );
+}
