@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import document from "../image/document.svg";
 
-const AnnualLLP = () => {
+const AnnualCompliance = () => {
   const [open, setOpen] = useState(false);
   const [openItem, setOpenItem] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -23,32 +23,32 @@ const AnnualLLP = () => {
       number: "1.",
       days: "DAY 1-2",
       description: [
-        "Consultation Between the LegalBoss Team and the Partners/Designated Partners of the LLP",
-        "Preparation of Required Documents and Drafting of Resolutions",
+        "Consultation Between the LegalBoss Team and the Company’s Promoters/Directors",
+        "Gathering Required Information and Documents",
       ],
     },
     {
       number: "2.",
       days: "DAY 3-4",
       description: [
-        "Execution of Necessary Documents",
-        "Drafting and Preparation of ROC Forms for Annual Filing",
+        " Compiling GST Annual Returns",
+        "Reconciling Input Tax Credits and Invoices",
       ],
     },
     {
       number: "3.",
       days: "DAY 5-6",
       description: [
-        " Submission of Forms and Documents to the ROC",
-        "Payment of ROC Filing Fees",
-      ],           
+        " Settling GST Liabilities (If Applicable)",
+        "Submission of GST Annual Return",
+      ],
     },
     {
       number: "4.",
-      days: "DAY 7 Onwards",
+      days: "DAY 7",
       description: [
-        " ROC Processing and Approval Time",
-        "Issuance of Approval Letter Along with ROC Forms and Challan",
+        "Receiving the Acknowledgement Number for Return Filing",
+        "Notifying the Taxpayer of the Acknowledgement",
       ],
     },
   ];
@@ -65,35 +65,24 @@ const AnnualLLP = () => {
   const plans = [
     {
       title: "BUSINESS PLAN :",
-      price: "RS.6499.00",
+      price: "RS.8499.00",
       items: [
-        "[Turnover or/and capital more than Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "[Turnover More than 5 Crore]",
+        "Filling of GSTR-9",
+        "Filling of GSTR-9C",
       ],
       highlight: false,
     },
     {
       title: "ECONOMY PLAN :",
-      price: "RS.4999.00",
-      items: [
-        "[Turnover or/and capital  Up to Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
+      price: "RS.3499.00",
+      items: ["[Turnover up to Rs. 5 crore]", "Filling of GSTR-9"],
       highlight: true,
     },
     {
-      title: "STARTER PLAN :",
+      title: "STARTER PLAN:",
       price: "RS.2499.00",
-      items: [
-        "[Turnover Up to Rs. 30 Lakh and/or Capital Up to Rs. 20 Lakh]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
+      items: ["[Turnover Up to Rs. 2 Crore],", "Filling of GSTR-9 or GSTR 9A"],
       highlight: false,
     },
   ];
@@ -140,30 +129,36 @@ const AnnualLLP = () => {
   const faqItems = [
     {
       id: 1,
-      question: "Is it mandatory to file audited financial statements?",
+      question: "What is a GST Annual Return?",
       answer:
-        "Audited financial statements are only required if the LLP meets certain criteria (such as a higher turnover or capital contribution). Otherwise, unaudited accounts may be filed.",
+        "The GST Annual Return is a consolidated document that summarizes the taxpayer's outward and inward supplies (sales and purchases), tax liabilities, and input tax credit (ITC) for a given financial year. It is filed under Form GSTR-9.",
     },
     {
       id: 2,
-      question:
-        "My LLP had no transactions during the year. Do I still need to file annual ROC forms?",
+      question: " Who needs to file the GST Annual Return?",
       answer:
-        "Yes, even if there were no business transactions, filing annual returns and accounts with the ROC is still mandatory for compliance.",
+        "All GST-registered taxpayers with an annual turnover exceeding ₹2 crores are required to file the GST Annual Return (GSTR-9), regardless of their sales or profitability.",
     },
     {
       id: 3,
       question:
-        "Is it necessary to be physically present during the annual filing process?",
+        " What is the deadline for filing the GST Annual Return?",
       answer:
-        "No, physical presence is not required. The filing process can be completed remotely by the designated representatives or authorized professionals.",
+        "The due date for filing GSTR-9 is generally December 31st of the year following the end of the financial year, though it can be extended by the government.",
     },
     {
       id: 4,
-      question: "What are the annual compliance requirements for an LLP?",
+      question: " Can I file GSTR-9 if I haven’t filed my monthly/quarterly returns?",
       answer:
-        "The key compliance requirements include filing the annual return (Form LLP-11), submitting the financial statement (Form LLP-8), and updating any changes in the LLP’s structure or partners.",
+        "No. You must file all your GSTR-1, GSTR-3B, or GSTR-4 returns before submitting the annual return. If any of these returns are pending, you will not be allowed to file GSTR-9.",
     },
+    {
+        id: 5,
+        question:
+          " Is filing GSTR-9 mandatory for all GST-registered businesses?",
+        answer:
+          "No, only businesses with a turnover above ₹2 crores in the financial year are required to file GSTR-9. Smaller businesses with a turnover up to ₹2 crores are not required to file the annual return for the years 2017-18, 2018-19, and 2019-20 based on recent amendments.",
+      },
   ];
   // Calculate previous and next indices
   const prevIndex = activeSlide === 1 ? advantages.length - 1 : activeSlide - 2;
@@ -221,13 +216,13 @@ const AnnualLLP = () => {
           {/* Info Section */}
           <div className="w-full bg-white/20 backdrop-blur-xs border border-blue-800 p-6 sm:p-8 flex-1 rounded-md">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14387f] mb-2 uppercase">
-              LLP Annual Filling
+              ANNUAL GST Return
             </h2>
             <p className="font-bold text-white mb-4 tracking-wide uppercase">
-              LLP Annual Compliances
+              Filling of ANNUAL GST Return
             </p>
             <p className="mb-2 text-white">
-              Team help you in filling of LLP Annual ROC Compliances.
+              Team help you in Filling of Monthly GST Return
             </p>
             <p className="mb-2 text-white">Just Rs.2499/-</p>
           </div>
@@ -328,7 +323,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
-          More About LLP Annual Filling
+          More About GST Annual Return
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
@@ -337,64 +332,46 @@ const AnnualLLP = () => {
           <section>
             <div className="p-3 sm:p-6">
               <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4 mb-4">
-                All entities registered under the Limited Liability Partnership
-                (LLP) Act, 2008 are required to file their annual return and
-                financial statements with the Registrar of Companies (ROC) each
-                year. These filings must be done within the specified
-                deadlines—30 and 60 days, respectively. An audit of the
-                financial statements is not mandatory for LLPs with a turnover
-                of less than ₹40 lakhs and a capital contribution below ₹25
-                lakhs. However, even in such cases, submission of the annual
-                return and statement of accounts to the ROC is still compulsory
-                within the prescribed time frame.
-              </p>
-              <b>Types of Annual Compliance:</b>
-              <br />
-              <b>Annual Return :</b>
+                The GST Annual Return is a comprehensive summary of a taxpayer’s
+                activities throughout the financial year. It consolidates
+                monthly or quarterly filings and provides a complete overview of
+                outward and inward supplies, tax liabilities, input tax credit
+                (ITC), and other related details.Filing the GST Annual Return is
+                a mandatory compliance requirement for all registered taxpayers
+                whose annual turnover exceeds ₹2 crores, regardless of their
+                business activity, sales volume, or profitability during the
+                year. The annual return, filed in Form GSTR-9, provides a
+                consolidated summary of all outward and inward supplies made
+                throughout the financial year by the registered entity. Before
+                submitting GSTR-9, it is essential that the taxpayer has filed
+                all monthly or quarterly returns such as GSTR-1, GSTR-3B, or
+                GSTR-4, as applicable. If any of these returns are pending, the
+                portal will not allow filing of the annual return until all
+                pending filings are completed. <br/>
+              <b >About GSTR-9:</b>
               <p>
-                The Annual Return provides important information about the LLP,
-                including the names and details of all designated partners and
-                partners, any changes in their roles during the year, their
-                contributions and obligations, and the turnover for the
-                financial year. This return must be submitted using Form LLP-11
-                within 60 days from the end of the financial year, which means
-                the due date is typically 30th May each year.
+                Initially, filing of the annual return was compulsory for all
+                GST-registered persons, regardless of turnover. However, as per
+                Notification No. 47/2019 and Notification No. 77/2020 - Central
+                Tax, the Central Board of Indirect Taxes and Customs (CBIC) made
+                GSTR-9 filing optional for businesses with an annual turnover up
+                to ₹2 crores for the financial years 2017–18, 2018–19, and
+                2019–20.
               </p>
-              <b>Annual Accounts :</b>
-              <p>
-                Every LLP is required to file its financial statements—whether
-                audited (if applicable) or unaudited—using Form LLP-8 with the
-                Registrar of Companies (ROC). This must be done within 30 days
-                after the completion of six months from the end of the financial
-                year, which means the filing deadline is typically 30th October
-                each year.
               </p>
-
-              <b>Why Filing Annual Returns is Important:</b>
-              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600 ">
+              <b >
+                The following categories of registered taxpayers are exempt from
+                filing GSTR-9:
+              </b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
                 <li>
-                  Helps prevent late fees and ensures the LLP remains compliant.
+                  Taxpayers under the Composition Scheme (they are required to
+                  file GSTR-9A instead)
                 </li>
-                <li>
-                  Reduces the risk of legal issues involving the LLP and its
-                  designated partners.
-                </li>
-                <li>
-                  Keeps the LLP’s status listed as “ACTIVE” with the
-                  authorities.
-                </li>
-                <li>
-                  Strengthens the firm's credibility with stakeholders and
-                  financial institutions.
-                </li>
-                <li>
-                  Prevents designated partners from facing disqualification due
-                  to non-compliance.
-                </li>
-                <li>
-                  Safeguards the LLP from being removed or struck off by the
-                  Registrar of Companies.
-                </li>
+                <li>Casual Taxable Persons</li>
+                <li>Input Service Distributors (ISDs)</li>
+                <li>Non-Resident Taxable Persons</li>
+                <li>Non-Resident Taxable Persons</li>
               </ul>
             </div>
           </section>
@@ -409,7 +386,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 leading-tight">
-          FAQ ON LLP ANNUAL FILLING
+          FAQ ON GST ANNUAL RETURN 
         </h1>
 
         <div className="mt-6 space-y-4">
@@ -455,7 +432,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED FOR LLP ANNUAL FILLING
+          DOCUMENTS REQUIRED FOR FILING A ANNUAL RETURN
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
@@ -467,12 +444,14 @@ const AnnualLLP = () => {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-6">
             <div>
               <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
-                <li>Audited/Unaudited Financial Statement</li>
-                <li>Company Pan card</li>
-                <li>List of Directors and Partners</li>
-                <li>All LLP Agreements</li>
-                <li>During the Year Forms Filed to ROC with challan</li>
-                <li>Any other information or documents as may required</li>
+                <li>GST registration Certificate</li>
+                <li>GST Login ID and Password</li>
+                <li>Yearly Sales Bills</li>
+                <li>Yearly Purchase Bill</li>
+                <li>Bank Statement</li>
+                <li>Other Details as may required during the Filing </li>
+
+
               </ol>
             </div>
 
@@ -506,7 +485,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500"></div>
         </div>
         <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          STEPS INVOLVED IN LLP ANNUAL FILLING
+          STEPS INVOLVED IN FILLING OF GST ANNUAL RETURN 
         </h1>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
@@ -544,4 +523,4 @@ const AnnualLLP = () => {
   );
 };
 
-export default AnnualLLP;
+export default AnnualCompliance;

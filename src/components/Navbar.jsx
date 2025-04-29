@@ -22,7 +22,7 @@ const compliancesDropdown = [
     items: [
       { label: "Change In Director / Partner", path: "/Changedirector" },
       { label: "Shifting Of Registered Office", path: "/ShiftingRegistered" },
-      { label: "Incresing Authorised Capital", path: "/IncresingAuthorised"},
+      { label: "Incresing Authorised Capital", path: "/IncresingAuthorised" },
       { label: "Increasing Paid Up Capital", path: "/IncreasingPaid" },
       { label: "Share Transfer / Transmission", path: "/ShareTransfer" },
       { label: "Change In Name Of The Company", path: "/ChangeinName" },
@@ -30,9 +30,9 @@ const compliancesDropdown = [
       { label: "Surrender DIN", path: "/SurrenderDIN" },
       { label: "Director KYC - DIR-3", path: "/DirectorKYC3" },
       { label: "Charge Creation / Modification / Satisfaction", path: "/ChargeSatisfaction" },
-      { label: "Search Report Of The Company", path: "/search-report-company" },
-      { label: "Filling Of Commencement Of Business", path: "/Filling" },
-      { label: "Change In Auditor / Appointment Of Auditor", path: "/ChangeAuditor" },
+      { label: "Search Report Of The Company", path: "/Searchreport" },
+      { label: "Filling Of Commencement Of Business", path: "/" },
+      { label: "Change In Auditor / Appointment Of Auditor", path: "/" },
     ],
   },
   {
@@ -45,23 +45,36 @@ const compliancesDropdown = [
   {
     title: "LLP Compliances",
     items: [
-      { label: "Event Base Compliances", path: "/llp-event-base-compliances" },
-      { label: "Event Base Compliances", path: "/llp-event-base-compliances-2" },
-    ],
+      {
+        label: "Event Base Compliances",
+        path: "/llp-event-base-compliances",
+        subItems: [
+          { label: "Change in Designated Partner", paths: "/DesignatedPartner" },
+          { label: "Change of Registered Office Address by LLP", paths: "/Registeredoffice" },
+          { label: "Change in LLP agreement", paths: "/LLpagreement" },
+          { label: "Change in the name of the LLP", paths: "/LLpagreement" },
+        ]
+      },
+      {
+        label: "Annual Compliances",
+        path: "/Annual"
+      }
+    ]
   },
+
   {
     title: "GST Compliances",
     items: [
-      { label: "Monthly Compliance", path: "/gst-monthly-compliance" },
-      { label: "Annual Compalices", path: "/gst-annual-compalices" },
-      { label: "GST Cancellation", path: "/gst-cancellation" },
+      { label: "Monthly Compliance", path: "/MonthlyCompliance" },
+      { label: "Annual Compalices", path: "/AnnualCompalices" },
+      { label: "GST Cancellation", path: "/GSTCancellation" },
     ],
   },
   {
     title: "Annual maitainance service",
     items: [
-      { label: "AMC For Company / OPC", path: "/amc-company-opc" },
-      { label: "AMC For LLP", path: "/amc-llp" },
+      { label: "AMC For Company / OPC", path: "/AMC" },
+      { label: "AMC For LLP", path: "/AMCforLLP" },
     ],
   },
 ];
@@ -103,7 +116,6 @@ const closureDropdown = [
   { label: "Public Limited Company", path: "/", active: false },
 ];
 
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [compliancesOpen, setCompliancesOpen] = useState(false);
@@ -113,9 +125,14 @@ const Navbar = () => {
   const [otherRegOpen, setOtherRegOpen] = useState(false);
   const [accountingOpen, setAccountingOpen] = useState(false);
   const [closureOpen, setClosureOpen] = useState(false);
+  const [eventSubOpen, setEventSubOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null); // for toggling submenus
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
-
-
+  const toggleSubItems = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <header className="w-full shadow-sm bg-white">
@@ -176,33 +193,59 @@ const Navbar = () => {
             onMouseEnter={() => setCompliancesOpen(true)}
             onMouseLeave={() => setCompliancesOpen(false)}
           >
-            <span className="relative group-hover:text-[#002366] 
+            <span
+              className="relative group-hover:text-[#002366] 
     transition-colors duration-300
     after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300
-    ">Compliances</span>
+    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300"
+            >
+              Compliances
+            </span>
             <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
+
             {compliancesOpen && (
-              <div className="absolute left-0 top-full  flex bg-[#e9eef2] shadow-lg rounded z-30 min-w-[900px] py-4 px-2 border border-gray-200"
+              <div
+                className="absolute left-0 top-full flex bg-[#e9eef2] shadow-lg rounded z-30 min-w-[900px] py-4 px-2 border border-gray-200"
                 style={{ borderRadius: "8px" }}
               >
-                {/* Multi-column dropdown */}
-                {/* Left column: Event Based Compliances */}
+                {/* Left column: LLP Compliances */}
                 <div className="min-w-[260px] px-3 border-r border-gray-300">
                   <div className="font-semibold text-[#002366] mb-2 uppercase text-[17px]">
                     {compliancesDropdown[0].title}
                   </div>
-                  {compliancesDropdown[0].items.map((item, idx) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className={`block px-2 py-1 text-[17px] rounded transition-colors mb-1 hover:bg-[#002366] hover:text-white `}
+
+                  {compliancesDropdown[0].items.map((item) => (
+                    <div key={item.path} className="relative group"
+
                     >
-                      {item.label}
-                    </Link>
+                      <Link
+                        to={item.path}
+                        className="flex  justify-between items-center px-2 py-1 text-[17px] rounded transition-colors mb-1 hover:bg-[#002366] hover:text-white"
+                      >
+                        {item.label}
+                        {item.subItems && <ChevronRight className="w-4 h-4 ml-2 text-gray-400" />}
+                      </Link>
+
+                      {/* Sub-dropdown */}
+                      {item.subItems && (
+                        <div className="absolute top-0 left-full bg-white shadow-md rounded border border-gray-200 py-2 w-[260px] z-40 hidden group-hover:block">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.paths}
+                              to={subItem.paths}
+                              className="block px-4 py-2 text-[16px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors"
+
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
-                {/* Middle column: Annual Compliance, LLP, GST */}
+
+                {/* Middle column: GST Compliances, etc. */}
                 <div className="min-w-[260px] px-3 border-r border-gray-300">
                   <div className="font-semibold text-[#002366] mb-2 uppercase text-[17px]">
                     {compliancesDropdown[1].title}
@@ -217,19 +260,43 @@ const Navbar = () => {
                     </Link>
                   ))}
 
-                  <div className="font-semibold text-[#002366] mt-4 mb-2 uppercase text-[17px]">
+                  <div className="font-semibold text-[#002366] mt-4 mb-2 uppercase text-[17px]"
+                    onClick={() => toggleSubItems(index)}
+
+                  >
                     {compliancesDropdown[2].title}
                   </div>
-                  {compliancesDropdown[2].items.map((item, idx) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className="flex items-center px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                      <ChevronRight className="w-4 h-4 ml-2 text-gray-400" />
-                    </Link>
+                  {compliancesDropdown[2].items.map((item, index) => (
+                    <div key={`${item.path}-${item.label}`}>
+                      <div
+                        onMouseEnter={() => toggleSubItems(index)}
+                        className="flex items-center justify-between px-2 py-1 cursor-pointer text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded mb-1"
+                      >
+                        {item.label}
+                        {item.subItems &&
+                          (openIndex === index ? (
+                            <ChevronDown className="w-4 h-4 text-gray-400" />
+                          ) : (
+                            <ChevronRight className="w-4 h-4 text-gray-400" />
+                          ))}
+                      </div>
+
+                      {item.subItems && openIndex === index && (
+                        <div className="ml-4 mt-1">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={`${subItem.paths}-${subItem.label}`}
+                              to={subItem.paths}
+                              className="block px-2 py-1 text-[16px] text-gray-600 hover:bg-gray-100 rounded"
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
+
 
                   <div className="font-semibold text-[#002366] mt-4 mb-2 uppercase text-[17px]">
                     {compliancesDropdown[3].title}
@@ -244,7 +311,8 @@ const Navbar = () => {
                     </Link>
                   ))}
                 </div>
-                {/* Right column: Annual Maitainance Service */}
+
+                {/* Right column: Annual Maintenance Service */}
                 <div className="min-w-[220px] px-3">
                   <div className="font-semibold text-[#002366] mb-2 uppercase text-[17px]">
                     {compliancesDropdown[4].title}
@@ -555,3 +623,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+0

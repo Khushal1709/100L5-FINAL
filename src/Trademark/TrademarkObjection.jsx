@@ -26,34 +26,19 @@ const ChangesInDirectors = () => {
           number: "1.",
           days: "DAY 1-2",
           description: [
-            "Collection of Basic Documents and Information's",
-            "Application for Digital Signature Certificate (DSC)"
+            "Collection of Basic Documents and Information",
+            "Draft Required Documents"
           ]
         },
         {
           number: "2.",
           days: "DAY 3-4",
           description: [
-            "Search Proposed Company Name Availability.",
-            "Draft Required Documents for registration of Company."
+            "Preparation and Filling of Objection Replay",
+            "Sharing Filling Information"
           ]
         },
-        {
-          number: "3.",
-          days: "DAY 4-6",
-          description: [
-            "Application for Name Reservation",
-            "Filing a Forms for Registration of the Company."
-          ]
-        },
-        {
-          number: "4.",
-          days: "DAY 7-8",
-          description: [
-            "Getting a Incorporation Certificate (Registration Certificate)",
-            "Getting PAN, PF, ESIC, TAN Number"
-          ]
-        }
+       
       ]
       const scrollToTop = () => {
         window.scrollTo({
@@ -141,6 +126,39 @@ const ChangesInDirectors = () => {
     // Calculate previous and next indices
     const prevIndex = activeSlide === 1 ? advantages.length - 1 : activeSlide - 2
     const nextIndex = activeSlide === advantages.length ? 0 : activeSlide
+
+    const plans = [
+      {
+        title: "STARTER PLAN :",
+        price : " ₹4,999/-",
+        items: [
+          "Drafting and Filing of Reply to Trademark Examination Report (for 1 Class, 1 Application)",
+          "Basic follow-up with Trademark Office",
+        ],
+        highlight: false,
+      },
+      {
+        title: "ENTREPRENEUR :",
+        price: "RS.₹8,999/-",
+        items: [
+          "Drafting and Filing of Reply to Trademark Examination Report (for 1 Class, 1 Application)",
+          "Detailed Legal Submissions if required",
+          "Response to Additional Examination Reports (if issued)",
+        ],
+        highlight: true, 
+      },
+      {
+        title: "CORPORATE:",
+        price: "RS.₹12,999/-",
+        items: [
+          "Drafting and Filing of Reply to Trademark Examination Report (for 1 Class, 1 Application)",
+          " Full Legal Representation at Hearing (if scheduled)",
+          "Filing Additional Documents/Evidence if required",
+          "Continuous Status Monitoring until Objection is resolved",
+        ],
+        highlight: false,
+      },
+    ];
 
     return (
         <>
@@ -239,123 +257,146 @@ const ChangesInDirectors = () => {
                 </div>
 
             </div>
-            <PricingPlans />
-            <PublicLimitedCompany />
-            {/* ASK SOMETHING */}
-      <section className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
-            ASK SOMETHING
-          </h1>
-          <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 leading-tight">
-          FAQ ON PRIVATE LIMITED<br />COMPANY
-        </h1>
-
-        <div className="mt-6 space-y-4">
-          {faqItems.map((item) => (
-            <div
-              key={item.id}
-              className="rounded-md overflow-hidden bg-blue-50"
+            <div className="bg-white max-w-7xl mx-auto px-4 py-12  ">
+      <div className="mb-8 md:mb-12 ">
+        <h3 className="text-gray-500 font-semibold tracking-wide uppercase">
+          CHOOSE YOUR PACKAGE
+        </h3>
+        <h2 className="text-3xl md:text-3xl font-extrabold text-[#002D6B] mt-2">
+          OPEN PRICE | NO HIDDEN
+        </h2>
+      </div>
+      <div
+        className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide pb-4"
+        style={{
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {plans.map((plan, idx) => (
+          <div
+            key={idx}
+            className={`flex flex-col items-start text-left rounded-xl shadow min-w-[320px] max-w-[350px] w-full px-6 py-8 ${
+              plan.highlight
+                ? "bg-[#002D6B] text-white"
+                : "bg-[#F0F6FF] text-[#002D6B]"
+            }`}
+          >
+            <h3 className="text-center w-full font-extrabold text-lg mb-2 tracking-wide">
+              {plan.title}
+            </h3>
+            <p className="text-center w-full font-extrabold mb-4 text-base">
+              {plan.price}
+            </p>
+            <ul
+              className={`mb-6 space-y-2 text-sm ${
+                plan.highlight ? "text-white" : "text-[#002D6B]"
+              }`}
             >
-              <div
-                className="flex items-center justify-between p-4 cursor-pointer"
-                onClick={() => toggleItem(item.id)}
-              >
-                <div className="flex items-center">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-4 text-sm">
-                    <span>{item.id}.</span>
-                  </div>
-                  <h3 className="font-medium text-blue-900 text-base">
-                    {item.question}
-                  </h3>
-                </div>
-                {openItem === item.id ? (
-                  <ChevronUp className="text-gray-500 w-5 h-5" />
-                ) : (
-                  <ChevronDown className="text-gray-500 w-5 h-5" />
-                )}
-              </div>
-              {openItem === item.id && (
-                <div className="px-6 pb-4 text-gray-600 text-sm">
-                  <p>{item.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* DOCUMENTS REQUIRED */}
-      <section className="px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
+              {plan.items.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+            <button
+              className={`mt-auto w-full py-3 rounded font-bold text-base ${
+                plan.highlight
+                  ? "bg-white text-[#002D6B]"
+                  : "bg-[#002D6B] text-white"
+              }`}
+            >
+              ORDER NOW
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+            <div className="mb-10 px-3 md:px-6 max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4">
+          <h1 class="text-lg font-bold text-gray-500 mt-12 uppercase word-spacing">
             OUR COMPANY
           </h1>
-          <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
+          <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
-        <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED
+        <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
+          More About Trademark Objection
         </h1>
+      </div>
+      <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
+        <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+          {/* Section 1: What is Public Limited Company */}
+          <section>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase">
+              Why Trademark Objection?
+            </h2>
+            <div className="p-3 sm:p-6">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4">
+                <li>Responding quickly ensures your brand name/logo is not lost or blocked permanently.</li>
 
-        <div className="bg-blue-50 p-6 rounded-lg mt-6 relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-gray-600 text-base">
-                A Private Limited Company must have a registered office in India. Documents like bank statement or electricity bill should be recent. A utility bill, rent agreement or sale deed and an NOC from the landlord with his / her consent to use the office as a registered office of a company must be submitted as well.
+                <li>If you don't respond within the given time (usually 30 days), your application gets abandoned automatically.</li>
+
+                <li>A proper and strong reply to an objection shows you are serious about your brand and its protection.</li>
+
+                <li>Handling objections early prevents the need to file a completely new application later (which would cost more time and money).</li>
+
+                <li>Many objections arise from misunderstandings — a well-prepared reply can easily convince the Trademark Office.</li>
+
+                <li>Clearing the objection moves your trademark toward successful registration, securing your exclusive rights.</li>
               </p>
             </div>
-            <div className="flex items-center justify-center">
-              <img
-                src={document || "/placeholder.svg"}
-                alt="Document icon"
-                className="max-w-full h-auto"
-              />
-            </div>
-          </div>
+          </section>
         </div>
-      </section>
+      </div>
+     
 
-      {/* ADVANTAGES SLIDER */}
-      <section className="px-4 md:px-6 max-w-7xl mx-auto mt-12">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-gray-500 uppercase tracking-wider">
-            EASY DECISION
-          </h1>
-          <div className="h-0.5 w-40 bg-gray-500"></div>
-        </div>
-        <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          ADVANTAGES OF A PRIVATE<br />LIMITED COMPANY
-        </h1>
-
-        <div className="mt-8 flex flex-col md:flex-row gap-4 items-stretch">
-          <div className="hidden md:block w-full md:w-1/3 bg-[#EEF4FF] rounded-lg p-6 transition-all duration-700">
-            <h3 className="text-lg font-bold mb-4">{advantages[prevIndex].title}</h3>
-            <p className="text-sm text-gray-700">{advantages[prevIndex].description}</p>
-          </div>
-
-          <div className="w-full md:w-1/3 bg-[#002B6B] text-white rounded-lg p-6 transition-all duration-700 md:scale-105 md:shadow-lg">
-            <h3 className="text-lg font-bold mb-4">{advantages[activeSlide - 1].title}</h3>
-            <p className="text-sm">{advantages[activeSlide - 1].description}</p>
-          </div>
-
-          <div className="hidden md:block w-full md:w-1/3 bg-[#EEF4FF] rounded-lg p-6 transition-all duration-700">
-            <h3 className="text-lg font-bold mb-4">{advantages[nextIndex].title}</h3>
-            <p className="text-sm text-gray-700">{advantages[nextIndex].description}</p>
-          </div>
-        </div>
-
-        <div className="flex justify-center mt-6 space-x-2">
-          {advantages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleDotClick(index + 1)}
-              className={`w-6 h-1.5 rounded-full transition-all ${activeSlide === index + 1 ? "bg-[#002B6B] w-10" : "bg-gray-300"}`}
-            ></button>
-          ))}
-        </div>
-      </section>
+      {/* DOCUMENTS REQUIRED */}
+         <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-6">
+                 <div class="flex items-center space-x-4">
+                   <h1 class="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
+                     OUR COMPANY
+                   </h1>
+                   <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
+                 </div>
+                 <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
+                   DOCUMENTS REQUIRED
+                 </h1>
+               </div>
+               <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
+                 <div className="max-w-7xl mx-auto relative z-10">
+                   <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
+                     MINIMUM REQUIREMENT
+                   </h2>
+     
+                   <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-8">
+                     <div>
+                       <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
+                       <li>Trademark Application Numberr</li>
+                <li>Supporting Documents</li>
+                <li>Stamp papers </li>
+                       </ol>
+     
+                     
+                     </div>
+     
+                     <div className="flex items-center justify-center mt-4 md:mt-0">
+                       <div className="relative w-48 h-48 sm:w-64 sm:h-64">
+                         <div className="absolute right-0 bottom-0">
+                           <img
+                             src={document || "/placeholder.svg"}
+                             alt="Document icon"
+                             className="h-auto w-auto max-w-full"
+                           />
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+     
+                 {/* Background decorative elements */}
+                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                   <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-blue-100"></div>
+                   <div className="absolute -bottom-10 -right-10 w-60 h-60 rounded-full bg-blue-100"></div>
+                 </div>
+               </div>
+     
 
       {/* STEPS SECTION */}
       <section className="px-4 md:px-6 max-w-7xl mx-auto mt-12 mb-6">

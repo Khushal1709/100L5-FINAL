@@ -1,4 +1,4 @@
-import Company from "../image/Company.svg";
+import company from "../../image/company.svg";
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import {
@@ -10,9 +10,9 @@ import {
   FaPhone,
   FaBars,
 } from "react-icons/fa";
-import document from "../image/document.svg";
+import document from "../../image/document.svg";
 
-const AnnualLLP = () => {
+const Changeindesignatedpartner = () => {
   const [open, setOpen] = useState(false);
   const [openItem, setOpenItem] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -21,34 +21,34 @@ const AnnualLLP = () => {
   const steps = [
     {
       number: "1.",
-      days: "DAY 1-2",
+      days: "DAY 1",
       description: [
-        "Consultation Between the LegalBoss Team and the Partners/Designated Partners of the LLP",
-        "Preparation of Required Documents and Drafting of Resolutions",
+        "Consultation between the LegalBoss Team and the Company’s Promoters/Directors",
+        "Preparation of Required Resolutions and Supporting Documents",
       ],
     },
     {
       number: "2.",
-      days: "DAY 3-4",
+      days: "DAY 2-3",
       description: [
         "Execution of Necessary Documents",
-        "Drafting and Preparation of ROC Forms for Annual Filing",
+        "Preparation and Filing of ROC Forms for Partner Changes",
       ],
     },
     {
       number: "3.",
-      days: "DAY 5-6",
+      days: "DAY 3-5",
       description: [
-        " Submission of Forms and Documents to the ROC",
-        "Payment of ROC Filing Fees",
-      ],           
+        " Submission of Forms and Documents with the Registrar of Companies (ROC)",
+        "Payment of Applicable ROC Fees",
+      ],
     },
     {
       number: "4.",
-      days: "DAY 7 Onwards",
+      days: "DAY 5 Onwards",
       description: [
-        " ROC Processing and Approval Time",
-        "Issuance of Approval Letter Along with ROC Forms and Challan",
+        " ROC Processing and Approval Timeline",
+        "Sharing of Approval Letter along with Filed ROC Forms and Payment Challan",
       ],
     },
   ];
@@ -65,34 +65,39 @@ const AnnualLLP = () => {
   const plans = [
     {
       title: "BUSINESS PLAN :",
-      price: "RS.6499.00",
+      price: "RS.4999.00",
       items: [
-        "[Turnover or/and capital more than Rs. 1 Crore]",
         "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "DSC for Incoming Designated Partner -1",
+        "DIN of Incoming Designated Partner -1",
+        "Draft LLP supplementary Agreement ",
+        "Preparing ROC Form",
+        "Filling of Forms LLP-3 and LLP-4.",
+        "Filling of Forms for Resigned Designated partner/partner",
       ],
       highlight: false,
     },
     {
       title: "ECONOMY PLAN :",
-      price: "RS.4999.00",
+      price: "RS.3999.00",
       items: [
-        "[Turnover or/and capital  Up to Rs. 1 Crore]",
         "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "DSC for Incoming Designated Partner -1",
+        "DIN of Incoming Designated Partner -1",
+        "Draft LLP supplementary Agreement ",
+        "Preparing ROC Form",
+        "Filling of Forms LLP-3 and LLP-4.",
       ],
       highlight: true,
     },
     {
-      title: "STARTER PLAN :",
-      price: "RS.2499.00",
+      title: "STARTER PLAN:",
+      price: "RS.1999.00",
       items: [
-        "[Turnover Up to Rs. 30 Lakh and/or Capital Up to Rs. 20 Lakh]",
         "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "Draft LLP supplementary Agreement",
+        "Preparing ROC Form",
+        "Filling of Forms LLP-3 and LLP-4.",
       ],
       highlight: false,
     },
@@ -140,29 +145,22 @@ const AnnualLLP = () => {
   const faqItems = [
     {
       id: 1,
-      question: "Is it mandatory to file audited financial statements?",
+      question: "Can a partner be appointed as a designated partner in an LLP?",
       answer:
-        "Audited financial statements are only required if the LLP meets certain criteria (such as a higher turnover or capital contribution). Otherwise, unaudited accounts may be filed.",
+        "Yes, an existing partner can be appointed as a designated partner by following the process outlined in the LLP agreement and filing the necessary forms with the Registrar of Companies.",
     },
     {
       id: 2,
-      question:
-        "My LLP had no transactions during the year. Do I still need to file annual ROC forms?",
+      question: " Can a minor become a designated partner or partner in an LLP?",
       answer:
-        "Yes, even if there were no business transactions, filing annual returns and accounts with the ROC is still mandatory for compliance.",
+        "No, only individuals who are 18 years or older can be appointed as partners or designated partners in an LLP.",
     },
     {
       id: 3,
       question:
-        "Is it necessary to be physically present during the annual filing process?",
+        "Is there any timeline for informing the Registrar about changes in partners?",
       answer:
-        "No, physical presence is not required. The filing process can be completed remotely by the designated representatives or authorized professionals.",
-    },
-    {
-      id: 4,
-      question: "What are the annual compliance requirements for an LLP?",
-      answer:
-        "The key compliance requirements include filing the annual return (Form LLP-11), submitting the financial statement (Form LLP-8), and updating any changes in the LLP’s structure or partners.",
+        "Yes, changes must be reported to the Registrar within 30 days of the event.",
     },
   ];
   // Calculate previous and next indices
@@ -173,7 +171,7 @@ const AnnualLLP = () => {
     <>
       <div
         className="relative bg-cover bg-center py-16 px-4 md:px-8"
-        style={{ backgroundImage: `url(${Company})` }}
+        style={{ backgroundImage: `url(${company})` }}
       >
         {/* Floating Social Menu */}
         <div className="fixed z-50 right-4 top-1/4 flex flex-col items-end">
@@ -221,15 +219,15 @@ const AnnualLLP = () => {
           {/* Info Section */}
           <div className="w-full bg-white/20 backdrop-blur-xs border border-blue-800 p-6 sm:p-8 flex-1 rounded-md">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14387f] mb-2 uppercase">
-              LLP Annual Filling
+              Changes in LLP
             </h2>
             <p className="font-bold text-white mb-4 tracking-wide uppercase">
-              LLP Annual Compliances
+              Changes in Designated partners
             </p>
             <p className="mb-2 text-white">
-              Team help you in filling of LLP Annual ROC Compliances.
+              Team help you in Change in Designated Partners
             </p>
-            <p className="mb-2 text-white">Just Rs.2499/-</p>
+            <p className="mb-2 text-white">Just Rs.1999/-</p>
           </div>
 
           {/* Form Section */}
@@ -328,7 +326,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
-          More About LLP Annual Filling
+          More About Change in Designated Partners
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
@@ -337,64 +335,31 @@ const AnnualLLP = () => {
           <section>
             <div className="p-3 sm:p-6">
               <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4 mb-4">
-                All entities registered under the Limited Liability Partnership
-                (LLP) Act, 2008 are required to file their annual return and
-                financial statements with the Registrar of Companies (ROC) each
-                year. These filings must be done within the specified
-                deadlines—30 and 60 days, respectively. An audit of the
-                financial statements is not mandatory for LLPs with a turnover
-                of less than ₹40 lakhs and a capital contribution below ₹25
-                lakhs. However, even in such cases, submission of the annual
-                return and statement of accounts to the ROC is still compulsory
-                within the prescribed time frame.
+                In a Limited Liability Partnership (LLP), designated partners
+                are responsible for managing the day-to-day operations and
+                ensuring compliance with legal requirements. The appointment of
+                designated partners and/or partners is carried out through a
+                resolution passed according to the provisions of the LLP
+                agreement. Following their appointment, the necessary forms must
+                be filed with the Registrar of Companies. Similarly, the
+                resignation of a designated partner or partner is processed by
+                passing a resolution in accordance with the LLP Act and the LLP
+                agreement. The change must be formally reported to the Registrar
+                of Companies by submitting the prescribed forms.
               </p>
-              <b>Types of Annual Compliance:</b>
-              <br />
-              <b>Annual Return :</b>
-              <p>
-                The Annual Return provides important information about the LLP,
-                including the names and details of all designated partners and
-                partners, any changes in their roles during the year, their
-                contributions and obligations, and the turnover for the
-                financial year. This return must be submitted using Form LLP-11
-                within 60 days from the end of the financial year, which means
-                the due date is typically 30th May each year.
-              </p>
-              <b>Annual Accounts :</b>
-              <p>
-                Every LLP is required to file its financial statements—whether
-                audited (if applicable) or unaudited—using Form LLP-8 with the
-                Registrar of Companies (ROC). This must be done within 30 days
-                after the completion of six months from the end of the financial
-                year, which means the filing deadline is typically 30th October
-                each year.
-              </p>
-
-              <b>Why Filing Annual Returns is Important:</b>
-              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600 ">
-                <li>
-                  Helps prevent late fees and ensures the LLP remains compliant.
-                </li>
-                <li>
-                  Reduces the risk of legal issues involving the LLP and its
-                  designated partners.
-                </li>
-                <li>
-                  Keeps the LLP’s status listed as “ACTIVE” with the
-                  authorities.
-                </li>
-                <li>
-                  Strengthens the firm's credibility with stakeholders and
-                  financial institutions.
-                </li>
-                <li>
-                  Prevents designated partners from facing disqualification due
-                  to non-compliance.
-                </li>
-                <li>
-                  Safeguards the LLP from being removed or struck off by the
-                  Registrar of Companies.
-                </li>
+              <b>Why Change in Designated Partners:</b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600">
+                <li>To delegate management responsibilities without altering ownership structure.</li>
+                <li>Due to the existing designated partner's or partner's inability to continue in their role.</li>
+                <li>To bring new expertise and skills onto the board.</li>
+                <li>To meet statutory or regulatory requirements.</li>
+              </ul>
+              <b>Important Point to be considered while Change Designated Partners:</b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
+                <li>The individual must be at least 18 years of age at the time of appointment.</li>
+                <li>The individual must obtain a valid Director Identification Number (DIN) before appointment.</li>
+                <li>The individual must not be disqualified under the provisions of the LLP Act.</li>
+                <li>A Supplementary LLP Agreement must be executed to reflect the changes.</li>
               </ul>
             </div>
           </section>
@@ -409,7 +374,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 leading-tight">
-          FAQ ON LLP ANNUAL FILLING
+          FAQ ON CHANGE IN DESIGNATED PARTNER
         </h1>
 
         <div className="mt-6 space-y-4">
@@ -455,7 +420,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED FOR LLP ANNUAL FILLING
+          DOCUMENTS REQUIRED FOR CHANGE IN DESIGNATED PARTNER
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
@@ -467,12 +432,15 @@ const AnnualLLP = () => {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-6">
             <div>
               <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
-                <li>Audited/Unaudited Financial Statement</li>
-                <li>Company Pan card</li>
-                <li>List of Directors and Partners</li>
-                <li>All LLP Agreements</li>
-                <li>During the Year Forms Filed to ROC with challan</li>
-                <li>Any other information or documents as may required</li>
+                <li>PAN CARD</li>
+                <li>AADHAR CARD</li>
+                <li>PHOTO-2</li>
+                <li>ID PROOF(DRIVING LICENCE/VOTING CARD/PASSPORT)</li>
+                <li>RESIDENCE PROOF(DRIVING LICENCE/PASSPORT/VOTER ID/ELECTRICITY BILL) </li>
+                <li>DIGITAL SIGNATURE OF DIRECTORS</li>
+                <li>BEFORE APPOINTMENT REQUIRED TO GET DIRECTOR IDENTIFICATION NUMBER AND FOR THAT DIGITAL SIGNATURE REQUIREMENT IS MUST</li>
+                <li>FOR RESIGNATION NOTICE OF RESIGNATION MUST OPT FORM RESIGNED PARTNERS/DESIGNATED PARTNERS.</li>
+
               </ol>
             </div>
 
@@ -506,7 +474,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500"></div>
         </div>
         <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          STEPS INVOLVED IN LLP ANNUAL FILLING
+          STEPS INVOLVED IN DESIGNATED PARTNER 
         </h1>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
@@ -544,4 +512,4 @@ const AnnualLLP = () => {
   );
 };
 
-export default AnnualLLP;
+export default Changeindesignatedpartner;

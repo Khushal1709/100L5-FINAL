@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import document from "../image/document.svg";
 
-const AnnualLLP = () => {
+const GstCancellation = () => {
   const [open, setOpen] = useState(false);
   const [openItem, setOpenItem] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -23,32 +23,16 @@ const AnnualLLP = () => {
       number: "1.",
       days: "DAY 1-2",
       description: [
-        "Consultation Between the LegalBoss Team and the Partners/Designated Partners of the LLP",
-        "Preparation of Required Documents and Drafting of Resolutions",
+        "Consultation Between the LegalBoss Team and the Company's Promoters/Directors",
+        "Gathering Required Information and Documentation",
       ],
     },
     {
       number: "2.",
       days: "DAY 3-4",
       description: [
-        "Execution of Necessary Documents",
-        "Drafting and Preparation of ROC Forms for Annual Filing",
-      ],
-    },
-    {
-      number: "3.",
-      days: "DAY 5-6",
-      description: [
-        " Submission of Forms and Documents to the ROC",
-        "Payment of ROC Filing Fees",
-      ],           
-    },
-    {
-      number: "4.",
-      days: "DAY 7 Onwards",
-      description: [
-        " ROC Processing and Approval Time",
-        "Issuance of Approval Letter Along with ROC Forms and Challan",
+        " Prepare and Submit GST Cancellation Application",
+        "Send Acknowledgement of Filing to the Taxpayer",
       ],
     },
   ];
@@ -64,37 +48,10 @@ const AnnualLLP = () => {
   // Plans
   const plans = [
     {
-      title: "BUSINESS PLAN :",
-      price: "RS.6499.00",
-      items: [
-        "[Turnover or/and capital more than Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
-      highlight: false,
-    },
-    {
-      title: "ECONOMY PLAN :",
-      price: "RS.4999.00",
-      items: [
-        "[Turnover or/and capital  Up to Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
+      title: "STARTER PLAN:",
+      price: "RS.1499.00",
+      items: ["Filling of GST Cancellation Application"],
       highlight: true,
-    },
-    {
-      title: "STARTER PLAN :",
-      price: "RS.2499.00",
-      items: [
-        "[Turnover Up to Rs. 30 Lakh and/or Capital Up to Rs. 20 Lakh]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
-      highlight: false,
     },
   ];
 
@@ -140,29 +97,35 @@ const AnnualLLP = () => {
   const faqItems = [
     {
       id: 1,
-      question: "Is it mandatory to file audited financial statements?",
+      question: "What is a GST Annual Return?",
       answer:
-        "Audited financial statements are only required if the LLP meets certain criteria (such as a higher turnover or capital contribution). Otherwise, unaudited accounts may be filed.",
+        "The GST Annual Return is a consolidated document that summarizes the taxpayer's outward and inward supplies (sales and purchases), tax liabilities, and input tax credit (ITC) for a given financial year. It is filed under Form GSTR-9.",
     },
     {
       id: 2,
-      question:
-        "My LLP had no transactions during the year. Do I still need to file annual ROC forms?",
+      question: " Who needs to file the GST Annual Return?",
       answer:
-        "Yes, even if there were no business transactions, filing annual returns and accounts with the ROC is still mandatory for compliance.",
+        "All GST-registered taxpayers with an annual turnover exceeding ₹2 crores are required to file the GST Annual Return (GSTR-9), regardless of their sales or profitability.",
     },
     {
       id: 3,
-      question:
-        "Is it necessary to be physically present during the annual filing process?",
+      question: " What is the deadline for filing the GST Annual Return?",
       answer:
-        "No, physical presence is not required. The filing process can be completed remotely by the designated representatives or authorized professionals.",
+        "The due date for filing GSTR-9 is generally December 31st of the year following the end of the financial year, though it can be extended by the government.",
     },
     {
       id: 4,
-      question: "What are the annual compliance requirements for an LLP?",
+      question:
+        " Can I file GSTR-9 if I haven’t filed my monthly/quarterly returns?",
       answer:
-        "The key compliance requirements include filing the annual return (Form LLP-11), submitting the financial statement (Form LLP-8), and updating any changes in the LLP’s structure or partners.",
+        "No. You must file all your GSTR-1, GSTR-3B, or GSTR-4 returns before submitting the annual return. If any of these returns are pending, you will not be allowed to file GSTR-9.",
+    },
+    {
+      id: 5,
+      question:
+        " Is filing GSTR-9 mandatory for all GST-registered businesses?",
+      answer:
+        "No, only businesses with a turnover above ₹2 crores in the financial year are required to file GSTR-9. Smaller businesses with a turnover up to ₹2 crores are not required to file the annual return for the years 2017-18, 2018-19, and 2019-20 based on recent amendments.",
     },
   ];
   // Calculate previous and next indices
@@ -221,15 +184,15 @@ const AnnualLLP = () => {
           {/* Info Section */}
           <div className="w-full bg-white/20 backdrop-blur-xs border border-blue-800 p-6 sm:p-8 flex-1 rounded-md">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14387f] mb-2 uppercase">
-              LLP Annual Filling
+              GST CANCELLATION
             </h2>
             <p className="font-bold text-white mb-4 tracking-wide uppercase">
-              LLP Annual Compliances
+              GST Registration Cancellation
             </p>
             <p className="mb-2 text-white">
-              Team help you in filling of LLP Annual ROC Compliances.
+              Team help you in Cancellation of GST Registration.
             </p>
-            <p className="mb-2 text-white">Just Rs.2499/-</p>
+            <p className="mb-2 text-white">Just Rs.1499/-</p>
           </div>
 
           {/* Form Section */}
@@ -328,7 +291,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
-          More About LLP Annual Filling
+          More About GST Cancellation
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
@@ -337,114 +300,28 @@ const AnnualLLP = () => {
           <section>
             <div className="p-3 sm:p-6">
               <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4 mb-4">
-                All entities registered under the Limited Liability Partnership
-                (LLP) Act, 2008 are required to file their annual return and
-                financial statements with the Registrar of Companies (ROC) each
-                year. These filings must be done within the specified
-                deadlines—30 and 60 days, respectively. An audit of the
-                financial statements is not mandatory for LLPs with a turnover
-                of less than ₹40 lakhs and a capital contribution below ₹25
-                lakhs. However, even in such cases, submission of the annual
-                return and statement of accounts to the ROC is still compulsory
-                within the prescribed time frame.
+                There are various reasons why a GST registration might be
+                canceled. These can include circumstances such as the closure of
+                your business, the non-applicability of GST to your operations,
+                or other factors. Once your GST registration is canceled, you
+                will no longer be required to pay or collect GST, nor will you
+                be able to claim input tax credits. As a result, you will also
+                be exempt from filing GST returns. It is important to note that
+                if you voluntarily registered for GST, you cannot apply for
+                cancellation before one year from the effective date of your
+                registration. Before canceling a GST registration, the concerned
+                officer will issue a notice to the registered person whose
+                registration is under review for cancellation. The person will
+                be required to respond to the notice within seven working days,
+                explaining why the registration should not be canceled. If no
+                satisfactory response is provided within the specified time, the
+                GST registration will be canceled.
+                <br />
               </p>
-              <b>Types of Annual Compliance:</b>
-              <br />
-              <b>Annual Return :</b>
-              <p>
-                The Annual Return provides important information about the LLP,
-                including the names and details of all designated partners and
-                partners, any changes in their roles during the year, their
-                contributions and obligations, and the turnover for the
-                financial year. This return must be submitted using Form LLP-11
-                within 60 days from the end of the financial year, which means
-                the due date is typically 30th May each year.
-              </p>
-              <b>Annual Accounts :</b>
-              <p>
-                Every LLP is required to file its financial statements—whether
-                audited (if applicable) or unaudited—using Form LLP-8 with the
-                Registrar of Companies (ROC). This must be done within 30 days
-                after the completion of six months from the end of the financial
-                year, which means the filing deadline is typically 30th October
-                each year.
-              </p>
-
-              <b>Why Filing Annual Returns is Important:</b>
-              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600 ">
-                <li>
-                  Helps prevent late fees and ensures the LLP remains compliant.
-                </li>
-                <li>
-                  Reduces the risk of legal issues involving the LLP and its
-                  designated partners.
-                </li>
-                <li>
-                  Keeps the LLP’s status listed as “ACTIVE” with the
-                  authorities.
-                </li>
-                <li>
-                  Strengthens the firm's credibility with stakeholders and
-                  financial institutions.
-                </li>
-                <li>
-                  Prevents designated partners from facing disqualification due
-                  to non-compliance.
-                </li>
-                <li>
-                  Safeguards the LLP from being removed or struck off by the
-                  Registrar of Companies.
-                </li>
-              </ul>
             </div>
           </section>
         </div>
       </div>
-      {/* ASK SOMETHING */}
-      <section className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
-            ASK SOMETHING
-          </h1>
-          <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 leading-tight">
-          FAQ ON LLP ANNUAL FILLING
-        </h1>
-
-        <div className="mt-6 space-y-4">
-          {faqItems.map((item) => (
-            <div
-              key={item.id}
-              className="rounded-md overflow-hidden bg-blue-50"
-            >
-              <div
-                className="flex items-center justify-between p-4 cursor-pointer"
-                onClick={() => toggleItem(item.id)}
-              >
-                <div className="flex items-center">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-4 text-sm">
-                    <span>{item.id}.</span>
-                  </div>
-                  <h3 className="font-medium text-blue-900 text-base">
-                    {item.question}
-                  </h3>
-                </div>
-                {openItem === item.id ? (
-                  <ChevronUp className="text-gray-500 w-5 h-5" />
-                ) : (
-                  <ChevronDown className="text-gray-500 w-5 h-5" />
-                )}
-              </div>
-              {openItem === item.id && (
-                <div className="px-6 pb-4 text-gray-600 text-sm">
-                  <p>{item.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* DOCUMENTS REQUIRED */}
       <div className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
@@ -455,7 +332,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED FOR LLP ANNUAL FILLING
+          DOCUMENTS REQUIRED FOR GST CANCELLATION
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
@@ -467,12 +344,9 @@ const AnnualLLP = () => {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-6">
             <div>
               <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
-                <li>Audited/Unaudited Financial Statement</li>
-                <li>Company Pan card</li>
-                <li>List of Directors and Partners</li>
-                <li>All LLP Agreements</li>
-                <li>During the Year Forms Filed to ROC with challan</li>
-                <li>Any other information or documents as may required</li>
+                <li>GST registration Certificate</li>
+                <li>GST Login ID and Password</li>
+                <li>Other Details as may required during the Filing </li>
               </ol>
             </div>
 
@@ -506,7 +380,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500"></div>
         </div>
         <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          STEPS INVOLVED IN LLP ANNUAL FILLING
+          STEPS INVOLVED IN GST REGISTRATION CANCELLATION
         </h1>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
@@ -544,4 +418,4 @@ const AnnualLLP = () => {
   );
 };
 
-export default AnnualLLP;
+export default GstCancellation;

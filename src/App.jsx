@@ -22,6 +22,13 @@ import Change from "./Compliances/Change";
 import ChangeAuditor from "./Compliances/ChangeAuditor";
 import AnnualCompany from "./Compliances/AnnualCompany";
 import AnnualLLP from "./Compliances/AnnualLLP";
+import AMC from "./Compliances/AMC";
+import AMCforLLP from "./Compliances/AMCforLLP";
+import Searchreport from "./Compliances/Searchreport";
+import ChangeLLP from "./Compliances/Drop-drown/ChangeLLP";
+import DesignatedPartner from "./Compliances/Drop-drown/DesignatedPartner";
+import LLpagreement from "./Compliances/Drop-drown/LLpagreement";
+import Registeredoffice from "./Compliances/Drop-drown/Registeredoffice";
 import Home from "./components/Home";
 import PublicLimited from "./Company Registration/PublicLimited";
 import LLPRegistration from "./Company Registration/LLPRegistration";
@@ -39,6 +46,10 @@ import FASSIRegistration from "./Other Registration/FASSIRegistration";
 import IECCode from "./Other Registration/IECCode";
 import PANTANApplication from "./Other Registration/PANTANApplication";
 import UdhyogRegistration from "./Other Registration/UdhyogRegistration";
+import MonthlyCompliance from "./GST Compliaces/MonthlyCompliance";
+import AnnualCompalices from "./GST Compliaces/AnnualCompalices";
+import GstCancellation from "./GST Compliaces/GstCancellation";
+import Annual from "./Compliances/Annual";
 
 
 
@@ -85,6 +96,22 @@ function App() {
           <Route path="/IECCode" element={<IECCode/>} />
           <Route path="/PANTANApplication" element={<PANTANApplication/>} />
           <Route path="/UdhyogRegistration" element={<UdhyogRegistration/>} />
+          <Route path="/AMC" element={<AMC/>} />
+          <Route path="/AMCforLLP" element={<AMCforLLP/>} /> 
+          <Route path="/MonthlyCompliance" element={<MonthlyCompliance/>} /> 
+          <Route path="/AnnualCompalices" element={<AnnualCompalices/>} /> 
+          <Route path="/GstCancellation" element={<GstCancellation/>} /> 
+          <Route path="/Searchreport" element={<Searchreport/>} />
+          <Route path="/ChangeLLP" element={<ChangeLLP/>} />
+          <Route path="/DesignatedPartner" element={<DesignatedPartner/>} />
+          <Route path="/LLpagreement" element={<LLpagreement/>} />
+          <Route path="/Registeredoffice" element={<Registeredoffice/>} />
+          <Route path="/ChangeLLP" element={<ChangeLLP/>} />
+          <Route path="/Annual" element={<Annual/>} />
+
+
+
+
         </Routes>
        <Footer/>
     </Router>

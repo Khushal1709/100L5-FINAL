@@ -290,36 +290,77 @@ const ChangesInDirectors = () => {
         </div>
       </section>
 
-      {/* DOCUMENTS REQUIRED */}
-      <section className="px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
-            OUR COMPANY
-          </h1>
-          <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
-        </div>
-        <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED
-        </h1>
-
-        <div className="bg-blue-50 p-6 rounded-lg mt-6 relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-gray-600 text-base">
-                A Private Limited Company must have a registered office in India. Documents like bank statement or electricity bill should be recent. A utility bill, rent agreement or sale deed and an NOC from the landlord with his / her consent to use the office as a registered office of a company must be submitted as well.
-              </p>
-            </div>
-            <div className="flex items-center justify-center">
-              <img
-                src={document || "/placeholder.svg"}
-                alt="Document icon"
-                className="max-w-full h-auto"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
+     {/* OUR COMPANY DOCUMENTS REQUIRED */}
+              <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-6">
+                <div class="flex items-center space-x-4">
+                  <h1 class="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
+                    OUR COMPANY
+                  </h1>
+                  <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
+                </div>
+                <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
+                  DOCUMENTS REQUIRED 
+                </h1>
+              </div>
+              <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
+                <div className="max-w-7xl mx-auto relative z-10">
+                  <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
+                    MINIMUM REQUIREMENT
+                  </h2>
+    
+                  <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                    <div>
+                      <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
+                        <li>Pan Card - self Certified Copy</li>
+                        <li>Aadhar card -self Certified Copy</li>
+                        <li>
+                          ID proof (Driving License, Voter ID, Passport) -self
+                          Certified Copy
+                        </li>
+                        <li>
+                          Address proof (Lightbill, Mobile Bill, Bank statement -
+                          not older than 2 month) -self Certified Copy
+                        </li>
+                        <li>Two photo (Passport Size)</li>
+                      </ol>
+    
+                      <div className="mt-6 sm:mt-8">
+                        <p className="text-gray-700 font-medium mb-3 sm:mb-4 text-sm sm:text-base">
+                          Information of Proposed Directors/Shareholders Required:
+                        </p>
+                        <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
+                          <li>Education Qualification</li>
+                          <li>Current Occupancy</li>
+                          <li>Birth Place with District, Taluka, State</li>
+                          <li>
+                            No of year stay at present address (year and month)
+                          </li>
+                          <li>Email ID</li>
+                          <li>Contact no.</li>
+                        </ol>
+                      </div>
+                    </div>
+    
+                    <div className="flex items-center justify-center mt-4 md:mt-0">
+                      <div className="relative w-48 h-48 sm:w-64 sm:h-64">
+                        <div className="absolute right-0 bottom-0">
+                          <img
+                            src={document || "/placeholder.svg"}
+                            alt="Document icon"
+                            className="h-auto w-auto max-w-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                {/* Background decorative elements */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                  <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-blue-100"></div>
+                  <div className="absolute -bottom-10 -right-10 w-60 h-60 rounded-full bg-blue-100"></div>
+                </div>
+              </div>
       {/* ADVANTAGES SLIDER */}
       <section className="px-4 md:px-6 max-w-7xl mx-auto mt-12">
         <div className="flex items-center space-x-4">

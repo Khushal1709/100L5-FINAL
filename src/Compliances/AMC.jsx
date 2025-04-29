@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import document from "../image/document.svg";
 
-const AnnualLLP = () => {
+const Amcforcompany = () => {
   const [open, setOpen] = useState(false);
   const [openItem, setOpenItem] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -21,34 +21,18 @@ const AnnualLLP = () => {
   const steps = [
     {
       number: "1.",
-      days: "DAY 1-2",
+      days: "DAY 1",
       description: [
-        "Consultation Between the LegalBoss Team and the Partners/Designated Partners of the LLP",
-        "Preparation of Required Documents and Drafting of Resolutions",
+        "Conversation Between the Legal Team and the Company Promoters/Directors",
+        "Gathering All Necessary Documents and Resolutions",
       ],
     },
     {
       number: "2.",
-      days: "DAY 3-4",
+      days: "DAY 2",
       description: [
-        "Execution of Necessary Documents",
-        "Drafting and Preparation of ROC Forms for Annual Filing",
-      ],
-    },
-    {
-      number: "3.",
-      days: "DAY 5-6",
-      description: [
-        " Submission of Forms and Documents to the ROC",
-        "Payment of ROC Filing Fees",
-      ],           
-    },
-    {
-      number: "4.",
-      days: "DAY 7 Onwards",
-      description: [
-        " ROC Processing and Approval Time",
-        "Issuance of Approval Letter Along with ROC Forms and Challan",
+        " Reviewing Outstanding Compliances and All Registrations",
+        "Activation of Your Package for the Year",
       ],
     },
   ];
@@ -64,37 +48,18 @@ const AnnualLLP = () => {
   // Plans
   const plans = [
     {
-      title: "BUSINESS PLAN :",
-      price: "RS.6499.00",
+      title: "PLAN :",
+      price: "RS.11999.00",
       items: [
-        "[Turnover or/and capital more than Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
-      highlight: false,
-    },
-    {
-      title: "ECONOMY PLAN :",
-      price: "RS.4999.00",
-      items: [
-        "[Turnover or/and capital  Up to Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "[For Private Limited Company - Turnover up to 2 Crore and Capital up to 50 lakh]",
+        "Drafting of All types of Resolution",
+        "Preparation of Minutes Book",
+        "Maintaining of all types of Registered",
+        "Filling of All mandatory Compliance including annual filling",
+        "All Event based Compliance (Except Share Capital Increase or Decrease)"
+
       ],
       highlight: true,
-    },
-    {
-      title: "STARTER PLAN :",
-      price: "RS.2499.00",
-      items: [
-        "[Turnover Up to Rs. 30 Lakh and/or Capital Up to Rs. 20 Lakh]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
-      highlight: false,
     },
   ];
 
@@ -140,29 +105,27 @@ const AnnualLLP = () => {
   const faqItems = [
     {
       id: 1,
-      question: "Is it mandatory to file audited financial statements?",
+      question: "What is a Digital Signature Certificate (DSC)?",
       answer:
-        "Audited financial statements are only required if the LLP meets certain criteria (such as a higher turnover or capital contribution). Otherwise, unaudited accounts may be filed.",
+        "A Digital Signature Certificate (DSC) is an electronic form of a signature used to authenticate the identity of individuals or organizations while signing electronic documents. It ensures the integrity and security of the document by verifying the signer’s identity.",
     },
     {
       id: 2,
-      question:
-        "My LLP had no transactions during the year. Do I still need to file annual ROC forms?",
+      question: "Why is DSC required?",
       answer:
-        "Yes, even if there were no business transactions, filing annual returns and accounts with the ROC is still mandatory for compliance.",
+        "DSC is required for signing documents electronically in a secure and legally valid manner. It is used for various government and business-related applications such as GST filings, Income Tax returns, MCA submissions, and more.",
     },
     {
       id: 3,
-      question:
-        "Is it necessary to be physically present during the annual filing process?",
+      question: " What is the validity period of a DSC?",
       answer:
-        "No, physical presence is not required. The filing process can be completed remotely by the designated representatives or authorized professionals.",
+        "A Digital Signature Certificate typically has a validity period ranging from 1 to 3 years, after which it must be renewed.",
     },
     {
       id: 4,
-      question: "What are the annual compliance requirements for an LLP?",
+      question: "What happens if my DSC expires?",
       answer:
-        "The key compliance requirements include filing the annual return (Form LLP-11), submitting the financial statement (Form LLP-8), and updating any changes in the LLP’s structure or partners.",
+        "If your DSC expires, you will need to renew it. Renewal is typically a simple process, but it may require you to resubmit your identity and address documents.",
     },
   ];
   // Calculate previous and next indices
@@ -221,15 +184,15 @@ const AnnualLLP = () => {
           {/* Info Section */}
           <div className="w-full bg-white/20 backdrop-blur-xs border border-blue-800 p-6 sm:p-8 flex-1 rounded-md">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14387f] mb-2 uppercase">
-              LLP Annual Filling
+            AMC for Companies
             </h2>
             <p className="font-bold text-white mb-4 tracking-wide uppercase">
-              LLP Annual Compliances
+             Annual Maintenance Services
             </p>
             <p className="mb-2 text-white">
-              Team help you in filling of LLP Annual ROC Compliances.
+              Team help you in Maintain High level of Compliances
             </p>
-            <p className="mb-2 text-white">Just Rs.2499/-</p>
+            <p className="mb-2 text-white">Just Rs.11999/-</p>
           </div>
 
           {/* Form Section */}
@@ -328,123 +291,44 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
-          More About LLP Annual Filling
+          More About Annual Maintenance Services
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
         <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
           {/* Section 1: What is Public Limited Company */}
           <section>
+       
             <div className="p-3 sm:p-6">
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4 mb-4">
-                All entities registered under the Limited Liability Partnership
-                (LLP) Act, 2008 are required to file their annual return and
-                financial statements with the Registrar of Companies (ROC) each
-                year. These filings must be done within the specified
-                deadlines—30 and 60 days, respectively. An audit of the
-                financial statements is not mandatory for LLPs with a turnover
-                of less than ₹40 lakhs and a capital contribution below ₹25
-                lakhs. However, even in such cases, submission of the annual
-                return and statement of accounts to the ROC is still compulsory
-                within the prescribed time frame.
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4 mb-3">
+              All entities registered under the Companies Act, 2013 or 1956, such as Private Limited Companies, Limited Companies, LLPs, OPCs, Section 8 companies, or other similar entities, must adhere to strict compliance regulations. Failure to comply can result in significant fines and penalties, which can be up to 12 times the standard fee, or a daily fine of Rs. 100 per form.Companies are required to maintain essential statutory documents, including various statutory registers such as the Director Register, Shareholder Register, Member Register, Director Shareholding Register, Charge Register, Fixed Assets Register, and more.Additionally, it is mandatory for companies to hold board meetings, with no more than 120 days between consecutive meetings, unless the company qualifies as a small company. Furthermore, every year, a company must conduct its Annual General Meeting (AGM) within six months after the end of its financial year.
               </p>
-              <b>Types of Annual Compliance:</b>
-              <br />
-              <b>Annual Return :</b>
-              <p>
-                The Annual Return provides important information about the LLP,
-                including the names and details of all designated partners and
-                partners, any changes in their roles during the year, their
-                contributions and obligations, and the turnover for the
-                financial year. This return must be submitted using Form LLP-11
-                within 60 days from the end of the financial year, which means
-                the due date is typically 30th May each year.
-              </p>
-              <b>Annual Accounts :</b>
-              <p>
-                Every LLP is required to file its financial statements—whether
-                audited (if applicable) or unaudited—using Form LLP-8 with the
-                Registrar of Companies (ROC). This must be done within 30 days
-                after the completion of six months from the end of the financial
-                year, which means the filing deadline is typically 30th October
-                each year.
-              </p>
-
-              <b>Why Filing Annual Returns is Important:</b>
-              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600 ">
-                <li>
-                  Helps prevent late fees and ensures the LLP remains compliant.
-                </li>
-                <li>
-                  Reduces the risk of legal issues involving the LLP and its
-                  designated partners.
-                </li>
-                <li>
-                  Keeps the LLP’s status listed as “ACTIVE” with the
-                  authorities.
-                </li>
-                <li>
-                  Strengthens the firm's credibility with stakeholders and
-                  financial institutions.
-                </li>
-                <li>
-                  Prevents designated partners from facing disqualification due
-                  to non-compliance.
-                </li>
-                <li>
-                  Safeguards the LLP from being removed or struck off by the
-                  Registrar of Companies.
-                </li>
+              <b className="mt-2">Why Annual Maintenance Service Required:</b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600 mb-4">
+                <li>Personalized Consulting</li>
+                <li>Ensure Compliance</li>
+                <li>Prevent Legal Issues and Penalties</li>
+                <li>Maintain Statutory Registers</li>
+                <li>Record Keeping for Meetings</li>
               </ul>
+              <b>What to be Including in ROC Compliance package</b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
+                <li>Individual Consultation</li>
+                <li>Board Meeting Notice Drafting</li>
+                <li>General Meeting Notice Drafting</li>
+                <li>Board of Directors' Report Drafting</li>
+                <li>Statutory Register Updates</li>
+                <li>Minutes Book Management</li>
+                <li>Annual Filling</li>
+                <li>Event based Compliances</li>
+
+              </ul>
+
             </div>
           </section>
         </div>
       </div>
-      {/* ASK SOMETHING */}
-      <section className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
-            ASK SOMETHING
-          </h1>
-          <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
-        </div>
-        <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 leading-tight">
-          FAQ ON LLP ANNUAL FILLING
-        </h1>
 
-        <div className="mt-6 space-y-4">
-          {faqItems.map((item) => (
-            <div
-              key={item.id}
-              className="rounded-md overflow-hidden bg-blue-50"
-            >
-              <div
-                className="flex items-center justify-between p-4 cursor-pointer"
-                onClick={() => toggleItem(item.id)}
-              >
-                <div className="flex items-center">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-900 text-white flex items-center justify-center mr-4 text-sm">
-                    <span>{item.id}.</span>
-                  </div>
-                  <h3 className="font-medium text-blue-900 text-base">
-                    {item.question}
-                  </h3>
-                </div>
-                {openItem === item.id ? (
-                  <ChevronUp className="text-gray-500 w-5 h-5" />
-                ) : (
-                  <ChevronDown className="text-gray-500 w-5 h-5" />
-                )}
-              </div>
-              {openItem === item.id && (
-                <div className="px-6 pb-4 text-gray-600 text-sm">
-                  <p>{item.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* DOCUMENTS REQUIRED */}
       <div className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
@@ -455,7 +339,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED FOR LLP ANNUAL FILLING
+          DOCUMENTS REQUIRED FOR ANNUAL MAINTENANCE SERVICES
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
@@ -467,12 +351,14 @@ const AnnualLLP = () => {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-6">
             <div>
               <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
-                <li>Audited/Unaudited Financial Statement</li>
-                <li>Company Pan card</li>
-                <li>List of Directors and Partners</li>
-                <li>All LLP Agreements</li>
-                <li>During the Year Forms Filed to ROC with challan</li>
-                <li>Any other information or documents as may required</li>
+                <li>Certificate of Incorporations</li>
+                <li>MOA and AOA</li>
+                <li>List of Shareholders</li>
+                <li>List of Directors</li>
+                <li>Copy Form Filed previous years with Challan</li>
+                <li>Digital Signature of Director</li>
+                <li>Details /Information of any NOTICE received previously</li>
+                <li>Any other information which may required</li>
               </ol>
             </div>
 
@@ -506,7 +392,9 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500"></div>
         </div>
         <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          STEPS INVOLVED IN LLP ANNUAL FILLING
+          STEPS INVOLVED IN GETTING
+          <br />
+          ANNUAL MAINTENANCE SERVICES
         </h1>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
@@ -544,4 +432,4 @@ const AnnualLLP = () => {
   );
 };
 
-export default AnnualLLP;
+export default Amcforcompany;

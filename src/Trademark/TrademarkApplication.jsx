@@ -65,6 +65,38 @@ const ChangesInDirectors = () => {
         setOpenItem(openItem === id ? 0 : id)
     }
 
+    const plans = [
+        {
+            title: "STARTER PLAN :",
+            price: "₹14,999.00",
+            items: [
+                "For Oppose Statement or Counter Statement",
+                "For One (1) Class, One (1) Application",
+            ],
+            highlight: false,
+        },
+        {
+            title: "ENTREPRENEUR :",
+            price: "RS.₹25,999.00",
+            items: [
+                "For Oppose Statement or Counter Statement",
+                "For One (1) Class, One (1) Application",
+                "Filing of Affidavit in Support of Opposition or Application",
+            ],
+            highlight: true,
+        },
+        {
+            title: "CORPORATE:",
+            price: "RS.₹34,999.00",
+            items: [
+                "For Oppose Statement or Counter Statement",
+                "For One (1) Class, One (1) Application",
+                "Filing of Affidavit in Support of Opposition or Application",
+                "Hearing for the Opposition or Application",
+            ],
+            highlight: false,
+        },
+    ];
 
 
 
@@ -194,10 +226,10 @@ const ChangesInDirectors = () => {
                     {/* Info Section */}
                     <div className="w-full bg-white/20 backdrop-blur-xs border border-blue-800 p-6 sm:p-8 flex-1 rounded-md">
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14387f] mb-2 uppercase">
-                        Trademark registration
+                            Trademark registration
                         </h2>
                         <p className="font-bold text-white mb-4 tracking-wide uppercase">
-                        How to Get Trademark registration
+                            How to Get Trademark registration
                         </p>
                         <p className="mb-2 text-white">
                             Team helps you with Change in Directors.
@@ -241,8 +273,125 @@ const ChangesInDirectors = () => {
                     </div>
                 </div>
             </div>
-            <PricingPlans />
-            <PublicLimitedCompany />
+            <div className="bg-white max-w-7xl mx-auto px-4 py-12  ">
+                <div className="mb-8 md:mb-12 ">
+                    <h3 className="text-gray-500 font-semibold tracking-wide uppercase">
+                        CHOOSE YOUR PACKAGE
+                    </h3>
+                    <h2 className="text-3xl md:text-3xl font-extrabold text-[#002D6B] mt-2">
+                        OPEN PRICE | NO HIDDEN
+                    </h2>
+                </div>
+                <div
+                    className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide pb-4"
+                    style={{
+                        WebkitOverflowScrolling: "touch",
+                    }}
+                >
+                    {plans.map((plan, idx) => (
+                        <div
+                            key={idx}
+                            className={`flex flex-col items-start text-left rounded-xl shadow min-w-[320px] max-w-[350px] w-full px-6 py-8 ${plan.highlight
+                                    ? "bg-[#002D6B] text-white"
+                                    : "bg-[#F0F6FF] text-[#002D6B]"
+                                }`}
+                        >
+                            <h3 className="text-center w-full font-extrabold text-lg mb-2 tracking-wide">
+                                {plan.title}
+                            </h3>
+                            <p className="text-center w-full font-extrabold mb-4 text-base">
+                                {plan.price}
+                            </p>
+                            <ul
+                                className={`mb-6 space-y-2 text-sm ${plan.highlight ? "text-white" : "text-[#002D6B]"
+                                    }`}
+                            >
+                                {plan.items.map((item, i) => (
+                                    <li key={i}>{item}</li>
+                                ))}
+                            </ul>
+                            <button
+                                className={`mt-auto w-full py-3 rounded font-bold text-base ${plan.highlight
+                                        ? "bg-white text-[#002D6B]"
+                                        : "bg-[#002D6B] text-white"
+                                    }`}
+                            >
+                                ORDER NOW
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="mb-10 px-3 md:px-6 max-w-7xl mx-auto">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-lg font-bold text-gray-500 mt-12 uppercase word-spacing">
+                        OUR COMPANY
+                    </h1>
+                    <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
+                </div>
+                <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
+                    More About Trademark
+                </h1>
+            </div>
+            <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
+                <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+                    {/* Section 1: What is Public Limited Company */}
+                    <section>
+                        <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase">
+                            Why Trademark?
+                        </h2>
+                        <div className="p-3 sm:p-6">
+                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4">
+                                <li>Stand Out from Competitors: A trademark helps distinguish your products or services from others in the market.</li>
+
+                                <li>Build Strong Brand Recognition: It creates a lasting impression among customers and boosts brand loyalty.</li>
+
+                                <li>Protect Your Products and Services: A registered trademark legally safeguards your brand identity.</li>
+
+                                <li>Valuable Business Asset: Over time, your trademark grows in value and becomes an important asset for your business.</li>
+
+                                <li>Simple Application and Usage: Registering and using a trademark is a straightforward process.</li>
+
+                                <li>Avoid Brand Damage: Operating without a registered trademark can harm your brand's reputation and legal standing.</li>
+                            </p>
+                        </div>
+                    </section>
+
+                    {/* Section 2: Why Choose Public Limited Company */}
+                    <section>
+                        <h2 className="text-xl md:text-2xl font-extrabold text-blue-900 uppercase ">
+                            Simple Trademark registration process:
+                        </h2>
+                        <div className=" bg-opacity-70 p-6 ">
+                            <ul className="space-y-4 text-gray-600">
+                                <li>Step 1: Conduct a Trademark Search :-
+                                    Check if your brand name or logo is already in use to avoid future conflicts.</li>
+
+                                <li>Step 2: Choose the Right Class :-
+                                    Identify the appropriate class for your product or service under the trademark classification system.</li>
+
+                                <li>Step 3: File the Trademark Application :-
+                                    Submit the application with complete details and supporting documents to the Trademark Office.</li>
+
+                                <li>Step 4: Examination and Objection (If Any) :-
+                                    The Trademark Office examines your application and may raise objections based on legal grounds.</li>
+
+                                <li>Step 5: Respond to Objection :-
+                                    File a detailed reply addressing the Registrar's concerns to move the application forward.</li>
+
+                                <li>Step 6: Attend Hearing (If Required) :-
+                                    If the Registrar requires, appear for a hearing to defend your trademark application.</li>
+
+                                <li>Step 7: Application Approval :-
+                                    Upon satisfaction, the application is accepted and published in the Trademark Journal for public review.</li>
+
+                                <li>Step 8: Issuance of Registration Certificate :-
+                                    If no opposition is received, your trademark gets officially registered, and you receive the Registration Certificate.</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
             {/* ASK SOMETHING */}
             <section className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
                 <div className="flex items-center space-x-4">
@@ -290,24 +439,25 @@ const ChangesInDirectors = () => {
             </section>
 
             {/* DOCUMENTS REQUIRED */}
-            <div className="mb-10 px-4 md:px-6 max-w-7xl mx-auto">
-                <div class="flex items-center space-x-4">
-                    <h1 class="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
-                        OUR COMPANY
-                    </h1>
-                    <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
-                </div>
-                <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-                    DOCUMENTS REQUIRED
-                </h1>
+            <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-6">
+            <div class="flex items-center space-x-4">
+            <h1 class="text-lg font-bold text-gray-500 mt-12 uppercase tracking-wider">
+                OUR COMPANY
+              </h1>
+              <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
             </div>
-            <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
-                        MINIMUM REQUIREMENT
-                    </h2>
+            <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
+              DOCUMENTS REQUIRED
+            </h1>
+          </div>
+          <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
+            <div className="max-w-7xl mx-auto relative z-10">
+              <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
+                MINIMUM REQUIREMENT
+              </h2>
 
-                    <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+
+                    <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-7">
                         <div>
                             <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
                                 <li>Pan Card - self Certified Copy</li>
@@ -404,7 +554,7 @@ const ChangesInDirectors = () => {
             <section className="px-4 md:px-6 max-w-7xl mx-auto mt-12 mb-6">
                 <div className="flex items-center space-x-4">
                     <h1 className="text-lg font-bold text-gray-500 uppercase tracking-wider uppercase">
-                    Steps Involved in Trademark Registration
+                        Steps Involved in Trademark Registration
                     </h1>
                     <div className="h-0.5 w-40 bg-gray-500"></div>
                 </div>

@@ -1,4 +1,4 @@
-import Company from "../image/Company.svg";
+import company from "../../image/company.svg";
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import {
@@ -10,9 +10,9 @@ import {
   FaPhone,
   FaBars,
 } from "react-icons/fa";
-import document from "../image/document.svg";
+import document from "../../image/document.svg";
 
-const AnnualLLP = () => {
+const ChangeinAddress = () => {
   const [open, setOpen] = useState(false);
   const [openItem, setOpenItem] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -21,34 +21,34 @@ const AnnualLLP = () => {
   const steps = [
     {
       number: "1.",
-      days: "DAY 1-2",
+      days: "DAY 1",
       description: [
-        "Consultation Between the LegalBoss Team and the Partners/Designated Partners of the LLP",
-        "Preparation of Required Documents and Drafting of Resolutions",
+        "Consultation Between the LegalBoss Team and the Company’s Promoters/Directors",
+        "Preparation of Required Documents and Resolutions",
       ],
     },
     {
       number: "2.",
-      days: "DAY 3-4",
+      days: "DAY 2-3",
       description: [
         "Execution of Necessary Documents",
-        "Drafting and Preparation of ROC Forms for Annual Filing",
+        "Preparation of ROC Forms for Changes",
       ],
     },
     {
       number: "3.",
-      days: "DAY 5-6",
+      days: "DAY 3-5",
       description: [
         " Submission of Forms and Documents to the ROC",
-        "Payment of ROC Filing Fees",
-      ],           
+        "Payment of ROC Fees",
+      ],
     },
     {
       number: "4.",
-      days: "DAY 7 Onwards",
+      days: "DAY 5 Onwards",
       description: [
-        " ROC Processing and Approval Time",
-        "Issuance of Approval Letter Along with ROC Forms and Challan",
+        " ROC Processing and Approval Timeline",
+        "Dispatch of Approval Letter Along with Forms and Challan",
       ],
     },
   ];
@@ -64,37 +64,26 @@ const AnnualLLP = () => {
   // Plans
   const plans = [
     {
-      title: "BUSINESS PLAN :",
-      price: "RS.6499.00",
+      title: "ECONOMY PLAN :",
+      price: "RS.3999.00",
       items: [
-        "[Turnover or/and capital more than Rs. 1 Crore]",
         "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "Draft Supplementary Deed",
+        "Prepare ROC Forms",
+        "Filling of ROC Form LLP-3 and 15 for within State.",
       ],
       highlight: false,
-    },
-    {
-      title: "ECONOMY PLAN :",
-      price: "RS.4999.00",
-      items: [
-        "[Turnover or/and capital  Up to Rs. 1 Crore]",
-        "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
-      ],
-      highlight: true,
     },
     {
       title: "STARTER PLAN :",
-      price: "RS.2499.00",
+      price: "RS.2999.00",
       items: [
-        "[Turnover Up to Rs. 30 Lakh and/or Capital Up to Rs. 20 Lakh]",
         "Documents Preparations",
-        "Preparation of ROC annual Forms",
-        "Filling of Forms",
+        "Draft Supplementary Deed",
+        "Prepare ROC Forms",
+        "Filling of ROC Form LLP-3 and 15 for within Same City/Town/Village ",
       ],
-      highlight: false,
+      highlight: true,
     },
   ];
 
@@ -140,29 +129,31 @@ const AnnualLLP = () => {
   const faqItems = [
     {
       id: 1,
-      question: "Is it mandatory to file audited financial statements?",
+      question:
+        "Is it mandatory to inform the Registrar of Companies (ROC) about the change in registered office?",
       answer:
-        "Audited financial statements are only required if the LLP meets certain criteria (such as a higher turnover or capital contribution). Otherwise, unaudited accounts may be filed.",
+        "Yes, it is mandatory to inform the ROC of any change in the registered office address within the prescribed timeframe by filing the relevant forms",
     },
     {
       id: 2,
       question:
-        "My LLP had no transactions during the year. Do I still need to file annual ROC forms?",
+        " Is it necessary to amend the LLP Agreement when changing the registered office?",
       answer:
-        "Yes, even if there were no business transactions, filing annual returns and accounts with the ROC is still mandatory for compliance.",
+        "Yes, the LLP agreement should be updated to reflect the change in the registered office address. A supplementary deed is usually required.",
     },
     {
       id: 3,
       question:
-        "Is it necessary to be physically present during the annual filing process?",
+        "Can the registered office address be changed to an address outside of India?",
       answer:
-        "No, physical presence is not required. The filing process can be completed remotely by the designated representatives or authorized professionals.",
+        "No, the registered office address of a company or LLP must be located within India. It cannot be shifted outside the country.",
     },
     {
       id: 4,
-      question: "What are the annual compliance requirements for an LLP?",
+      question:
+        "Is it mandatory for the registered office to be in a commercial property?",
       answer:
-        "The key compliance requirements include filing the annual return (Form LLP-11), submitting the financial statement (Form LLP-8), and updating any changes in the LLP’s structure or partners.",
+        "No, the registered office does not have to be in a commercial property. It can be located in a residential area as long as it meets the legal requirements and is suitable for the company's operations.",
     },
   ];
   // Calculate previous and next indices
@@ -173,7 +164,7 @@ const AnnualLLP = () => {
     <>
       <div
         className="relative bg-cover bg-center py-16 px-4 md:px-8"
-        style={{ backgroundImage: `url(${Company})` }}
+        style={{ backgroundImage: `url(${company})` }}
       >
         {/* Floating Social Menu */}
         <div className="fixed z-50 right-4 top-1/4 flex flex-col items-end">
@@ -221,15 +212,16 @@ const AnnualLLP = () => {
           {/* Info Section */}
           <div className="w-full bg-white/20 backdrop-blur-xs border border-blue-800 p-6 sm:p-8 flex-1 rounded-md">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#14387f] mb-2 uppercase">
-              LLP Annual Filling
+              Change in Address
             </h2>
             <p className="font-bold text-white mb-4 tracking-wide uppercase">
-              LLP Annual Compliances
+              Shifting of registered Office Address
             </p>
             <p className="mb-2 text-white">
-              Team help you in filling of LLP Annual ROC Compliances.
+              Team help you in Change in registered office within city / State /
+              outside the state.
             </p>
-            <p className="mb-2 text-white">Just Rs.2499/-</p>
+            <p className="mb-2 text-white">Just Rs.2999/-</p>
           </div>
 
           {/* Form Section */}
@@ -328,7 +320,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl lg:text-3xl font-extrabold text-blue-900 uppercase ">
-          More About LLP Annual Filling
+          More About Shifting of Registered Office Address
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-6 md:p-10">
@@ -337,63 +329,49 @@ const AnnualLLP = () => {
           <section>
             <div className="p-3 sm:p-6">
               <p className="text-sm sm:text-base text-gray-600 leading-relaxed space-y-4 mb-4">
-                All entities registered under the Limited Liability Partnership
-                (LLP) Act, 2008 are required to file their annual return and
-                financial statements with the Registrar of Companies (ROC) each
-                year. These filings must be done within the specified
-                deadlines—30 and 60 days, respectively. An audit of the
-                financial statements is not mandatory for LLPs with a turnover
-                of less than ₹40 lakhs and a capital contribution below ₹25
-                lakhs. However, even in such cases, submission of the annual
-                return and statement of accounts to the ROC is still compulsory
-                within the prescribed time frame.
+                Every incorporated Company or LLP in India is required to have a
+                registered office, which serves as its principal place of
+                business. This address is officially recorded and displayed on
+                the Ministry of Corporate Affairs (MCA) website. If there is any
+                change in the registered office address—whether within the same
+                city, to another location within the same state, or to a
+                different state—the company must inform the MCA within the
+                prescribed timeline by filing the appropriate forms and
+                documents as per the applicable rules.
               </p>
-              <b>Types of Annual Compliance:</b>
-              <br />
-              <b>Annual Return :</b>
-              <p>
-                The Annual Return provides important information about the LLP,
-                including the names and details of all designated partners and
-                partners, any changes in their roles during the year, their
-                contributions and obligations, and the turnover for the
-                financial year. This return must be submitted using Form LLP-11
-                within 60 days from the end of the financial year, which means
-                the due date is typically 30th May each year.
-              </p>
-              <b>Annual Accounts :</b>
-              <p>
-                Every LLP is required to file its financial statements—whether
-                audited (if applicable) or unaudited—using Form LLP-8 with the
-                Registrar of Companies (ROC). This must be done within 30 days
-                after the completion of six months from the end of the financial
-                year, which means the filing deadline is typically 30th October
-                each year.
-              </p>
-
-              <b>Why Filing Annual Returns is Important:</b>
-              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600 ">
+              <b>Why Change in registered Office address:</b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base mb-4 text-gray-600">
                 <li>
-                  Helps prevent late fees and ensures the LLP remains compliant.
+                  To secure a more suitable location for business growth and
+                  expansion.
+                </li>
+                <li>To attract skilled and experienced employees.</li>
+                <li>
+                  To improve the overall functioning and prospects of the
+                  company.
+                </li>
+              </ul>
+              <b>
+                Important Point to be considered while Change in registered
+                office :
+              </b>
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
+                <li>
+                  Determine if the change is within the local limits, within the
+                  same city or state, or if it involves transferring from one
+                  ROC jurisdiction to another.
                 </li>
                 <li>
-                  Reduces the risk of legal issues involving the LLP and its
-                  designated partners.
+                  Obtain consent from all partners and designated partners.
                 </li>
                 <li>
-                  Keeps the LLP’s status listed as “ACTIVE” with the
-                  authorities.
+                  A supplementary LLP deed must be executed to reflect the
+                  change.
                 </li>
                 <li>
-                  Strengthens the firm's credibility with stakeholders and
-                  financial institutions.
-                </li>
-                <li>
-                  Prevents designated partners from facing disqualification due
-                  to non-compliance.
-                </li>
-                <li>
-                  Safeguards the LLP from being removed or struck off by the
-                  Registrar of Companies.
+                  The change must be updated across various platforms, including
+                  GST, IEC, MSME registration, bank records, and any other
+                  relevant authorities or entities.
                 </li>
               </ul>
             </div>
@@ -409,7 +387,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-2xl md:text-3xl font-extrabold text-blue-900 leading-tight">
-          FAQ ON LLP ANNUAL FILLING
+          FAQ ON SHIFTING OF REGISTERED OFFICE ADDRESS
         </h1>
 
         <div className="mt-6 space-y-4">
@@ -455,7 +433,7 @@ const AnnualLLP = () => {
           <div class="h-0.5 w-40 bg-gray-500 mt-12"></div>
         </div>
         <h1 className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-          DOCUMENTS REQUIRED FOR LLP ANNUAL FILLING
+          DOCUMENTS REQUIRED OF SHIFTING OF REGISTERED OFFICE
         </h1>
       </div>
       <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
@@ -467,12 +445,17 @@ const AnnualLLP = () => {
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-6">
             <div>
               <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
-                <li>Audited/Unaudited Financial Statement</li>
-                <li>Company Pan card</li>
-                <li>List of Directors and Partners</li>
-                <li>All LLP Agreements</li>
-                <li>During the Year Forms Filed to ROC with challan</li>
-                <li>Any other information or documents as may required</li>
+                <li>Digital Signature of Designated Partner</li>
+                <li>
+                  Company PAN, COI, LLP Agreement including Supplementary deed{" "}
+                </li>
+                <li>
+                  New Registered office address proof (Electricity Bill,
+                  Telephone Bill not older than 2 Month)
+                </li>
+                <li>Ownership Proof</li>
+                <li>Rent Agreement with rent receipt (If rentered)</li>
+                <li>NOC (NO objection certificate) required from the Owner.</li>
               </ol>
             </div>
 
@@ -506,7 +489,7 @@ const AnnualLLP = () => {
           <div className="h-0.5 w-40 bg-gray-500"></div>
         </div>
         <h1 className="text-3xl font-extrabold text-blue-900 leading-tight">
-          STEPS INVOLVED IN LLP ANNUAL FILLING
+          STEPS INVOLVED IN SHIFTING OF REGISTERED OFFICE ADDRESS
         </h1>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
@@ -544,4 +527,4 @@ const AnnualLLP = () => {
   );
 };
 
-export default AnnualLLP;
+export default ChangeinAddress;
