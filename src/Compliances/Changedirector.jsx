@@ -1,4 +1,6 @@
-import Company from "../image/Company.svg";
+
+
+import Company from "../image/Company.svg"
 import React, { useState,useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { FaFacebook, FaTwitter, FaInstagram, FaDownload, FaEnvelope, FaBars, FaPhone } from 'react-icons/fa';
