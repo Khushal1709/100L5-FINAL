@@ -48,7 +48,7 @@ import PANTANApplication from "./Other Registration/PANTANApplication";
 import UdhyogRegistration from "./Other Registration/UdhyogRegistration";
 import MonthlyCompliance from "./GST Compliaces/MonthlyCompliance";
 import AnnualCompalices from "./GST Compliaces/AnnualCompalices";
-import GstCancellation from "./GST Compliaces/GstCancellation";
+import GSTCancellation from "./GST Compliaces/GSTCancellation";
 import Annual from "./Compliances/Annual";
 
 
@@ -100,7 +100,7 @@ function App() {
           <Route path="/AMCforLLP" element={<AMCforLLP/>} /> 
           <Route path="/MonthlyCompliance" element={<MonthlyCompliance/>} /> 
           <Route path="/AnnualCompalices" element={<AnnualCompalices/>} /> 
-          <Route path="/GstCancellation" element={<GstCancellation/>} /> 
+          <Route path="/GSTCancellation" element={<GSTCancellation/>} /> 
           <Route path="/Searchreport" element={<Searchreport/>} />
           <Route path="/ChangeLLP" element={<ChangeLLP/>} />
           <Route path="/DesignatedPartner" element={<DesignatedPartner/>} />
