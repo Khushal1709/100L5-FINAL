@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import logo from "../image/Flogo.svg"
 import facebook from "../image/facebook.svg"
 import linkedin from "../image/linkedin.svg"
-import twitter from "../image/twitter.svg"
+import Twitter from "../image/Twitter.svg"
 import bg from "../image/bg.svg";
 import bg2 from "../image/bg2.svg";
 import Contact from "../components/Contact";
@@ -61,7 +61,7 @@ export default function Footer() {
                 </Link>
                 <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
                   <img
-                    src={twitter || "/placeholder.svg"}
+                    src={Twitter || "/placeholder.svg"}
                     className="h-8 w-8 text-blue-900"
                   />
                 </Link>
