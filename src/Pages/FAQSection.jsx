@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import round from "../image/round.svg";
 
-// FAQ data
 const faqs = [
   {
     question: "How Do I Become An Author?",
@@ -27,7 +26,7 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState();
 
   const handleClick = (idx) => {
     setOpenIndex(idx === openIndex ? null : idx);

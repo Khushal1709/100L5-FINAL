@@ -9,6 +9,13 @@ import bg2 from "../image/bg2.svg";
 import Contact from "../components/Contact";
 import About from "../components/About";
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top:0,
+    behavior: "smooth",
+  });
+};
+
 export default function Footer() {
   return (
     <footer className="w-full">
@@ -29,7 +36,7 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="text-blue-900 font-bold text-2xl p-2 w-16 flex justify-center">
-                  <img src={logo || "/placeholder.svg"} alt="CS" />
+                  <Link to ="/"><img src={logo || "/placeholder.svg"} alt="CS"  onClick={scrollToTop}/></Link>
                 </div>
               </div>
               <p className="text-sm text-gray-300 mt-4">
@@ -66,32 +73,32 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-4">OUR SERVICES</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-white">
+                  <Link to="/" className="text-gray-300 hover:text-white"onClick={scrollToTop}>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-white">
+                  <Link to="/PrivateLimited" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Company Registration
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-white">
+                  <Link to="/Changedirector" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Compliances
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-white">
+                  <Link to="/TrademarkApplication" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Trademark
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-white">
+                  <Link to="/" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Accounting
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="text-gray-300 hover:text-white">
+                  <Link to="/" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Closure of Company
                   </Link>
                 </li>
@@ -103,12 +110,12 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-4">KNOW US</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/About" className="text-gray-300 hover:text-white">
+                  <Link to="/About" className="text-gray-300 hover:text-white"onClick={scrollToTop}>
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Contact" className="text-gray-300 hover:text-white">
+                  <Link to="/Contact" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Contact Us
                   </Link>
                 </li>

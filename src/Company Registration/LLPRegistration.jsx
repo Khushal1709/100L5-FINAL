@@ -6,16 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { FaFacebook, FaTwitter, FaInstagram, FaDownload, FaEnvelope, FaBars, FaPhone } from 'react-icons/fa';
 
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaDownload,
-  FaEnvelope,
-  FaPhone,
-  FaBars,
-} from "react-icons/fa";
 
 const plans = [
   {
@@ -199,7 +191,7 @@ const steps = [
 ];
 
 export default function LLPRegistration() {
-    
+
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openItem, setOpenItem] = useState(0);
@@ -371,6 +363,18 @@ export default function LLPRegistration() {
   // Calculate previous and next indices
   const prevIndex = activeSlide === 1 ? advantages.length - 1 : activeSlide - 2;
   const nextIndex = activeSlide === advantages.length ? 0 : activeSlide;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPhoneOpen, setIsPhoneOpen] = useState(false);
+
+  // Toggle the social menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) setIsPhoneOpen(false); // Close phone if opening menu
+  };
+  const togglePhone = () => {
+    setIsPhoneOpen(!isPhoneOpen);
+    if (!isPhoneOpen) setIsMenuOpen(false); // Close menu if opening phone
+  };
 
   return (
     <>
@@ -381,44 +385,78 @@ export default function LLPRegistration() {
           style={{ backgroundImage: `url(${company})` }}
         >
           {/* Floating Social Menu */}
-          <div className="fixed z-50 right-4 top-1/4 flex flex-col items-end">
+          <div className="fixed z-50 right-4 top-10 flex flex-col items-end">
             <div className="flex flex-col">
               <button
-                className="bg-[#14387f] p-3 rounded-t-md text-white text-2xl flex items-center justify-center cursor-pointer"
-                onClick={() => setOpen((prev) => !prev)}
-                aria-label="Open menu"
+                className="bg-blue-800 hover:bg-blue-900 text-white p-4 rounded focus:outline-none mt-80"
+                onClick={toggleMenu}
               >
                 <FaBars />
               </button>
-              <button className="bg-[#14387f] p-3 rounded-b-md text-white text-2xl flex items-center justify-center border-t border-white cursor-pointer ">
+              <button
+                className="bg-blue-800 hover:bg-blue-900 text-white p-4 rounded focus:outline-none mt-2"
+                onClick={togglePhone}
+              >
                 <FaPhone />
               </button>
             </div>
+            <div
+          className={`absolute bottom-0 right-4 sm:right-8 md:right-12 lg:right-16 mt-4 bg-blue-50 rounded-md shadow-lg overflow-hidden transition-all duration-300
+        ${isMenuOpen ? 'block w-56 sm:w-64' : 'hidden'}
+      `}
+          style={{ zIndex: 9999 }}
+        >
+          <div className="p-6 sm:p-8 flex flex-col gap-4">
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-8 h-10 flex items-center justify-center rounded-md">
+                <FaFacebook className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Facebook</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaTwitter className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Twitter</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaInstagram className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Instagram</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaDownload className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Download</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaEnvelope className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">E-mail</span>
+            </a>
+          </div>
+        </div>
+        <div
+          className={`absolute bottom-0  right-4 sm:right-6 md:right-8 lg:right-12 bg-blue-50 rounded-md shadow-lg overflow-hidden transition-all duration-300
+        ${isPhoneOpen ? "block w-64 sm:w-80" : "hidden"}
+      `}
+          style={{ zIndex: 9999 }}
+        >
+          <div className="px-4 py-3 flex  top-5 items-center gap-4 rounded-md ">
+            <div className="flex flex-cols">
+            <span className="bg-[#002C6D] w-10 h-10 flex items-center  justify-center rounded-md">
+              <FaPhone className="text-white" size={16} />
+            </span>
+            <span className="text-gray-700 text-sm sm:text-base md:text-lg font-medium select-text">
+              +91 56560 56562
+            </span>
+            </div>
+          </div>
+        </div>
 
-            {open && (
-              <div className="mt-2 w-64 bg-white shadow-xl rounded-md py-4 px-4 flex flex-col gap-4 animate-fade-in">
-                {[
-                  { icon: <FaFacebookF />, label: "Facebook" },
-                  { icon: <FaTwitter />, label: "Twitter" },
-                  { icon: <FaInstagram />, label: "Instagram" },
-                  { icon: <FaDownload />, label: "Download" },
-                  { icon: <FaEnvelope />, label: "E-mail" },
-                ].map((item, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="flex items-center gap-4 hover:bg-blue-50 px-2 py-2 rounded transition"
-                  >
-                    <span className="bg-[#14387f] text-white p-2 rounded">
-                      {item.icon}
-                    </span>
-                    <span className="text-gray-700 font-medium">
-                      {item.label}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            )}
           </div>
 
           {/* Content Section */}
@@ -491,7 +529,7 @@ export default function LLPRegistration() {
               <div className="h-0.5 w-20 sm:w-40 bg-gray-500 mt-10"></div>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold text-blue-900 leading-tight">
-            LIMITED LIABILITY PARTNERSHIP(LLP)
+              LIMITED LIABILITY PARTNERSHIP(LLP)
               <br />
               REGISTRATION PACKAGE
             </h1>
@@ -699,11 +737,11 @@ export default function LLPRegistration() {
             <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
               {/* Section 1: What is Public Limited Company */}
               <section>
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-900 mb-3 sm:mb-4 uppercase">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-900 mb-3 sm:mb-4 uppercase ml-7">
                   What is Limited Liability Partnership?
                 </h2>
                 <div className="p-3 sm:p-6">
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxe ml-3">
                     A Limited Liability Partnership (LLP) is a unique business
                     structure that blends the features of a partnership and a
                     company. In an LLP, partners have limited liability, meaning
@@ -722,10 +760,10 @@ export default function LLPRegistration() {
 
               {/* Section 2: Why Choose Public Limited Company */}
               <section>
-                <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-4">
+                <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-4 ml-7">
                   WHY CHOOSE PUBLIC LIMITED COMPANY:
                 </h2>
-                <div className=" bg-opacity-70 p-6 ">
+                <div className=" bg-opacity-70 p-6 ml-3">
                   <p>
                     The main advantage of a Limited Liability Partnership over a
                     traditional partnership firm is that in a LLP, one partner
@@ -744,10 +782,10 @@ export default function LLPRegistration() {
 
               {/* Section 3: Minimum Requirements */}
               <section>
-                <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-4">
+                <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-4 ml-7">
                   MINIMUM REQUIREMENT TO INCORPORATE LLP;
                 </h2>
-                <div className=" bg-opacity-70 p-6 ">
+                <div className=" bg-opacity-70 p-6 ml-3 ">
                   <ul className="space-y-4 text-gray-600">
                     <li>
                       At least two individuals or corporate entities are
@@ -844,11 +882,11 @@ export default function LLPRegistration() {
           </div>
           <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
             <div className="max-w-7xl mx-auto relative z-10">
-              <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
+              <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8 ml-7">
                 MINIMUM REQUIREMENT
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-7">
                 <div>
                   <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
                     <li>Pan Card - self Certified Copy</li>
@@ -920,11 +958,10 @@ export default function LLPRegistration() {
               <div className="flex flex-col md:flex-row justify-center items-stretch gap-4 px-2 sm:px-4">
                 {/* Left (Previous) Card - Hidden on mobile */}
                 <div
-                  className={`hidden md:block w-full md:w-1/3 bg-[#EEF4FF] rounded-lg p-6 transition-all duration-700 transform ${
-                    isTransitioning
+                  className={`hidden md:block w-full md:w-1/3 bg-[#EEF4FF] rounded-lg p-6 transition-all duration-700 transform ${isTransitioning
                       ? "opacity-50 translate-x-4"
                       : "opacity-100 translate-x-0"
-                  }`}
+                    }`}
                 >
                   <h3 className="text-lg sm:text-xl font-bold mb-4">
                     {advantages[prevIndex].title}
@@ -936,9 +973,8 @@ export default function LLPRegistration() {
 
                 {/* Middle (Active) Card */}
                 <div
-                  className={`w-full md:w-1/3 bg-[#002B6B] text-white rounded-lg p-4 sm:p-6 transition-all duration-700 transform md:scale-105 md:-mt-2 md:-mb-2 md:z-10 shadow-lg ${
-                    isTransitioning ? "opacity-90 scale-[1.02]" : "opacity-100"
-                  }`}
+                  className={`w-full md:w-1/3 bg-[#002B6B] text-white rounded-lg p-4 sm:p-6 transition-all duration-700 transform md:scale-105 md:-mt-2 md:-mb-2 md:z-10 shadow-lg ${isTransitioning ? "opacity-90 scale-[1.02]" : "opacity-100"
+                    }`}
                 >
                   <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
                     {advantages[activeSlide - 1].title}
@@ -950,11 +986,10 @@ export default function LLPRegistration() {
 
                 {/* Right (Next) Card - Hidden on mobile */}
                 <div
-                  className={`hidden md:block w-full md:w-1/3 bg-[#EEF4FF] rounded-lg p-6 transition-all duration-700 transform ${
-                    isTransitioning
+                  className={`hidden md:block w-full md:w-1/3 bg-[#EEF4FF] rounded-lg p-6 transition-all duration-700 transform ${isTransitioning
                       ? "opacity-50 translate-x-[-4px]"
                       : "opacity-100 translate-x-0"
-                  }`}
+                    }`}
                 >
                   <h3 className="text-lg sm:text-xl font-bold mb-4">
                     {advantages[nextIndex].title}
@@ -971,11 +1006,10 @@ export default function LLPRegistration() {
                   <button
                     key={index}
                     onClick={() => handleDotClick(index + 1)}
-                    className={`w-6 h-1.5 rounded-full transition-all ${
-                      activeSlide === index + 1
+                    className={`w-6 h-1.5 rounded-full transition-all ${activeSlide === index + 1
                         ? "bg-[#002B6B] w-10"
                         : "bg-gray-300"
-                    }`}
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
@@ -1000,7 +1034,7 @@ export default function LLPRegistration() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6">
               {steps.map((step, index) => (
                 <div key={index} className="relative">
-                  <div className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0a3277] flex items-center justify-center text-white font-bold text-xl sm:text-2xl z-10">
+                  <div className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-12 h-12 sm:w-1 sm:h-10 rounded-full bg-[#0a3277] flex items-center justify-center text-white font-bold text-xl sm:text-2xl z-10">
                     {step.number}
                   </div>
 

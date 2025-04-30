@@ -1,7 +1,7 @@
 import { ChevronDown, Menu, X, ChevronRight } from "lucide-react";
 import logoh from "../image/logoh.svg";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaAngleUp } from "react-icons/fa6";
 
@@ -47,12 +47,12 @@ const compliancesDropdown = [
     items: [
       {
         label: "Event Base Compliances",
-        path: "/llp-event-base-compliances",
+        path: "/",
         subItems: [
           { label: "Change in Designated Partner", paths: "/DesignatedPartner" },
           { label: "Change of Registered Office Address by LLP", paths: "/Registeredoffice" },
           { label: "Change in LLP agreement", paths: "/LLpagreement" },
-          { label: "Change in the name of the LLP", paths: "/LLpagreement" },
+          { label: "Change in the name of the LLP", paths: "/ChangeinName" },
         ]
       },
       {
@@ -117,6 +117,7 @@ const closureDropdown = [
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false);
   const [compliancesOpen, setCompliancesOpen] = useState(false);
   const [companyRegOpen, setCompanyRegOpen] = useState(false);
@@ -135,7 +136,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="w-full shadow-sm bg-white">
+    <header className="w-full shadow-sm bg-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex-shrink-0">
@@ -160,6 +161,7 @@ const Navbar = () => {
             className="relative group cursor-pointer flex items-center gap-1 px-2"
             onMouseEnter={() => setCompanyRegOpen(true)}
             onMouseLeave={() => setCompanyRegOpen(false)}
+            onClick={() => setCompanyRegOpen()}
           >
             <span className="relative group-hover:text-[#002366] 
     transition-colors duration-300
@@ -192,6 +194,7 @@ const Navbar = () => {
             className="relative group cursor-pointer flex items-center gap-1 px-2"
             onMouseEnter={() => setCompliancesOpen(true)}
             onMouseLeave={() => setCompliancesOpen(false)}
+          onClick={() => setCompliancesOpen()}
           >
             <span
               className="relative group-hover:text-[#002366] 
@@ -205,7 +208,7 @@ const Navbar = () => {
 
             {compliancesOpen && (
               <div
-                className="absolute left-0 top-full flex bg-[#e9eef2] shadow-lg rounded z-30 min-w-[900px] py-4 px-2 border border-gray-200"
+                className="absolute left-[-150%] xl:top-7 flex bg-[#e9eef2] shadow-lg rounded z-30 min-w-[900px] py-4 px-2 border border-gray-200"
                 style={{ borderRadius: "8px" }}
               >
                 {/* Left column: LLP Compliances */}
@@ -214,7 +217,7 @@ const Navbar = () => {
                     {compliancesDropdown[0].title}
                   </div>
 
-                  {compliancesDropdown[0].items.map((item) => (
+                  {compliancesDropdown[0].items.map((item, index) => (
                     <div key={item.path} className="relative group"
 
                     >
@@ -228,12 +231,12 @@ const Navbar = () => {
 
                       {/* Sub-dropdown */}
                       {item.subItems && (
-                        <div className="absolute top-0 left-full bg-white shadow-md rounded border border-gray-200 py-2 w-[260px] z-40 hidden group-hover:block">
+                        <div className="absolute top-0 left-full bg-white shadow-md rounded border border-gray-200 py-2 w-[260px] z-40 hidden group-hover:block" key={`subitems-${index}`}>
                           {item.subItems.map((subItem) => (
                             <Link
                               key={subItem.paths}
                               to={subItem.paths}
-                              className="block px-4 py-2 text-[16px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors"
+                              className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
 
                             >
                               {subItem.label}
@@ -268,8 +271,13 @@ const Navbar = () => {
                   </div>
                   {compliancesDropdown[2].items.map((item, index) => (
                     <div key={`${item.path}-${item.label}`}>
+                      {console.log(item, '34545435')}
                       <div
                         onMouseEnter={() => toggleSubItems(index)}
+                        onClick={() => {
+                          setCompliancesOpen(false)
+                          navigate(item.path)
+                        }}
                         className="flex items-center justify-between px-2 py-1 cursor-pointer text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded mb-1"
                       >
                         {item.label}
@@ -287,7 +295,7 @@ const Navbar = () => {
                             <Link
                               key={`${subItem.paths}-${subItem.label}`}
                               to={subItem.paths}
-                              className="block px-2 py-1 text-[16px] text-gray-600 hover:bg-gray-100 rounded"
+                              className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
                             >
                               {subItem.label}
                             </Link>
@@ -331,10 +339,12 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Trademark dropdown */}
           <div
             className="relative group cursor-pointer flex items-center gap-1 px-2"
             onMouseEnter={() => setTrademarkOpen(true)}
             onMouseLeave={() => setTrademarkOpen(false)}
+            onClick={() => setTrademarkOpen()}
           >
             <span className="relative group-hover:text-[#002366] 
     transition-colors duration-300
@@ -365,6 +375,7 @@ const Navbar = () => {
             className="relative group cursor-pointer flex items-center gap-1 px-2"
             onMouseEnter={() => setOtherRegOpen(true)}
             onMouseLeave={() => setOtherRegOpen(false)}
+            onClick={() => setOtherRegOpen()}
           >
             <span className="relative group-hover:text-[#002366] 
     transition-colors duration-300
@@ -395,6 +406,7 @@ const Navbar = () => {
             className="relative group cursor-pointer flex items-center gap-1 px-2"
             onMouseEnter={() => setAccountingOpen(true)}
             onMouseLeave={() => setAccountingOpen(false)}
+            onClick={() => setAccountingOpen()}
           >
             <span className="relative group-hover:text-[#002366] 
     transition-colors duration-300
@@ -412,7 +424,7 @@ const Navbar = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors`}
+                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors mb-1`}
                   >
                     {item.label}
                   </Link>
@@ -425,6 +437,7 @@ const Navbar = () => {
             className="relative group cursor-pointer flex items-center gap-1 px-2"
             onMouseEnter={() => setClosureOpen(true)}
             onMouseLeave={() => setClosureOpen(false)}
+            onClick={() => setClosureOpen()}
           >
             <span className="relative group-hover:text-[#002366] 
     transition-colors duration-300
@@ -442,7 +455,7 @@ const Navbar = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors`}
+                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors mb-2`}
                   >
                     {item.label}
                   </Link>
@@ -481,7 +494,8 @@ const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`block px-2 py-1 text-[14px] rounded transition-colors mb-1`}
+                      onClick={() => setCompanyRegOpen(false)} // 👈 Close dropdown on click
+                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
                     >
                       {item.label}
                     </Link>
@@ -501,17 +515,18 @@ const Navbar = () => {
                 <span>{compliancesOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
               </div>
               {compliancesOpen && (
-                <div className="ml-4  flex flex-col gap-2">
+                <div className="ml-4 flex flex-col gap-2">
                   {compliancesDropdown.map((item) => (
                     <div key={item.title} className="mb-2">
                       <div className="font-semibold text-[#002366] text-[15px] mb-1">{item.title}</div>
-                      {item.items.map((item, idx) => (
+                      {item.items.map((subItem, idx) => (
                         <Link
-                          key={item.path}
-                          to={item.path}
-                          className={`block px-2 py-1 text-[14px] rounded transition-colors mb-1`}
+                          key={subItem.path}
+                          to={subItem.path}
+                          onClick={() => setCompliancesOpen(false)} // 👈 Close dropdown on link click
+                          className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
                         >
-                          {item.label}
+                          {subItem.label}
                         </Link>
                       ))}
                     </div>
@@ -520,7 +535,7 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Repeat similar logic for other dropdown sections */}
+            {/* Trademark mobile dropdown with toggle */}
             <div>
               <div
                 className="font-medium flex items-center gap-1 cursor-pointer"
@@ -535,7 +550,8 @@ const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`block px-2 py-1 text-[14px] rounded transition-colors mb-1`}
+                      onClick={() => setTrademarkOpen(false)} // 👈 Close dropdown on click
+                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
                     >
                       {item.label}
                     </Link>
@@ -543,6 +559,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
 
             {/* Other Registration mobile dropdown with toggle */}
             <div>
@@ -559,6 +576,7 @@ const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
+                      onClick={() => setOtherRegOpen(false)} // 👈 Close dropdown on link click
                       className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
                     >
                       {item.label}
@@ -567,6 +585,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
 
             {/* Accounting mobile dropdown with toggle */}
             <div>
@@ -583,7 +602,8 @@ const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`block px-2 py-1 text-[14px] rounded transition-colors mb-1`}
+                      onClick={() => setAccountingOpen(false)} // 👈 Close dropdown on link click
+                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
                     >
                       {item.label}
                     </Link>
@@ -591,6 +611,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
 
             {/* Closure of Company mobile dropdown with toggle */}
             <div>
@@ -607,7 +628,8 @@ const Navbar = () => {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`block px-2 py-1 text-[14px] rounded transition-colors mb-1 `}
+                      onClick={() => setClosureOpen(false)} // 👈 Close dropdown on link click
+                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
                     >
                       {item.label}
                     </Link>
@@ -615,6 +637,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
           </div>
         </div>
       )}

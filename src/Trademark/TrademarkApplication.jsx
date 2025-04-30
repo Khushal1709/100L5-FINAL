@@ -1,25 +1,18 @@
 import Company from "../image/Company.svg";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react"
-import {
-    FaFacebookF,
-    FaTwitter,
-    FaInstagram,
-    FaDownload,
-    FaEnvelope,
-    FaPhone,
-    FaBars,
-} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaDownload, FaEnvelope, FaBars, FaPhone } from 'react-icons/fa';
+
 import PricingPlans from "../Pages/PricingPlans";
 import PublicLimitedCompany from "../Pages/PublicLimitedCompany";
 import document from "../image/document.svg";
 
 
 const ChangesInDirectors = () => {
+  const [activeSlide, setActiveSlide] = useState(1);
+    const [timer, setTimer] = useState(null);
+    const [openItem, setOpenItem] = useState(0);
     const [open, setOpen] = useState(false);
-    const [openItem, setOpenItem] = useState(0)
-    const [isTransitioning, setIsTransitioning] = useState(false)
-    const [activeSlide, setActiveSlide] = useState(1);
 
     const steps = [
         {
@@ -98,8 +91,6 @@ const ChangesInDirectors = () => {
         },
     ];
 
-
-
     // Slider cards section
     const advantages = [
         {
@@ -170,10 +161,35 @@ const ChangesInDirectors = () => {
                 "No, a registered trademark is protected only within the country where it is registered; for global protection, separate applications are needed in each country."
         }
     ]
-    // Calculate previous and next indices
-    const prevIndex = activeSlide === 1 ? advantages.length - 1 : activeSlide - 2
-    const nextIndex = activeSlide === advantages.length ? 0 : activeSlide
-
+    const handleDotClick = (index) => {
+       setActiveSlide(index);
+     };
+   
+     useEffect(() => {
+       const interval = setInterval(() => {
+         setActiveSlide((prev) => (prev % advantages.length) + 1);
+       }, 4000);
+   
+       setTimer(interval);
+       return () => clearInterval(interval);
+     }, []);
+   
+     const prevIndex =
+       activeSlide === 1 ? advantages.length - 1 : activeSlide - 2;
+     const nextIndex = activeSlide === advantages.length ? 0 : activeSlide;
+     const [isMenuOpen, setIsMenuOpen] = useState(false);
+     const [isPhoneOpen, setIsPhoneOpen] = useState(false);
+   
+     // Toggle the social menu
+     const toggleMenu = () => {
+       setIsMenuOpen(!isMenuOpen);
+       if (!isMenuOpen) setIsPhoneOpen(false); // Close phone if opening menu
+     };
+     const togglePhone = () => {
+       setIsPhoneOpen(!isPhoneOpen);
+       if (!isPhoneOpen) setIsMenuOpen(false); // Close menu if opening phone
+     };
+   
     return (
         <>
             <div
@@ -181,45 +197,79 @@ const ChangesInDirectors = () => {
                 style={{ backgroundImage: `url(${Company})` }}
             >
                 {/* Floating Social Menu */}
-                <div className="fixed z-50 right-4 top-1/4 flex flex-col items-end">
-                    <div className="flex flex-col">
-                        <button
-                            className="bg-[#14387f] p-3 rounded-t-md text-white text-2xl flex items-center justify-center"
-                            onClick={() => setOpen((prev) => !prev)}
-                            aria-label="Open menu"
-                        >
-                            <FaBars />
-                        </button>
-                        <button className="bg-[#14387f] p-3 rounded-b-md text-white text-2xl flex items-center justify-center border-t border-white">
-                            <FaPhone />
-                        </button>
-                    </div>
+                <div className="fixed z-50 right-4 top-10 flex flex-col items-end">
+            <div className="flex flex-col">
+              <button
+                className="bg-blue-800 hover:bg-blue-900 text-white p-4 rounded focus:outline-none mt-80"
+                onClick={toggleMenu}
+              >
+                <FaBars />
+              </button>
+              <button
+                className="bg-blue-800 hover:bg-blue-900 text-white p-4 rounded focus:outline-none mt-2"
+                onClick={togglePhone}
+              >
+                <FaPhone />
+              </button>
+            </div>
+            <div
+          className={`absolute bottom-0 right-4 sm:right-8 md:right-12 lg:right-16 mt-4 bg-blue-50 rounded-md shadow-lg overflow-hidden transition-all duration-300
+        ${isMenuOpen ? 'block w-56 sm:w-64' : 'hidden'}
+      `}
+          style={{ zIndex: 9999 }}
+        >
+          <div className="p-6 sm:p-8 flex flex-col gap-4">
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-8 h-10 flex items-center justify-center rounded-md">
+                <FaFacebook className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Facebook</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaTwitter className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Twitter</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaInstagram className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Instagram</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaDownload className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">Download</span>
+            </a>
+            <a href="#" className="flex items-center gap-4 hover:bg-[#002C6D] hover:text-white rounded-md px-3 py-2 transition-colors">
+              <span className="bg-[#002C6D] w-10 h-10 flex items-center justify-center rounded-md">
+                <FaEnvelope className="text-white" size={22} />
+              </span>
+              <span className="text-gray-700 text-base sm:text-lg font-medium">E-mail</span>
+            </a>
+          </div>
+        </div>
+        <div
+          className={`absolute bottom-0  right-4 sm:right-6 md:right-8 lg:right-12 bg-blue-50 rounded-md shadow-lg overflow-hidden transition-all duration-300
+        ${isPhoneOpen ? "block w-64 sm:w-80" : "hidden"}
+      `}
+          style={{ zIndex: 9999 }}
+        >
+          <div className="px-4 py-3 flex  top-5 items-center gap-4 rounded-md ">
+            <div className="flex flex-cols">
+            <span className="bg-[#002C6D] w-10 h-10 flex items-center  justify-center rounded-md">
+              <FaPhone className="text-white" size={16} />
+            </span>
+            <span className="text-gray-700 text-sm sm:text-base md:text-lg font-medium select-text">
+              +91 56560 56562
+            </span>
+            </div>
+          </div>
+        </div>
 
-                    {open && (
-                        <div className="mt-2 w-64 bg-white shadow-xl rounded-md py-4 px-4 flex flex-col gap-4 animate-fade-in">
-                            {[
-                                { icon: <FaFacebookF />, label: "Facebook" },
-                                { icon: <FaTwitter />, label: "Twitter" },
-                                { icon: <FaInstagram />, label: "Instagram" },
-                                { icon: <FaDownload />, label: "Download" },
-                                { icon: <FaEnvelope />, label: "E-mail" }
-                            ].map((item, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    className="flex items-center gap-4 hover:bg-blue-50 px-2 py-2 rounded transition"
-                                >
-                                    <span className="bg-[#14387f] text-white p-2 rounded">
-                                        {item.icon}
-                                    </span>
-                                    <span className="text-gray-700 font-medium">
-                                        {item.label}
-                                    </span>
-                                </a>
-                            ))}
-                        </div>
-                    )}
-                </div>
+          </div>
 
                 {/* Content Section */}
                 <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto items-start w-full">

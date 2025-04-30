@@ -1,5 +1,12 @@
 import React from 'react';
 import logos from "../image/logos.svg";
+import { Link } from 'react-router-dom';
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
 const TrustedSection = () => (
   <section className="py-8 bg-white">
@@ -17,9 +24,10 @@ const TrustedSection = () => (
         <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
           REGISTER YOUR COMPANY IN<br />JUST 1 MIN
         </h2>
-        <button className="mt-4 bg-white text-blue-900 font-semibold rounded-md px-8 py-3 hover:bg-blue-100 transition">
+        <Link to ="/Contact"><button className="mt-4 bg-white text-blue-900 font-semibold rounded-md px-8 py-3 hover:bg-blue-100 transition cursor-pointer"   onClick={scrollToTop}>
           CONTACT US
         </button>
+        </Link>
       </div>
     </div>
   </section>
