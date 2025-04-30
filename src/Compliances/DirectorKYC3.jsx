@@ -1,4 +1,4 @@
-import Company from "../image/Company.svg";
+import com from "../image/com.svg";
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { FaFacebook, FaTwitter, FaInstagram, FaDownload, FaEnvelope, FaBars, FaPhone } from 'react-icons/fa';
@@ -179,7 +179,7 @@ const ChangesInDirectors = () => {
     <>
       <div
         className="relative bg-cover bg-center py-16 px-4 md:px-8"
-        style={{ backgroundImage: `url(${Company})` }}
+        style={{ backgroundImage: `url(${com})` }}
       >
         {/* Floating Social Menu */}
         <div className="fixed z-50 right-4 top-10 flex flex-col items-end">

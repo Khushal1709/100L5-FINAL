@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import Company from "../image/Company.svg";
+import com from "../image/com.svg";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import document from "../image/document.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -382,7 +382,7 @@ export default function LLPRegistration() {
         {/* Hero Section with Double Exposure Effect */}
         <div
           className="relative bg-cover bg-center py-16 px-4 md:px-8"
-          style={{ backgroundImage: `url(${Company})` }}
+          style={{ backgroundImage: `url(${com})` }}
         >
           {/* Floating Social Menu */}
           <div className="fixed z-50 right-4 top-10 flex flex-col items-end">
