@@ -2,9 +2,6 @@ import Company from "../image/Company.svg";
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { FaFacebook, FaTwitter, FaInstagram, FaDownload, FaEnvelope, FaBars, FaPhone } from 'react-icons/fa';
-
-import PricingPlans from "../Pages/PricingPlans";
-import PublicLimitedCompany from "../Pages/PublicLimitedCompany";
 import document from "../image/document.svg";
 
 
