@@ -442,13 +442,13 @@ export default function PrivateLimited() {
                  <div className="fixed z-50 right-4 top-10 flex flex-col items-end">
                    <div className="flex flex-col">
                      <button
-                       className="bg-blue-800 hover:bg-blue-900 text-white p-4 rounded focus:outline-none mt-80"
+                       className="bg-[#022C6D] text-white p-4 rounded focus:outline-none mt-80"
                        onClick={toggleMenu}
                      >
                        <FaBars />
                      </button>
                      <button
-                       className="bg-blue-800 hover:bg-blue-900 text-white p-4 rounded focus:outline-none mt-2"
+                       className="bg-[#022C6D]  text-white p-4 rounded focus:outline-none mt-2"
                        onClick={togglePhone}
                      >
                        <FaPhone />
