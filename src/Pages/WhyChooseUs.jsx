@@ -84,7 +84,7 @@ function WhyChooseUs() {
 
         const interval = setInterval(() => {
             setCurrentIndex(prev => {
-                const nextIndex = (prev + 2) % features.length;
+                const nextIndex = (prev + 1) % features.length;
                 scrollContainer.scrollTo({
                     left: nextIndex * cardWidth,
                     behavior: 'smooth'
@@ -124,7 +124,7 @@ function WhyChooseUs() {
                     <div
                         key={feature.id}
                         ref={index === 0 ? cardRef : null}
-                        className="bg-[#eef6ff] rounded-lg p-10 w-[300px] transition-all hover:shadow-lg relative  mx-4 flex-shrink-0 "
+                        className="bg-[#eef6ff] rounded-lg p-10 w-[280px] transition-all hover:shadow-lg relative  mx-4 flex-shrink-0 "
                     >
                         {/* Card Content (keep this unchanged) */}
                         <div className="bg-[#0a2463] text-white w-12 h-12 rounded-full flex items-center justify-center mb-5">

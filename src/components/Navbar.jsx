@@ -473,174 +473,188 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
-      {menuOpen && (
-        <div className="lg:hidden px-4 pb-4">
-          <div className="flex flex-col gap-4">
-            <Link to="/" className="text-black font-medium">Home</Link>
+     {/* Mobile Dropdown */}
+{menuOpen && (
+  <div className="lg:hidden px-4 pb-4">
+    <div className="flex flex-col gap-4">
+      <Link to="/" className="text-black font-medium" onClick={() => setMenuOpen(false)}>Home</Link>
 
-            {/* Company Registration mobile dropdown with toggle */}
-            <div>
-              <div
-                className="font-medium flex items-center gap-1 cursor-pointer"
-                onClick={() => setCompanyRegOpen(!companyRegOpen)}
-              >
-                Company Registration
-                <span>{companyRegOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-              </div>
-              {companyRegOpen && (
-                <div className="ml-4 flex flex-col gap-2">
-                  {companyRegistrationDropdown.map((item, idx) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setCompanyRegOpen(false)} // 👈 Close dropdown on click
-                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-
-            {/* Compliances mobile dropdown with toggle */}
-            <div>
-              <div
-                className="font-medium flex items-center gap-1 cursor-pointer"
-                onClick={() => setCompliancesOpen(!compliancesOpen)}
-              >
-                Compliances
-                <span>{compliancesOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-              </div>
-              {compliancesOpen && (
-                <div className="ml-4 flex flex-col gap-2">
-                  {compliancesDropdown.map((item) => (
-                    <div key={item.title} className="mb-2">
-                      <div className="font-semibold text-[#002366] text-[15px] mb-1">{item.title}</div>
-                      {item.items.map((subItem, idx) => (
-                        <Link
-                          key={subItem.path}
-                          to={subItem.path}
-                          onClick={() => setCompliancesOpen(false)} // 👈 Close dropdown on link click
-                          className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Trademark mobile dropdown with toggle */}
-            <div>
-              <div
-                className="font-medium flex items-center gap-1 cursor-pointer"
-                onClick={() => setTrademarkOpen(!trademarkOpen)}
-              >
-                Trademark
-                <span>{trademarkOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-              </div>
-              {trademarkOpen && (
-                <div className="ml-4 flex flex-col gap-2">
-                  {trademarkDropdown.map((item, idx) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setTrademarkOpen(false)} // 👈 Close dropdown on click
-                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-
-            {/* Other Registration mobile dropdown with toggle */}
-            <div>
-              <div
-                className="font-medium flex items-center gap-1 cursor-pointer"
-                onClick={() => setOtherRegOpen(!otherRegOpen)}
-              >
-                Other Registration
-                <span>{otherRegOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-              </div>
-              {otherRegOpen && (
-                <div className="ml-4 mt-2 flex flex-col gap-2">
-                  {otherRegistrationDropdown.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setOtherRegOpen(false)} // 👈 Close dropdown on link click
-                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-
-            {/* Accounting mobile dropdown with toggle */}
-            <div>
-              <div
-                className="font-medium flex items-center gap-1 cursor-pointer"
-                onClick={() => setAccountingOpen(!accountingOpen)}
-              >
-                Accounting
-                <span>{accountingOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-              </div>
-              {accountingOpen && (
-                <div className="ml-4 mt-2 flex flex-col gap-2">
-                  {accountingDropdown.map((item, idx) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setAccountingOpen(false)} // 👈 Close dropdown on link click
-                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-
-            {/* Closure of Company mobile dropdown with toggle */}
-            <div>
-              <div
-                className="font-medium flex items-center gap-1 cursor-pointer"
-                onClick={() => setClosureOpen(!closureOpen)}
-              >
-                Closure of Company
-                <span>{closureOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-              </div>
-              {closureOpen && (
-                <div className="ml-4 mt-2 flex flex-col gap-2">
-                  {closureDropdown.map((item, idx) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setClosureOpen(false)} // 👈 Close dropdown on link click
-                      className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-          </div>
+      {/* Company Registration */}
+      <div>
+        <div
+          className="font-medium flex items-center gap-1 cursor-pointer"
+          onClick={() => setCompanyRegOpen(!companyRegOpen)}
+        >
+          Company Registration
+          <span>{companyRegOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
         </div>
-      )}
+        {companyRegOpen && (
+          <div className="ml-4 flex flex-col gap-2">
+            {companyRegistrationDropdown.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  setCompanyRegOpen(false);
+                  setMenuOpen(false);
+                }}
+                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Compliances */}
+      <div>
+        <div
+          className="font-medium flex items-center gap-1 cursor-pointer"
+          onClick={() => setCompliancesOpen(!compliancesOpen)}
+        >
+          Compliances
+          <span>{compliancesOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
+        </div>
+        {compliancesOpen && (
+          <div className="ml-4 flex flex-col gap-2">
+            {compliancesDropdown.map((item) => (
+              <div key={item.title} className="mb-2">
+                <div className="font-semibold text-[#002366] text-[15px] mb-1">{item.title}</div>
+                {item.items.map((subItem) => (
+                  <Link
+                    key={subItem.path}
+                    to={subItem.path}
+                    onClick={() => {
+                      setCompliancesOpen(false);
+                      setMenuOpen(false);
+                    }}
+                    className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+                  >
+                    {subItem.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Trademark */}
+      <div>
+        <div
+          className="font-medium flex items-center gap-1 cursor-pointer"
+          onClick={() => setTrademarkOpen(!trademarkOpen)}
+        >
+          Trademark
+          <span>{trademarkOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
+        </div>
+        {trademarkOpen && (
+          <div className="ml-4 flex flex-col gap-2">
+            {trademarkDropdown.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  setTrademarkOpen(false);
+                  setMenuOpen(false);
+                }}
+                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Other Registration */}
+      <div>
+        <div
+          className="font-medium flex items-center gap-1 cursor-pointer"
+          onClick={() => setOtherRegOpen(!otherRegOpen)}
+        >
+          Other Registration
+          <span>{otherRegOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
+        </div>
+        {otherRegOpen && (
+          <div className="ml-4 mt-2 flex flex-col gap-2">
+            {otherRegistrationDropdown.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  setOtherRegOpen(false);
+                  setMenuOpen(false);
+                }}
+                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Accounting */}
+      <div>
+        <div
+          className="font-medium flex items-center gap-1 cursor-pointer"
+          onClick={() => setAccountingOpen(!accountingOpen)}
+        >
+          Accounting
+          <span>{accountingOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
+        </div>
+        {accountingOpen && (
+          <div className="ml-4 mt-2 flex flex-col gap-2">
+            {accountingDropdown.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  setAccountingOpen(false);
+                  setMenuOpen(false);
+                }}
+                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Closure of Company */}
+      <div>
+        <div
+          className="font-medium flex items-center gap-1 cursor-pointer"
+          onClick={() => setClosureOpen(!closureOpen)}
+        >
+          Closure of Company
+          <span>{closureOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
+        </div>
+        {closureOpen && (
+          <div className="ml-4 mt-2 flex flex-col gap-2">
+            {closureDropdown.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  setClosureOpen(false);
+                  setMenuOpen(false);
+                }}
+                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
     </header>
   );
 };
