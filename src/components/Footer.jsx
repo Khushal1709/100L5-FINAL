@@ -11,7 +11,7 @@ import About from "../components/About";
 
 const scrollToTop = () => {
   window.scrollTo({
-    top:0,
+    top: 0,
     behavior: "smooth",
   });
 };
@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
 
         {/* Background SVG 2 - positioned in bottom left */}
-        <div className="absolute bottom-40 left-78 z-0"> 
+        <div className="absolute bottom-40 left-78 z-0">
           <img src={bg} alt="bg" className="" />
         </div>
 
@@ -36,7 +36,7 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="text-blue-900 font-bold text-2xl p-2 w-16 flex justify-center">
-                  <Link to ="/"><img src={logo || "/placeholder.svg"} alt="CS"  onClick={scrollToTop}/></Link>
+                  <Link to="/"><img src={logo || "/placeholder.svg"} alt="CS" onClick={scrollToTop} /></Link>
                 </div>
               </div>
               <p className="text-sm text-gray-300 mt-4">
@@ -47,25 +47,44 @@ export default function Footer() {
                 </Link>
               </p>
               <div className="flex space-x-2 mt-4">
-                <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
+                <a
+                  href="https://www.facebook.com/yourpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-2 rounded hover:opacity-90"
+                >
                   <img
                     src={facebook || "/placeholder.svg"}
-                    className="h-8 w-8 text-blue-900"
+                    alt="Facebook"
+                    className="h-8 w-8"
                   />
-                </Link>
-                <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/yourprofile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-2 rounded hover:opacity-90"
+                >
                   <img
                     src={linkedin || "/placeholder.svg"}
-                    className="h-8 w-8 text-blue-900"
+                    alt="LinkedIn"
+                    className="h-8 w-8"
                   />
-                </Link>
-                <Link to="#" className="bg-white p-2 rounded hover:opacity-90">
+                </a>
+                <a
+                  href="https://twitter.com/yourprofile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-2 rounded hover:opacity-90"
+                >
                   <img
                     src={Twitter || "/placeholder.svg"}
-                    className="h-8 w-8 text-blue-900"
+                    alt="Twitter"
+                    className="h-8 w-8"
                   />
-                </Link>
+                </a>
               </div>
+
             </div>
 
             {/* Our Services */}
@@ -73,7 +92,7 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-4">OUR SERVICES</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/" className="text-gray-300 hover:text-white"onClick={scrollToTop}>
+                  <Link to="/" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     Home
                   </Link>
                 </li>
@@ -110,7 +129,7 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-4">KNOW US</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/About" className="text-gray-300 hover:text-white"onClick={scrollToTop}>
+                  <Link to="/About" className="text-gray-300 hover:text-white" onClick={scrollToTop}>
                     About Us
                   </Link>
                 </li>

@@ -4,14 +4,14 @@ import round from "../image/round.svg";
 import men2 from "../image/men2.png";
 
 const servicesData = [
-  {
-    id: 1,
-    title: "PRIVATE LIMITED COMPANY",
-    packageText: "Packages Starting From",
-    price: "₹ 6999/-",
-    priceNote: "(All Inclusive)",
-    buttonText: "KNOW MORE",
-  },
+  // {
+  //   id: 1,
+  //   title: "PRIVATE LIMITED COMPANY",
+  //   packageText: "Packages Starting From",
+  //   price: "₹ 6999/-",
+  //   priceNote: "(All Inclusive)",
+  //   buttonText: "KNOW MORE",
+  // },
   {
     id: 2,
     title: "GST RETURNS",

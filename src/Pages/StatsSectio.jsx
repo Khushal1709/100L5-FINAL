@@ -1,27 +1,32 @@
 import React from "react";
 import left from "../image/left.svg";
 import right from "../image/right.svg";
+import a1 from "../image/a1.svg";
+import a2 from "../image/a2.svg";
+import a3 from "../image/a3.svg";
+import a4 from "../image/a4.svg";
+
 
 const StatsSection = () => {
   const stats = [
     {
-      icon: "</>",
-      number: "846+",
+      icon: a1,
+      // number: "846+",
       label: "LINES OF CODES",
     },
     {
-      icon: "📈",
-      number: "15360+",
+      icon: a2,
+      // number: "15360+",
       label: "KBS OF HTML FILES",
     },
     {
-      icon: "📚",
-      number: "408+",
+      icon: a3,
+      // number: "408+",
       label: "NO. OF TEMPLATES",
     },
     {
-      icon: "⏱️",
-      number: "1200+",
+      icon: a4,
+      // number: "1200+",
       label: "HOURS OF CODING",
     },
   ];
@@ -43,12 +48,12 @@ const StatsSection = () => {
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="bg-white  flex flex-col items-center justify-center text-center space-y-3"
+            className="flex flex-col items-center justify-center text-center space-y-3"
           >
-            <div className="text-4xl bg-[#f1f7ff] p-4 rounded-full shadow-md">
-              {stat.icon}
-            </div>
-            <div className="text-3xl font-bold text-[#003366]">{stat.number}</div>
+            <img src={stat.icon} className="text-4xl bg-[#f1f7ff]">
+            
+            </img>
+            {/* <div className="text-3xl font-bold text-[#003366]">{stat.number}</div> */}
             <div className="text-xl text-[#003366] font-semibold">
               {stat.label}
             </div>

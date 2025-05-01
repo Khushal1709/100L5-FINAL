@@ -3,25 +3,25 @@ import round from "../image/round.svg";
 
 const faqs = [
   {
-    question: "How Do I Become An Author?",
+    question: "How can I start a writing career?",
     answer:
-      "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit. Assumenda, Dolorum, Vero Ipsum Molestiae Minima Odio Quo Voluptate Illum Excepturi Quam Cum Voluptates Doloribus Quae Nisi Tempore Necessitatibus Dolores Ducimus Enim Libero Eaque Explicabo Suscipit Animi At Quaerat Aliquid Ex Expedita Perspiciatis? Saepe, Aperiam, Nam Unde Quas Beatae Vero Vitae Nulla.",
+      "To begin your path as an author, focus on developing your writing skills through regular practice. Select a topic or genre that excites you, study the craft through reading and courses, and share your work via blogs, contests, or publishing platforms. Building a writing habit and audience is key.",
   },
   {
-    question: "Helpful Resources For Authors",
-    answer: "",
+    question: "What tools or platforms can help new writers?",
+    answer: "Aspiring writers can enhance their skills with resources like writing apps, online workshops, community forums, and publishing guides. Platforms such as Reedsy, Medium, and writing groups on Reddit offer tips, feedback, and networking opportunities.",
   },
   {
-    question: "How Much Money Can I Make?",
-    answer: "",
+    question: "What earnings can writers expect?",
+    answer: "Writer income depends on many factors like the type of writing, publishing method, audience size, and marketing. Some authors earn part-time income, while others make substantial revenue through book sales, freelance writing, or content creation.",
   },
   {
-    question: "How Do I Become An Author?",
-    answer: "",
+    question: "Do I need a degree to become an author?",
+    answer: "No formal education is required to become a successful author. While writing degrees can help sharpen your skills, many well-known writers are self-taught. What matters most is your dedication to learning, practicing, and improving over time.",
   },
   {
-    question: "Helpful Resources For Authors",
-    answer: "",
+    question: "How do I publish my book?",
+    answer: "You can publish through traditional publishers or choose self-publishing platforms like Amazon KDP, IngramSpark, or Draft2Digital. Traditional publishing often involves literary agents, proposals, and longer timelines, while self-publishing offers more control and faster turnaround.",
   },
 ];
 

@@ -806,7 +806,7 @@ export default function PrivateLimited() {
                 <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-4 ml-7">
                   WHY CHOOSE PRIVATE LIMITED COMPANY:
                 </h2>
-                <div className=" bg-opacity-70 p-6ml">
+                <div className=" bg-opacity-70 p-6 ml-7">
                   <ul className="space-y-4 text-gray-600">
                     <li>Limited Liability Protection.</li>
                     <li>Separate Legal Entity</li>

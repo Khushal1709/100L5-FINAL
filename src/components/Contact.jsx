@@ -17,9 +17,9 @@ export default function ContactPage() {
             <div className="absolute top-40 right-280 rotate-360 z-0 ">
               <img src={bg1} alt="bg" className="" />
             </div>
-            <h1 className="text-6xl font-bold">CONTACT US</h1>
+            <h1 className="text-6xl font-bold p-2">CONTACT US</h1>
 
-            <p className="mt-4">Get in Touch with Us</p>
+            <p className="mt-4 p-3">Get in Touch with Us</p>
           </div>
         </div>
       </div>

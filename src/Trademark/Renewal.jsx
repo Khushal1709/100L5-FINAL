@@ -339,7 +339,7 @@ const ChangesInDirectors = () => {
         <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
           {/* Section 1: What is Public Limited Company */}
           <section>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase ml-7">
               Why Trademark Renewal?
             </h2>
             <div className="p-3 sm:p-6">
@@ -375,11 +375,11 @@ const ChangesInDirectors = () => {
       </div>
       <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
         <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
+          <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8 ml-7">
             MINIMUM REQUIREMENT
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 ml-7">
             <div>
               <ol className="list-decimal pl-4 sm:pl-5 space-y-2 sm:space-y-4 text-sm sm:text-base text-gray-600">
                 <li>Proof that your trademark is already registered.</li>

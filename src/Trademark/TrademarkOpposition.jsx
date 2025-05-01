@@ -391,7 +391,7 @@ const ChangesInDirectors = () => {
         <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
           {/* Section 1: What is Public Limited Company */}
           <section>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase ml-7">
               Why Trademark Opposition?
             </h2>
             <div className="p-3 sm:p-6">
@@ -413,7 +413,7 @@ const ChangesInDirectors = () => {
 
           {/* Section 2: Why Choose Public Limited Company */}
           <section>
-            <h2 className="text-xl md:text-2xl font-extrabold text-blue-900 uppercase ">
+            <h2 className="text-xl md:text-2xl font-extrabold text-blue-900 uppercase ml-7 ">
               Simple Trademark Opposition registration process:
             </h2>
             <div className=" bg-opacity-70 p-6 ">

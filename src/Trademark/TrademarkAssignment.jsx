@@ -375,7 +375,7 @@ const ChangesInDirectors = () => {
         <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
           {/* Section 1: What is Public Limited Company */}
           <section>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase ml-7">
               Why Trademark Assignment?
             </h2>
             <div className="p-3 sm:p-6">

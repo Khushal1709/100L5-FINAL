@@ -373,7 +373,7 @@ const ChangesInDirectors = () => {
         <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
           {/* Section 1: What is Public Limited Company */}
           <section>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-900 uppercase ml-7">
               Why Trademark Objection?
             </h2>
             <div className="p-3 sm:p-6">
@@ -410,7 +410,7 @@ const ChangesInDirectors = () => {
                </div>
                <div className="bg-blue-50 p-4 sm:p-8 md:p-12 rounded-lg relative overflow-hidden ">
                  <div className="max-w-7xl mx-auto relative z-10">
-                   <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8">
+                   <h2 className="text-blue-900 font-bold text-xl sm:text-2xl mb-4 sm:mb-8 ml-7">
                      MINIMUM REQUIREMENT
                    </h2>
      
