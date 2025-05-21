@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa6";
 import { MdKeyboardArrowDown, MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
-
+import { FaLink } from "react-icons/fa";
 
 const stopWords = new Set([
   "a", "an", "the", "and", "but", "or", "on", "in", "with", "is", "to", "for", "of", "at", "by"
@@ -71,8 +71,13 @@ const UrlSlugGenerator = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 rounded-xl space-y-6">
-      <h1 className="text-xl font-semibold text-gray-800">
-        🔗 URL Slug Generator
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
+        <div className="flex items-center gap-3 mb-6">
+       <span className="text-4xl text-indigo-400">
+                  <FaLink />
+                </span>
+      <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+        URL&nbsp;Slug&nbsp;Generator
       </h1>
          <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
                 <button
@@ -104,6 +109,8 @@ const UrlSlugGenerator = () => {
                     </>
                   )}
                 </button>
+              </div>
+              </div>
               </div>
             {/* Share Popup */}
                {shareOpen && (

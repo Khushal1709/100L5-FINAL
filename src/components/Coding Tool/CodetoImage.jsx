@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
+import { RiCodeBlock } from "react-icons/ri";
 
 export default function CodeToImageConverter() {
     const [position, setPosition] = useState('Bottom Right');
     const [layout, setLayout] = useState('Wide');
     const codeRef = useRef(null);
+
 
     const handleExport = async () => {
         if (codeRef.current) {
@@ -33,14 +35,14 @@ export default function CodeToImageConverter() {
     };
 
     return (
-        <div className="min-h-screen bg-[#f8f9fb] px-4 py-6 flex flex-col items-center font-sans">
+        <>
             {/* Header */}
-            <div className="w-full max-w-5xl flex justify-between items-center mb-6">
-                <div className="flex items-center gap-2">
-                    <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-                        <rect width="24" height="24" rx="6" fill="#6366F1" />
-                        <path d="M7 10.5L12 15.5L17 10.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+            <div className="max-w-4xl mx-auto mt-8">
+                      <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
+                      <div className="flex items-center gap-3 mb-6">
+                    <span className="text-4xl text-indigo-400">
+                              <RiCodeBlock />
+                             </span>
                     <span className="text-xl font-semibold text-gray-800">Code to Image Converter</span>
                 </div>
                 <div className="flex gap-3">
@@ -199,6 +201,7 @@ export default function CodeToImageConverter() {
             >
                 Export Image
             </button>
-        </div>
+            </div>
+        </>
     );
 }

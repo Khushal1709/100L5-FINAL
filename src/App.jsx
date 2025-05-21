@@ -34,6 +34,11 @@ import CodetoImage from "./components/Coding Tool/CodetoImage";
 import Slug from "./components/Coding Tool/Slug";
 import Shadow from "./components/Coding Tool/Shadow";
 import BaseEncoderDecoder from "./components/Coding Tool/BaseEncoderDecoder";
+import HTMLEncoderDecoder from "./components/Coding Tool/HTMLEncoderDecoder";
+import URLEncoderDcoder from "./components/Coding Tool/URLEncoderDcoder";
+import HTMLMinifier from "./components/Coding Tool/HTMLMinifier";
+import CSSMinifier from "./components/Coding Tool/CSSMinifier";
+import JavaScriptMinifier from "./components/Coding Tool/JavaScriptMinifier";
 
 function App() {
   return (
@@ -71,6 +76,11 @@ function App() {
             <Route path="/Slug" element={<Slug/>} />       
             <Route path="/Shadow" element={<Shadow/>} />      
             <Route path="/BaseEncoderDecoder" element={<BaseEncoderDecoder/>} />      
+            <Route path="/HTMLEncoderDecoder" element={<HTMLEncoderDecoder/>} /> 
+            <Route path="/URLEncoderDcoder" element={<URLEncoderDcoder/>} /> 
+            <Route path="/HTMLMinifier" element={<HTMLMinifier/>} /> 
+            <Route path="/CSSMinifier" element={<CSSMinifier/>} /> 
+            <Route path="/JavaScriptMinifier" element={<JavaScriptMinifier/>} /> 
           </Route>
         </Routes>
         <Footer/>

@@ -12,7 +12,8 @@ import {
     FaRegStar,
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
-
+import { FaReact } from "react-icons/fa6";
+import Comment from "../Text tools/Comment";
 
 export default function ShadowGenerator() {
     const [shadowColor, setShadowColor] = useState("#ed0c0c");
@@ -38,12 +39,11 @@ export default function ShadowGenerator() {
             {/* Header */}
             <div className="max-w-4xl mx-auto mt-8">
             <div className="w-full max-w-4xl mx-auto flex justify-between items-center mb-6">
-                <div className="flex items-center gap-2">
-                    <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
-                        <rect width="24" height="24" rx="6" fill="#6366F1" />
-                        <path d="M7 10.5L12 15.5L17 10.5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-xl font-semibold text-gray-800">React Native Shadow Generator</span>
+                <div className="flex items-center gap-3 mb-6">
+                     <span className="text-4xl text-indigo-400">
+                               <FaReact />
+                             </span>
+                    <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">React&nbsp;Native&nbsp;Shadow&nbsp;Generator</span>
                 </div>
                 <div className="flex flex-col w-full sm:flex-row sm:justify-end gap-2">
                     <button
@@ -82,7 +82,7 @@ export default function ShadowGenerator() {
             
 
             {/* Controls */}
-            <div className="w-full max-w-5xl flex gap-6 items-center mb-8">
+            <div className="w-full max-w-4xl flex gap-6 items-center mb-8">
                 {/* Shadow Color */}
                 <div className="flex flex-col">
                     <label className="text-xs text-gray-500 mb-1">Shadow Color</label>
@@ -238,6 +238,7 @@ elevation: ${shadowStyle.elevation},`}
                     </button>
                 </div>
             </div>
+            <Comment/>
             </div>
        </> 
     );
