@@ -1,663 +1,459 @@
-import { ChevronDown, Menu, X, ChevronRight } from "lucide-react";
-import logoh from "../image/logoh.svg";
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io";
-import { FaAngleUp } from "react-icons/fa6";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import logo from "../image/flogo.svg";
+import s1 from "../image/searchicon.svg";
+import home from "../image/home.svg";
+import chrome from "../image/chrome.svg";
+import fire from "../image/fire.svg";
 
-// Dropdown items for Company Registration
-const companyRegistrationDropdown = [
-  { label: "Private Limited Company", path: "/PrivateLimited" },
-  { label: "Public Limited Company", path: "/PublicLimited" },
-  { label: "LLP Registration", path: "/LLPRegistration" },
-  { label: "One Person Company", path: "/OnePerson" },
-  { label: "Partnership Firm", path: "/PartnershipFirm" },
-  { label: "Proprietor Ship", path: "/ProprietorShip" },
-  { label: "NGO / Trust Registration", path: "/NGOTrust" },
-];
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-const compliancesDropdown = [
-  {
-    title: "Event Based Compliances",
-    items: [
-      { label: "Change In Director / Partner", path: "/Changedirector" },
-      { label: "Shifting Of Registered Office", path: "/ShiftingRegistered" },
-      { label: "Incresing Authorised Capital", path: "/IncresingAuthorised" },
-      { label: "Increasing Paid Up Capital", path: "/IncreasingPaid" },
-      { label: "Share Transfer / Transmission", path: "/ShareTransfer" },
-      { label: "Change In Name Of The Company", path: "/ChangeinName" },
-      { label: "Change In Object Of The Company", path: "/ChangeinObject" },
-      { label: "Surrender DIN", path: "/SurrenderDIN" },
-      { label: "Director KYC - DIR-3", path: "/DirectorKYC3" },
-      { label: "Charge Creation / Modification / Satisfaction", path: "/ChargeSatisfaction" },
-      { label: "Search Report Of The Company", path: "/Searchreport" },
-      { label: "Filling Of Commencement Of Business", path: "/" },
-      { label: "Change In Auditor / Appointment Of Auditor", path: "/" },
-    ],
-  },
-  {
-    title: "Annual Compliance",
-    items: [
-      { label: "Annual Filling Of Company / OPC", path: "/AnnualCompany" },
-      { label: "Annual Filling Of LLP", path: "/AnnualLLP" },
-    ],
-  },
-  {
-    title: "LLP Compliances",
-    items: [
-      {
-        label: "Event Base Compliances",
-        path: "/",
-        subItems: [
-          { label: "Change in Designated Partner", paths: "/DesignatedPartner" },
-          { label: "Change of Registered Office Address by LLP", paths: "/Registeredoffice" },
-          { label: "Change in LLP agreement", paths: "/LLpagreement" },
-          { label: "Change in the name of the LLP", paths: "/ChangeinName" },
-        ]
-      },
-      {
-        label: "Annual Compliances",
-        path: "/Annual"
-      }
-    ]
-  },
+  // Desktop dropdown states (hover-based)
+  const [featuredOpen, setFeaturedOpen] = useState(false);
+  const [extensionsOpen, setExtensionsOpen] = useState(false);
 
-  {
-    title: "GST Compliances",
-    items: [
-      { label: "Monthly Compliance", path: "/MonthlyCompliance" },
-      { label: "Annual Compalices", path: "/AnnualCompalices" },
-      { label: "GST Cancellation", path: "/GSTCancellation" },
-    ],
-  },
-  {
-    title: "Annual maitainance service",
-    items: [
-      { label: "AMC For Company / OPC", path: "/AMC" },
-      { label: "AMC For LLP", path: "/AMCforLLP" },
-    ],
-  },
-];
+  // Mobile dropdown states (click-based)
+  const [mobileFeaturedOpen, setMobileFeaturedOpen] = useState(false);
+  const [mobileExtensionsOpen, setMobileExtensionsOpen] = useState(false);
 
-const menuItems = [
-  { name: "Company Registration", path: "/company-registration" },
-  { name: "Compliances", path: "/compliances" },
-  { name: "Trademark", path: "/trademark" },
-  { name: "Other Registration", path: "/other-registration" },
-  { name: "Accounting", path: "/accounting" },
-  { name: "Closure Of Company", path: "/closure-of-company" },
-];
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
-const trademarkDropdown = [
-  { label: "Trademark Application", path: "/TrademarkApplication" },
-  { label: "Trademark Objection", path: "/TrademarkObjection" },
-  { label: "Trademark Opposition", path: "/TrademarkOpposition" },
-  { label: "Trademark Assignment", path: "/TrademarkAssignment" },
-  { label: "Renewal", path: "/Renewal" },
-];
+  // Toggle mobile dropdowns
+  const toggleMobileFeatured = (e) => {
+    e.preventDefault();
+    setMobileFeaturedOpen(!mobileFeaturedOpen);
+    setMobileExtensionsOpen(false); // Close other dropdown
+  };
 
-const otherRegistrationDropdown = [
-  { label: "FASSI Registration", path: "/FASSIRegistration" },
-  { label: "Udhyog Aadhar Registration", path: "/UdhyogRegistration" },
-  { label: "PAN / TAN Application", path: "/PANTANApplication" },
-  { label: "IEC Code", path: "/IECCode" },
-  { label: "Digital Signature Certificate", path: "/DigitalSignature" },
-];
+  const toggleMobileExtensions = (e) => {
+    e.preventDefault();
+    setMobileExtensionsOpen(!mobileExtensionsOpen);
+    setMobileFeaturedOpen(false); // Close other dropdown
+  };
 
-const accountingDropdown = [
-  { label: "Monthly Accounting", path: "/", active: true },
-  { label: "Annual Accounting", path: "/", active: false },
-];
-
-const closureDropdown = [
-  { label: "Private Limited", path: "/", active: true },
-  { label: "LLP", path: "/", active: false },
-  { label: "OPC", path: "/", active: false },
-  { label: "Public Limited Company", path: "/", active: false },
-];
-
-const Navbar = () => {
-  const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [compliancesOpen, setCompliancesOpen] = useState(false);
-  const [companyRegOpen, setCompanyRegOpen] = useState(false);
-  const location = useLocation();
-  const [trademarkOpen, setTrademarkOpen] = useState(false);
-  const [otherRegOpen, setOtherRegOpen] = useState(false);
-  const [accountingOpen, setAccountingOpen] = useState(false);
-  const [closureOpen, setClosureOpen] = useState(false);
-  const [eventSubOpen, setEventSubOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null); // for toggling submenus
-  const [activeSubMenu, setActiveSubMenu] = useState(null);
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggleSubItems = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+    if (showSearch) {
+      setSearchTerm("");
+    }
   };
 
   return (
-    <header className="w-full shadow-sm bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex-shrink-0">
-          <Link to="/">
-            <img src={logoh} alt="Logo" className="h-10 w-auto" />
+    <header className="w-full top-0 left-0 z-50 relative bg-transparent">
+      <div
+        className={`max-w-7xl mx-auto px-4 py-3 md:px-8 flex justify-between items-center ${
+          mobileMenuOpen ? "relative z-50" : ""
+        }`}
+      >
+        {/* Left Section: Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src={logo || "/placeholder.svg"}
+            alt="Logo"
+            className="h-8 w-auto"
+          />
+        </Link>
+
+        {/* Center Icons (Mobile only) */}
+        <div className="flex items-center gap-4 md:hidden">
+          {/* Search Icon */}
+          <div className="relative p-1 top-1">
+            <button onClick={toggleSearch}>
+              <img
+                src={s1 || "/placeholder.svg"}
+                alt="Search"
+                className="h-6 w-6 cursor-pointer  transition-transform duration-300 transform hover:scale-125"
+              />
+            </button>
+            {/* Mobile Search Dropdown */}
+            <div
+              className={`absolute right-[-90px] top-full mt-2 w-64 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 origin-top ${
+                showSearch
+                  ? "opacity-100 scale-y-100"
+                  : "opacity-0 scale-y-0 pointer-events-none"
+              }`}
+            >
+              <div className="relative p-2">
+                {/* <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                  <img src={s1 || "/placeholder.svg"} alt="Search" className="h-4 w-4" />
+                </div> */}
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search over 5000+ AI..."
+                  className="w-full pl-8 pr-8 py-2 text-sm border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  autoFocus={showSearch}
+                />
+                <button
+                  onClick={toggleSearch}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* Home Icon */}
+          <Link to="/" className="p-1">
+            <img
+              src={home || "/placeholder.svg"}
+              alt="Home"
+              className="h-6 w-6 cursor-pointer transition-transform duration-300 transform hover:scale-125"
+            />
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex gap-4 text-base text-black items-center">
-          {/* Home */}
-          <Link
-            to="/"
-            className={`relative px-2 group ${location.pathname === "/" ? "" : "hover:text-[#002366]"}`}
-          >
-            Home
-            <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-transparent group-hover:bg-[#002366] transition-all duration-300"></span>
-          </Link>
-
-          {/* Company Registration dropdown */}
-          <div
-            className="relative group cursor-pointer flex items-center gap-1 px-2"
-            onMouseEnter={() => setCompanyRegOpen(true)}
-            onMouseLeave={() => setCompanyRegOpen(false)}
-            onClick={() => setCompanyRegOpen()}
-          >
-            <span className="relative group-hover:text-[#002366] 
-    transition-colors duration-300
-    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300
-    ">
-              Company Registration
-            </span>
-            <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
-            {companyRegOpen && (
-              <div className="absolute left-0 top-full  bg-[#e9eef2] shadow-lg rounded z-30 min-w-[220px] py-4 px-2 border border-gray-200"
-                style={{ borderRadius: "8px" }}
-              >
-                {companyRegistrationDropdown.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
+        {/* Hamburger Menu (Mobile) */}
+        <div className="md:hidden">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6 text-gray-800" />
+            ) : (
+              <Menu className="h-6 w-6 text-gray-800 " />
             )}
-          </div>
-
-
-          {/* Compliances dropdown */}
-          <div
-            className="relative group cursor-pointer flex items-center gap-1 px-2"
-            onMouseEnter={() => setCompliancesOpen(true)}
-            onMouseLeave={() => setCompliancesOpen(false)}
-          onClick={() => setCompliancesOpen()}
-          >
-            <span
-              className="relative group-hover:text-[#002366] 
-    transition-colors duration-300
-    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300"
-            >
-              Compliances
-            </span>
-            <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
-
-            {compliancesOpen && (
-              <div
-                className="absolute left-[-150%] xl:top-7 flex bg-[#e9eef2] shadow-lg rounded z-30 min-w-[900px] py-4 px-2 border border-gray-200"
-                style={{ borderRadius: "8px" }}
-              >
-                {/* Left column: LLP Compliances */}
-                <div className="min-w-[260px] px-3 border-r border-gray-300">
-                  <div className="font-semibold text-[#002366] mb-2 uppercase text-[17px]">
-                    {compliancesDropdown[0].title}
-                  </div>
-
-                  {compliancesDropdown[0].items.map((item, index) => (
-                    <div key={item.path} className="relative group"
-
-                    >
-                      <Link
-                        to={item.path}
-                        className="flex  justify-between items-center px-2 py-1 text-[17px] rounded transition-colors mb-1 hover:bg-[#002366] hover:text-white"
-                      >
-                        {item.label}
-                        {item.subItems && <ChevronRight className="w-4 h-4 ml-2 text-gray-400" />}
-                      </Link>
-
-                      {/* Sub-dropdown */}
-                      {item.subItems && (
-                        <div className="absolute top-0 left-full bg-white shadow-md rounded border border-gray-200 py-2 w-[260px] z-40 hidden group-hover:block" key={`subitems-${index}`}>
-                          {item.subItems.map((subItem) => (
-                            <Link
-                              key={subItem.paths}
-                              to={subItem.paths}
-                              className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-
-                            >
-                              {subItem.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Middle column: GST Compliances, etc. */}
-                <div className="min-w-[260px] px-3 border-r border-gray-300">
-                  <div className="font-semibold text-[#002366] mb-2 uppercase text-[17px]">
-                    {compliancesDropdown[1].title}
-                  </div>
-                  {compliancesDropdown[1].items.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-
-                  <div className="font-semibold text-[#002366] mt-4 mb-2 uppercase text-[17px]"
-                    onClick={() => toggleSubItems(index)}
-
-                  >
-                    {compliancesDropdown[2].title}
-                  </div>
-                  {compliancesDropdown[2].items.map((item, index) => (
-                    <div key={`${item.path}-${item.label}`}>
-                      {console.log(item, '34545435')}
-                      <div
-                        onMouseEnter={() => toggleSubItems(index)}
-                        onClick={() => {
-                          setCompliancesOpen(false)
-                          navigate(item.path)
-                        }}
-                        className="flex items-center justify-between px-2 py-1 cursor-pointer text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded mb-1"
-                      >
-                        {item.label}
-                        {item.subItems &&
-                          (openIndex === index ? (
-                            <ChevronDown className="w-4 h-4 text-gray-400" />
-                          ) : (
-                            <ChevronRight className="w-4 h-4 text-gray-400" />
-                          ))}
-                      </div>
-
-                      {item.subItems && openIndex === index && (
-                        <div className="ml-4 mt-1">
-                          {item.subItems.map((subItem) => (
-                            <Link
-                              key={`${subItem.paths}-${subItem.label}`}
-                              to={subItem.paths}
-                              className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-                            >
-                              {subItem.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-
-
-                  <div className="font-semibold text-[#002366] mt-4 mb-2 uppercase text-[17px]">
-                    {compliancesDropdown[3].title}
-                  </div>
-                  {compliancesDropdown[3].items.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-
-                {/* Right column: Annual Maintenance Service */}
-                <div className="min-w-[220px] px-3">
-                  <div className="font-semibold text-[#002366] mb-2 uppercase text-[17px]">
-                    {compliancesDropdown[4].title}
-                  </div>
-                  {compliancesDropdown[4].items.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      className="block px-2 py-1 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white rounded transition-colors mb-1"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Trademark dropdown */}
-          <div
-            className="relative group cursor-pointer flex items-center gap-1 px-2"
-            onMouseEnter={() => setTrademarkOpen(true)}
-            onMouseLeave={() => setTrademarkOpen(false)}
-            onClick={() => setTrademarkOpen()}
-          >
-            <span className="relative group-hover:text-[#002366] 
-    transition-colors duration-300
-    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300
-    ">
-              Trademark
-            </span>
-            <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
-            {trademarkOpen && (
-              <div className="absolute left-0 top-full bg-[#e9eef2] shadow-lg rounded z-30 min-w-[220px] py-2 px-0 border border-gray-200"
-                style={{ borderRadius: "8px" }}
-              >
-                {trademarkDropdown.map((item, idx) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`block px-4 py-2 text-[17px] transition-colors hover:bg-[#002366] hover:text-white`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div
-            className="relative group cursor-pointer flex items-center gap-1 px-2"
-            onMouseEnter={() => setOtherRegOpen(true)}
-            onMouseLeave={() => setOtherRegOpen(false)}
-            onClick={() => setOtherRegOpen()}
-          >
-            <span className="relative group-hover:text-[#002366] 
-    transition-colors duration-300
-    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300
-    ">
-              Other Registration
-            </span>
-            <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
-            {otherRegOpen && (
-              <div className="absolute left-0 top-full bg-[#e9eef2] shadow-lg rounded z-30 min-w-[220px] py-2 px-0 border border-gray-200"
-                style={{ borderRadius: "8px" }}
-              >
-                {otherRegistrationDropdown.map((item, idx) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div
-            className="relative group cursor-pointer flex items-center gap-1 px-2"
-            onMouseEnter={() => setAccountingOpen(true)}
-            onMouseLeave={() => setAccountingOpen(false)}
-            onClick={() => setAccountingOpen()}
-          >
-            <span className="relative group-hover:text-[#002366] 
-    transition-colors duration-300
-    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300
-    ">
-              Accounting
-            </span>
-            <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
-            {accountingOpen && (
-              <div className="absolute left-0 top-full bg-[#e9eef2] shadow-lg rounded z-30 min-w-[220px] py-0 px-0 border border-gray-200"
-                style={{ borderRadius: "0 0 12px 12px" }}
-              >
-                {accountingDropdown.map((item, idx) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors mb-1`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div
-            className="relative group cursor-pointer flex items-center gap-1 px-2"
-            onMouseEnter={() => setClosureOpen(true)}
-            onMouseLeave={() => setClosureOpen(false)}
-            onClick={() => setClosureOpen()}
-          >
-            <span className="relative group-hover:text-[#002366] 
-    transition-colors duration-300
-    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full 
-    after:bg-transparent group-hover:after:bg-[#002366] after:transition-all after:duration-300
-    ">
-              Closure of Company
-            </span>
-            <ChevronDown className="w-4 h-4 group-hover:text-[#002366]" />
-            {closureOpen && (
-              <div className="absolute left-0 top-full bg-[#e9eef2] shadow-lg rounded z-30 min-w-[260px] py-0 px-0 border border-gray-200"
-                style={{ borderRadius: "0 0 16px 16px" }}
-              >
-                {closureDropdown.map((item, idx) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`block px-4 py-2 text-[17px] text-gray-700 hover:bg-[#002366] hover:text-white transition-colors mb-2`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        </nav>
-
-        {/* Mobile Menu */}
-        <div className="lg:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </div>
 
-     {/* Mobile Dropdown */}
-{menuOpen && (
-  <div className="lg:hidden px-4 pb-4">
-    <div className="flex flex-col gap-4">
-      <Link to="/" className="text-black font-medium" onClick={() => setMenuOpen(false)}>Home</Link>
-
-      {/* Company Registration */}
-      <div>
-        <div
-          className="font-medium flex items-center gap-1 cursor-pointer"
-          onClick={() => setCompanyRegOpen(!companyRegOpen)}
-        >
-          Company Registration
-          <span>{companyRegOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-        </div>
-        {companyRegOpen && (
-          <div className="ml-4 flex flex-col gap-2">
-            {companyRegistrationDropdown.map((item) => (
+        {/* Navigation Links */}
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 bg-white z-40 md:hidden">
+            <div className="flex justify-between items-center p-4">
               <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setCompanyRegOpen(false);
-                  setMenuOpen(false);
-                }}
-                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+                to="/"
+                className="flex"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                {item.label}
+                <img
+                  src={logo || "/placeholder.svg"}
+                  alt="Logo"
+                  className="h-8 w-auto"
+                />
               </Link>
-            ))}
-          </div>
-        )}
-      </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-full hover:bg-gray-100"
+              >
+                <X className="h-6 w-6 text-gray-800" />
+              </button>
+            </div>
+            <nav className="px-4 py-6 flex flex-col space-y-4">
+              <Link
+                to="/About"
+                className="text-gray-700 hover:text-gray-900"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </Link>
 
-      {/* Compliances */}
-      <div>
-        <div
-          className="font-medium flex items-center gap-1 cursor-pointer"
-          onClick={() => setCompliancesOpen(!compliancesOpen)}
-        >
-          Compliances
-          <span>{compliancesOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-        </div>
-        {compliancesOpen && (
-          <div className="ml-4 flex flex-col gap-2">
-            {compliancesDropdown.map((item) => (
-              <div key={item.title} className="mb-2">
-                <div className="font-semibold text-[#002366] text-[15px] mb-1">{item.title}</div>
-                {item.items.map((subItem) => (
-                  <Link
-                    key={subItem.path}
-                    to={subItem.path}
-                    onClick={() => {
-                      setCompliancesOpen(false);
-                      setMenuOpen(false);
-                    }}
-                    className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-                  >
-                    {subItem.label}
-                  </Link>
-                ))}
+              <Link
+                to="/Productfinder"
+                className="text-gray-700 hover:text-gray-900 flex items-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Product Finder
+              </Link>
+
+              {/* Get Featured Dropdown - Mobile (click) */}
+              <div className="relative z-10">
+                <button
+                  className="flex items-center text-gray-700 hover:text-gray-900 w-full justify-between"
+                  onClick={toggleMobileFeatured}
+                >
+                  Get Featured
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform ${
+                      mobileFeaturedOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileFeaturedOpen && (
+                  <div className="w-full bg-gray-50 rounded-lg mt-2 py-2">
+                    <Link
+                      to="/tools/text"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Text Tool
+                    </Link>
+                    <Link
+                      to="/tools/image"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Image Tool
+                    </Link>
+                    <Link
+                      to="/tools/css"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      CSS Tool
+                    </Link>
+                    <Link
+                      to="/tools/coding"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Coding Tools
+                    </Link>
+                    <Link
+                      to="/tools/color"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Color Tools
+                    </Link>
+                    <Link
+                      to="/tools/social"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Social Media Tools
+                    </Link>
+                    <Link
+                      to="/tools/misc"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Miscellaneous Tools
+                    </Link>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-        )}
-      </div>
 
-      {/* Trademark */}
-      <div>
-        <div
-          className="font-medium flex items-center gap-1 cursor-pointer"
-          onClick={() => setTrademarkOpen(!trademarkOpen)}
-        >
-          Trademark
-          <span>{trademarkOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-        </div>
-        {trademarkOpen && (
-          <div className="ml-4 flex flex-col gap-2">
-            {trademarkDropdown.map((item) => (
+              {/* Extensions Dropdown - Mobile (click) */}
+              <div className="relative">
+                <button
+                  className="flex items-center text-gray-700 hover:text-gray-900 w-full justify-between"
+                  onClick={toggleMobileExtensions}
+                >
+                  Extensions
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform ${
+                      mobileExtensionsOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileExtensionsOpen && (
+                  <div className="w-full bg-gray-50 rounded-lg mt-2 py-2">
+                    <a
+                      href="https://chrome.google.com/webstore"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <img
+                        src={chrome || "/placeholder.svg"}
+                        alt="Chrome"
+                        className="h-5 w-5 mr-3"
+                      />
+                      Add To Chrome
+                    </a>
+                    <a
+                      href="https://addons.mozilla.org/en-US/firefox/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <img
+                        src={fire || "/placeholder.svg"}
+                        alt="Firefox"
+                        className="h-5 w-5 mr-3"
+                      />
+                      Add To Firefox
+                    </a>
+                  </div>
+                )}
+              </div>
+
               <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setTrademarkOpen(false);
-                  setMenuOpen(false);
-                }}
-                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
+                to="/Contact"
+                className="bg-[#00063F] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors text-center mt-4"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                {item.label}
+                CONTACT US
               </Link>
-            ))}
+            </nav>
           </div>
         )}
-      </div>
 
-      {/* Other Registration */}
-      <div>
-        <div
-          className="font-medium flex items-center gap-1 cursor-pointer"
-          onClick={() => setOtherRegOpen(!otherRegOpen)}
-        >
-          Other Registration
-          <span>{otherRegOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-        </div>
-        {otherRegOpen && (
-          <div className="ml-4 mt-2 flex flex-col gap-2">
-            {otherRegistrationDropdown.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setOtherRegOpen(false);
-                  setMenuOpen(false);
-                }}
-                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-              >
-                {item.label}
-              </Link>
-            ))}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex md:flex-row md:items-center md:space-y-0 md:space-x-6 md:py-0">
+          {/* Search Icon (Desktop) */}
+          <div className="relative">
+            <button className="p-2 rounded-lg" onClick={toggleSearch}>
+              <img
+                src={s1 || "/placeholder.svg"}
+                alt="Search"
+                className="h-6 w-6 md:h-8 md:w-8 cursor-pointer transition-transform duration-300 transform hover:scale-125"
+              />
+            </button>
+            {/* Desktop Search Dropdown */}
+            <div
+              className={`absolute left-0 top-full mt-2 w-72 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 origin-top z-50 ${
+                showSearch
+                  ? "opacity-100 scale-y-100"
+                  : "opacity-0 scale-y-0 pointer-events-none"
+              }`}
+            >
+              <div className="relative p-2 ">
+                {/* <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                  <img src={"" || "/placeholder.svg"} alt="Search" className="h-4 w-4" />
+                </div> */}
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search over 5000+ AI..."
+                  className="w-full pl-8 pr-8 py-2 text-sm border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  autoFocus={showSearch}
+                />
+                <button
+                  onClick={toggleSearch}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
 
-      {/* Accounting */}
-      <div>
-        <div
-          className="font-medium flex items-center gap-1 cursor-pointer"
-          onClick={() => setAccountingOpen(!accountingOpen)}
-        >
-          Accounting
-          <span>{accountingOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-        </div>
-        {accountingOpen && (
-          <div className="ml-4 mt-2 flex flex-col gap-2">
-            {accountingDropdown.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setAccountingOpen(false);
-                  setMenuOpen(false);
-                }}
-                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* Home Icon (Desktop) */}
+          <div>
+            <Link to="/" className="p-2 md:p-0">
+              <img
+                src={home || "/placeholder.svg"}
+                alt="Home Icon"
+                className="h-5 w-5 md:h-6 md:w-6 transition-transform duration-300 transform hover:scale-125"
+              />
+            </Link>
           </div>
-        )}
-      </div>
 
-      {/* Closure of Company */}
-      <div>
-        <div
-          className="font-medium flex items-center gap-1 cursor-pointer"
-          onClick={() => setClosureOpen(!closureOpen)}
-        >
-          Closure of Company
-          <span>{closureOpen ? <FaAngleUp /> : <IoIosArrowDown />}</span>
-        </div>
-        {closureOpen && (
-          <div className="ml-4 mt-2 flex flex-col gap-2">
-            {closureDropdown.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setClosureOpen(false);
-                  setMenuOpen(false);
-                }}
-                className="block px-2 py-1 text-[14px] rounded transition-colors mb-1"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <Link to="/About" className="text-gray-700 hover:text-gray-900">
+            About
+          </Link>
+
+          <Link
+            to="/Productfinder"
+            className="text-gray-700 hover:text-gray-900 flex items-center"
+          >
+            Product Finder
+          </Link>
+
+          {/* Get Featured Dropdown - Desktop (hover) */}
+          <div
+            className="relative"
+            onMouseEnter={() => setFeaturedOpen(true)}
+            onMouseLeave={() => setFeaturedOpen(false)}
+          >
+            <button className="flex items-center  text-gray-700 hover:text-gray-900">
+              Categories
+              <ChevronDown className="ml-1 h-4 w-4" />
+            </button>
+            {featuredOpen && (
+              <div className="absolute text-center top-full w-60 bg-white rounded-xl shadow-lg py-2 z-10">
+                <Link
+                  to="/tools/text"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Text Tool
+                </Link>
+                <Link
+                  to="/tools/image"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Image Tool
+                </Link>
+                <Link
+                  to="/tools/css"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  CSS Tool
+                </Link>
+                <Link
+                  to="/tools/coding"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Coding Tools
+                </Link>
+                <Link
+                  to="/tools/color"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Color Tools
+                </Link>
+                <Link
+                  to="/tools/social"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Social Media Tools
+                </Link>
+                <Link
+                  to="/tools/misc"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Miscellaneous Tools
+                </Link>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </div>
-  </div>
-)}
 
+          {/* Extensions Dropdown - Desktop (hover) */}
+          <div
+            className="relative"
+            onMouseEnter={() => setExtensionsOpen(true)}
+            onMouseLeave={() => setExtensionsOpen(false)}
+          >
+            <button className="flex items-center text-gray-700 hover:text-gray-900">
+              Extensions
+              <ChevronDown className="ml-1 h-4 w-4" />
+            </button>
+            {extensionsOpen && (
+              <div className="absolute top-full w-56 bg-white rounded-xl shadow-lg py-2 z-10">
+                <a
+                  href="https://chrome.google.com/webstore"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  <img
+                    src={chrome || "/placeholder.svg"}
+                    alt="Chrome"
+                    className="h-5 w-5 mr-3"
+                  />
+                  Add To Chrome
+                </a>
+                <a
+                  href="https://addons.mozilla.org/en-US/firefox/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  <img
+                    src={fire || "/placeholder.svg"}
+                    alt="Firefox"
+                    className="h-5 w-5 mr-3"
+                  />
+                  Add To Firefox
+                </a>
+              </div>
+            )}
+          </div>
+
+          <Link
+            to="/Contact"
+            className="bg-[#00063F] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors"
+          >
+            CONTACT US
+          </Link>
+        </nav>
+      </div>
     </header>
   );
-};
-
-export default Navbar;
-0
+}

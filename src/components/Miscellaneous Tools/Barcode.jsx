@@ -1,0 +1,355 @@
+import React, { useState, useRef } from "react";
+import Barcode from "react-barcode";
+import { saveAs } from "file-saver";
+import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import {
+  FaCheck,
+  FaRegCopy,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaEnvelope,
+  FaCopy,
+  FaRegStar,
+} from "react-icons/fa6";
+import { ImBarcode } from "react-icons/im";
+import Comment from "../Text tools/Comment";
+import { FiAlertCircle } from 'react-icons/fi';
+import { FiShare2 } from "react-icons/fi";
+
+const BarcodeGenerator = () => {
+  const [barcodeValue, setBarcodeValue] = useState("");
+  const [barcodeFormat, setBarcodeFormat] = useState("CODE128");
+  const [lineWidth, setLineWidth] = useState(2);
+  const [lineHeight, setLineHeight] = useState(100);
+  const [displayValue, setDisplayValue] = useState(true);
+  const [generatedBarcode, setGeneratedBarcode] = useState("");
+  const barcodeRef = useRef(null);
+   const [open, setOpen] = useState(false);
+   const [bugDescription, setBugDescription] = useState("");
+    const [shareOpen, setShareOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState("tool");
+    const [isFavorite, setIsFavorite] = useState(false);
+  
+    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+  
+
+  const handleGenerate = () => {
+    if (barcodeValue.trim() === "") {
+      alert("Please enter a value for the barcode");
+      return;
+    }
+    setGeneratedBarcode(barcodeValue);
+  };
+
+  const handleReset = () => {
+    setBarcodeValue("");
+    setGeneratedBarcode("");
+  };
+
+  const handleDownload = () => {
+    if (!barcodeRef.current) return;
+    
+    // Create a canvas from the barcode SVG
+    const svg = barcodeRef.current.firstChild;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    
+    // Set canvas dimensions
+    canvas.width = svg.width.baseVal.value;
+    canvas.height = svg.height.baseVal.value;
+    
+    // Create an image from SVG
+    const img = new Image();
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const svgBlob = new Blob([svgData], {type: "image/svg+xml;charset=utf-8"});
+    const url = URL.createObjectURL(svgBlob);
+    
+    img.onload = () => {
+      // Draw the image on canvas and create PNG
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob((blob) => {
+        saveAs(blob, `barcode-${barcodeValue}.png`);
+      });
+      URL.revokeObjectURL(url);
+    };
+    
+    img.src = url;
+  };
+
+  return (
+      <div className="max-w-4xl mx-auto px-4 py-6 mt-3">
+         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
+               <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                 <span className="text-4xl text-indigo-400">
+                   <ImBarcode />
+                 </span>
+                 <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+                    Bar&nbsp;Code&nbsp;Generator&nbsp; 
+                 </h1>
+               </div>
+               <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+                 <button
+              onClick={() => setShareOpen(true)}
+              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+            >
+              <FiShare2 className="mr-2" size={18} />
+              Share
+            </button>
+                   <button
+              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+              onClick={() => setOpen(true)}
+            >
+              <FiAlertCircle className="text-indigo-600 text-base" />
+              Report Bug
+            </button>
+                 <button
+                   onClick={onFavoriteToggle}
+                   className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+                     ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                     : "bg-indigo-50 border-indigo-300 text-indigo-600"
+                     }`}
+                 >
+                   {isFavorite ? (
+                     <>
+                       <FaCheck className="inline-block mr-1" size={12} /> Added
+                     </>
+                   ) : (
+                     <>
+                       <FaRegStar className="inline-block mr-1" size={12} /> Add to
+                       Favorites
+                     </>
+                   )}
+                 </button>
+               </div>
+             </div>
+               {/* Share Popup */}
+                   {shareOpen && (
+                     <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center">
+                       <div className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
+                         <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
+                           <button
+                             onClick={() => setActiveTab("tool")}
+                             className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "tool"
+                               ? "bg-indigo-600 text-white"
+                               : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                               }`}
+                           >
+                             ⚙️ Share Tool
+                           </button>
+                           <button
+                             onClick={() => setActiveTab("home")}
+                             className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "home"
+                               ? "bg-indigo-600 text-white"
+                               : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                               }`}
+                           >
+                             🏠 Share 10015
+                           </button>
+                         </div>
+                         <div className="text-center border border-gray-300 rounded-xl p-6">
+                           <p className="text-sm mb-1 text-gray-500">
+                             You are currently sharing:
+                           </p>
+                           <h2 className="text-xl font-semibold mb-5 text-gray-600">
+                             {activeTab === "tool"
+                               ? "Google Fonts Pair Finder"
+                               : "10015 Tools"}
+                           </h2>
+                           <div className="flex justify-center mb-6">
+                             <MdShare className="text-indigo-500 text-7xl" />
+                           </div>
+                           <div className="flex justify-center gap-4">
+                             {[FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaCopy].map(
+                               (Icon, i) => (
+                                 <button
+                                   key={i}
+                                   className="text-white bg-indigo-500 rounded-full w-10 h-10 flex items-center justify-center"
+                                 >
+                                   <Icon />
+                                 </button>
+                               )
+                             )}
+                           </div>
+                         </div>
+                         <button
+                           className="absolute top-4 right-4 text-gray-600 text-lg"
+                           onClick={() => setShareOpen(false)}
+                         >
+                           ✕
+                         </button>
+                       </div>
+                     </div>
+                   )}
+             
+                   {/* Bug Report Popup */}
+                   {open && (
+                     <div className="fixed inset-0 bg-black/30 z-20 flex justify-center items-center">
+                       <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
+                         <h2 className="text-xl font-bold mb-2">Bug Report</h2>
+                         <p className="text-sm mb-4">
+                           <strong>Tool:</strong> Lorem Ipsum Generator
+                         </p>
+                         <label className="text-sm mb-1 block" htmlFor="bugDescription">
+                           Please describe the issue.
+                         </label>
+                         <textarea
+                           id="bugDescription"
+                           className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                           placeholder="Description*"
+                           value={bugDescription}
+                           onChange={(e) => setBugDescription(e.target.value)}
+                         />
+                         <div className="flex justify-end gap-3 mt-4">
+                           <button
+                             onClick={() => setOpen(false)}
+                             className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+                           >
+                             Cancel
+                           </button>
+                           <button
+                             onClick={() => {
+                               if (!bugDescription.trim()) {
+                                 alert("Please enter a description.");
+                                 return;
+                               }
+                               console.log("Bug description submitted:", bugDescription);
+                               setOpen(false);
+                               setBugDescription("");
+                             }}
+                             className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+                           >
+                             Submit
+                           </button>
+                         </div>
+                       </div>
+                     </div>
+                   )}
+             
+        
+        <div className="mt-8">
+          <div className="grid grid-cols-1 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Barcode Value</label>
+              <input
+                type="text"
+                value={barcodeValue}
+                onChange={(e) => setBarcodeValue(e.target.value)}
+                className="mt-1 block w-full border border-blue-300 rounded-md shadow-sm py-2 px-3 outline-none"
+                placeholder="Enter value for barcode"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Barcode Format</label>
+              <select
+                value={barcodeFormat}
+                onChange={(e) => setBarcodeFormat(e.target.value)}
+                className="mt-1 block w-full border border-blue-300 rounded-md shadow-sm py-2 px-3 outline-none"
+              >
+                <option value="CODE128">Code 128</option>
+                <option value="CODE39">Code 39</option>
+                <option value="EAN13">EAN-13</option>
+                <option value="EAN8">EAN-8</option>
+                <option value="UPC">UPC</option>
+                <option value="CODE128A">Code 128 A</option>
+                <option value="CODE128B">Code 128 B</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Barcode Line Width: {lineWidth}px
+              </label>
+              <input
+                type="range"
+                min="1"
+                max="5"
+                value={lineWidth}
+                onChange={(e) => setLineWidth(parseInt(e.target.value))}
+                className="mt-1 w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Barcode Line Height: {lineHeight}px
+              </label>
+              <input
+                type="range"
+                min="20"
+                max="200"
+                value={lineHeight}
+                onChange={(e) => setLineHeight(parseInt(e.target.value))}
+                className="mt-1 w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+              />
+            </div>
+
+            <div className="flex items-center">
+              <input
+                id="display-value"
+                type="checkbox"
+                checked={displayValue}
+                onChange={(e) => setDisplayValue(e.target.checked)}
+                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+              <label htmlFor="display-value" className="ml-2 block text-sm text-gray-700">
+                Display Value
+              </label>
+            </div>
+
+            <div className="flex justify-center space-x-4">
+              <button
+                onClick={handleReset}
+                className="py-2 px-4  rounded-md  text-lg  text-black border-indigo-300 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] cursor-pointer"
+              >
+                <svg className="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset
+              </button>
+              <button
+                onClick={handleGenerate}
+                className="py-2 px-4  rounded-md  text-lg  text-black border-indigo-300 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] cursor-pointer "
+              >
+                <svg className="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                Generate
+              </button>
+            </div>
+          </div>
+
+          {generatedBarcode && (
+            <div className="mt-8">
+              <div className="flex justify-center p-4 bg-gray-50 rounded-md" ref={barcodeRef}>
+                <Barcode
+                  value={generatedBarcode}
+                  format={barcodeFormat}
+                  width={lineWidth}
+                  height={lineHeight}
+                  displayValue={displayValue}
+                />
+              </div>
+              <div className="mt-4 flex justify-center">
+                <button
+                  onClick={handleDownload}
+                  className="py-2 px-4 rounded-md text-lg text-black py-2 px-4  rounded-md  text-lg  text-black border-indigo-300 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF]"
+                >
+                  <svg className="w-5 h-5 mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                  </svg>
+                  Download
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+        <Comment/>
+    </div>
+  );
+};
+
+export default BarcodeGenerator;

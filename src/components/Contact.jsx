@@ -1,168 +1,71 @@
-import { MapPin, Twitter, Phone } from "lucide-react";
-import bg from "../image/contactbg.svg";
-import c1 from "../image/c1.svg";
-import bg1 from "../image/bg.svg";
+import React from "react";
+import explore from "../image/explore.svg";
+import finder from "../image/finder.svg";
+import Contact from "../image/contact.svg";
+import Support from "../Pages/Support"; // Import the Support component
 
 
-export default function ContactPage() {
-  return (
-    <div className="flex flex-col mx-auto">
-      {/* Hero Section */}
-      <div
-        className="relative h-120 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bg})` }}
-      >
-        <div className="absolute inset-0  flex items-center justify-start max-w-7xl mx-auto">
-          <div className="text-white text-left">
-            <div className="absolute top-40 right-280 rotate-360 z-0 ">
-              <img src={bg1} alt="bg" className="" />
-            </div>
-            <h1 className="text-6xl font-bold p-2">CONTACT US</h1>
+const ContactSection = () => {
+    return (
+        <div className="max-w-7xl mx-auto bg-white">
+            {/* Top Contact Section */}
+            <div className="flex flex-col lg:flex-row items-center justify-between px-6 py-12 lg:px-20">
+                {/* Text Content */}
+                <div className="max-w-xl space-y-6">
+                    <h1 className="text-4xl font-david font-bold text-[#14143B]">Contact us</h1>
+                    <p className="text-gray-500">
+                        You can contact via email for your issues related with 10015.io. You can give feedback about current tools or suggest new tools that you want to see on 10015 Tools.
+                    </p>
 
-            <p className="mt-4 p-3">Get in Touch with Us</p>
-          </div>
-        </div>
-      </div>
+                    {/* Buttons */}
+                    <div className="flex gap-4 flex-wrap">
+                        <div className="relative inline-flex items-center">
+                            <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-8 py-2 rounded-full shadow-md">
+                                EXPLORE TOOL
+                            </button>
+                            <img
+                                src={explore} // Replace with your arrow icon path
+                                alt="Arrow Icon"
+                                className="absolute right-[-10px] w-6 h-6"
+                            />
+                        </div>
 
-      {/* Contact Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Left Column - Info */}
-          <div className="space-y-8">
-            <div>
-              <img
-                src={c1}
-                alt="Business meeting"
-                className="rounded-md object-cover w-full h-auto"
-              />
-            </div>
+                        <div className="relative inline-flex items-center">
+                            <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md">
+                                PRODUCT FINDER
+                            </button>
+                            <img
+                                src={finder} // Replace with your search icon path
+                                alt="Finder Icon"
+                                className="absolute -top-1 -right-2 w-6 h-6 transition-transform duration-300 transform hover:scale-150"
+                            />
+                        </div>
+                    </div>
 
-            <div className="flex items-start space-x-4">
-              <div className="bg-[#002C6D] p-3 rounded-full">
-                <MapPin className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-blue-900 uppercase">
-                  Our Headquarters
-                </h3>
-                <p className="text-gray-600">220 MELBOURNE, AUSTRALIA</p>
-                <p className="text-gray-600">CITY-250XXX</p>
-              </div>
-            </div>
 
-            <div className="flex items-start space-x-4">
-              <div className="bg-[#002C6D] p-3 rounded-full">
-                <Twitter className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-blue-900 uppercase">
-                  Follow on Twitter
-                </h3>
-                <p className="text-gray-600">2.2M FOLLOWERS</p>
-              </div>
-            </div>
+                    {/* Login/Register */}
+                    <div className="space-y-2 items-center justify-center mx-auto flex flex-col lg:flex-col gap-4">
+                        <button className="bg-gray-100 px-6 py-2 rounded-full text-gray-600 font-medium mr-42 ">
+                            Login / Register
+                        </button>
+                        <div className="text-red-500 font-semibold cursor-pointer hover:underline mr-42">Sign In</div>
+                    </div>
+                </div>
 
-            <div className="flex items-start space-x-4">
-              <div className="bg-[#002C6D] p-3 rounded-full">
-                <Phone className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h3 className="font-bold text-blue-900 uppercase">
-                  Speak to us
-                </h3>
-                <p className="text-gray-600">(123) 456 7890</p>
-                <p className="text-gray-600">+87 878 87870</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column - Form */}
-          <div className="md:col-span-2 flex justify-center">
-            <div className="w-full max-w-2xl">
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                {[
-                  { label: "Name", type: "text" },
-                  { label: "Mobile", type: "tel" },
-                  { label: "Company Name", type: "text" },
-                  { label: "Email", type: "email" },
-                ].map((field, index) => (
-                  <div key={index}>
-                    <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
-                      {field.label}
-                    </label>
-                    <input
-                      type={field.type}
-                      className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                {/* Image */}
+                <div className="mt-10 lg:mt-0">
+                    <img
+                        src={Contact}
+                        alt="Phone Illustration"
+                        className="w-80 max-w-full"
                     />
-                  </div>
-                ))}
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
                 </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
-                    City
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
-                    State
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1 uppercase">
-                    Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full p-3 bg-blue-50 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  ></textarea>
-                </div>
-
-                <div className="md:col-span-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-[#002C6D] text-white py-3 rounded-md hover:bg-[#001A4A] transition-colors"
-                  >
-                    LET&apos;S CONNECT
-                  </button>
-                </div>
-              </form>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Map Section */}
-      <div className="w-full h-96 relative mt-8">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d805196.5096411199!2d144.49268362290042!3d-37.97015407788675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-    </div>
-  );
-}
+         <Support/>
+
+        </div>
+    );
+};
+
+export default ContactSection;

@@ -1,0 +1,312 @@
+import React, { useState, useEffect } from 'react';
+import { IoColorFilterOutline } from "react-icons/io5";
+import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import {
+  FaCheck,
+  FaRegCopy,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaEnvelope,
+  FaCopy,
+  FaRegStar,
+} from "react-icons/fa6";
+import Comment from "../Text tools/Comment";import { FiAlertCircle } from 'react-icons/fi';
+import { FiShare2 } from "react-icons/fi";
+
+const HexToRgbaConverter = () => {
+  const [hex, setHex] = useState('#545454');
+  const [rgba, setRgba] = useState('rgb(84, 84, 84)');
+  const [hsla, setHsla] = useState('hsl(0, 0%, 32.9%)');
+  const [error, setError] = useState('');
+  const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [bugDescription, setBugDescription] = useState("");
+  const [shareOpen, setShareOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("tool");
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+
+  const isValidHex = (value) => /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(value);
+  const hexToRgb = (hex) => {
+    let hexClean = hex.replace('#', '');
+    if (hexClean.length === 3) {
+      hexClean = hexClean.split('').map((char) => char + char).join('');
+    }
+    const bigint = parseInt(hexClean, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return { r, g, b };
+  };
+
+  const rgbToHsl = (r, g, b) => {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h = 0, s = 0, l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = ((g - b) / d + (g < b ? 6 : 0)); break;
+        case g: h = ((b - r) / d + 2); break;
+        case b: h = ((r - g) / d + 4); break;
+        default: break;
+      }
+      h /= 6;
+    }
+    return {
+      h: Math.round(h * 360),
+      s: Math.round(s * 100),
+      l: Math.round(l * 1000) / 10
+    };
+  };
+
+  const convert = () => {
+    setError('');
+    if (!isValidHex(hex)) {
+      setRgba('');
+      setHsla('');
+      setError('Please enter a valid HEX color code (e.g., #123abc or #fff)');
+      return;
+    }
+    try {
+      const { r, g, b } = hexToRgb(hex);
+      setRgba(`rgb(${r}, ${g}, ${b})`);
+      const { h, s, l } = rgbToHsl(r, g, b);
+      setHsla(`hsl(${h}, ${s}%, ${l}%)`);
+    } catch (e) {
+      setRgba('');
+      setHsla('');
+      setError('Conversion failed. Please check your HEX code.');
+    }
+  };
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => setCopied(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copied]);
+
+  const copyToClipboard = () => {
+    if (rgba) {
+      navigator.clipboard.writeText(rgba);
+      setCopied(true);
+    }
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-6 mt-3">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
+        <div className="flex items-center gap-3 mb-2 sm:mb-0">
+          <span className="text-4xl text-indigo-400">
+            <IoColorFilterOutline />
+          </span>
+          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+            HEX&nbsp;to&nbsp;RGBA&nbsp;Converter
+          </h1>
+        </div>
+        <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+          <button
+              onClick={() => setShareOpen(true)}
+              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+            >
+              <FiShare2 className="mr-2" size={18} />
+              Share
+            </button>
+         <button
+              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+              onClick={() => setOpen(true)}
+            >
+              <FiAlertCircle className="text-indigo-600 text-base" />
+              Report Bug
+            </button>
+          <button
+            onClick={onFavoriteToggle}
+            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+              ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+              : "bg-indigo-50 border-indigo-300 text-indigo-600"
+              }`}
+          >
+            {isFavorite ? (
+              <>
+                <FaCheck className="inline-block mr-1" size={12} /> Added
+              </>
+            ) : (
+              <>
+                <FaRegStar className="inline-block mr-1" size={12} /> Add to
+                Favorites
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+      {/* Share Popup */}
+      {shareOpen && (
+        <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
+            <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
+              <button
+                onClick={() => setActiveTab("tool")}
+                className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "tool"
+                  ? "bg-indigo-600 text-white"
+                  : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                  }`}
+              >
+                ⚙️ Share Tool
+              </button>
+              <button
+                onClick={() => setActiveTab("home")}
+                className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "home"
+                  ? "bg-indigo-600 text-white"
+                  : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                  }`}
+              >
+                🏠 Share 10015
+              </button>
+            </div>
+            <div className="text-center border border-gray-300 rounded-xl p-6">
+              <p className="text-sm mb-1 text-gray-500">
+                You are currently sharing:
+              </p>
+              <h2 className="text-xl font-semibold mb-5 text-gray-600">
+                {activeTab === "tool"
+                  ? "Google Fonts Pair Finder"
+                  : "10015 Tools"}
+              </h2>
+              <div className="flex justify-center mb-6">
+                <MdShare className="text-indigo-500 text-7xl" />
+              </div>
+              <div className="flex justify-center gap-4">
+                {[FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaCopy].map(
+                  (Icon, i) => (
+                    <button
+                      key={i}
+                      className="text-white bg-indigo-500 rounded-full w-10 h-10 flex items-center justify-center"
+                    >
+                      <Icon />
+                    </button>
+                  )
+                )}
+              </div>
+            </div>
+            <button
+              className="absolute top-4 right-4 text-gray-600 text-lg"
+              onClick={() => setShareOpen(false)}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Bug Report Popup */}
+      {open && (
+        <div className="fixed inset-0 bg-black/30 z-20 flex justify-center items-center">
+          <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
+            <h2 className="text-xl font-bold mb-2">Bug Report</h2>
+            <p className="text-sm mb-4">
+              <strong>Tool:</strong> Lorem Ipsum Generator
+            </p>
+            <label className="text-sm mb-1 block" htmlFor="bugDescription">
+              Please describe the issue.
+            </label>
+            <textarea
+              id="bugDescription"
+              className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              placeholder="Description*"
+              value={bugDescription}
+              onChange={(e) => setBugDescription(e.target.value)}
+            />
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                onClick={() => setOpen(false)}
+                className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  if (!bugDescription.trim()) {
+                    alert("Please enter a description.");
+                    return;
+                  }
+                  console.log("Bug description submitted:", bugDescription);
+                  setOpen(false);
+                  setBugDescription("");
+                }}
+                className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+      {/* Input Section */}
+      <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
+        <input
+          type="text"
+          className={`w-full sm:w-1/3 px-4 py-2 border border-blue-300 outline-none rounded-md ${error ? 'border-red-400' : ''}`}
+          value={hex}
+          onChange={(e) => setHex(e.target.value)}
+          placeholder="#545454"
+          spellCheck={false}
+        />
+        <button
+          onClick={convert}
+          className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-6 py-2 rounded-md"
+        >
+          Convert
+        </button>
+        <input
+          type="text"
+          className="w-full sm:w-1/3 px-4 py-2 border border-blue-300 outline-none rounded-md"
+          value={rgba}
+          readOnly
+        />
+      </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="mb-4 text-red-600 font-medium flex items-center gap-2">
+          <span>{error}</span>
+        </div>
+      )}
+
+      {/* Copy Button */}
+      <div className="flex justify-end mb-6">
+        <button
+          onClick={copyToClipboard}
+          disabled={!rgba}
+          className={`bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] cursor-pointer text-black px-6 py-2 rounded-md flex items-center gap-2
+              ${!rgba ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-50'}
+            `}
+        >
+          {copied ? 'Copied!' : 'Copy RGBA Color'}
+        </button>
+      </div>
+
+      {/* Color Preview */}
+      <div className="flex items-stretch max-w-md bg-white rounded-lg overflow-hidden shadow-lg mx-auto">
+        <div className="w-1/2" style={{ backgroundColor: isValidHex(hex) ? hex : '#fff' }} />
+        <div className="w-1/2 p-4 text-sm">
+          <p className="mb-2"><strong>HEX</strong><br />{hex}</p>
+          <p className="mb-2"><strong>RGBA</strong><br />{rgba}</p>
+          <p><strong>HSLA</strong><br />{hsla}</p>
+        </div>
+      </div>
+      <Comment />
+    </div>
+  );
+};
+
+export default HexToRgbaConverter;
