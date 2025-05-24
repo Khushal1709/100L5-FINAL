@@ -39,52 +39,113 @@ import URLEncoderDcoder from "./components/Coding Tool/URLEncoderDcoder";
 import HTMLMinifier from "./components/Coding Tool/HTMLMinifier";
 import CSSMinifier from "./components/Coding Tool/CSSMinifier";
 import JavaScriptMinifier from "./components/Coding Tool/JavaScriptMinifier";
+import Hf from "./components/Coding Tool/Hf";
+import Cs from "./components/Coding Tool/Cs";
+import Javaf from "./components/Coding Tool/Javaf";
+import MD5 from "./components/Coding Tool/MD5";
+import SHA1 from "./components/Coding Tool/SHA1";
+import InstagramFilters from "./components/Social Media Tools/InstagramFilters";
+import InstagramPostGenerator from "./components/Social Media Tools/InstagramPostGenerator";
+import TweetGenerator from "./components/Social Media Tools/TweetGenerator";
+import Photocensor from "./components/Image Tool/Photocensor";
+import ImageCropper from "./components/Image Tool/ImageCropper";
+import AverageColor from "./components/Image Tool/AverageColor";
+import ImageColorPicker from "./components/Image Tool/ImageColorPicker";
+import SVGpattern from "./components/Image Tool/SVGpattern";
+import BlobGenerator from "./components/Image Tool/BlobGenerator.JSX";
+import Opengraphmetagenerator from "./components/Social Media Tools/Opengraphmetagenerator";
+import Vimeothumbnailgrabber from "./components/Social Media Tools/Vimeothumbnailgrabber";
+import Youtubethumbnailgrabber from "./components/Social Media Tools/Youtubethumbnailgrabber";
+import Twitteradrevenuegenerator from "./components/Social Media Tools/Twitteradrevenuegenerator";
+import Cssclippathgenerator from "./components/CSS Tool/Cssclippathgenerator";
+import Cssloader from "./components/CSS Tool/Cssloader";
+import CSSbackgroundpattern from "./components/CSS Tool/CSSbackgroundpattern";
+import Csscubic from "./components/CSS Tool/Csscubic";
+import Cssglassmorphism from "./components/CSS Tool/Cssglassmorphism";
+import Csstextglitch from "./components/CSS Tool/Csstextglitch";
+import Cssgradientgenerator from "./components/CSS Tool/Cssgradientgenerator";
+import CSStrianglegenerator from "./components/CSS Tool/CSStrianglegenerator";
+import Cssboxshadowgenerator from "./components/CSS Tool/Cssboxshadowgenerator";
+import Borderradiusgenerator from "./components/CSS Tool/Borderradiusgenerator";
+import ImageColorExtractor from "./components/Image Tool/ImageColorExtractor";
+import { FavoritesProvider } from "./Context/FavoriteContext";
 
 function App() {
   return (
     <>
-      <Router>
-         <Navbar/>
-        <Routes>
-          <Route path="/Getfeatured" element={<Getfeatured />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Submit" element={<Submit />} />
-          <Route path="/Productfinder" element={<Productfinder />} />
-          <Route path="/Productfinder1" element={<Productfinder1 />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/" element={<Layout />}>
-            <Route path="/lorem" element={<LoremIpsumGenerator />} />
-            <Route path="/caseconverter" element={<CaseConverter />} />
-            <Route path="/letter" element={<LetterCounter />} />
-            <Route path="/Text" element={<Handwriting />} />
-            <Route path="/BionicReading" element={<BionicReading />} />
-            <Route path="/Whitespace" element={<Whitespace />} />
-            <Route path="/Googlefont" element={<Googlefont />} />
-            <Route path="/Randomizer" element={<Randomizer />} />
-            <Route path="/QRcode" element={<QRcode />} />
-            <Route path="/StrongRandom" element={<StrongRandom />} />
-            <Route path="/Barcode" element={<Barcode />} />
-            <Route path="/AIColor" element={<AIColor />} />
-            <Route path="/HEX" element={<HEX/>} />
-            <Route path="/RGBA" element={<RGBA/>} />
-            <Route path="/ColorMixer" element={<ColorMixer/>} />
-            <Route path="/Resizer" element={<Resizer/>} />
-            <Route path="/Svgpng" element={<Svgpng/>} />
-            <Route path="/ColorShades" element={<ColorShades/>} />
-            <Route path="/CodetoImage" element={<CodetoImage/>} />  
-            <Route path="/Slug" element={<Slug/>} />       
-            <Route path="/Shadow" element={<Shadow/>} />      
-            <Route path="/BaseEncoderDecoder" element={<BaseEncoderDecoder/>} />      
-            <Route path="/HTMLEncoderDecoder" element={<HTMLEncoderDecoder/>} /> 
-            <Route path="/URLEncoderDcoder" element={<URLEncoderDcoder/>} /> 
-            <Route path="/HTMLMinifier" element={<HTMLMinifier/>} /> 
-            <Route path="/CSSMinifier" element={<CSSMinifier/>} /> 
-            <Route path="/JavaScriptMinifier" element={<JavaScriptMinifier/>} /> 
-          </Route>
-        </Routes>
-        <Footer/>
-      </Router>
+      <FavoritesProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/Getfeatured" element={<Getfeatured />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/Submit" element={<Submit />} />
+            <Route path="/Productfinder" element={<Productfinder />} />
+            <Route path="/Productfinder1" element={<Productfinder1 />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
+            <Route path="/" element={<Layout />}>
+              <Route path="/lorem" element={<LoremIpsumGenerator />} />
+              <Route path="/caseconverter" element={<CaseConverter />} />
+              <Route path="/letter" element={<LetterCounter />} />
+              <Route path="/Text" element={<Handwriting />} />
+              <Route path="/BionicReading" element={<BionicReading />} />
+              <Route path="/Whitespace" element={<Whitespace />} />
+              <Route path="/Googlefont" element={<Googlefont />} />
+              <Route path="/Randomizer" element={<Randomizer />} />
+              <Route path="/QRcode" element={<QRcode />} />
+              <Route path="/StrongRandom" element={<StrongRandom />} />
+              <Route path="/Barcode" element={<Barcode />} />
+              <Route path="/AIColor" element={<AIColor />} />
+              <Route path="/HEX" element={<HEX />} />
+              <Route path="/RGBA" element={<RGBA />} />
+              <Route path="/ColorMixer" element={<ColorMixer />} />
+              <Route path="/Resizer" element={<Resizer />} />
+              <Route path="/Svgpng" element={<Svgpng />} />
+              <Route path="/ColorShades" element={<ColorShades />} />
+              <Route path="/CodetoImage" element={<CodetoImage />} />
+              <Route path="/Slug" element={<Slug />} />
+              <Route path="/Shadow" element={<Shadow />} />
+              <Route path="/BaseEncoderDecoder" element={<BaseEncoderDecoder />} />
+              <Route path="/HTMLEncoderDecoder" element={<HTMLEncoderDecoder />} />
+              <Route path="/URLEncoderDcoder" element={<URLEncoderDcoder />} />
+              <Route path="/HTMLMinifier" element={<HTMLMinifier />} />
+              <Route path="/CSSMinifier" element={<CSSMinifier />} />
+              <Route path="/JavaScriptMinifier" element={<JavaScriptMinifier />} />
+              <Route path="/Hf" element={<Hf />} />
+              <Route path="/Cs" element={<Cs />} />
+              <Route path="/Javaf" element={<Javaf />} />
+              <Route path="/MD5" element={<MD5 />} />
+              <Route path="/SHA1" element={<SHA1 />} />
+              <Route path="/InstagramFilters" element={<InstagramFilters />} />
+              <Route path="/InstagramPostGenerator" element={<InstagramPostGenerator />} />
+              <Route path="/TweetGenerator" element={<TweetGenerator />} />
+              <Route path="/Photocensor" element={<Photocensor />} />
+              <Route path="/ImageCropper" element={<ImageCropper />} />
+              <Route path="/AverageColor" element={<AverageColor />} />
+              <Route path="/ImageColorPicker" element={<ImageColorPicker />} />
+              <Route path="/SVGpattern" element={<SVGpattern />} />
+              <Route path="/BlobGenerator" element={<BlobGenerator />} />
+              <Route path="/Opengraphmetagenerator" element={<Opengraphmetagenerator />} />
+              <Route path="/Vimeothumbnailgrabber" element={<Vimeothumbnailgrabber />} />
+              <Route path="/Youtubethumbnailgrabber" element={<Youtubethumbnailgrabber />} />
+              <Route path="/Twitteradrevenuegenerator" element={<Twitteradrevenuegenerator />} />
+              <Route path="/Cssclippathgenerator" element={<Cssclippathgenerator />} />
+              <Route path="/Cssloader" element={<Cssloader />} />
+              <Route path="/CSSbackgroundpattern" element={<CSSbackgroundpattern />} />
+              <Route path="/Csscubic" element={<Csscubic />} />
+              <Route path="/Cssglassmorphism" element={<Cssglassmorphism />} />
+              <Route path="/Csstextglitch" element={<Csstextglitch />} />
+              <Route path="/Cssgradientgenerator" element={<Cssgradientgenerator />} />
+              <Route path="/CSStrianglegenerator" element={<CSStrianglegenerator />} />
+              <Route path="/Cssboxshadowgenerator" element={<Cssboxshadowgenerator />} />
+              <Route path="/Borderradiusgenerator" element={<Borderradiusgenerator />} />
+              <Route path="/ImageColorExtractor" element={<ImageColorExtractor />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </FavoritesProvider>
     </>
   )
 }

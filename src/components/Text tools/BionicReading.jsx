@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useContext,useState, useRef, useEffect } from "react";
 import {
   FaCheck,
-  FaRegCopy,
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
@@ -9,11 +8,12 @@ import {
   FaCopy,
   FaRegStar,
 } from "react-icons/fa6";
-import { MdKeyboardArrowDown, MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { MdKeyboardArrowDown, MdShare } from "react-icons/md";
 import Comment from "./Comment";
 import { FaBookReader } from "react-icons/fa";
 import { FiAlertCircle } from 'react-icons/fi'; // Add this at the top
 import { FiShare2 } from "react-icons/fi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 const fixationLevels = [
   { label: "Very Low - 40%", value: 0.4 },
@@ -45,7 +45,8 @@ const contrastClass = {
   high: "bionic-high",
 };
 
-function BionicReadingConverter() {
+function BionicReadingConverter({ id = "Bionic Reading Converter" }) {
+    const { updateFavorites } = useContext(FavoritesContext);
   const [fixation, setFixation] = useState(0.4);
   const [contrast, setContrast] = useState("medium");
   const [text, setText] = useState("");
@@ -62,8 +63,6 @@ function BionicReadingConverter() {
   const [shareOpen, setShareOpen] = useState(false);
   const [bugDescription, setBugDescription] = useState("");
   const [open, setOpen] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite((v) => !v);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -170,6 +169,26 @@ function BionicReadingConverter() {
     navigator.clipboard.writeText(text);
     alert("Markdown copied!");
   };
+   const onFavoriteToggle = () => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      let newFavorites;
+  
+      if (favorites.includes(id)) {
+        newFavorites = favorites.filter((favId) => favId !== id);
+        setIsFavorite(false);
+      } else {
+        newFavorites = [...favorites, id];
+        setIsFavorite(true);
+      }
+  
+      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+      updateFavorites();
+    };
+  
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
 
   return (
 
@@ -187,13 +206,13 @@ function BionicReadingConverter() {
         <div className="flex flex-col w-full sm:flex-row sm:justify-end gap-2">
           <button
             onClick={() => setShareOpen(true)}
-            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
           >
             <FiShare2 className="mr-2" size={18} />
             Share
           </button>
           <button
-            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border  border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
             onClick={() => setOpen(true)}
           >
             <FiAlertCircle className="text-indigo-600 text-base" />
@@ -202,8 +221,8 @@ function BionicReadingConverter() {
           <button
             onClick={onFavoriteToggle}
             className={`px-3 py-2 rounded-xl border text-sm cursor-pointer ${isFavorite
-                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                : "bg-indigo-50 border-indigo-300 text-indigo-600"
+              ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+              : "bg-indigo-50 border-indigo-500 text-indigo-600"
               }`}
           >
             {isFavorite ? (
@@ -243,7 +262,7 @@ function BionicReadingConverter() {
           <select
             value={fixation}
             onChange={(e) => setFixation(Number(e.target.value))}
-            className="w-full border border-blue-200 rounded px-2 py-1 outline-none text-sm"
+            className="w-full border border-gray-300 rounded px-2 py-1 outline-none text-sm"
           >
             {fixationLevels.map((f) => (
               <option key={f.value} value={f.value}>
@@ -257,7 +276,7 @@ function BionicReadingConverter() {
           <select
             value={contrast}
             onChange={(e) => setContrast(e.target.value)}
-            className="w-full border border-blue-200 rounded px-2 py-1 outline-none text-sm"
+            className="w-full border border-gray-300 rounded px-2 py-1 outline-none text-sm"
           >
             {contrastLevels.map((c) => (
               <option key={c.value} value={c.value}>
@@ -267,7 +286,7 @@ function BionicReadingConverter() {
           </select>
         </div>
         <div
-          className={`border border-blue-200 rounded px-2 py-1 min-h-[2.5rem] text-xs sm:text-base ${contrastClass[contrast]}`}
+          className={`border border-gray-300 rounded px-2 py-1 min-h-[2.5rem] text-xs sm:text-base ${contrastClass[contrast]}`}
           dangerouslySetInnerHTML={{
             __html: bionic || "<span class='text-gray-400'>Output will appear here</span>",
           }}
@@ -281,14 +300,14 @@ function BionicReadingConverter() {
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full h-28 sm:h-32 border border-blue-200 rounded px-2 py-1 resize-none outline-none text-sm"
+            className="w-full h-28 sm:h-32 border border-gray-300 rounded px-2 py-1 resize-none outline-none text-sm"
             placeholder="Type or paste your text here..."
           />
         </div>
         <div>
           <label className="block text-xs sm:text-sm text-gray-500 mb-1">Bionic Reading Mode</label>
           <div
-            className={`w-full h-28 sm:h-32 border border-blue-200 rounded px-2 py-1 overflow-y-auto text-sm ${contrastClass[contrast]}`}
+            className={`w-full h-28 sm:h-32 border border-gray-300 rounded px-2 py-1 overflow-y-auto text-sm ${contrastClass[contrast]}`}
             dangerouslySetInnerHTML={{
               __html: bionic || "<span class='text-gray-400'>Output will appear here</span>",
             }}
@@ -350,8 +369,8 @@ function BionicReadingConverter() {
               <button
                 onClick={() => setActiveTab("tool")}
                 className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "tool"
-                    ? "bg-indigo-600 text-white"
-                    : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                  ? "bg-indigo-600 text-white"
+                  : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
                   }`}
               >
                 ⚙️ Share Tool
@@ -359,8 +378,8 @@ function BionicReadingConverter() {
               <button
                 onClick={() => setActiveTab("home")}
                 className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "home"
-                    ? "bg-indigo-600 text-white"
-                    : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                  ? "bg-indigo-600 text-white"
+                  : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
                   }`}
               >
                 🏠 Share 10015
@@ -386,7 +405,7 @@ function BionicReadingConverter() {
               </div>
             </div>
             <button
-              className="absolute top-4 right-4 text-gray-600 text-lg"
+              className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer"
               onClick={() => setShareOpen(false)}
             >
               ✕
@@ -408,7 +427,7 @@ function BionicReadingConverter() {
             </label>
             <textarea
               id="bugDescription"
-              className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
               placeholder="Description*"
               value={bugDescription}
               onChange={(e) => setBugDescription(e.target.value)}

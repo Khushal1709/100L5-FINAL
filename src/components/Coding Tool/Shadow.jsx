@@ -38,23 +38,24 @@ export default function ShadowGenerator() {
             <>
             {/* Header */}
             <div className="max-w-4xl mx-auto mt-8">
-            <div className="w-full max-w-4xl mx-auto flex justify-between items-center mb-6">
+            <div className="w-full max-w-4xl mx-auto flex justify-between items-center">
                 <div className="flex items-center gap-3 mb-6">
                      <span className="text-4xl text-indigo-400">
                                <FaReact />
                              </span>
-                    <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">React&nbsp;Native&nbsp;Shadow&nbsp;Generator</span>
+                    <span className="text-1xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-sm">React&nbsp;Native&nbsp;Shadow&nbsp;Generator</span>
+                </div>
                 </div>
                 <div className="flex flex-col w-full sm:flex-row sm:justify-end gap-2">
                     <button
                         onClick={() => setShareOpen(true)}
-                        className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+                        className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600  md:mb-0 cursor-pointer"
                     >
                         <FiShare2 className="mr-2" size={18} />
                         Share
                     </button>
                     <button
-                        className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+                        className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
                         onClick={() => setOpen(true)}
                     >
                         <FiAlertCircle className="text-indigo-600 text-base" />
@@ -64,7 +65,7 @@ export default function ShadowGenerator() {
                         onClick={onFavoriteToggle}
                         className={`px-3 py-2 rounded-xl border text-sm cursor-pointer ${isFavorite
                             ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                            : "bg-indigo-50 border-indigo-300 text-indigo-600"
+                            : "bg-indigo-50 border-indigo-600 text-indigo-600"
                             }`}
                     >
                         {isFavorite ? (
@@ -78,14 +79,14 @@ export default function ShadowGenerator() {
                         )}
                     </button>
                     </div>
-                </div>
+              
             
 
             {/* Controls */}
             <div className="w-full max-w-4xl flex gap-6 items-center mb-8">
                 {/* Shadow Color */}
                 <div className="flex flex-col">
-                    <label className="text-xs text-gray-500 mb-1">Shadow Color</label>
+                    <label className="text-xs text-gray-500 mb-1 mt-2">Shadow Color</label>
                     <div className="flex items-center gap-2">
                         <input
                             type="color"
@@ -136,7 +137,7 @@ export default function ShadowGenerator() {
                             ))}
                           </div>
                         </div>
-                        <button className="absolute top-4 right-4 text-gray-600 text-lg" onClick={() => setShareOpen(false)}>✕</button>
+                        <button className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer" onClick={() => setShareOpen(false)}>✕</button>
                       </div>
                     </div>
                   )}
@@ -150,7 +151,7 @@ export default function ShadowGenerator() {
                         <label className="text-sm mb-1 block" htmlFor="bugDescription">Please describe the issue.</label>
                         <textarea
                           id="bugDescription"
-                          className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                          className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                           placeholder="Description*"
                           value={bugDescription}
                           onChange={(e) => setBugDescription(e.target.value)}

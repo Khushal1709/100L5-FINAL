@@ -19,40 +19,155 @@ import { FaBrain } from "react-icons/fa";
 import { IoColorFilterOutline } from "react-icons/io5";
 import { FaHashtag } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSwatchbook } from "react-icons/fa";
 import { HiCircleStack } from "react-icons/hi2";
 import { FaReact } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa";
 import { RiCodeBlock } from "react-icons/ri";
+import { TbHtml } from "react-icons/tb";
+import { PiFileHtmlBold } from "react-icons/pi";
+import { ImHtmlFive2 } from "react-icons/im";
+import { PiFileCssLight } from "react-icons/pi";
+import { PiFileJsxBold } from "react-icons/pi";
+import { LiaHtml5 } from "react-icons/lia";
+import { SiCsswizardry } from "react-icons/si";
+import { AiOutlineRadiusUpright } from "react-icons/ai";
+import { TbBackground } from "react-icons/tb";
+import { FaBoxArchive } from "react-icons/fa6";
+import { MdOutlineDocumentScanner } from "react-icons/md";
+import { LuSpline } from "react-icons/lu";
+import { IoMdPhonePortrait } from "react-icons/io";
+import { MdGradient } from "react-icons/md";
+import { CgGoogle } from "react-icons/cg";
+import { IoTriangleSharp } from "react-icons/io5";
+import { LuLoader } from "react-icons/lu";
+import { IoLockClosedSharp } from "react-icons/io5";
+import { MdFormatColorFill } from "react-icons/md";
+import { GiSlowBlob } from "react-icons/gi";
+import { FaCropSimple } from "react-icons/fa6";
+import { TbColorPicker } from "react-icons/tb";
+import { MdMovieFilter } from "react-icons/md";
+import { BsTextareaResize } from "react-icons/bs";
+import { TbFileTypeSvg } from "react-icons/tb";
+import { SiConvertio } from "react-icons/si";
+import { MdPostAdd } from "react-icons/md";
+import { LuGitGraph } from "react-icons/lu";
+import { FaTwitterSquare } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoVimeo } from "react-icons/io";
+import { FaYoutube } from "react-icons/fa";
+import CaseConverter from "./Text tools/Caseconveter";
+import LoremIpsumGenerator from "./Text tools/LoremIpsum";
+import { FavoritesContext } from "../Context/FavoriteContext";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const { favoriteTools } = useContext(FavoritesContext);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openDropdownKey, setOpenDropdownKey] = useState(null);
   const [selectedTool, setSelectedTool] = useState("");
 
+  // useEffect(() => {
+  //   const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+  //   const favoriteItems = favorites.map((id) => ({
+  //     label: id,
+  //     component: toolComponents[id] || null, // Map ID to component
+  //   }));
+  //   setFavoriteTools(favoriteItems);
+  // }, []);
+
   const toggleDropdown = (key) => {
-    setOpenDropdownKey(prev => (prev === key ? null : key));
+    setOpenDropdownKey((prev) => (prev === key ? null : key));
   };
 
-  const [favoriteTools, setFavoriteTools] = useState([]);
+  // const [favoriteTools, setFavoriteTools] = useState([]);
 
-  const addToFavorites = (tool) => {
-    setFavoriteTools(prev => {
-      if (!prev.find(t => t.label === tool.label)) {
-        return [...prev, tool];
-      }
-      return prev;
-    });
+  // const addToFavorites = (tool) => {
+  //   setFavoriteTools((prev) => {
+  //     if (!prev.find((t) => t.label === tool.label)) {
+  //       return [...prev, tool];
+  //     }
+  //     return prev;
+  //   });
+  // };
+
+  const toolComponents = {
+    "Case Converter": CaseConverter,
+    "Lorem Ipsum Generator": LoremIpsumGenerator,
+    // "Letter Counter": LetterCounter,
   };
+
+  const allTools = [
+    { label: "Case Converter", icon: <VscCaseSensitive />, link: "/caseconverter" },
+    { label: "Lorem Ipsum Generator", icon: <MdOutlineContentPaste />, link: "/lorem" },
+    { label: "Letter Counter", icon: <SlEnvolopeLetter />, link: "/letter" },
+    { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" },
+    { label: "Bionic Reading Converter", icon: <FaBookReader />, link: "/BionicReading" },
+    { label: "Multiple Whitespace Remove", icon: <BsScissors />, link: "/Whitespace" },
+    { label: "Google Fonts Pair Finder", icon: <MdGroups />, link: "/Googlefont" },
+    { label: "Photo Censor", icon: <MdMovieFilter />, link: "/Photocensor" },
+    { label: "Image Resizer", icon: <BsTextareaResize />, link: "/Resizer" },
+    { label: "SVG to PNG Converter", icon: <SiConvertio />, link: "/Svgpng" },
+    { label: "Image Cropper", icon: <FaCropSimple />, link: "/ImageCropper" },
+    { label: "Image Average Color Finder", icon: <MdFormatColorFill />, link: "/AverageColor" },
+    { label: "Image Color Picker", icon: <TbColorPicker />, link: "/ImageColorPicker" },
+    { label: "SVGpattern", icon: <TbFileTypeSvg />, link: "/SVGpattern" },
+    { label: "BlobGenerator", icon: <GiSlowBlob />, link: "/BlobGenerator" },
+    { label: "Image Color Extractor", icon: <FaCropSimple />, link: "/ImageColorExtractor" },
+    { label: "CSS Clip Path Generator", icon: <MdOutlineDocumentScanner />, link: "/Cssclippathgenerator" },
+    { label: "CSS Loader", icon: <LuLoader />, link: "/Cssloader" },
+    { label: "CSS Background Pattern", icon: <TbBackground />, link: "/CSSbackgroundpattern" },
+    { label: "CSS Cubic", icon: <LuSpline />, link: "/Csscubic" },
+    { label: "CSS Glass Morphism", icon: <IoMdPhonePortrait />, link: "/Cssglassmorphism" },
+    { label: "CSS Text Glitch", icon: <CgGoogle />, link: "/Csstextglitch" },
+    { label: "CSS Gradient Generator", icon: <MdGradient />, link: "/Cssgradientgenerator" },
+    { label: "CSS Triangle Generator", icon: <IoTriangleSharp />, link: "/CSStrianglegenerator" },
+    { label: "CSS Box Shadow Generator", icon: <FaBoxArchive />, link: "/Cssboxshadowgenerator" },
+    { label: "Border Radius Generator", icon: <AiOutlineRadiusUpright />, link: "/Borderradiusgenerator" },
+    { label: "Code to Image Generator", icon: <RiCodeBlock />, link: "/CodetoImage" },
+    { label: "URL Slug Generator", icon: <FaLink />, link: "/Slug" },
+    { label: "React Native Shadow Generator", icon: <FaReact />, link: "/Shadow" },
+    { label: "Base64 Encoder Decoder Generator", icon: <FaBrain />, link: "/BaseEncoderDecoder" },
+    { label: "HTML Encoder/Decoder", icon: <TbHtml />, link: "/HTMLEncoderDecoder" },
+    { label: "URL Encoder/Decoder", icon: <PiFileHtmlBold />, link: "/URLEncoderDcoder" },
+    { label: "HTML Minifier", icon: <ImHtmlFive2 />, link: "/HTMLMinifier" },
+    { label: "CSS Minifier", icon: <PiFileCssLight />, link: "/CSSMinifier" },
+    { label: "JavaScript Minifier", icon: <PiFileJsxBold />, link: "/JavaScriptMinifier" },
+    { label: "HTML Formatter", icon: <LiaHtml5 />, link: "/Hf" },
+    { label: "CSS Formatter", icon: <SiCsswizardry />, link: "/Cs" },
+    { label: "Javascript Formatter", icon: <PiFileJsxBold />, link: "/Javaf" },
+    { label: "AI Color Palette Generator", icon: <FaBrain />, link: "/AIColor" },
+    { label: "HEX to RGBA Converter", icon: <IoColorFilterOutline />, link: "/HEX" },
+    { label: "RGBA to HEX Converter", icon: <FaHashtag />, link: "/RGBA" },
+    { label: "Color Mixer", icon: <HiCircleStack />, link: "/ColorMixer" },
+    { label: "Color Shades Generator", icon: <FaSwatchbook />, link: "/ColorShades" },
+    { label: "Instagram Filters", icon: <MdMovieFilter />, link: "/InstagramFilters" },
+    { label: "Instagram Post Generator", icon: <MdPostAdd />, link: "/InstagramPostGenerator" },
+    { label: "Tweet Generator", icon: <FaTwitterSquare />, link: "/TweetGenerator" },
+    { label: "Open Graph Meta Generator", icon: <LuGitGraph />, link: "/Opengraphmetagenerator" },
+    { label: "Vimeo Thumbnail Grabber", icon: <IoLogoVimeo />, link: "/Vimeothumbnailgrabber" },
+    { label: "YouTube Thumbnail Grabber", icon: <FaYoutube />, link: "/Youtubethumbnailgrabber" },
+    { label: "Twitter Ad Revenue Generator", icon: <FaXTwitter />, link: "/Twitteradrevenuegenerator" },
+    { label: "Strong Random Password Generator", icon: <BiSolidLock />, link: "/StrongRandom" },
+    { label: "List Randomizer", icon: <SlEnvolopeLetter />, link: "/Randomizer" },
+    { label: "QR Code Generator", icon: <BsQrCode />, link: "/QRcode" },
+    { label: "Bar Code Generator", icon: <ImBarcode />, link: "/Barcode" },
+  ];
+
+  const favoriteItems = favoriteTools
+    .map((id) => allTools.find((tool) => tool.label === id))
+    .filter(Boolean); // Remove undefined items
+
+
 
   const sections = [
     {
       key: "favorite",
       icon: <IoText />,
       label: "Favorite Tools",
-      items: favoriteTools,
+      items: favoriteItems,
     },
     {
       key: "text",
@@ -73,16 +188,36 @@ export default function Sidebar() {
       icon: <IoImages />,
       label: "Image Tools",
       items: [
-        { label: "Photo Censor", icon: <VscCaseSensitive />, link: "/ImageCensor" },
-        { label: "Image Resizer", icon: <VscCaseSensitive />, link: "/Resizer" },
-        { label: "SVG to PNG Converter", icon: <VscCaseSensitive />, link: "/Svgpng" },
+        { label: "Photo Censor", icon: <MdMovieFilter />, link: "/Photocensor" },
+        { label: "Image Resizer", icon: <BsTextareaResize />, link: "/Resizer" },
+        { label: "SVG to PNG Converter", icon: <SiConvertio />, link: "/Svgpng" },
+        { label: "Image Cropper", icon: <FaCropSimple />, link: "/ImageCropper" },
+        { label: "Image Average Color Finder", icon: <MdFormatColorFill />, link: "/AverageColor" },
+        { label: "Image Color Picker", icon: <TbColorPicker />, link: "/ImageColorPicker" },
+        { label: "SVGpattern", icon: <TbFileTypeSvg />, link: "/SVGpattern" },
+        { label: "BlobGenerator", icon: <GiSlowBlob />, link: "/BlobGenerator" },
+        { label: "Image Color Extractor", icon: <FaCropSimple />, link: "/ImageColorExtractor" },
+
       ],
     },
     {
       key: "css",
       icon: <IoLogoCss3 />,
       label: "CSS Tools",
-      items: [{ label: "Coming Soon...", icon: <IoLogoCss3 /> }],
+      items: [
+        { label: "CSS Clip Path Generator", icon: <MdOutlineDocumentScanner />, link: "/Cssclippathgenerator" },
+        { label: "CSS Loader", icon: <LuLoader />, link: "/Cssloader" },
+        { label: "CSS Background Pattern", icon: <TbBackground />, link: "/CSSbackgroundpattern" },
+        { label: "CSS Cubic", icon: <LuSpline />, link: "/Csscubic" },
+        { label: "CSS Glass Morphism", icon: <IoMdPhonePortrait />, link: "/Cssglassmorphism" },
+        { label: "CSS Text Glitch", icon: <CgGoogle />, link: "/Csstextglitch" },
+        { label: "CSS Gradient Generator", icon: <MdGradient />, link: "/Cssgradientgenerator" },
+        { label: "CSS Triangle Generator", icon: <IoTriangleSharp />, link: "/CSStrianglegenerator" },
+        { label: "CSS Box Shadow Generator", icon: <FaBoxArchive />, link: "/Cssboxshadowgenerator" },
+        { label: "Border Radius Generator", icon: <AiOutlineRadiusUpright />, link: "/Borderradiusgenerator" },
+
+
+      ],
     },
     {
       key: "coding",
@@ -92,13 +227,17 @@ export default function Sidebar() {
       { label: "URL Slug Generator", icon: <FaLink />, link: "/Slug" },
       { label: "React Native Shadow Generator", icon: <FaReact />, link: "/Shadow" },
       { label: "Base64 Encoder Decoder Generator", icon: <FaBrain />, link: "/BaseEncoderDecoder" },
-      { label: "HTML Encoder/Decoder", icon: <FaBrain />, link: "/HTMLEncoderDecoder" },
-      { label: "URL Encoder/Decoder", icon: <FaBrain />, link: "/URLEncoderDcoder" },
-      { label: "HTML Minifier", icon: <FaBrain />, link: "/HTMLMinifier"},
-      { label: "CSS Minifier", icon: <FaBrain />, link: "/CSSMinifier" },
-        { label: "JavaScript Minifier", icon: <FaBrain />, link: "/JavaScriptMinifier" },
-
-      ],
+      { label: "HTML Encoder/Decoder", icon: <TbHtml />, link: "/HTMLEncoderDecoder" },
+      { label: "URL Encoder/Decoder", icon: <PiFileHtmlBold />, link: "/URLEncoderDcoder" },
+      { label: "HTML Minifier", icon: <ImHtmlFive2 />, link: "/HTMLMinifier" },
+      { label: "CSS Minifier", icon: <PiFileCssLight />, link: "/CSSMinifier" },
+      { label: "JavaScript Minifier", icon: <PiFileJsxBold />, link: "/JavaScriptMinifier" },
+      { label: "HTML Formatter", icon: <LiaHtml5 />, link: "/Hf" },
+      { label: "CSS Formatter", icon: <SiCsswizardry />, link: "/Cs" },
+      { label: "Javascript Formatter", icon: <PiFileJsxBold />, link: "/Javaf" },
+        // { label: "MD5 Encrypt/Decrypt", icon: <IoLockClosedSharp />, link: "/MD5" },
+        // { label: "SHA1 Encrypt/Decrypt", icon: <IoLockClosedSharp />, link: "/SHA1" },
+      ]
     },
     {
       key: "color",
@@ -116,7 +255,15 @@ export default function Sidebar() {
       key: "social",
       icon: <TbSocial />,
       label: "Social Media Tools",
-      items: [{ label: "Coming Soon...", icon: <TbSocial /> }],
+      items: [
+        { label: "Instagram Filters", icon: <MdMovieFilter />, link: "/InstagramFilters" },
+        { label: "Instagram Post Generator", icon: <MdPostAdd />, link: "/InstagramPostGenerator" },
+        { label: "Tweet Generator", icon: <FaTwitterSquare />, link: "/TweetGenerator" },
+        { label: "Open Graph Meta Generator", icon: <LuGitGraph />, link: "/Opengraphmetagenerator" },
+        { label: "Vimeo Thumbnail Grabber", icon: <IoLogoVimeo />, link: "/Vimeothumbnailgrabber" },
+        { label: "YouTube Thumbnail Grabber", icon: <FaYoutube />, link: "/Youtubethumbnailgrabber" },
+        { label: "Twitter Ad Revenue Generator", icon: <FaXTwitter />, link: "/Twitteradrevenuegenerator" },
+      ],
     },
     {
       key: "misc",
@@ -180,8 +327,8 @@ export default function Sidebar() {
                       setSidebarOpen(false); // close on mobile
                     }}
                     className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${selectedTool === item.label
-                        ? "bg-blue-100 text-blue-600 font-semibold"
-                        : "text-gray-600 hover:bg-gray-100"
+                      ? "bg-blue-100 text-blue-600 font-semibold"
+                      : "text-gray-600 hover:bg-gray-100"
                       }`}
                   >
                     {item.icon}

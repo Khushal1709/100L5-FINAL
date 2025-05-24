@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <header className="w-full top-0 left-0 z-50 relative bg-transparent">
       <div
-        className={`max-w-7xl mx-auto px-4 py-3 md:px-8 flex justify-between items-center ${
+        className={`w-full mx-auto px-4 py-3 md:px-8 flex justify-between items-center ${
           mobileMenuOpen ? "relative z-50" : ""
         }`}
       >
@@ -284,7 +284,7 @@ export default function Navbar() {
         )}
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex md:flex-row md:items-center md:space-y-0 md:space-x-6 md:py-0">
+        <nav className="hidden md:flex md:flex-row md:items-center md:space-y-0 md:space-x-6 md:py-0 lg:space-x-10">
           {/* Search Icon (Desktop) */}
           <div className="relative">
             <button className="p-2 rounded-lg" onClick={toggleSearch}>

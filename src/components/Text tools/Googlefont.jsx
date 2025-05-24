@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect,useContext,useState } from "react";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import {
   FaCheck,
@@ -14,6 +14,7 @@ import Comment from "../Text tools/Comment";
 import { MdGroups } from "react-icons/md";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 // Sample font data
 const fontOptions = [
@@ -65,11 +66,11 @@ function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-export default function FontPairingTool() {
+export default function FontPairingTool({ id = "Google Fonts Pair Finder" }) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [headingFont, setHeadingFont] = useState(fontOptions[0]);
   const [headingSize, setHeadingSize] = useState(27);
   const [headingWeight, setHeadingWeight] = useState(700);
-
   const [bodyFont, setBodyFont] = useState(fontOptions[0]);
   const [bodySize, setBodySize] = useState(16);
   const [bodyWeight, setBodyWeight] = useState(400);
@@ -78,10 +79,6 @@ export default function FontPairingTool() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-
-
   const [previewType, setPreviewType] = useState("Profile");
   const [isFav, setIsFav] = useState(false);
 
@@ -100,6 +97,28 @@ export default function FontPairingTool() {
     }
   }
 
+   const onFavoriteToggle = () => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      let newFavorites;
+  
+      if (favorites.includes(id)) {
+        newFavorites = favorites.filter((favId) => favId !== id);
+        setIsFavorite(false);
+      } else {
+        newFavorites = [...favorites, id];
+        setIsFavorite(true);
+      }
+  
+      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+      updateFavorites();
+    };
+  
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
+  
+
   return (
     <div className="max-w-4xl mx-auto mt-7">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -114,13 +133,13 @@ export default function FontPairingTool() {
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
           <button
             onClick={() => setShareOpen(true)}
-            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border  border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
           >
             <FiShare2 className="mr-2" size={18} />
             Share
           </button>
           <button
-            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border  border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
             onClick={() => setOpen(true)}
           >
             <FiAlertCircle className="text-indigo-600 text-base" />
@@ -130,7 +149,7 @@ export default function FontPairingTool() {
             onClick={onFavoriteToggle}
             className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
               ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-              : "bg-indigo-50 border-indigo-300 text-indigo-600"
+              : "bg-indigo-50 border-indigo-500 text-indigo-600"
               }`}
           >
             {isFavorite ? (
@@ -196,7 +215,7 @@ export default function FontPairingTool() {
               </div>
             </div>
             <button
-              className="absolute top-4 right-4 text-gray-600 text-lg"
+              className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer"
               onClick={() => setShareOpen(false)}
             >
               ✕
@@ -218,7 +237,7 @@ export default function FontPairingTool() {
             </label>
             <textarea
               id="bugDescription"
-              className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
               placeholder="Description*"
               value={bugDescription}
               onChange={(e) => setBugDescription(e.target.value)}
@@ -253,14 +272,14 @@ export default function FontPairingTool() {
       <div className="grid md:grid-cols-2 gap-4 mb-6">
         <div>
           <h2 className="font-semibold mb-2">Heading Font</h2>
-          <select value={headingFont.name} onChange={e => setHeadingFont(fontOptions.find(f => f.name === e.target.value))} className="border border-blue-300 outline-none rounded px-2 py-1 w-full">
+          <select value={headingFont.name} onChange={e => setHeadingFont(fontOptions.find(f => f.name === e.target.value))} className="border border-gray-300 outline-none rounded px-2 py-1 w-full">
             {fontOptions.map(font => <option key={font.name} value={font.name}>{font.name}</option>)}
           </select>
           <div className="flex gap-2 mt-2">
-            <select value={headingSize} onChange={e => setHeadingSize(Number(e.target.value))} className="border border-blue-300 outline-none px-2 py-1">
+            <select value={headingSize} onChange={e => setHeadingSize(Number(e.target.value))} className="border border-gray-300 outline-none px-2 py-1">
               {headingFont.sizes.map(size => <option key={size}>{size}</option>)}
             </select>
-            <select value={headingWeight} onChange={e => setHeadingWeight(Number(e.target.value))} className="border border-blue-300 outline-none px-2 py-1">
+            <select value={headingWeight} onChange={e => setHeadingWeight(Number(e.target.value))} className="border border-gray-300 outline-none px-2 py-1">
               {headingFont.weights.map(weight => <option key={weight}>{weight}</option>)}
             </select>
           </div>
@@ -268,14 +287,14 @@ export default function FontPairingTool() {
 
         <div>
           <h2 className="font-semibold mb-2">Body Font</h2>
-          <select value={bodyFont.name} onChange={e => setBodyFont(fontOptions.find(f => f.name === e.target.value))} className="border border-blue-300 outline-none rounded px-2 py-1 w-full">
+          <select value={bodyFont.name} onChange={e => setBodyFont(fontOptions.find(f => f.name === e.target.value))} className="border border-gray-300 outline-none rounded px-2 py-1 w-full">
             {fontOptions.map(font => <option key={font.name} value={font.name}>{font.name}</option>)}
           </select>
           <div className="flex gap-2 mt-2">
-            <select value={bodySize} onChange={e => setBodySize(Number(e.target.value))} className="border border-blue-300 outline-none px-2 py-1">
+            <select value={bodySize} onChange={e => setBodySize(Number(e.target.value))} className="border border-gray-300 outline-none px-2 py-1">
               {bodyFont.sizes.map(size => <option key={size}>{size}</option>)}
             </select>
-            <select value={bodyWeight} onChange={e => setBodyWeight(Number(e.target.value))} className="border border-blue-300 outline-none px-2 py-1">
+            <select value={bodyWeight} onChange={e => setBodyWeight(Number(e.target.value))} className="border border-gray-300 outline-none px-2 py-1">
               {bodyFont.weights.map(weight => <option key={weight}>{weight}</option>)}
             </select>
           </div>
@@ -295,7 +314,7 @@ export default function FontPairingTool() {
         <button onClick={() => handleShuffle("both")} className="px-4 py-2 border-indigo-300 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF]  text-black rounded cursor-pointer">Shuffle</button>
       </div>
 
-      <div className="border border-blue-300 p-4 rounded shadow text-center">
+      <div className="border border-gray-300 p-4 rounded shadow text-center">
         {previewType === "Profile" && (
           <div>
             <img

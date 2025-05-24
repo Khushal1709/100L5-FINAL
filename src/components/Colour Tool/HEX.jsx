@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { IoColorFilterOutline } from "react-icons/io5";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { MdShare } from "react-icons/md";
 import {
   FaCheck,
-  FaRegCopy,
+  FaRegStar,
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
   FaEnvelope,
   FaCopy,
-  FaRegStar,
 } from "react-icons/fa6";
-import Comment from "../Text tools/Comment";import { FiAlertCircle } from 'react-icons/fi';
-import { FiShare2 } from "react-icons/fi";
+import Comment from "../Text tools/Comment";
+import { FiAlertCircle, FiShare2 } from 'react-icons/fi';
 
 const HexToRgbaConverter = () => {
   const [hex, setHex] = useState('#545454');
@@ -29,6 +28,7 @@ const HexToRgbaConverter = () => {
   const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
   const isValidHex = (value) => /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(value);
+
   const hexToRgb = (hex) => {
     let hexClean = hex.replace('#', '');
     if (hexClean.length === 3) {
@@ -101,38 +101,39 @@ const HexToRgbaConverter = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 mt-3">
+    <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-8 mt-3">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
           <span className="text-4xl text-indigo-400">
             <IoColorFilterOutline />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
             HEX&nbsp;to&nbsp;RGBA&nbsp;Converter
           </h1>
         </div>
-        <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+        <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-2 sm:gap-3">
           <button
-              onClick={() => setShareOpen(true)}
-              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
-            >
-              <FiShare2 className="mr-2" size={18} />
-              Share
-            </button>
-         <button
-              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
-              onClick={() => setOpen(true)}
-            >
-              <FiAlertCircle className="text-indigo-600 text-base" />
-              Report Bug
-            </button>
+            onClick={() => setShareOpen(true)}
+            className="flex items-center justify-center w-full sm:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer"
+          >
+            <FiShare2 className="mr-2" size={18} />
+            Share
+          </button>
+          <button
+            className="flex items-center justify-center gap-2 w-full sm:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+            onClick={() => setOpen(true)}
+          >
+            <FiAlertCircle className="text-indigo-600 text-base" />
+            Report Bug
+          </button>
           <button
             onClick={onFavoriteToggle}
-            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
-              ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-              : "bg-indigo-50 border-indigo-300 text-indigo-600"
-              }`}
+            className={`px-3 py-2 rounded-xl border text-sm w-full sm:w-auto ${
+              isFavorite
+                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                : "bg-indigo-50 border-indigo-500 text-indigo-600"
+            }`}
           >
             {isFavorite ? (
               <>
@@ -140,55 +141,57 @@ const HexToRgbaConverter = () => {
               </>
             ) : (
               <>
-                <FaRegStar className="inline-block mr-1" size={12} /> Add to
-                Favorites
+                <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
               </>
             )}
           </button>
         </div>
       </div>
+
       {/* Share Popup */}
       {shareOpen && (
-        <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
+        <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center p-2">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-xl max-w-xs sm:max-w-md w-full relative overflow-y-auto max-h-[90vh]">
             <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
               <button
                 onClick={() => setActiveTab("tool")}
-                className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "tool"
-                  ? "bg-indigo-600 text-white"
-                  : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
-                  }`}
+                className={`w-1/2 px-2 py-2 rounded-xl font-semibold text-sm ${
+                  activeTab === "tool"
+                    ? "bg-indigo-600 text-white"
+                    : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                }`}
               >
                 ⚙️ Share Tool
               </button>
               <button
                 onClick={() => setActiveTab("home")}
-                className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "home"
-                  ? "bg-indigo-600 text-white"
-                  : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
-                  }`}
+                className={`w-1/2 px-2 py-2 rounded-xl font-semibold text-sm ${
+                  activeTab === "home"
+                    ? "bg-indigo-600 text-white"
+                    : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                }`}
               >
                 🏠 Share 10015
               </button>
             </div>
-            <div className="text-center border border-gray-300 rounded-xl p-6">
+            <div className="text-center border border-gray-300 rounded-xl p-4 sm:p-6">
               <p className="text-sm mb-1 text-gray-500">
                 You are currently sharing:
               </p>
-              <h2 className="text-xl font-semibold mb-5 text-gray-600">
+              <h2 className="text-lg sm:text-xl font-semibold mb-5 text-gray-600">
                 {activeTab === "tool"
                   ? "Google Fonts Pair Finder"
                   : "10015 Tools"}
               </h2>
               <div className="flex justify-center mb-6">
-                <MdShare className="text-indigo-500 text-7xl" />
+                <MdShare className="text-indigo-500 text-5xl sm:text-7xl" />
               </div>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-3 sm:gap-4">
                 {[FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaCopy].map(
                   (Icon, i) => (
                     <button
                       key={i}
-                      className="text-white bg-indigo-500 rounded-full w-10 h-10 flex items-center justify-center"
+                      className="text-white bg-indigo-500 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center"
                     >
                       <Icon />
                     </button>
@@ -197,7 +200,7 @@ const HexToRgbaConverter = () => {
               </div>
             </div>
             <button
-              className="absolute top-4 right-4 text-gray-600 text-lg"
+              className="absolute top-2 right-4 text-gray-600 text-lg cursor-pointer"
               onClick={() => setShareOpen(false)}
             >
               ✕
@@ -208,23 +211,23 @@ const HexToRgbaConverter = () => {
 
       {/* Bug Report Popup */}
       {open && (
-        <div className="fixed inset-0 bg-black/30 z-20 flex justify-center items-center">
-          <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
-            <h2 className="text-xl font-bold mb-2">Bug Report</h2>
+        <div className="fixed inset-0 bg-black/30 flex z-40 justify-center items-center p-2">
+          <div className="bg-white max-w-xs sm:max-w-md w-full p-4 sm:p-6 rounded-2xl shadow-lg relative overflow-y-auto max-h-[90vh]">
+            <h2 className="text-lg sm:text-xl font-bold mb-2">Bug Report</h2>
             <p className="text-sm mb-4">
-              <strong>Tool:</strong> Lorem Ipsum Generator
+              <strong>Tool:</strong> Hex to RGBA Converter
             </p>
             <label className="text-sm mb-1 block" htmlFor="bugDescription">
               Please describe the issue.
             </label>
             <textarea
               id="bugDescription"
-              className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-2 sm:p-3 border border-gray-300 rounded-xl text-base h-24 sm:h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
               placeholder="Description*"
               value={bugDescription}
               onChange={(e) => setBugDescription(e.target.value)}
             />
-            <div className="flex justify-end gap-3 mt-4">
+            <div className="flex flex-col sm:flex-row justify-end gap-3 mt-4">
               <button
                 onClick={() => setOpen(false)}
                 className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
@@ -237,7 +240,6 @@ const HexToRgbaConverter = () => {
                     alert("Please enter a description.");
                     return;
                   }
-                  console.log("Bug description submitted:", bugDescription);
                   setOpen(false);
                   setBugDescription("");
                 }}
@@ -250,12 +252,11 @@ const HexToRgbaConverter = () => {
         </div>
       )}
 
-
       {/* Input Section */}
       <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
         <input
           type="text"
-          className={`w-full sm:w-1/3 px-4 py-2 border border-blue-300 outline-none rounded-md ${error ? 'border-red-400' : ''}`}
+          className={`w-full sm:w-1/3 px-4 py-2 border border-gray-300 outline-none rounded-md ${error ? 'border-red-400' : ''}`}
           value={hex}
           onChange={(e) => setHex(e.target.value)}
           placeholder="#545454"
@@ -263,13 +264,13 @@ const HexToRgbaConverter = () => {
         />
         <button
           onClick={convert}
-          className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-6 py-2 rounded-md"
+          className="w-full sm:w-auto bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-6 py-2 rounded-md"
         >
           Convert
         </button>
         <input
           type="text"
-          className="w-full sm:w-1/3 px-4 py-2 border border-blue-300 outline-none rounded-md"
+          className="w-full sm:w-1/3 px-4 py-2 border border-gray-300 outline-none rounded-md"
           value={rgba}
           readOnly
         />
@@ -287,18 +288,18 @@ const HexToRgbaConverter = () => {
         <button
           onClick={copyToClipboard}
           disabled={!rgba}
-          className={`bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] cursor-pointer text-black px-6 py-2 rounded-md flex items-center gap-2
-              ${!rgba ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-50'}
-            `}
+          className={`w-full sm:w-auto bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] cursor-pointer text-black px-6 py-2 rounded-md flex items-center gap-2
+            ${!rgba ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-50'}
+          `}
         >
           {copied ? 'Copied!' : 'Copy RGBA Color'}
         </button>
       </div>
 
       {/* Color Preview */}
-      <div className="flex items-stretch max-w-md bg-white rounded-lg overflow-hidden shadow-lg mx-auto">
-        <div className="w-1/2" style={{ backgroundColor: isValidHex(hex) ? hex : '#fff' }} />
-        <div className="w-1/2 p-4 text-sm">
+      <div className="flex flex-col sm:flex-row items-stretch max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+        <div className="w-full sm:w-1/2 h-20 sm:h-auto" style={{ backgroundColor: isValidHex(hex) ? hex : '#fff' }} />
+        <div className="w-full sm:w-1/2 p-4 text-sm">
           <p className="mb-2"><strong>HEX</strong><br />{hex}</p>
           <p className="mb-2"><strong>RGBA</strong><br />{rgba}</p>
           <p><strong>HSLA</strong><br />{hsla}</p>

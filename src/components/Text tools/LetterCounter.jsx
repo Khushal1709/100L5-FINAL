@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext,useEffect } from "react";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
@@ -14,6 +14,8 @@ import {
 } from "react-icons/fa6";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 // --- Letter Counter Limits ---
 const LIMITS = [
   { name: "Meta Title", minmax: "Max", limit: 55, type: "Letter" },
@@ -42,7 +44,8 @@ const countLetters = (text) => {
 };
 
 // --- LetterCounter Component ---
-function LetterCounter() {
+function LetterCounter({ id = "Letter Counter" }) {
+    const { updateFavorites } = useContext(FavoritesContext);
   const [text, setText] = useState("");
 
   const sentenceCount = countSentences(text);
@@ -68,12 +71,34 @@ function LetterCounter() {
       );
     }
   };
+  
   const [bugDescription, setBugDescription] = useState("");
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
   const [open, setOpen] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+
+  const onFavoriteToggle = () => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    let newFavorites;
+
+    if (favorites.includes(id)) {
+      newFavorites = favorites.filter((favId) => favId !== id);
+      setIsFavorite(false);
+    } else {
+      newFavorites = [...favorites, id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+    updateFavorites();
+  };
+
+   useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
+  
 
   return (
     <div className="max-w-4xl mx-auto mt-8">
@@ -87,13 +112,13 @@ function LetterCounter() {
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
            <button
               onClick={() => setShareOpen(true)}
-              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border  border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
             >
               <FiShare2 className="mr-2" size={18} />
               Share
             </button>
            <button
-              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border  border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
               onClick={() => setOpen(true)}
             >
               <FiAlertCircle className="text-indigo-600 text-base" />
@@ -101,7 +126,7 @@ function LetterCounter() {
             </button>
           <button
             onClick={onFavoriteToggle}
-            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-300 text-indigo-600"
+            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-600 text-indigo-600"
               }`}
           >
             {isFavorite ? (
@@ -139,7 +164,7 @@ function LetterCounter() {
                 ))}
               </div>
             </div>
-            <button className="absolute top-4 right-4 text-gray-600 text-lg" onClick={() => setShareOpen(false)}>✕</button>
+            <button className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer" onClick={() => setShareOpen(false)}>✕</button>
           </div>
         </div>
       )}
@@ -153,7 +178,7 @@ function LetterCounter() {
             <label className="text-sm mb-1 block" htmlFor="bugDescription">Please describe the issue.</label>
             <textarea
               id="bugDescription"
-              className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
               placeholder="Description*"
               value={bugDescription}
               onChange={(e) => setBugDescription(e.target.value)}
@@ -179,24 +204,23 @@ function LetterCounter() {
         </div>
       )}
 
-
       <textarea
-        className="w-full h-40 p-4 border border-blue-200 rounded-2xl resize-none text-base focus:outline-none focus:ring-1 focus:ring-indigo-300 bg-white mb-4"
+        className="w-full h-40 p-4 border border-gray-300 rounded-2xl resize-none text-base focus:outline-none focus:ring-1 focus:ring-indigo-300 bg-white mb-4"
         placeholder="Enter your text..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
 
       <div className="flex flex-wrap gap-4 mb-6">
-        <div className="flex-1 bg-white rounded-lg border border-blue-200 py-4 flex flex-col items-center">
+        <div className="flex-1 bg-white rounded-lg border border-gray-300 py-4 flex flex-col items-center">
           <span className="text-2xl font-bold text-gray-900">{sentenceCount}</span>
           <span className="text-xs text-gray-500 mt-1">sentence</span>
         </div>
-        <div className="flex-1 bg-white rounded-lg border border-blue-200 py-4 flex flex-col items-center">
+        <div className="flex-1 bg-white rounded-lg border border-gray-300 py-4 flex flex-col items-center">
           <span className="text-2xl font-bold text-gray-900">{wordCount}</span>
           <span className="text-xs text-gray-500 mt-1">word</span>
         </div>
-        <div className="flex-1 bg-white rounded-lg border border-blue-200 py-4 flex flex-col items-center">
+        <div className="flex-1 bg-white rounded-lg border border-gray-300 py-4 flex flex-col items-center">
           <span className="text-2xl font-bold text-gray-900">{letterCount}</span>
           <span className="text-xs text-gray-500 mt-1">letter</span>
         </div>
@@ -207,7 +231,7 @@ function LetterCounter() {
           Web and Social Media Limits
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm border border-blue-200 rounded-lg bg-white">
+          <table className="w-full text-sm border border-gray-300 rounded-lg bg-white">
             <thead>
               <tr className="bg-gray-50">
                 <th className="py-2 px-3 text-left font-semibold">Name</th>
@@ -231,7 +255,6 @@ function LetterCounter() {
           </table>
         </div>
       </div>
-
       <Comment />
     </div>
   );

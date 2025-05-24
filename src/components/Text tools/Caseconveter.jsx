@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-// Import your icons and Comment component here, e.g.:
+import React, { useContext, useEffect, useState } from "react";
 import { VscCaseSensitive } from "react-icons/vsc";
 import { FaCheck, FaRegStar, FaRegCopy, FaCopy, FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-function CaseConverter({ isFavorite, onFavoriteToggle }) {
+function CaseConverter({ id = "Case Converter" }) {
+  const { updateFavorites } = useContext(FavoritesContext);
+
   const [text, setText] = useState("");
   const [copied, setCopied] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const toSentenceCase = () => {
     setText(
@@ -52,6 +55,27 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
 
+  const onFavoriteToggle = () => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    let newFavorites;
+
+    if (favorites.includes(id)) {
+      newFavorites = favorites.filter((favId) => favId !== id);
+      setIsFavorite(false);
+    } else {
+      newFavorites = [...favorites, id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+    updateFavorites();
+  };
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    setIsFavorite(favorites.includes(id));
+  }, [id]);
+
   return (
     <>
       <div className="max-w-4xl mx-auto mt-7">
@@ -65,7 +89,7 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
           <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
             <button
               onClick={() => setShareOpen(true)}
-              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
             >
               <FiShare2 className="mr-2" size={18} />
               Share
@@ -78,8 +102,8 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
                     <button
                       onClick={() => setActiveTab("tool")}
                       className={`px-4 py-2 rounded-xl font-semibold text-sm flex items-center gap-1 w-1/2 justify-center cursor-pointer ${activeTab === "tool"
-                          ? "bg-indigo-600 text-white "
-                          : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                        ? "bg-indigo-600 text-white "
+                        : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
                         }`}
                     >
                       ⚙️ Share Tool
@@ -87,8 +111,8 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
                     <button
                       onClick={() => setActiveTab("home")}
                       className={`px-4 py-2 rounded-xl font-semibold text-sm flex items-center gap-1 w-1/2 justify-center cursor-pointer ${activeTab === "home"
-                          ? "bg-indigo-600 text-white"
-                          : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
+                        ? "bg-indigo-600 text-white"
+                        : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
                         }`}
                     >
                       🏠 Share 10015
@@ -131,7 +155,7 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
 
                   {/* Close Button */}
                   <button
-                    className="absolute top-4 right-4 text-gray-600 text-lg"
+                    className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer"
                     onClick={() => setShareOpen(false)}
                   >
                     ✕
@@ -157,7 +181,7 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
                   </label>
                   <textarea
                     id="bugDescription"
-                    className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                    className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                     placeholder="Description*"
                     value={bugDescription}
                     onChange={(e) => setBugDescription(e.target.value)}
@@ -190,7 +214,7 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
             )}
 
             <button
-              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border  border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
               onClick={() => setOpen(true)}
             >
               <FiAlertCircle className="text-indigo-600 text-base" />
@@ -198,20 +222,18 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
             </button>
             <button
               onClick={onFavoriteToggle}
-              className={`flex items-center justify-center w-full md:w-auto px-3 py-2 text-sm rounded-xl border transition-all mt-2 md:mt-0 cursor-pointer ${isFavorite
-                  ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                  : "bg-indigo-50 border-indigo-300 text-indigo-600"
+              className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer border-indigo-600 ${isFavorite
+                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                : "bg-indigo-50 border-indigo-300 text-indigo-600"
                 }`}
             >
               {isFavorite ? (
                 <>
-                  <FaCheck className="mr-1" size={12} />
-                  Added
+                  <FaCheck className="inline-block mr-1" size={12} /> Added
                 </>
               ) : (
                 <>
-                  <FaRegStar className="mr-1" size={12} />
-                  Add to Favorites
+                  <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
                 </>
               )}
             </button>
@@ -219,7 +241,7 @@ function CaseConverter({ isFavorite, onFavoriteToggle }) {
         </div>
 
         <textarea
-          className="w-full p-4 border border-blue-300 rounded-2xl text-base mb-5 h-40 focus:outline-none focus:ring-1 focus:ring-indigo-300"
+          className="w-full p-4 border border-gray-300 rounded-2xl text-base mb-5 h-40 focus:outline-none focus:ring-1 focus:ring-indigo-300"
           placeholder="Enter your text..."
           value={text}
           onChange={(e) => setText(e.target.value)}

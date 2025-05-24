@@ -70,25 +70,26 @@ const UrlSlugGenerator = () => {
     const [activeTab, setActiveTab] = useState("tool");
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6 rounded-xl space-y-6">
+    <div className="max-w-4xl mx-auto mt-7">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-2 mb-2 sm:mb-0">
        <span className="text-4xl text-indigo-400">
                   <FaLink />
                 </span>
       <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
         URL&nbsp;Slug&nbsp;Generator
       </h1>
+      </div>
          <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
                 <button
                   onClick={() => setShareOpen(true)}
-                  className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+                  className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
                 >
                   <FiShare2 className="mr-2" size={18} />
                   Share
                 </button>
                 <button
-                  className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+                  className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
                   onClick={() => setOpen(true)}
                 >
                   <FiAlertCircle className="text-indigo-600 text-base" />
@@ -96,7 +97,7 @@ const UrlSlugGenerator = () => {
                 </button>
                 <button
                   onClick={onFavoriteToggle}
-                  className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-300 text-indigo-600"
+                  className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-500 text-indigo-600"
                     }`}
                 >
                   {isFavorite ? (
@@ -109,7 +110,6 @@ const UrlSlugGenerator = () => {
                     </>
                   )}
                 </button>
-              </div>
               </div>
               </div>
             {/* Share Popup */}
@@ -134,7 +134,7 @@ const UrlSlugGenerator = () => {
                          ))}
                        </div>
                      </div>
-                     <button className="absolute top-4 right-4 text-gray-600 text-lg" onClick={() => setShareOpen(false)}>✕</button>
+                     <button className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer" onClick={() => setShareOpen(false)}>✕</button>
                    </div>
                  </div>
                )}
@@ -148,7 +148,7 @@ const UrlSlugGenerator = () => {
                      <label className="text-sm mb-1 block" htmlFor="bugDescription">Please describe the issue.</label>
                      <textarea
                        id="bugDescription"
-                       className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                       className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                        placeholder="Description*"
                        value={bugDescription}
                        onChange={(e) => setBugDescription(e.target.value)}
@@ -177,7 +177,7 @@ const UrlSlugGenerator = () => {
       <input
         type="text"
         placeholder="Article Title, Blog Post Title etc."
-        className="w-full p-3 border border-blue-300 outline-none rounded-lg"
+        className="w-full p-3 border border-gray-300 outline-none rounded-lg mb-2 "
         value={title}
         onChange={(e) => {
           setTitle(e.target.value);
@@ -185,7 +185,7 @@ const UrlSlugGenerator = () => {
         }}
       />
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         <label className="block font-medium">Separator:</label>
         <div className="flex gap-4">
           <label className="flex items-center gap-2">
@@ -242,13 +242,13 @@ const UrlSlugGenerator = () => {
       <div className="relative">
         <input
           type="text"
-          className="w-full p-3 border border-blue-300 outline-none rounded-lg bg-gray-50"
+          className=" mt-2 w-full p-3 border border-gray-300 outline-none rounded-lg bg-gray-50"
           value={slug}
           readOnly
           placeholder="Slug will be shown here automatically..."
         />
         <button
-          className="absolute right-2 top-2 bottom-2 px-4 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] cursor-pointer rounded-md"
+          className="absolute right-2 top-3 bottom-2 px-4 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] cursor-pointer rounded-md"
           onClick={handleCopy}
         >
           Copy

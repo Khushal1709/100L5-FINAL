@@ -25,7 +25,7 @@ function ReportModal({ open, onClose, onSubmit }) {
       <div className="bg-white rounded-lg p-6 w-96 shadow-lg">
         <h3 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">Report Comment</h3>
         <select
-          className="w-full mb-3 border border-blue-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-300 p-2"
+          className="w-full mb-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-300 p-2"
           value={reason}
           onChange={(e) => setReason(e.target.value)}
         >
@@ -35,7 +35,7 @@ function ReportModal({ open, onClose, onSubmit }) {
           <option value="other">Other</option>
         </select>
         <textarea
-          className="w-full border border-blue-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-300 p-2 mb-4"
+          className="w-full border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-indigo-300 p-2 mb-4"
           rows={3}
           placeholder="Explanation (Optional)"
           value={explanation}
@@ -107,7 +107,7 @@ export default function CommentsSection() {
           H
         </div>
         <input
-          className="flex-1  border border-blue-200 rounded-lg px-4 py-3 bg-gray-50 outline-none"
+          className="flex-1  border border-gray-300 rounded-lg px-4 py-3 bg-gray-50 outline-none"
           placeholder="Comment"
           value={input}
           onChange={(e) => setInput(e.target.value)}

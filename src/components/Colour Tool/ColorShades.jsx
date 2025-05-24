@@ -11,7 +11,7 @@ import {
     FaRegStar,
 } from "react-icons/fa6";
 import { FaSwatchbook } from "react-icons/fa";
-import Comment from "../Text tools/Comment";import { FiAlertCircle } from 'react-icons/fi'; // Add this at the top
+import Comment from "../Text tools/Comment"; import { FiAlertCircle } from 'react-icons/fi'; // Add this at the top
 import { FiShare2 } from "react-icons/fi";
 
 const hexToRgb = (hex) => {
@@ -116,25 +116,25 @@ const ColorShadesGenerator = () => {
                     </h1>
                 </div>
                 <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
-                     <button
-              onClick={() => setShareOpen(true)}
-              className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
-            >
-              <FiShare2 className="mr-2" size={18} />
-              Share
-            </button>
                     <button
-              className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
-              onClick={() => setOpen(true)}
-            >
-              <FiAlertCircle className="text-indigo-600 text-base" />
-              Report Bug
-            </button>
+                        onClick={() => setShareOpen(true)}
+                        className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+                    >
+                        <FiShare2 className="mr-2" size={18} />
+                        Share
+                    </button>
+                    <button
+                        className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+                        onClick={() => setOpen(true)}
+                    >
+                        <FiAlertCircle className="text-indigo-600 text-base" />
+                        Report Bug
+                    </button>
                     <button
                         onClick={onFavoriteToggle}
                         className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
                             ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                            : "bg-indigo-50 border-indigo-300 text-indigo-600"
+                            : "bg-indigo-50 border-indigo-600 text-indigo-600"
                             }`}
                     >
                         {isFavorite ? (
@@ -173,7 +173,7 @@ const ColorShadesGenerator = () => {
                                 ))}
                             </div>
                         </div>
-                        <button className="absolute top-4 right-4 text-gray-600 text-lg" onClick={() => setShareOpen(false)}>✕</button>
+                        <button className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer" onClick={() => setShareOpen(false)}>✕</button>
                     </div>
                 </div>
             )}
@@ -187,7 +187,7 @@ const ColorShadesGenerator = () => {
                         <label className="text-sm mb-1 block" htmlFor="bugDescription">Please describe the issue.</label>
                         <textarea
                             id="bugDescription"
-                            className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                            className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                             placeholder="Description*"
                             value={bugDescription}
                             onChange={(e) => setBugDescription(e.target.value)}
@@ -214,7 +214,7 @@ const ColorShadesGenerator = () => {
             )}
 
             <div className="flex flex-wrap items-center gap-6 mb-8">
-                <div className='border border-blue-300 rounded-lg p-2'>
+                <div className='border border-gray-300 rounded-lg p-2'>
                     <label className="text-gray-700">Color</label>
                     <div className="flex items-center gap-1 ">
                         <input
@@ -301,7 +301,7 @@ const ColorShadesGenerator = () => {
                     <div className="text-lg font-mono">{formatRgb(selectedShade)}</div>
                 </div>
             )}
-            <Comment/>
+            <Comment />
         </div>
     );
 };

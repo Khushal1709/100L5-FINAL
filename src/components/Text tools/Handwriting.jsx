@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useContext, useEffect,
   useImperativeHandle,
   forwardRef
 } from "react";
@@ -20,6 +21,8 @@ import { TbTransform } from "react-icons/tb";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 // Sample options for dropdowns
 const fontFamilies = [
@@ -47,7 +50,8 @@ const paperTypes = [
 ];
 
 // Component with forwardRef
-const TextToHandwritingConverter = forwardRef((props, ref) => {
+const TextToHandwritingConverter = forwardRef(({ id = "Text to Handwriting" }, ref) => {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [tab, setTab] = useState("area");
   const [text, setText] = useState("");
   const [fontFamily, setFontFamily] = useState(fontFamilies[0].value);
@@ -89,7 +93,28 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
   const [open, setOpen] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+
+  const onFavoriteToggle = () => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    let newFavorites;
+
+    if (favorites.includes(id)) {
+      newFavorites = favorites.filter((favId) => favId !== id);
+      setIsFavorite(false);
+    } else {
+      newFavorites = [...favorites, id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+    updateFavorites();
+  };
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    setIsFavorite(favorites.includes(id));
+  }, [id]);
+
 
   return (
     <div className="max-w-4xl mx-auto mt-8">
@@ -106,13 +131,13 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
           <button
             onClick={() => setShareOpen(true)}
-            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
+            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
           >
             <FiShare2 className="mr-2" size={18} />
             Share
           </button>
           <button
-            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
             onClick={() => setOpen(true)}
           >
             <FiAlertCircle className="text-indigo-600 text-base" />
@@ -120,7 +145,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
           </button>
           <button
             onClick={onFavoriteToggle}
-            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-300 text-indigo-600"
+            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-600 text-indigo-600"
               }`}
           >
             {isFavorite ? (
@@ -157,7 +182,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
                 ))}
               </div>
             </div>
-            <button className="absolute top-4 right-4 text-gray-600 text-lg" onClick={() => setShareOpen(false)}>✕</button>
+            <button className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer" onClick={() => setShareOpen(false)}>✕</button>
           </div>
         </div>
       )}
@@ -171,7 +196,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
             <label className="text-sm mb-1 block" htmlFor="bugDescription">Please describe the issue.</label>
             <textarea
               id="bugDescription"
-              className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
               placeholder="Description*"
               value={bugDescription}
               onChange={(e) => setBugDescription(e.target.value)}
@@ -196,7 +221,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
           </div>
         </div>
       )}
-    
+
 
       {/* Tabs and Reset */}
       <div className="flex items-center mb-2">
@@ -233,7 +258,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
       <div className="relative mt-2 mb-4">
         {tab === "area" ? (
           <textarea
-            className="w-full min-h-[220px] p-4 border border-indigo-300 rounded-lg resize-none text-base focus:outline-indigo-300 bg-white"
+            className="w-full min-h-[220px] p-4 border border-gray-300 rounded-lg resize-none text-base focus:outline-indigo-300 bg-white"
             placeholder="Text"
             value={text}
             onChange={handleTextChange}
@@ -279,7 +304,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
         <div>
           <label className="block text-sm text-gray-500 mb-1">Font Family</label>
           <select
-            className="border border-indigo-300 outline-none rounded-md px-3 py-2 bg-white text-sm"
+            className="border border-gray-300 outline-none rounded-md px-3 py-2 bg-white text-sm"
             value={fontFamily}
             onChange={handleFontFamilyChange}
             style={{ fontFamily }}
@@ -294,7 +319,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
         <div>
           <label className="block text-sm text-gray-500 mb-1">Font Size</label>
           <select
-            className="border border-gray-200 rounded-md px-3 py-2 bg-white text-sm"
+            className="border border-gray-200 outline-none rounded-md px-3 py-2 bg-white text-sm"
             value={fontSize}
             onChange={handleFontSizeChange}
           >
@@ -308,7 +333,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
         <div>
           <label className="block text-xs text-gray-500 mb-1">Ink Color</label>
           <select
-            className="border border-gray-200 rounded-md px-3 py-2 bg-white text-sm"
+            className="border border-gray-200 outline-none rounded-md px-3 py-2 bg-white text-sm"
             value={inkColor}
             onChange={handleInkColorChange}
           >
@@ -322,7 +347,7 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
         <div>
           <label className="block text-xs text-gray-500 mb-1">Paper Type</label>
           <select
-            className="border border-gray-200 rounded-md px-3 py-2 bg-white text-sm"
+            className="border border-gray-200 outline-none rounded-md px-3 py-2 bg-white text-sm"
             value={paperType}
             onChange={handlePaperTypeChange}
           >
@@ -335,21 +360,16 @@ const TextToHandwritingConverter = forwardRef((props, ref) => {
         </div>
       </div>
 
-      {/* Placeholder Ad */}
-      <div className="w-full flex justify-center py-3 bg-white text-gray-400 text-xs border-b">
-        Ad closed by Google
-      </div>
-
       {/* Preview Box */}
       <div className="flex-1 flex justify-center items-start w-full">
-        <div className="mt-4 w-[90vw] max-w-3xl h-[80vh] bg-white rounded-lg shadow border relative overflow-auto">
+        <div className="mt-4 w-[90vw] max-w-3xl h-[80vh] bg-white rounded-lg shadow border border-gray-200 relative overflow-auto">
           <div className="absolute top-4 left-4 text-xs text-gray-400">Sliding Image</div>
         </div>
       </div>
 
       {/* Bottom Panel */}
       <div className="w-full flex justify-between items-center px-8 py-6">
-        <select className="border rounded px-3 py-2 text-sm bg-white shadow">
+        <select className="border border-gray-300 rounded px-3 py-2 text-sm bg-white shadow">
           <option>High Quality (DPI)</option>
           <option>Medium Quality (DPI)</option>
           <option>Low Quality (DPI)</option>
