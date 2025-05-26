@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState,useContext,useEffect } from "react";
 import Resizer from "react-image-file-resizer";
 import { LuDownload, LuRefreshCw } from "react-icons/lu";
 import { GiResize } from "react-icons/gi";
@@ -13,15 +13,15 @@ import {
     FaCopy,
 } from "react-icons/fa6";
 import { MdShare } from "react-icons/md";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-export default function ImageResizer() {
+export default function ImageResizer({id="Image Resizer"}) {
+    const { updateFavorites } = useContext(FavoritesContext);
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
     const [imageSrc, setImageSrc] = useState(null);
     const [pngDataUrl, setPngDataUrl] = useState(null);
     const [width, setWidth] = useState(806);
@@ -84,6 +84,28 @@ export default function ImageResizer() {
         setHeight(743);
         if (fileInputRef.current) fileInputRef.current.value = "";
     };
+
+    const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
+    
 
     return (
         <div className="max-w-4xl mx-auto p-3">

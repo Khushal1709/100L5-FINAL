@@ -1,20 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { GiSlowBlob } from "react-icons/gi";
-import { PiFileJsxBold } from "react-icons/pi";
-import { FiShare2 } from "react-icons/fi";
-import { FiAlertCircle } from 'react-icons/fi';
+import { FiShare2, FiAlertCircle } from "react-icons/fi";
 import {
     FaCheck,
-    FaRegCopy,
+    FaRegStar,
     FaFacebookF,
     FaTwitter,
     FaLinkedinIn,
     FaEnvelope,
     FaCopy,
-    FaRegStar,
 } from "react-icons/fa6";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 // Helper: Generate a random blob SVG path
 function generateBlob({ growth, edges }) {
@@ -56,16 +54,16 @@ function generateBlob({ growth, edges }) {
     return d;
 }
 
+export default function BlobGenerator({id="BlobGenerator"}) {    
 
-export default function BlobGenerator() {
+    // If you use context for favorites, get updateFavorites from context.
+    const { updateFavorites } = useContext(FavoritesContext) || { updateFavorites: () => {} };
 
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
     const [fill, setFill] = useState("#474bff");
     const [growth, setGrowth] = useState(3);
     const [edges, setEdges] = useState(6);
@@ -123,6 +121,28 @@ export default function BlobGenerator() {
         updateBlob(growth, Number(e.target.value));
     };
 
+    // Favorite toggle logic
+      const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
+    
     return (
         <div className="max-w-4xl mx-auto p-2">
             {/* Header */}
@@ -132,7 +152,7 @@ export default function BlobGenerator() {
                         <GiSlowBlob />
                     </span>
                     <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-5">
-                    SVG&nbsp;Blob&nbsp;Generator
+                        SVG&nbsp;Blob&nbsp;Generator
                     </span>
                 </div>
                 <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
@@ -200,7 +220,7 @@ export default function BlobGenerator() {
                             </p>
                             <h2 className="text-xl font-semibold mb-5 text-gray-600">
                                 {activeTab === "tool"
-                                    ? "Google Fonts Pair Finder"
+                                    ? "SVG Blob Generator"
                                     : "10015 Tools"}
                             </h2>
                             <div className="flex justify-center mb-6">
@@ -228,14 +248,13 @@ export default function BlobGenerator() {
                     </div>
                 </div>
             )}
-
             {/* Bug Report Popup */}
             {open && (
                 <div className="fixed inset-0 bg-black/30 z-40 flex justify-center items-center">
                     <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
                         <h2 className="text-xl font-bold mb-2">Bug Report</h2>
                         <p className="text-sm mb-4">
-                            <strong>Tool:</strong> Lorem Ipsum Generator
+                            <strong>Tool:</strong> SVG Blob Generator
                         </p>
                         <label className="text-sm mb-1 block" htmlFor="bugDescription">
                             Please describe the issue.
@@ -272,10 +291,7 @@ export default function BlobGenerator() {
                     </div>
                 </div>
             )}
-
-
             <div className="flex flex-col md:flex-row bg-white rounded-xl shadow-lg p-6 gap-8 w-full max-w-4xl">
-
                 {/* Blob Display */}
                 <div className="flex-1 flex flex-col items-center">
                     <div className="bg-gray-100 rounded-lg flex items-center justify-center w-[350px] h-[350px] mb-4">
@@ -307,7 +323,6 @@ export default function BlobGenerator() {
                             >
                                 Shuffle
                             </button>
-
                             <div className="relative">
                                 <button
                                     className="cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] px-6 py-2 md:px-8 md:py-3 rounded-lg shadow transition text-sm md:text-base"
@@ -316,7 +331,6 @@ export default function BlobGenerator() {
                                     Copy SVG Code
                                 </button>
                             </div>
-
                             <button
                                 className="cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] px-6 py-2 md:px-8 md:py-3 rounded-lg border border-gray-300 shadow transition text-sm md:text-base"
                                 onClick={downloadSVG}
@@ -324,7 +338,6 @@ export default function BlobGenerator() {
                                 Download SVG
                             </button>
                         </div>
-
                     </div>
                 </div>
                 {/* Controls */}
@@ -398,7 +411,7 @@ export default function BlobGenerator() {
                     )}
                 </div>
             </div>
-            <Comment/>
+            <Comment />
         </div>
     );
 }

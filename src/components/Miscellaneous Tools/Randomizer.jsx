@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext,useEffect,useRef } from "react";
 import {
   FaCheck,
   FaRegCopy,
@@ -13,8 +13,10 @@ import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-export default function ListRandomizer() {
+export default function ListRandomizer({id="List Randomizer"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [list, setList] = useState([]);
   const [uniqueList, setUniqueList] = useState([]);
@@ -27,8 +29,7 @@ export default function ListRandomizer() {
   const [open, setOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-
+  
   const splitInput = (str) => {
     if (format === "Space-separated") return str.trim().split(/\s+/);
     if (format === "Comma-separated") return str.split(",").map(s => s.trim()).filter(Boolean);
@@ -71,6 +72,28 @@ export default function ListRandomizer() {
     setRandomized([]);
     setNumSelect("Select All");
   };
+
+  const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+  
 
   return (
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-6 mt-3">

@@ -52,7 +52,11 @@ const BG_TYPES = [
     'No Background',
 ];
 
-
+const FONT_FAMILIES = ['Syne Mono', 'Arial', 'Courier New', 'Times New Roman'];
+const FONT_SIZES = ['16px', '18px', '20px', '22px'];
+const TAB_SIZES = [2, 3, 4];
+const SHADOWS = ['None', 'Low', 'Medium', 'High'];
+const IMAGE_QUALITIES = ['Low (1x)', 'High (2x)'];
 
 export default function CodeToImageConverter({ id = "Code to Image Generator" }) {
     const { updateFavorites } = useContext(FavoritesContext);
@@ -68,9 +72,18 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
     const [watermarkColor, setWatermarkColor] = useState('#ffffff');
     const [bgType, setBgType] = useState(BG_TYPES[0]);
     const [bgColor, setBgColor] = useState('#23272f');
-    const [bgGradient, setBgGradient] = useState('linear-gradient(135deg, #23272f 0%, #3b4252 100%)');
+    const [bgGradient, setBgGradient] = useState('linear-gradient(135deg, #d8d8e8 0%, #b0b0d0 100%)');
     const [avatar, setAvatar] = useState(null);
+    const [fontFamily, setFontFamily] = useState(FONT_FAMILIES[0]);
+    const [fontSize, setFontSize] = useState('20px');
+    const [tabSize, setTabSize] = useState(3);
+    const [shadow, setShadow] = useState('Medium');
+    const [imageQuality, setImageQuality] = useState('High (2x)');
+    const [padding, setPadding] = useState(138);
+    const [showLineNumbers, setShowLineNumbers] = useState(true);
+    const [showSettings, setShowSettings] = useState(false);
     const codeRef = useRef(null);
+    const settingsRef = useRef(null);
 
     // Dynamic class/style helpers
     const getPositionClasses = () => {
@@ -102,9 +115,23 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
         }
     };
 
+    const getShadowStyle = () => {
+        const shadowMap = {
+            'None': 'shadow-none',
+            'Low': 'shadow-sm',
+            'Medium': 'shadow-md',
+            'High': 'shadow-lg',
+        };
+        return shadowMap[shadow] || 'shadow-md';
+    };
+
     const handleExport = async () => {
         if (codeRef.current) {
-            const canvas = await html2canvas(codeRef.current, { backgroundColor: null });
+            const scale = imageQuality === 'High (2x)' ? 2 : 1;
+            const canvas = await html2canvas(codeRef.current, { 
+                backgroundColor: null,
+                scale: scale
+            });
             const link = document.createElement('a');
             link.download = filename || 'code-image.png';
             link.href = canvas.toDataURL();
@@ -121,12 +148,22 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
         }
     };
 
+    // Close settings dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (settingsRef.current && !settingsRef.current.contains(event.target)) {
+                setShowSettings(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
 
     const onFavoriteToggle = () => {
         const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
@@ -149,7 +186,6 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
         setIsFavorite(favorites.includes(id));
     }, [id]);
 
-
     return (
         <>
             {/* Header */}
@@ -160,7 +196,7 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
                             <RiCodeBlock />
                         </span>
                         <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
-                            Code&nbsp;to&nbsp;Image&nbsp;Converter
+                            Code to Image Converter
                         </h1>
                     </div>
                     <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
@@ -266,7 +302,7 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
                             <p className="text-sm mb-4">
                                 <strong>Tool:</strong> Lorem Ipsum Generator
                             </p>
-                            <label className="text-sm mb-1 block" htmlFor="bugDescription">
+                            <label className="block text-sm mb-1" htmlFor="bugDescription">
                                 Please describe the issue.
                             </label>
                             <textarea
@@ -302,9 +338,8 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
                     </div>
                 )}
 
-
                 {/* Top Controls */}
-                <div className="w-full max-w-5xl flex gap-3 items-center mb-4">
+                <div className="w-full max-w-5xl flex gap-3 items-center mb-4 relative">
                     <select
                         className="px-3 py-2 rounded-lg border border-gray-200 text-sm bg-white text-gray-700"
                         value={language}
@@ -329,21 +364,125 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
                         value={filename}
                         onChange={e => setFilename(e.target.value)}
                     />
-                    <button className="px-4 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-100 flex items-center gap-1">
-                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-                            <rect width="24" height="24" rx="6" fill="#e5e7eb" />
-                            <path d="M12 8v8m0 0l-4-4m4 4l4-4" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        Settings
-                    </button>
+                    <div className="relative" ref={settingsRef}>
+                        <button 
+                            className="px-4 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-100 flex items-center gap-1"
+                            onClick={() => setShowSettings(!showSettings)}
+                        >
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+                                <rect width="24" height="24" rx="6" fill="#e5e7eb" />
+                                <path d="M12 8v8m0 0l-4-4m4 4l4-4" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            Settings
+                        </button>
+                        {showSettings && (
+                            <div className="absolute right-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-10">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-xs text-gray-500 mb-1">Font Family</label>
+                                        <select
+                                            className="w-full px-2 py-1 rounded-lg border border-gray-200 text-sm bg-white text-gray-700"
+                                            value={fontFamily}
+                                            onChange={e => setFontFamily(e.target.value)}
+                                        >
+                                            {FONT_FAMILIES.map(font => (
+                                                <option key={font} value={font}>{font}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-gray-500 mb-1">Font Size</label>
+                                        <select
+                                            className="w-full px-2 py-1 rounded-lg border border-gray-200 text-sm bg-white text-gray-700"
+                                            value={fontSize}
+                                            onChange={e => setFontSize(e.target.value)}
+                                        >
+                                            {FONT_SIZES.map(size => (
+                                                <option key={size} value={size}>{size}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-gray-500 mb-1">Tab Size</label>
+                                        <select
+                                            className="w-full px-2 py-1 rounded-lg border border-gray-200 text-sm bg-white text-gray-700"
+                                            value={tabSize}
+                                            onChange={e => setTabSize(e.target.value)}
+                                        >
+                                            {TAB_SIZES.map(size => (
+                                                <option key={size} value={size}>{size}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-gray-500 mb-1">Shadow</label>
+                                        <select
+                                            className="w-full px-2 py-1 rounded-lg border border-gray-200 text-sm bg-white text-gray-700"
+                                            value={shadow}
+                                            onChange={e => setShadow(e.target.value)}
+                                        >
+                                            {SHADOWS.map(shadow => (
+                                                <option key={shadow} value={shadow}>{shadow}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-gray-500 mb-1">Image Quality</label>
+                                        <select
+                                            className="w-full px-2 py-1 rounded-lg border border-gray-200 text-sm bg-white text-gray-700"
+                                            value={imageQuality}
+                                            onChange={e => setImageQuality(e.target.value)}
+                                        >
+                                            {IMAGE_QUALITIES.map(quality => (
+                                                <option key={quality} value={quality}>{quality}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="mt-4">
+                                    <label className="block text-xs text-gray-500 mb-1">Padding: {padding}px</label>
+                                    <input
+                                        type="range"
+                                        min="50"
+                                        max="200"
+                                        value={padding}
+                                        onChange={e => setPadding(Number(e.target.value))}
+                                        className="w-full accent-indigo-600"
+                                    />
+                                </div>
+                                <div className="mt-4 flex items-center gap-4">
+                                    <label className="flex items-center gap-2 text-sm text-gray-700">
+                                        <input
+                                            type="checkbox"
+                                            checked={showLineNumbers}
+                                            onChange={() => setShowLineNumbers(!showLineNumbers)}
+                                            className="form-checkbox text-blue-600 accent-indigo-600"
+                                        />
+                                        Line Number
+                                    </label>
+                                    <a
+                                        href="https://10015.io"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-indigo-600 hover:underline"
+                                    >
+                                        Support 10015.io
+                                    </a>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 {/* Code Preview Area */}
                 <div className="w-full max-w-5xl bg-white rounded-xl border border-gray-200 min-h-[400px] flex flex-col items-center justify-center relative mb-4">
                     <div
-                        className={`mx-auto my-16 rounded-lg shadow-lg px-6 py-5 flex items-center relative ${getLayoutClasses()}`}
+                        className={`mx-auto my-16 rounded-lg px-6 py-5 flex items-center relative ${getShadowStyle()} ${getLayoutClasses()}`}
                         ref={codeRef}
-                        style={getBgStyle()}
+                        style={{
+                            ...getBgStyle(),
+                            padding: `${padding}px`,
+                        }}
                     >
                         {/* Mac window dots */}
                         <div className="absolute left-4 top-3 flex gap-1.5">
@@ -353,16 +492,29 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
                         </div>
                         <div className="flex flex-col w-full">
                             <textarea
-                                className="w-full bg-transparent font-mono text-lg text-[#a3be8c] resize-none outline-none border-none"
+                                className="w-full bg-transparent resize-none outline-none border-none"
+                                style={{
+                                    fontFamily: fontFamily,
+                                    fontSize: fontSize,
+                                    color: '#a3be8c',
+                                    background: 'transparent',
+                                    tabSize: tabSize,
+                                }}
                                 value={code}
                                 onChange={e => setCode(e.target.value)}
                                 rows={8}
-                                style={{ color: '#a3be8c', background: 'transparent' }}
                             />
                             <SyntaxHighlighter
                                 language={language}
                                 style={themes[theme] || themes['androidstudio']}
-                                customStyle={{ background: 'none', margin: 0, padding: 0, fontSize: 16 }}
+                                customStyle={{ 
+                                    background: 'none', 
+                                    margin: 0, 
+                                    padding: 0, 
+                                    fontSize: fontSize,
+                                    fontFamily: fontFamily,
+                                }}
+                                showLineNumbers={showLineNumbers}
                             >
                                 {code}
                             </SyntaxHighlighter>
@@ -401,7 +553,6 @@ export default function CodeToImageConverter({ id = "Code to Image Generator" })
                                 {opt}
                             </label>
                         ))}
-                        {/* Fullscreen Preview (optional, not implemented) */}
                     </div>
                 </div>
 

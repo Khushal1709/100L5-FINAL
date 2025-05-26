@@ -18,7 +18,7 @@ import Comment from "../Text tools/Comment";
 import { SiCsswizardry } from "react-icons/si";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
-export default function CssFormatter() {
+export default function CssFormatter({id="CSS Formatter"}) {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [indent, setIndent] = useState("5");
@@ -97,7 +97,8 @@ export default function CssFormatter() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-  const onFavoriteToggle = () => {
+ 
+   const onFavoriteToggle = () => {
         const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
         let newFavorites;
     

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import { toPng } from "html-to-image";
 import { PiFileCssLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 // Wallpaper options
 const WALLPAPER_OPTIONS = [
@@ -69,7 +70,8 @@ const WALLPAPER_OPTIONS = [
   },
 ];
 
-const Twitteradrevenuegenerator = () => {
+const Twitteradrevenuegenerator = ({id="Twitter Ad Revenue Generator"}) => {
+    const { updateFavorites } = useContext(FavoritesContext);
   const [wallpaperType, setWallpaperType] = useState("ready");
   const [selectedWallpaper, setSelectedWallpaper] = useState(
     WALLPAPER_OPTIONS[0].value
@@ -149,8 +151,28 @@ const Twitteradrevenuegenerator = () => {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
+  const onFavoriteToggle = () => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      let newFavorites;
+  
+      if (favorites.includes(id)) {
+        newFavorites = favorites.filter((favId) => favId !== id);
+        setIsFavorite(false);
+      } else {
+        newFavorites = [...favorites, id];
+        setIsFavorite(true);
+      }
+  
+      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+      updateFavorites();
+    };
+  
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
 
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+
   return (
     <div className="max-w-4xl mx-auto mt-7 p-2">
       {/* Header */}

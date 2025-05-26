@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect,useContext } from "react";
 import { toPng } from "html-to-image";
 import { saveAs } from "file-saver";
 import { MdMovieFilter } from "react-icons/md";
@@ -15,6 +15,7 @@ import {
     FaRegStar,
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 // Instagram-like filters using Tailwind filter utilities
 const FILTERS = [
@@ -36,15 +37,13 @@ const FILTERS = [
 const PREVIEW_IMG =
     "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80";
 
-export default function InstagramFilters() {
-
+export default function InstagramFilters({id="Instagram Filters"}) {
+    const { updateFavorites } = useContext(FavoritesContext);
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
     const [imgSrc, setImgSrc] = useState(null);
     const [urlInput, setUrlInput] = useState("");
     const [active, setActive] = useState("Normal");
@@ -87,14 +86,31 @@ export default function InstagramFilters() {
         return result;
     };
 
-
-
     const rows = chunkArray(FILTERS, Math.ceil(FILTERS.length / 2));
+
+     const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
 
 
     return (
-
-
         <div className="max-w-4xl mx-auto p-3">
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">

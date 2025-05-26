@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import { HexColorPicker } from "react-colorful";
  import { PiFileCssLight } from "react-icons/pi";
 import { TbBackground } from "react-icons/tb";
@@ -16,6 +16,7 @@ import { TbBackground } from "react-icons/tb";
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 const patternTypes = [
   {
@@ -148,7 +149,8 @@ function randomHexColor() {
   );
 }
 
-export default function PatternGenerator() {
+export default function PatternGenerator({id="CSS Background Pattern"}) {
+    const { updateFavorites } = useContext(FavoritesContext);
   const [patternType, setPatternType] = useState("checks");
   const [patternColor, setPatternColor] = useState(defaultPatternColor);
   const [bgColor, setBgColor] = useState(defaultBgColor);
@@ -205,8 +207,27 @@ export default function PatternGenerator() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
+   const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
 
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
   return (
     <>
       {/* Custom styles for responsive color picker and range input */}

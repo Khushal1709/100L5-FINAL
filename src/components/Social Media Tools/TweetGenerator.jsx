@@ -1,6 +1,6 @@
 //TweetGenerator
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useContext,useEffect } from "react";
 import html2canvas from 'html2canvas-pro';
 import bule from "../../image/bule.png";
 import { FaTwitterSquare } from "react-icons/fa";
@@ -18,10 +18,14 @@ import { FaTwitterSquare } from "react-icons/fa";
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 const defaultAvatar = "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png";
 
-function TweetGenerator() {
+function TweetGenerator({id="Tweet Generator"}) {
+      const { updateFavorites } = useContext(FavoritesContext);
+
     // State management
      
    const [open, setOpen] = useState(false);
@@ -29,8 +33,6 @@ function TweetGenerator() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
     const [theme, setTheme] = useState("Light");
     const [avatar, setAvatar] = useState(defaultAvatar);
     const [tweetImages, setTweetImages] = useState([]);
@@ -137,6 +139,27 @@ function TweetGenerator() {
             alert('डाउनलोड फेल हुआ! कृपया कंसोल चेक करें');
         }
     };
+    const onFavoriteToggle = () => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      let newFavorites;
+  
+      if (favorites.includes(id)) {
+        newFavorites = favorites.filter((favId) => favId !== id);
+        setIsFavorite(false);
+      } else {
+        newFavorites = [...favorites, id];
+        setIsFavorite(true);
+      }
+  
+      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+      updateFavorites();
+    };
+  
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
+
 
 
     return (

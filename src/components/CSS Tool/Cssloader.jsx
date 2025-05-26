@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef,useContext } from "react";
 import { Share, Heart, Bug, ChevronLeft, ChevronRight } from "lucide-react";
  import { PiFileCssLight } from "react-icons/pi";
  import { PiFileJsxBold } from "react-icons/pi";
@@ -18,8 +18,10 @@ import { Share, Heart, Bug, ChevronLeft, ChevronRight } from "lucide-react";
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-export default function CSSLoaderGenerator() {
+export default function CSSLoaderGenerator({id="CSS Loader"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [selectedCategory, setSelectedCategory] = useState("spinners");
   const [currentPage, setCurrentPage] = useState(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -1889,8 +1891,27 @@ export default function CSSLoaderGenerator() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+     const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+  
 
   return (
     <div className="max-w-4xl mx-auto mt-7 p-2">
@@ -2108,7 +2129,7 @@ export default function CSSLoaderGenerator() {
               </div>
 
               {hoveredLoaderId === loader.id && (
-                <div className="absolute inset-0 bg-black bg-opacity-5 flex items-center justify-center rounded-lg">
+                <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center rounded-lg">
                   <button
                     className="bg-white px-3 py-1 rounded-md shadow-sm hover:bg-indigo-50 transition-colors"
                     onClick={(e) => {

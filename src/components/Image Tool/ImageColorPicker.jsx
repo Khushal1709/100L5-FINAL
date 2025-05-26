@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef,useContext, useEffect } from "react";
 import { MdContentCopy } from "react-icons/md";
 import { TbColorPicker } from "react-icons/tb";
 import { FiShare2 } from "react-icons/fi";
@@ -15,15 +15,15 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-const ImageColorPicker = () => {
+const ImageColorPicker = ({id="Image Color Picker"}) => {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [open, setOpen] = useState(false);
   const [bugDescription, setBugDescription] = useState("");
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
   const [imageUrl, setImageUrl] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [imageLabel, setImageLabel] = useState("");
@@ -163,6 +163,27 @@ const ImageColorPicker = () => {
       setTimeout(() => setCopied({ hex: false, rgba: false, hsl: false }), 1200);
     }
   };
+
+     const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
 
   return (
     <div className="max-w-4xl mx-auto p-3">

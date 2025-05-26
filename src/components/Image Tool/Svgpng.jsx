@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useContext,useEffect } from "react";
 import { SiConvertio } from "react-icons/si";
 import { MdMovieFilter } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 const svgStringToPng = async (svgText, width = 500, height = 500) => {
   return new Promise((resolve) => {
@@ -34,7 +36,8 @@ const svgStringToPng = async (svgText, width = 500, height = 500) => {
   });
 };
 
-export default function SvgToPngTool() {
+export default function SvgToPngTool({id="SVG to PNG Converter"}) {
+      const { updateFavorites } = useContext(FavoritesContext);
   const [imageSrc, setImageSrc] = useState(null);
   const [fileType, setFileType] = useState(null);
   const [pngDataUrl, setPngDataUrl] = useState(null);
@@ -44,8 +47,6 @@ export default function SvgToPngTool() {
     const [shareOpen, setShareOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [open, setOpen] = useState(false);
-  
-    const onFavoriteToggle = () => setIsFavorite((v) => !v);
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -87,6 +88,28 @@ export default function SvgToPngTool() {
     link.download = "converted.png";
     link.click();
   };
+
+    const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+  
 
   return (
    <div className="max-w-4xl mx-auto p-3">

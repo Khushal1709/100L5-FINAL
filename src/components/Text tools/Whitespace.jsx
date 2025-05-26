@@ -17,7 +17,7 @@ import { FiShare2 } from "react-icons/fi";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
 export default function WhitespaceRemover({ id = "Multiple Whitespace Remove" }) {
-    const { updateFavorites } = useContext(FavoritesContext);
+  const { updateFavorites } = useContext(FavoritesContext);
   const [text, setText] = useState("");
   const [output, setOutput] = useState("");
   const [copied, setCopied] = useState(false);
@@ -29,6 +29,7 @@ export default function WhitespaceRemover({ id = "Multiple Whitespace Remove" })
 
   // Remove multiple spaces, tabs, newlines
   const handleRemoveSpaces = () => {
+    
     setOutput(text.replace(/\s+/g, " ").trim());
     setCopied(false);
   };

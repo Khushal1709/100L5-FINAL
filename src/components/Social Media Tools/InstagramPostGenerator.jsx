@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,useContext,useEffect } from 'react';
 import html2canvas from 'html2canvas-pro';
 import { MdPostAdd } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
@@ -15,18 +15,15 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-
-export default function InstagramPostGenerator() {
-
+export default function InstagramPostGenerator({id="Instagram Post Generator"}) {
+      const { updateFavorites } = useContext(FavoritesContext);
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-
     const [theme, setTheme] = useState('Light');
     const [username, setUsername] = useState('johndoe');
     const [verified, setVerified] = useState(true);
@@ -177,6 +174,26 @@ export default function InstagramPostGenerator() {
 
     const toggleDropdown = () => setShowDropdown(!showDropdown);
 
+    const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
     return (
         <div className="max-w-4xl mx-auto p-3">
             {/* Header */}

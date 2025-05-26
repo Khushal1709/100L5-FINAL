@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import { TbFileTypeSvg } from "react-icons/tb";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
@@ -14,17 +14,15 @@ import {
     FaRegStar,
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-
-const SVGpattern = () => {
-
+const SVGpattern = ({id="SVGpattern"}) => {
+    const { updateFavorites } = useContext(FavoritesContext);
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
     // Main state variables
     const [patternType, setPatternType] = useState("circle");
     const [patternColor, setPatternColor] = useState("#47d3ff");
@@ -218,6 +216,28 @@ const SVGpattern = () => {
         link.click();
         URL.revokeObjectURL(url);
     };
+
+    const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
+    
 
     return (
         <div className="max-w-4xl mx-auto p-3">

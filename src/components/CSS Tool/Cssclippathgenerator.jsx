@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect,useContext } from "react";
 import { PiFileCssLight } from "react-icons/pi";
 import { FiShare2 } from "react-icons/fi";
 import { MdOutlineDocumentScanner } from "react-icons/md";
@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 const shapes = {
   triangle: {
@@ -169,7 +170,8 @@ const shapes = {
 
 const imageSeeds = [101, 202, 303, 404, 505];
 
-export default function ClipPathGenerator() {
+export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
+    const { updateFavorites } = useContext(FavoritesContext);
   const [shape, setShape] = useState("triangle");
   const [width, setWidth] = useState(922);
   const [height, setHeight] = useState(400);
@@ -314,9 +316,27 @@ export default function ClipPathGenerator() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-
+   const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+  
   return (
     <div
       className="max-w-4xl mx-auto mt-7 p-2

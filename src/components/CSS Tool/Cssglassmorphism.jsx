@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext,useEffect } from "react";
  import { PiFileCssLight } from "react-icons/pi";
  import { PiFileJsxBold } from "react-icons/pi";
  import { FiShare2 } from "react-icons/fi";
@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { IoMdPhonePortrait } from "react-icons/io";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 // Scenic backgrounds for shuffle
 const backgrounds = [
@@ -59,7 +60,8 @@ function hexToRgb(hex) {
   return [r, g, b];
 }
 
-export default function GlassmorphismGenerator() {
+export default function GlassmorphismGenerator({id="CSS Glass Morphism"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [glassColor, setGlassColor] = useState(defaultColor);
   const [blur, setBlur] = useState(10);
   const [opacity, setOpacity] = useState(0.5);
@@ -122,8 +124,26 @@ ${useBorder ? `border: 1px solid rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.25);` : ""
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+     const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
 
   return (
     <div className="max-w-4xl mx-auto mt-7 p-2">

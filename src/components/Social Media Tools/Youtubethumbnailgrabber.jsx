@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext,useEffect } from "react";
  import { PiFileCssLight } from "react-icons/pi";
 import { FaYoutube } from "react-icons/fa";
  import { FiShare2 } from "react-icons/fi";
@@ -15,8 +15,11 @@ import { FaYoutube } from "react-icons/fa";
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-const Youtubethumbnailgrabber = () => {
+const Youtubethumbnailgrabber = ({id="YouTube Thumbnail Grabber"}) => {
+    const { updateFavorites } = useContext(FavoritesContext);
+
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [videoData, setVideoData] = useState(null);
   const [error, setError] = useState("");
@@ -101,8 +104,26 @@ const Youtubethumbnailgrabber = () => {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+   const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
 
   return (
     <div className="max-w-4xl mx-auto mt-7 p-2">

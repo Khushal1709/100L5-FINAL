@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import { PiFileCssLight } from "react-icons/pi";
 import { LuSpline } from "react-icons/lu";
 import { FiShare2 } from "react-icons/fi";
@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 const PRESETS = [
   { label: "linear", value: [0, 0, 1, 1] },
@@ -31,7 +32,8 @@ function formatNum(n) {
   return Number(n).toFixed(2).replace(/\.00$/, "");
 }
 
-export default function CubicBezierGenerator() {
+export default function CubicBezierGenerator({id="CSS Cubic"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [points, setPoints] = useState(DEFAULT);
   const [duration, setDuration] = useState(DEFAULT_DURATION);
   const [preset, setPreset] = useState("linear");
@@ -111,8 +113,27 @@ export default function CubicBezierGenerator() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
+    const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
 
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
   return (
     <div className="max-w-4xl mx-auto mt-7 p-2">
       {/* Header */}

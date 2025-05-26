@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext,useEffect } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { BsQrCode } from "react-icons/bs";
 import Comment from "../Text tools/Comment";
@@ -14,8 +14,10 @@ import {
 } from "react-icons/fa6";
 import { FiAlertCircle, FiShare2 } from "react-icons/fi";
 import { MdShare } from "react-icons/md";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-export default function QRCodeGenerator() {
+export default function QRCodeGenerator({id="QR Code Generator"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [text, setText] = useState("");
   const qrRef = useRef();
   const [bugDescription, setBugDescription] = useState("");
@@ -23,8 +25,6 @@ export default function QRCodeGenerator() {
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
   const [open, setOpen] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-
   const handleDownload = () => {
     const canvas = qrRef.current.querySelector("canvas");
     const url = canvas.toDataURL("image/png");
@@ -33,6 +33,28 @@ export default function QRCodeGenerator() {
     link.download = "qrcode.png";
     link.click();
   };
+
+  const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+  
 
   return (
     <div className="max-w-3xl mx-auto px-2 sm:px-4 py-4 sm:py-8 font-sans">

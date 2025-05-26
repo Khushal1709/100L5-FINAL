@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback, useEffect,useContext } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { FaCropSimple } from "react-icons/fa6";
@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 // Utility: rotate image and return dataURL
 function getRotatedImage(imageSrc, rotation = 0) {
     return new Promise((resolve) => {
@@ -40,14 +42,13 @@ function getRotatedImage(imageSrc, rotation = 0) {
     });
 }
 
-export default function ImageCropper() {
+export default function ImageCropper({id="Image Cropper"}) {
+    const { updateFavorites } = useContext(FavoritesContext);
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
     const [upImg, setUpImg] = useState(null);
     const [rotatedImg, setRotatedImg] = useState(null);
     const [rotation, setRotation] = useState(0);
@@ -196,6 +197,28 @@ export default function ImageCropper() {
     const handleCrop = () => {
         alert("Crop functionality handled on selection. Download to save cropped image.");
     };
+
+     const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
+    
 
     return (
         <div className="max-w-4xl mx-auto p-2">

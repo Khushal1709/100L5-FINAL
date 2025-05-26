@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext,useEffect } from "react";
 import Barcode from "react-barcode";
 import { saveAs } from "file-saver";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
@@ -16,8 +16,10 @@ import { ImBarcode } from "react-icons/im";
 import Comment from "../Text tools/Comment";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-const BarcodeGenerator = () => {
+const BarcodeGenerator = ({id="Bar Code Generator"}) => {
+      const { updateFavorites } = useContext(FavoritesContext);
   const [barcodeValue, setBarcodeValue] = useState("");
   const [barcodeFormat, setBarcodeFormat] = useState("CODE128");
   const [lineWidth, setLineWidth] = useState(2);
@@ -30,8 +32,6 @@ const BarcodeGenerator = () => {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
   const handleGenerate = () => {
     if (barcodeValue.trim() === "") {
@@ -68,6 +68,27 @@ const BarcodeGenerator = () => {
     };
     img.src = url;
   };
+
+   const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
 
   return (
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-6 mt-2 sm:mt-3">

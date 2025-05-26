@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback,useContext,useEffect } from "react";
 import Cropper from "react-easy-crop";
 import { MdMovieFilter } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 const censorTypes = [
   { value: "pixelate", label: "Pixelate" },
@@ -81,8 +83,8 @@ function getCroppedImg(image, crop, censorType, pixelSize) {
   return canvas.toDataURL("image/jpeg");
 }
 
-export default function Photocensor() {
-
+export default function Photocensor({id="Photo Censor"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [imageSrc, setImageSrc] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -97,8 +99,6 @@ export default function Photocensor() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -140,7 +140,28 @@ export default function Photocensor() {
     link.download = "censored.jpg";
     link.click();
   };
-
+  
+       const onFavoriteToggle = () => {
+            const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+            let newFavorites;
+        
+            if (favorites.includes(id)) {
+              newFavorites = favorites.filter((favId) => favId !== id);
+              setIsFavorite(false);
+            } else {
+              newFavorites = [...favorites, id];
+              setIsFavorite(true);
+            }
+        
+            localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+            updateFavorites();
+          };
+        
+          useEffect(() => {
+            const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+            setIsFavorite(favorites.includes(id));
+          }, [id]);
+  
   return (
      <div className="max-w-4xl mx-auto p-3">
                 {/* Header */}

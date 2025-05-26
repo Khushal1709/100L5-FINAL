@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext,useEffect } from "react";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { BiSolidLock } from "react-icons/bi";
 import Comment from "../Text tools/Comment";
@@ -13,9 +13,9 @@ import {
   FaCopy,
   FaRegStar,
 } from "react-icons/fa6";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 // ... password generation logic remains unchanged
-
 const SYMBOLS = "!#$%&*+-=?@^_";
 const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
 const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -57,7 +57,8 @@ function getStrength(length) {
   return 3;
 }
 
-export default function PasswordGenerator() {
+export default function PasswordGenerator({id="Strong Random Password Generator"}) {  
+  const { updateFavorites } = useContext(FavoritesContext);
   const [open, setOpen] = useState(false);
   const [bugDescription, setBugDescription] = useState("");
   const [shareOpen, setShareOpen] = useState(false);
@@ -102,6 +103,28 @@ export default function PasswordGenerator() {
     setOptions({ ...options, length: val });
   };
 
+   const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+  
+
   return (
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-8 bg-white mt-4 font-sans">
       {/* Heading */}
@@ -129,24 +152,24 @@ export default function PasswordGenerator() {
             <FiAlertCircle className="text-indigo-600 text-base" />
             Report Bug
           </button>
-          <button
-            onClick={() => setIsFavorite(!isFavorite)}
-            className={`px-3 py-2 rounded-xl border text-sm w-full sm:w-auto ${
-              isFavorite
-                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                : "bg-indigo-50 border-indigo-500 text-indigo-600"
-            }`}
-          >
-            {isFavorite ? (
-              <>
-                <FaCheck className="inline-block mr-1" size={12} /> Added
-              </>
-            ) : (
-              <>
-                <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
-              </>
-            )}
-          </button>
+         <button
+                    onClick={onFavoriteToggle}
+                    className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+                      ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                      : "bg-indigo-50 border-indigo-500 text-indigo-600"
+                      }`}
+                  >
+                    {isFavorite ? (
+                      <>
+                        <FaCheck className="inline-block mr-1" size={12} /> Added
+                      </>
+                    ) : (
+                      <>
+                        <FaRegStar className="inline-block mr-1" size={12} /> Add to
+                        Favorites
+                      </>
+                    )}
+                  </button>
         </div>
       </div>
 
