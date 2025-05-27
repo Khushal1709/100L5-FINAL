@@ -9,6 +9,7 @@ import { TbTransform } from "react-icons/tb";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { BsScissors } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function Texttool1() {
   const tools = [
@@ -17,6 +18,7 @@ function Texttool1() {
       description:
         "Convert your text or string to uppercase, lowercase, title case & sentence case",
       icon: <VscCaseSensitive className="w-[200px] h-[60px] text-indigo-400" />,
+      filename: '/caseconverter'
     },
     {
       title: "Lorem Ipsum Generator",
@@ -25,38 +27,55 @@ function Texttool1() {
       icon: (
         <MdOutlineContentPaste className="w-[200px] h-[60px] text-indigo-400" />
       ),
+      filename: '/lorem'
+
     },
     {
       title: "Letter Counter",
       description:
         "Count letters, words and sentences in a text and analyze this numbers with common limits",
       icon: <SlEnvolopeLetter className="w-[200px] h-[60px] text-indigo-400" />,
+      filename: '/letter'
+
     },
     {
       title: "Text To Handwriting Converter",
       description:
         "Convert your text into handwriting with desired paper type and ink color and download as PDF",
       icon: <TbTransform className="w-[200px] h-[60px] text-indigo-400" />,
+      filename: '/Text'
+
     },
     {
       title: "Bionic Reading Converter",
       description:
         "Convert your texts into Bionic Reading mode to read them faster than before",
       icon: <FaBookReader className="w-[200px] h-[60px] text-indigo-400" />,
+      filename: '/BionicReading'
+
     },
     {
       title: "Multiple Whitespace Remover",
       description:
         "Remove multiple whitespaces and line breaks in a text and clear unwanted characters",
       icon: <BsScissors className="w-[200px] h-[60px] text-indigo-400" />,
+      filename: '/Whitespace'
+
     },
     {
       title: "Google Fonts Pair Finder",
       description:
         "Find font pairs which looks cool together on your designs, pages or apps as heading and body font",
       icon: <MdGroups className="w-[200px] h-[60px] text-indigo-400" />,
+      filename: '/Googlefont'
+
+
     },
   ];
+  const navigate = useNavigate();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   return (
     <div>
       <div className="py-10 px-4 md:px-10 max-w-7xl mx-auto">
@@ -70,11 +89,12 @@ function Texttool1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onClick={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md cursor-pointer  p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
+              onClick={() => navigate(tool.filename)}
             >
               {/* Wishlist Icon */}
               <div className="group raltive">
@@ -82,6 +102,7 @@ function Texttool1() {
                   src={whishlist}
                   alt="Wishlist"
                   className="absolute top-4 right-4 w-5 h-5 transition-opacity duration-300 opacity-100 group-hover:opacity-0"
+
                 />
                 <img
                   src={whishlist2}

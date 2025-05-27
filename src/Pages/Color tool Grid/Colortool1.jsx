@@ -8,7 +8,7 @@ import { FaHashtag } from "react-icons/fa";
 import { FaSwatchbook } from "react-icons/fa";
 import { IoColorFilterOutline } from "react-icons/io5";
 import { HiCircleStack } from "react-icons/hi2";
-
+import { useNavigate } from "react-router-dom";
 
 const tools = [
   {
@@ -16,18 +16,21 @@ const tools = [
     description:
       "Craft perfect color palettes effortlessly with AI-driven creativity.",
     icon: <FaBrain className="w-[200px] h-[60px] text-indigo-400" />,
+    filename: "/AIColor",
   },
   {
     title: "HEX to RGBA Converter",
     description:
       "Convert HEX color codes to RGBA equivalents and see all details of a color",
     icon: <IoColorFilterOutline className="w-[200px] h-[60px] text-indigo-400" />,
+    filename: "/HEX",
   },
   {
     title: "RGBA to HEX Converter",
     description:
       "Convert RGBA color codes to alpha supported 6 or 8 digit HEX equivalents",
     icon: <FaHashtag className="w-[200px] h-[60px] text-indigo-400" />,
+    filename: "/RGBA",
   },
   {
     title: "Color Shades Generator",
@@ -36,15 +39,22 @@ const tools = [
     icon: (
       <FaSwatchbook className="w-[200px] h-[60px] text-indigo-400" />
     ),
+    filename: "/ColorMixer",
   },
   {
     title: "Color Mixer",
     description:
       "Mix 2 colors and get color codes for intermediate colors from 2 to 10 steps",
     icon: < HiCircleStack className="w-[200px] h-[60px] text-indigo-400" />,
+    filename: "/ColorShades",
   },
 ];
 function Colortool1() {
+  const navigate = useNavigate();
+
+   const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
   return (
     <div>
       <div className="py-10 px-4 md:px-10 max-w-7xl mx-auto">
@@ -58,11 +68,12 @@ function Colortool1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onClick={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md cursor-pointer  p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
+              onClick={() => navigate(tool.filename)} // Navigate to the tool's page
             >
               {/* Wishlist Icon */}
               <div className="group raltive">

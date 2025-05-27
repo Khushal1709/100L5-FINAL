@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext,useEffect} from "react";
 import { HiCircleStack } from "react-icons/hi2";
 import {
     FaCheck,
@@ -12,6 +12,7 @@ import {
 import { FiAlertCircle, FiShare2 } from "react-icons/fi";
 import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 function rgbaToHex(r, g, b, a = 1) {
     r = Math.max(0, Math.min(255, parseInt(r)));
@@ -58,7 +59,8 @@ function parseRgbaInput(input) {
     return null;
 }
 
-export default function RgbaToHexConverter() {
+export default function RgbaToHexConverter({id="Color Mixer"}) {
+      const { updateFavorites } = useContext(FavoritesContext);
     const [rgbaInput, setRgbaInput] = useState("(22,25,255,0.9)");
     const [hex, setHex] = useState("");
     const [error, setError] = useState("");
@@ -70,7 +72,6 @@ export default function RgbaToHexConverter() {
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
     const handleConvert = () => {
         setError("");
@@ -92,6 +93,27 @@ export default function RgbaToHexConverter() {
         }
     };
 
+     const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+
     return (
         <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-8 mt-3 font-sans">
             {/* Header */}
@@ -101,7 +123,7 @@ export default function RgbaToHexConverter() {
                         <HiCircleStack />
                     </span>
                     <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-                        RGBA&nbsp;to&nbsp;HEX&nbsp;Converter
+                        Color&nbsp;Mixer
                     </h1>
                 </div>
                 <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-2 sm:gap-3">

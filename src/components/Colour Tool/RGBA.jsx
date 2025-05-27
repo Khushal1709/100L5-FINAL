@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect,useContext} from "react";
 import { FaHashtag } from "react-icons/fa";
 import {
     FaCheck,
@@ -12,6 +12,8 @@ import {
 import { FiAlertCircle, FiShare2 } from "react-icons/fi";
 import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 function rgbaToHex(r, g, b, a = 1) {
     r = Math.max(0, Math.min(255, parseInt(r)));
@@ -58,7 +60,8 @@ function parseRgbaInput(input) {
     return null;
 }
 
-export default function RgbaToHexConverter() {
+export default function RgbaToHexConverter({id="RGBA to HEX Converter"}) {
+     const { updateFavorites } = useContext(FavoritesContext);
     const [rgbaInput, setRgbaInput] = useState("(22,25,255,0.9)");
     const [hex, setHex] = useState("");
     const [error, setError] = useState("");
@@ -69,8 +72,6 @@ export default function RgbaToHexConverter() {
     const [shareOpen, setShareOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
     const handleConvert = () => {
         setError("");
@@ -91,6 +92,29 @@ export default function RgbaToHexConverter() {
             setTimeout(() => setCopied(false), 1500);
         }
     };
+
+    
+      const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+    
 
     return (
         <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-8 mt-3 font-sans">

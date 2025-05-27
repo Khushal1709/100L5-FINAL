@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
+
+import React, { useState,useRef,useContext,useEffect } from 'react';
+import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
+Quill.register('formats/align', Quill.import('formats/align'), true);
 
 // Import your frame images
 import frame1 from "../../image/frame1.png";
@@ -10,20 +16,19 @@ import frame4 from "../../image/frame4.png";
 import frame5 from "../../image/frame5.png";
 import frame6 from "../../image/frame6.png";
 import frame7 from "../../image/frame7.png";
-import { FaCropSimple } from "react-icons/fa6";
+import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
 import {
-    FaCheck,
-    FaFacebookF,
-    FaTwitter,
-    FaLinkedinIn,
-    FaEnvelope,
-    FaCopy,
-    FaRegStar,
+  FaCheck,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaEnvelope,
+  FaCopy,
+  FaRegStar,
 } from "react-icons/fa6";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
-
+import { MdShare } from "react-icons/md";
 
 // Font options for the dropdown
 const fontOptions = [
@@ -95,23 +100,27 @@ function Card({ className = '', children, ...props }) {
   );
 }
 
-// Main Handwriting Converter component
-export default function HandwritingConverter() {
-    const [open, setOpen] = useState(false);
-    const [bugDescription, setBugDescription] = useState("");
-    const [shareOpen, setShareOpen] = useState(false);  
-    const [activeTab, setActiveTab] = useState("tool");
-    const [isFavorite, setIsFavorite] = useState(false);
 
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+
+// Main Handwriting Converter component
+export default function HandwritingConverter({id="Text"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
+  const [open, setOpen] = useState(false);
+  const [bugDescription, setBugDescription] = useState("");
+  const [shareOpen, setShareOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("tool");
+  const [isFavorite, setIsFavorite] = useState(false);
+
   // State variables
-  const [activeTabs, setActiveTabs] = useState('textarea'); // 'textarea' or 'editor'
+  const [tabchange, setTabchange] = useState('textarea'); // 'textarea' or 'editor'
   const [textAreaValue, setTextAreaValue] = useState('');
   const [editorValue, setEditorValue] = useState('');
   const [font, setFont] = useState('Satisfy');
   const [fontSize, setFontSize] = useState('18px');
   const [inkColor, setInkColor] = useState('#8B0000');
   const [frame, setFrame] = useState('frame2');
+    const previewRef = useRef(null);
+
 
   // Get the selected frame object (for image preview)
   const selectedFrame = paperFrames.find(f => f.value === frame) || paperFrames[1];
@@ -127,25 +136,73 @@ export default function HandwritingConverter() {
     }
   };
 
+
+
+
   // Get the text to preview based on active tab
-  const previewText = activeTab === 'textarea'
+  const previewText = tabchange === 'textarea'
     ? (textAreaValue ? textAreaValue.replace(/\n/g, '<br/>') : 'Your handwriting text will appear here...')
     : (editorValue || 'Your handwriting text will appear here...');
+
+
+      const handleDownloadImage = async () => {
+    if (previewRef.current) {
+      const canvas = await html2canvas(previewRef.current);
+      const link = document.createElement("a");
+      link.download = "handwriting-preview.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+  };
+
+  // Download as PDF
+  const handleDownloadPDF = async () => {
+    if (previewRef.current) {
+      const canvas = await html2canvas(previewRef.current);
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("handwriting-preview.pdf");
+    }
+  };
+
+  const onFavoriteToggle = () => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      let newFavorites;
+  
+      if (favorites.includes(id)) {
+        newFavorites = favorites.filter((favId) => favId !== id);
+        setIsFavorite(false);
+      } else {
+        newFavorites = [...favorites, id];
+        setIsFavorite(true);
+      }
+  
+      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+      updateFavorites();
+    };
+  
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
 
   return (
     <div className="max-w-4xl mx-auto p-2">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-4xl text-indigo-400">
-            <FaCropSimple />
+          <span className="text-3xl sm:text-4xl text-indigo-400">
+            <BsLayoutTextSidebarReverse />
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
-            {/* Java&nbsp;Script&nbsp;Minifier */}
-            {/* Images&nbsp;Cropper */}
+          <span className="font-bold text-gray-900 text-lg sm:text-xl md:text-2xl lg:text-3xl">
             Text&nbsp;to&nbsp;Handwriting&nbsp;Converter
           </span>
         </div>
+
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
           <button
             onClick={() => setShareOpen(true)}
@@ -162,7 +219,7 @@ export default function HandwritingConverter() {
             Report Bug
           </button>
           <button
-            onClick={onFavoriteToggle}
+            onClick={ onFavoriteToggle}
             className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
               ? "bg-indigo-100 border-indigo-600 text-indigo-700"
               : "bg-indigo-50  text-indigo-600"
@@ -283,19 +340,17 @@ export default function HandwritingConverter() {
           </div>
         </div>
       )}
-
-
       <div className="max-w-3xl mx-auto space-y-4">
 
         {/* Tab Switcher */}
         <div className="flex bg-[#f3f4fa] rounded-lg p-1 w-fit mx-auto mb-2">
           <button
             className={`flex items-center gap-2 px-6 py-2 rounded-md transition font-medium text-base
-              ${activeTabs === 'textarea'
+              ${tabchange === 'textarea'
                 ? 'cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]    shadow'
                 : 'text-[#7a7a9d]'
               }`}
-            onClick={() => setActiveTabs('textarea')}
+            onClick={() => setTabchange('textarea')}
             style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
           >
             <span role="img" aria-label="textarea" style={{ fontSize: 18 }}>📋</span>
@@ -303,11 +358,11 @@ export default function HandwritingConverter() {
           </button>
           <button
             className={`flex items-center gap-2 px-6 py-2 rounded-md transition font-medium text-base ml-2
-              ${activeTabs === 'editor'
+              ${tabchange === 'editor'
                 ? 'cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF]   shadow'
                 : 'text-[#7a7a9d]'
               }`}
-            onClick={() => setActiveTabs('editor')}
+            onClick={() => setTabchange('editor')}
             style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
           >
             <span style={{ fontStyle: 'italic', fontWeight: 700, fontSize: 18 }}>T</span>
@@ -316,9 +371,9 @@ export default function HandwritingConverter() {
         </div>
 
         {/* Text Input Section */}
-        {activeTabs === 'textarea' ? (
+        {tabchange === 'textarea' ? (
           <textarea
-            className="w-full min-h-[120px] border border-gray-300 rounded px-3 py-2 outline-none"
+            className="w-full min-h-[120px] border border-gray-300  rounded px-3 py-2 outline-none"
             placeholder="Enter text here..."
             value={textAreaValue}
             onChange={e => setTextAreaValue(e.target.value)}
@@ -343,7 +398,7 @@ export default function HandwritingConverter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-15">
           {/* Font Dropdown */}
           <select
-            className="border border-gray-3l00 rounded px-3 py-2 "
+            className="border border-gray-300 rounded px-3 py-2 outline-none"
             value={font}
             onChange={e => setFont(e.target.value)}
           >
@@ -358,7 +413,7 @@ export default function HandwritingConverter() {
             value={fontSize}
             onChange={handleFontSizeChange}
             placeholder="Font Size (e.g. 18px)"
-            className="border border-gray-300 rounded px-3 py-2 outline-none"
+            className="border border-gray-300 rounded px-3 py-2  outline-none"
           />
 
           {/* Ink Color Picker */}
@@ -372,7 +427,7 @@ export default function HandwritingConverter() {
 
           {/* Frame Dropdown */}
           <select
-            className="border border-gray-300 rounded px-3 py-2"
+            className="border border-gray-300 rounded px-3 py-2 outline-none"
             value={frame}
             onChange={e => setFrame(e.target.value)}
           >
@@ -382,65 +437,68 @@ export default function HandwritingConverter() {
           </select>
         </div>
 
-        {/* Frame image previews (clickable) */}
-        {activeTabs === 'textarea' && (
-          <div className="flex justify-center items-center gap-4 mt-2">
-            {paperFrames.map(opt => (
-              <div
-                key={opt.value}
-                onClick={() => setFrame(opt.value)}
-                style={{
-                  border: opt.value === frame ? '2px solid #0070f3' : '2px solid transparent',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  padding: '2px',
-                  transition: 'border 0.2s'
-                }}
-                title={opt.label}
-              >
-                <img
-                  src={opt.image}
-                  alt={opt.label}
-                  style={{
-                    width: 80,
-                    height: 80,
-                    objectFit: 'cover',
-                    borderRadius: '6px',
-                    boxShadow: opt.value === frame ? '0 0 6px #0070f3' : '0 0 2px #ccc'
-                  }}
-                />
-                <div className="text-xs text-center mt-1">{opt.label}</div>
-              </div>
-            ))}
-          </div>
-        )}
-        {/* Card with handwriting preview */}
-        {activeTabs === 'textarea' && (
+         <div className="flex gap-3 justify-start mt-4">
+        <button
+          onClick={handleDownloadImage}
+          className="cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]  px-8 py-2 rounded-lg shadow-md"
+        >
+          Download as Image
+        </button>
+        <button
+          onClick={handleDownloadPDF}
+          className="cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]  px-8 py-2 rounded-lg shadow-md"
+        >
+          Download as PDF
+        </button>
+      </div>
 
-          <Card
-            className="p-6 mt-6 relative bg-white shadow-xl rounded-xl overflow-hidden max-w-2xl min-h-screen ml-10"
+        <div className="mt-8 flex flex-col items-center">
+          <div
+            ref={previewRef}
             style={{
               backgroundImage: `url(${selectedFrame.image})`,
               backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              width: 550,
+              height: 750,
+              maxWidth: '100%',
+              borderRadius: 14,
+              padding: '48px 36px',
+              margin: '0 auto',
+              position: 'relative',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+
             }}
           >
             <div
-              className="whitespace-pre-wrap mt-23 ml-15 space-y-5"
+              className="ql-editor lg:mt-[55px]  lg:ml-[50px] "  // <-- THIS LINE IS THE KEY!
               style={{
-                fontFamily: `'${font}', cursive, sans-serif`,
+                width: '100%',
+                minHeight: 250,
+                fontFamily: font,
                 fontSize: fontSize,
                 color: inkColor,
-                padding: '20px',
-                minHeight: '300px',
+                wordBreak: 'break-word',
+                padding: 0,
+                border: 'none',
+                background: 'transparent',
+               
+
               }}
               dangerouslySetInnerHTML={{
                 __html: previewText
-              }}
-            />
-          </Card>
 
-        )}
+
+              }}
+
+            />
+          </div>
+        </div>
+        {/* Card with handwriting preview */}
+
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext} from 'react';
 import { IoColorFilterOutline } from "react-icons/io5";
 import { MdShare } from "react-icons/md";
 import {
@@ -12,8 +12,10 @@ import {
 } from "react-icons/fa6";
 import Comment from "../Text tools/Comment";
 import { FiAlertCircle, FiShare2 } from 'react-icons/fi';
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-const HexToRgbaConverter = () => {
+const HexToRgbaConverter = ({ id="HEX to RGBA Converter" }) => {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [hex, setHex] = useState('#545454');
   const [rgba, setRgba] = useState('rgb(84, 84, 84)');
   const [hsla, setHsla] = useState('hsl(0, 0%, 32.9%)');
@@ -24,8 +26,6 @@ const HexToRgbaConverter = () => {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
   const isValidHex = (value) => /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(value);
 
@@ -99,6 +99,27 @@ const HexToRgbaConverter = () => {
       setCopied(true);
     }
   };
+
+    const onFavoriteToggle = () => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    let newFavorites;
+
+    if (favorites.includes(id)) {
+      newFavorites = favorites.filter((favId) => favId !== id);
+      setIsFavorite(false);
+    } else {
+      newFavorites = [...favorites, id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+    updateFavorites();
+  };
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    setIsFavorite(favorites.includes(id));
+  }, [id]);
 
   return (
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-8 mt-3">

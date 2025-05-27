@@ -1,40 +1,55 @@
 import arrowIcon from "../../image/arrowIcon.svg";
 import arrowIcon2 from "../../image/arrowIcon2.svg";
 import whishlist from "../../image/whishlist.svg";
-import whishlist2 from "../../image/whishlist2.svg"; 
+import whishlist2 from "../../image/whishlist2.svg";
 import { ImBarcode } from "react-icons/im";
 import { BsQrCode } from "react-icons/bs";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { BiSolidLock } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const tools = [
   {
     title: "Bar Code Generator",
     description:
       "Generate barcodes for different internatinal standardizations with desired sizes",
-     icon: <ImBarcode className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <ImBarcode className='w-[200px] h-[60px] text-indigo-400' />,
+    filename: '/Barcode'
+
   },
   {
     title: "QR Code Generator",
     description:
       "Generate QR code for your links or texts easily and download them as an image file",
-     icon: <BsQrCode className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <BsQrCode className='w-[200px] h-[60px] text-indigo-400' />,
+    filename: '/QRcode'
+
   },
   {
     title: "List Randomizer",
     description:
       "Randomize your lists, make lotteries, draw campigns or select random people from a group",
-     icon: <MdOutlineContentPaste className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <MdOutlineContentPaste className='w-[200px] h-[60px] text-indigo-400' />,
+    filename: '/Randomizer'
+
   },
   {
     title: "Strong Random Password Generator",
     description:
       "Generate strong random passwords and check its stregth with password strength meter",
-     icon: <BiSolidLock className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <BiSolidLock className='w-[200px] h-[60px] text-indigo-400' />,
+    filename: '/StrongRandom'
+
   },
 ];
 
 const Miscellaneoustool1 = () => {
+  const navigate = useNavigate();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <div className="py-10 px-4 md:px-10 max-w-7xl mx-auto">
@@ -45,11 +60,13 @@ const Miscellaneoustool1 = () => {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 cursor-pointer">
+        <div onClick ={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 cursor-pointer">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
+              onClick={() => navigate(tool.filename)} // Navigate to the tool's page
+
             >
               {/* Wishlist Icon */}
               <div className="group raltive">
@@ -66,9 +83,9 @@ const Miscellaneoustool1 = () => {
               </div>
 
               {/* Tool Icon with background */}
-                        <div className="rounded-md flex items-center justify-center mb-4">
+              <div className="rounded-md flex items-center justify-center mb-4">
                 {/* <img src={tool.icon} alt="Tool Icon" className="w-auto h-16" /> */}
-                <div  alt="Tool Icon" className="">{tool.icon} </div>
+                <div alt="Tool Icon" className="">{tool.icon} </div>
               </div>
 
               {/* Title */}

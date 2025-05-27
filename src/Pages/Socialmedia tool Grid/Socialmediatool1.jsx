@@ -10,8 +10,7 @@ import { LuGitGraph } from "react-icons/lu";
 import { IoLogoVimeo } from "react-icons/io";
 import { FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-
-
+import { useNavigate } from "react-router-dom";
 
 const tools = [
   {
@@ -19,12 +18,14 @@ const tools = [
     description:
       "Apply instagram filters to you photos either by uploading local files or uploading image from a URL",
     icon: <MdMovieFilter className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/InstagramFilters'
   },
   {
     title: "Instagram Post Generator",
     description:
       "Create Instagram posts as if they were real, download them as an image and make jokes to your friends",
     icon: <MdPostAdd className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/InstagramPostGenerator'
   },
 
   {
@@ -32,35 +33,44 @@ const tools = [
     description:
       "Create tweets as if they were real, download them as an image and make jokes to your friends",
     icon: <FaTwitterSquare className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/TweetGenerator'
   },
   {
     title: "Twitter Ad Revenue Generator",
     description:
       "Generate Twitter ad revenue screenshots and make jokes to your friends",
     icon: <FaXTwitter className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/Twitteradrevenuegenerator'
   },
   {
     title: "YouTube Thumbnail Grabber",
     description:
       "Get all available thumbnail images of a YouTube videos just by entering the URL",
     icon: <FaYoutube className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/Youtubethumbnailgrabber'
   },
   {
     title: "Vimeo Thumbnail Grabber",
     description:
       "Get all available thumbnail images of a Vimeo videos just by entering the URL",
     icon: <IoLogoVimeo className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/Vimeothumbnailgrabber'
   },
   {
     title: "Open Graph Meta Generator",
     description:
       "Generate open graph meta code for your web page and add it to your site's head section",
     icon: <LuGitGraph className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/Opengraphmetagenerator'
   },
 ];
-
-
+ 
 function Socialmediatool1() {
+    const navigate = useNavigate();
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
   return (
     <div>
       <div className="py-10 px-4 md:px-10 max-w-7xl mx-auto">
@@ -71,12 +81,14 @@ function Socialmediatool1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onClick={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md cursor-pointer  p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
+              onClick={() => navigate(tool.filename)} // Navigate to the tool's page
             >
+
               {/* Wishlist Icon */}
               <div className="group raltive">
                 <img

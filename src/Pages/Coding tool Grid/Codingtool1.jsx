@@ -15,6 +15,7 @@ import { PiFileJsxBold } from "react-icons/pi";
 import { LiaHtml5 } from "react-icons/lia";
 import { SiCsswizardry } from "react-icons/si";
 // import { PiFileJsxBold } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 function Codingtools1() {
 
@@ -23,67 +24,89 @@ function Codingtools1() {
       title: "Code to Image Converter",
       description: "Convert your codes to fancy images and share with your friends or colleagues",
       icon: <RiCodeBlock className='w-[200px] h-[60px] text-indigo-400'/>,
+      filename: '/CodetoImage'
     },
     {
       title: " URL Slug Generator",
       description: "Generate SEO-friendly slugs from titles or any other strings for your webpages or blog posts",
       icon: <FaLink className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/Slug'
     },
     {
       title: "React Native Shadow Generator",
       description: "Generate fancy box shadows in React Native both for iOS and Android",
       icon: <FaReact className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/Shadow'
     },
     {
       title: "Base64 Encoder/Decoder",
       description: "Encode your strings to Base64 or decode strings encoded with Base64",
       icon: <PiDatabaseBold className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/BaseEncoderDecoder'
     },
     {
       title: "HTML Encoder/Decoder",
       description: "Encode or decode your HTML by replacing special characters into equivalent escape forms",
       icon: <TbHtml className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/HTMLEncoderDecoder'
+
     },
     {
       title: "URL Encoder/Decoder",
       description: "Encode your URL by escaping characters that may break your navigation and decode it ",
       icon: <PiFileHtmlBold className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/URLEncoderDcoder'
     },
     {
       title: "HTML Minifier",
       description: "Minify your HTML code and copy the minified code to your clipboard or download as .html file",
       icon: <ImHtmlFive2 className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/HTMLMinifier'
     },
     {
       title: "CSS Minifier",
       description: "Minify your CSS code and copy the minified code to your clipboard or download as style.min.css file",
       icon: <PiFileCssLight className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/CSSMinifier'
+
     },
     {
       title: "JavaScript Minifier",
       description: "Minify your JavaScript code and copy the minified code to your clipboard or download as .min.js file",
       icon: <PiFileJsxBold className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/JavaScriptMinifier'
+
     },
     {
       title: "HTML Formatter",
       description: "Format your HTML code with HTML beautifier and either copy the formatted HTML or download it",
       icon: <LiaHtml5 className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/Hf'
+
     },
     {
       title: "Css Formatter",
       description: "Format your CSS code and copy the beautified code to your clipboard or download as style.css file",
       icon: <SiCsswizardry className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/Cs'
+
     },
     {
       title: "JavaScript Formatter",
       description: "Format/beautify your JavaScript code and copy the formatted code to your clipboard or download as a file",
       icon: <PiFileJsxBold className='w-[200px] h-[60px] text-indigo-400' />,
+      filename: '/Javaf'
     },
 
   ];
-  return (
-    <div>
+  const navigate = useNavigate();
 
+   const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  return (
+
+    <div>
       <div className="py-10 px-4 md:px-10 max-w-7xl mx-auto">
         <h2 style={{ fontFamily: "David Libre" }} className="text-2xl md:text-4xl font-semibold text-center text-[#1F2B56] mb-2">
           Coding Tools
@@ -92,11 +115,12 @@ function Codingtools1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onClick={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md cursor-pointer  p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
+              onClick={() => navigate(tool.filename)} // Navigate to the tool's page
             >
               {/* Wishlist Icon */}
               <div className="group raltive">

@@ -12,71 +12,95 @@ import { MdGradient } from "react-icons/md";
 import { IoTriangleSharp } from "react-icons/io5";
 import { FaBoxArchive } from "react-icons/fa6";
 import { AiOutlineRadiusUpright } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const tools = [
   {
     title: "CSS Clip Path Generator",
     description:
       "Generate CSS clip-path with different patterns and use clip-path property in your projects",
-    icon:<MdOutlineDocumentScanner className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<MdOutlineDocumentScanner className='w-[200px] h-[60px] text-indigo-400' />,
+    filename: '/Cssclippathgenerator'
   },
   {
     title: "CSS Loader Generator",
     description:
       "Generate fancy CSS loaders by specifying the type,color, and sizeo of the loading indicator",
-    icon:<LuLoader className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<LuLoader className='w-[200px] h-[60px] text-indigo-400' />,
+        filename: '/Cssloader'
+
   },
   {
     title: "CSS Background Pattern Generator",
     description:
       "Generate beautiful CSS-only background patterns with and use it in your projects right away",
-    icon:<TbBackground className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<TbBackground className='w-[200px] h-[60px] text-indigo-400' />,
+        filename: '/CSSbackgroundpattern'
+
   },
   {
     title: "CSS Cubic Bezier Generator",
     description:
       "Generate CSS cubic Bezier easing functions by previewing animation and time-progress graph",
-    icon:<LuSpline className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<LuSpline className='w-[200px] h-[60px] text-indigo-400' />,
+        filename: '/Csscubic'
+
   },
   {
     title: "CSS Glassmorphism Generator",
     description:
       "Generate CSS for applying frosted-glass effect on your HTML elements by using background blur",
-    icon:<IoMdPhonePortrait className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<IoMdPhonePortrait className='w-[200px] h-[60px] text-indigo-400' />,    
+    filename: '/Cssglassmorphism'
+    
   },
   {
     title: "CSS Text Glitch Effect Generator",
     description:
       "Generate CSS text glitch effect and create fancy text animations by using pure CSS",
-    icon:<CgGoogle className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<CgGoogle className='w-[200px] h-[60px] text-indigo-400' />,    
+    filename: '/Csstextglitch'
+
   },
   {
     title: "CSS Gradient Generator",
     description:
       "Generate beautiful CSS gradients either by using presets or customizing your own",
-    icon:<MdGradient className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<MdGradient className='w-[200px] h-[60px] text-indigo-400' />,   
+     filename: '/Cssgradientgenerator'
+
   },
   {
     title: "CSS Triangle Generator",
     description:
       "Generate CSS Code for triangles shapes with desired width, height and color",
-    icon:<IoTriangleSharp className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<IoTriangleSharp className='w-[200px] h-[60px] text-indigo-400' />,  
+      filename: '/CSStrianglegenerator'
+
   },
   {
     title: "CSS Box Shadow Generator",
     description:
       "Generate CSS Code for box shadows while previewing it for box,circle or header design",
-    icon:<FaBoxArchive className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<FaBoxArchive className='w-[200px] h-[60px] text-indigo-400' />,  
+      filename: '/Cssboxshadowgenerator'
+
   },
   {
     title: "CSS Border Radius Generator",
     description:
       "Generate advanced CSS border radius to shape your HTML elements corners individually", 
-    icon:<AiOutlineRadiusUpright className='w-[200px] h-[60px] text-indigo-400' />
+    icon:<AiOutlineRadiusUpright className='w-[200px] h-[60px] text-indigo-400' />,  
+      filename: '/Borderradiusgenerator'
+
   },
 ];
 
 function CSStools1() {
+  const navigate = useNavigate();
+   const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
   return (
     <div>
       <div className="py-10 px-4 md:px-10 max-w-7xl mx-auto">
@@ -90,12 +114,13 @@ function CSStools1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onClick={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md cursor-pointer  p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
-            >
+              onClick={() => navigate(tool.filename)} // Navigate to the tool's page
+           >
               {/* Wishlist Icon */}
               <div className="group raltive">
                 <img

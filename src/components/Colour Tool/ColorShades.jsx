@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import {
     FaCheck,
@@ -13,6 +13,7 @@ import {
 import { FaSwatchbook } from "react-icons/fa";
 import Comment from "../Text tools/Comment"; import { FiAlertCircle } from 'react-icons/fi'; // Add this at the top
 import { FiShare2 } from "react-icons/fi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 const hexToRgb = (hex) => {
     const result = hex.replace('#', '');
@@ -59,7 +60,8 @@ const generateShades = (hex, stepPercent, steps) => {
     return shades;
 };
 
-const ColorShadesGenerator = () => {
+const ColorShadesGenerator = ({id="Color Shades Generator"}) => {
+    const { updateFavorites } = useContext(FavoritesContext);
     const [color, setColor] = useState('#808080');
     const [step, setStep] = useState(10);
     const [count, setCount] = useState(3);
@@ -74,8 +76,6 @@ const ColorShadesGenerator = () => {
     // Added for copy feedback
     const [copiedShade, setCopiedShade] = useState(null);
     const [copiedAll, setCopiedAll] = useState(false);
-
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
     useEffect(() => {
         const newShades = generateShades(color, step, count);
@@ -103,6 +103,27 @@ const ColorShadesGenerator = () => {
         const { r, g, b } = hexToRgb(hex);
         return `rgb(${r}, ${g}, ${b})`;
     };
+
+     const onFavoriteToggle = () => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    let newFavorites;
+
+    if (favorites.includes(id)) {
+      newFavorites = favorites.filter((favId) => favId !== id);
+      setIsFavorite(false);
+    } else {
+      newFavorites = [...favorites, id];
+      setIsFavorite(true);
+    }
+
+    localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+    updateFavorites();
+  };
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+    setIsFavorite(favorites.includes(id));
+  }, [id]);
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-6 mt-3">

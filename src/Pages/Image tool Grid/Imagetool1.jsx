@@ -13,75 +13,78 @@ import { FaCropSimple } from "react-icons/fa6";
 import { MdMovieFilter } from "react-icons/md";
 import { MdFormatColorFill } from "react-icons/md";
 import { PiImageSquareFill } from "react-icons/pi";
-
-
+import { useNavigate } from "react-router-dom";
 
 const tools = [
-  {
-    title: "Image Filters",
-    description: "Apply different filters to images and change color balance and distribution of the image",
-    icon: <TbFilters className='w-[200px] h-[60px] text-indigo-400'/>,
-  },
   {
     title: "Image Resizer",
     description: "Resize any image to desired width and height either by protecting aspect ratio or not",
     icon: <GiResize className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/Resizer'
+
   },
   {
     title: "Image Cropper",
     description: "Crop unwanted parts of images and download desired part of the image as a new file",
     icon: <FaCropSimple className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/ImageCropper'
+
   },
   {
     title: "Image Average Color Finder",
     description: "Calculate average and dominant color of an image by ignoring transparency",
     icon: <MdFormatColorFill className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/AverageColor'
+
   },
   {
     title: "Image Color Extractor",
     description: "Extract all colors from an image and get color codes and details of this colors as a list",
     icon: <PiImageSquareFill className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/ImageColorExtractor'
+
   },
   {
     title: "Image Color Picker",
     description: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
     icon: <TbColorPicker className='w-[200px] h-[60px] text-indigo-400'/>,
-  },
-  {
-    title: "SVG Blob Generator",
-    description: "Generate random SVG blobs with desired complexity and get SVG as code or file",
-    icon: <GiSlowBlob className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/ImageColorPicker'
+
   },
   {
     title: "SVG Pattern Generator",
     description: "Generate SVG patterns with different shapes and download it as SVG or an image file",
     icon: <TbFileTypeSvg className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/SVGpattern'
+
   },
   {
     title: "Photo Censor",
     description: "Censor photos and hide faces by pixelating/blurring them or by putting a black bar",
     icon: <MdMovieFilter className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/Photocensor'
+
   },
   {
     title: "SVG To PNG Converter",
     description: "Convert any SVG file into PNG format image and scale it to desired size by preserving aspect ratio",
     icon: <SiConvertio className='w-[200px] h-[60px] text-indigo-400'/>,
+          filename: '/Svgpng'
+
   },
-  {
-    title: "Image To Base64 Converter",
-    description: "Convert images into Base64 string for different image formats like PNG, JPEG, GIF, SVG",
-    icon: <TbFilters className='w-[200px] h-[60px] text-indigo-400'/>,
-  },
-  {
-    title: "Image Caption Generator",
-    description: "Generate instant image captions powered by AI (Artificial Intelligence) analysis",
-    icon: <TbFilters className='w-[200px] h-[60px] text-indigo-400'/>,
-  }
 ];
 function Imagestools1() {
+  const navigate = useNavigate();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };  
+
   return (
     <div>
-
       <div className=" px-4 md:px-10 max-w-7xl mx-auto">
         <h2 style={{ fontFamily: "David Libre" }} className="text-2xl md:text-4xl font-semibold text-center text-[#1F2B56] mb-2">
           Image Tools
@@ -90,11 +93,12 @@ function Imagestools1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onClick={scrollToTop} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="relative rounded-2xl shadow-md cursor-pointer  p-6 bg-[#F6F5F8]  flex flex-col justify-between transition-all duration-300"
+                            onClick={() => navigate(tool.filename)} // Navigate to the tool's page
             >
               {/* Wishlist Icon */}
               <div className="group raltive">

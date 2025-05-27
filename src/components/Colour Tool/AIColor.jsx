@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { FaBrain } from "react-icons/fa";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
-import { FaCheck, FaRegStar, FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaCopy } from "react-icons/fa6";
-import { FiAlertCircle } from 'react-icons/fi';
-import { FiShare2 } from "react-icons/fi";
+import { useState, useContext, useEffect } from 'react';
+import { FaBrain, FaCheck, FaRegStar, FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaCopy } from "react-icons/fa6";
+import { MdShare } from "react-icons/md";
+import { FiAlertCircle, FiShare2 } from "react-icons/fi";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 const baseColors = {
     light: {
@@ -30,7 +29,60 @@ const generateColors = (prompt, theme) => {
     return colors[prompt.toLowerCase()] || colors.default;
 };
 
-const ColorPaletteGenerator = () => {
+function ColorCard({ label, hex }) {
+    return (
+        <div className="border rounded-xl p-4 flex justify-between items-center shadow">
+            <div>
+                <p className="text-sm text-gray-500">{label}</p>
+                <p className="font-semibold">{hex}</p>
+            </div>
+            <div className="w-8 h-8 rounded-full border" style={{ backgroundColor: hex }}></div>
+        </div>
+    );
+}
+
+function PreviewSection({ primary, accent, background, text }) {
+    return (
+        <div className="mt-6 p-6 rounded-xl border" style={{ backgroundColor: background, color: text }}>
+            <h2 className="text-xl font-bold mb-2" style={{ color: primary }}>Preview Section</h2>
+            <p>This is a preview using your generated palette.</p>
+            <button className="mt-4 px-4 py-2 rounded-md" style={{ backgroundColor: accent, color: text }}>
+                Sample Button
+            </button>
+        </div>
+    );
+}
+
+function ExportModal({ open, onClose, palette }) {
+    const cssVars = `
+:root {
+  --primary: ${palette[0]};
+  --accent: ${palette[1]};
+  --background: ${palette[4]};
+  --text: ${palette[5]};
+}`;
+
+    if (!open) return null;
+
+    return (
+        <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl p-6 max-w-lg w-full shadow-lg relative">
+                <h2 className="text-xl font-semibold mb-4">Export CSS Variables</h2>
+                <pre className="bg-gray-100 p-4 rounded-md overflow-auto text-sm mb-4">{cssVars}</pre>
+                <div className="flex justify-end gap-3">
+                    <button onClick={onClose} className="px-4 py-2 bg-gray-200 rounded-md">Close</button>
+                    <button onClick={() => {
+                        navigator.clipboard.writeText(cssVars);
+                        alert("Copied!");
+                    }} className="px-4 py-2 bg-indigo-500 text-white rounded-md">Copy</button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function ColorPaletteGenerator({ id = "AI Color Palette Generator" }) {
+    const { updateFavorites } = useContext(FavoritesContext);
     const [prompt, setPrompt] = useState('red');
     const [theme, setTheme] = useState('light');
     const [palette, setPalette] = useState(generateColors('red', 'light'));
@@ -42,42 +94,50 @@ const ColorPaletteGenerator = () => {
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-
+    const [primary, accent, , , background, text] = palette;
 
     const handleGenerate = () => {
         setPalette(generateColors(prompt, theme));
         setShowPreview(false);
     };
 
-    const [primary, accent, , , background, text] = palette;
+
+    const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+
+        if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+        } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+        }
+
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+    };
+
+    useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+    }, [id]);
+
 
     return (
         <>
             <div className="max-w-4xl mx-auto px-4 py-6 mt-3">
                 <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
-                    <div className="flex items-center gap-3 mb-2 sm:mb-0">
-                        <span className="text-4xl text-indigo-400">
-                            <FaBrain />
-                        </span>
-                        <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
-                            AI&nbsp;Color&nbsp;Palette&nbsp;Generator&nbsp;
-                        </h1>
+                    <div className="flex items-center gap-3">
+                        <span className="text-4xl text-indigo-400"><FaBrain /></span>
+                        <h1 className="text-2xl font-bold text-gray-900">AI Color Palette Generator</h1>
                     </div>
-                    <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
-                        <button
-                            onClick={() => setShareOpen(true)}
-                            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
-                        >
-                            <FiShare2 className="mr-2" size={18} />
-                            Share
+                    <div className="flex flex-wrap gap-2 justify-center sm:justify-end">
+                        <button onClick={() => setShareOpen(true)} className="px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600">
+                            <FiShare2 className="inline-block mr-2" /> Share
                         </button>
-                        <button
-                            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
-                            onClick={() => setOpen(true)}
-                        >
-                            <FiAlertCircle className="text-indigo-600 text-base" />
-                            Report Bug
+                        <button onClick={() => setOpen(true)} className="px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600">
+                            <FiAlertCircle className="inline-block mr-2" /> Report Bug
                         </button>
                         <button
                             onClick={onFavoriteToggle}
@@ -99,17 +159,69 @@ const ColorPaletteGenerator = () => {
                         </button>
                     </div>
                 </div>
-                {/* Share Popup */}
+
+                <div className="flex flex-col md:flex-row gap-4">
+                    <input
+                        type="text"
+                        value={prompt}
+                        onChange={(e) => setPrompt(e.target.value)}
+                        placeholder="Enter a color (e.g., red)"
+                        className="flex-1 p-3 border border-gray-300 rounded-md"
+                    />
+                    <select
+                        value={theme}
+                        onChange={(e) => setTheme(e.target.value)}
+                        className="p-3 border border-gray-300 rounded-md"
+                    >
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                    <button
+                        onClick={handleGenerate}
+                        className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-5 py-3 rounded-md"
+                    >
+                        Generate
+                    </button>
+                </div>
+
+                <div className="mt-4">
+                    <h2 className="text-lg mb-2">Color Palette</h2>
+                    <div className="flex flex-wrap gap-2">
+                        {palette.map((color, idx) => (
+                            <div key={idx} className="h-6 w-6 rounded-sm" style={{ backgroundColor: color }} title={color}></div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4 mt-4">
+                    <ColorCard label="Primary" hex={primary} />
+                    <ColorCard label="Accent" hex={accent} />
+                    <ColorCard label="Background" hex={background} />
+                    <ColorCard label="Text" hex={text} />
+                </div>
+
+                <div className="flex gap-4 mt-4">
+                    <button onClick={() => setShowExportModal(true)} className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-4 py-2 rounded-md">
+                        Export Colors
+                    </button>
+                    <button onClick={() => setShowPreview(!showPreview)} className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-md">
+                        {showPreview ? "Hide Preview" : "Show Preview"}
+                    </button>
+                </div>
+
+                {showPreview && <PreviewSection primary={primary} accent={accent} background={background} text={text} />}
+                {showExportModal && <ExportModal open={showExportModal} onClose={() => setShowExportModal(false)} palette={palette} />}
+
                 {shareOpen && (
-                    <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center p-3">
-                        <div className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full relative ">
+                    <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center p-4">
+                        <div className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
                             <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
                                 <button onClick={() => setActiveTab("tool")} className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "tool" ? "bg-indigo-600 text-white" : "text-indigo-600 hover:bg-indigo-600 hover:text-white"}`}>⚙️ Share Tool</button>
                                 <button onClick={() => setActiveTab("home")} className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "home" ? "bg-indigo-600 text-white" : "text-indigo-600 hover:bg-indigo-600 hover:text-white"}`}>🏠 Share 10015</button>
                             </div>
                             <div className="text-center border border-gray-300 rounded-xl p-6">
                                 <p className="text-sm mb-1 text-gray-500">You are currently sharing:</p>
-                                <h2 className="text-xl font-semibold mb-5 text-gray-600">{activeTab === "tool" ? "Google Fonts Pair Finder" : "10015 Tools"}</h2>
+                                <h2 className="text-xl font-semibold mb-5 text-gray-600">{activeTab === "tool" ? "AI Color Palette Generator" : "10015 Tools"}</h2>
                                 <div className="flex justify-center mb-6">
                                     <MdShare className="text-indigo-500 text-7xl" />
                                 </div>
@@ -121,38 +233,37 @@ const ColorPaletteGenerator = () => {
                                     ))}
                                 </div>
                             </div>
-                            <button className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer" onClick={() => setShareOpen(false)}>✕</button>
+                            <button className="absolute top-0 right-4 text-gray-600 text-lg" onClick={() => setShareOpen(false)}>✕</button>
                         </div>
                     </div>
                 )}
 
-                {/* Bug Report Popup */}
                 {open && (
                     <div className="fixed inset-0 bg-black/30 flex z-40 justify-center items-center">
                         <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
                             <h2 className="text-xl font-bold mb-2">Bug Report</h2>
-                            <p className="text-sm mb-4"><strong>Tool:</strong> Lorem Ipsum Generator</p>
+                            <p className="text-sm mb-4"><strong>Tool:</strong> AI Color Palette Generator</p>
                             <label className="text-sm mb-1 block" htmlFor="bugDescription">Please describe the issue.</label>
                             <textarea
                                 id="bugDescription"
-                                className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                                className="w-full p-3 border border-gray-300 rounded-xl h-32"
                                 placeholder="Description*"
                                 value={bugDescription}
                                 onChange={(e) => setBugDescription(e.target.value)}
                             />
                             <div className="flex justify-end gap-3 mt-4">
-                                <button onClick={() => setOpen(false)} className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg">Cancel</button>
+                                <button onClick={() => setOpen(false)} className="px-4 py-2 bg-gray-200 rounded-lg">Cancel</button>
                                 <button
                                     onClick={() => {
                                         if (!bugDescription.trim()) {
                                             alert("Please enter a description.");
                                             return;
                                         }
-                                        console.log("Bug description submitted:", bugDescription);
+                                        console.log("Bug submitted:", bugDescription);
                                         setOpen(false);
                                         setBugDescription("");
                                     }}
-                                    className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+                                    className="px-4 py-2 bg-indigo-500 text-white rounded-lg"
                                 >
                                     Submit
                                 </button>
@@ -160,215 +271,8 @@ const ColorPaletteGenerator = () => {
                         </div>
                     </div>
                 )}
-
-                <div className="flex flex-col md:flex-row gap-4">
-                    <input
-                        type="text"
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        placeholder="Enter a color (e.g., red)"
-                        className="flex-1 p-3 border border-gray-300 outline-none rounded-md"
-                    />
-                    <select
-                        value={theme}
-                        onChange={(e) => setTheme(e.target.value)}
-                        className="p-3 border border-gray-300 outline-none rounded-md"
-                    >
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                    </select>
-                    <button
-                        onClick={handleGenerate}
-                        className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-5 py-3 rounded-md cursor-pointer"
-                    >
-                        Generate
-                    </button>
-                </div>
-
-                <div>
-                    <h2 className="text-lg mb-3 mt-4">Color Palette</h2>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                        {palette.map((color, idx) => (
-
-                            <div
-                                key={idx}
-                                className="h-6 w-6 rounded-sm"
-                                style={{ backgroundColor: color }}
-                                title={color}
-                            ></div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4 ">
-                    <ColorCard label="Primary" hex={primary} />
-                    <ColorCard label="Accent" hex={accent} />
-                    <ColorCard label="Background" hex={background} />
-                    <ColorCard label="Text" hex={text} />
-                </div>
-
-                <div className="flex flex-wrap gap-4 mt-4">
-                    <button
-                        onClick={() => setShowExportModal(true)}
-                        className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black px-4 py-2 rounded-md cursor-pointer"
-                    >
-                        Export Colors
-                    </button>
-                </div>
-
-                {showPreview && (
-                    <PreviewSection primary={primary} accent={accent} background={background} text={text} />
-                )}
-
-                <ExportModal
-                    open={showExportModal}
-                    onClose={() => setShowExportModal(false)}
-                    palette={palette}
-                />
             </div>
             <Comment />
         </>
     );
-};
-
-const ColorCard = ({ label, hex }) => {
-    const rgba = hexToRgba(hex);
-    return (
-        <div className="border border-gray-200 rounded-md overflow-hidden bg-white shadow">
-            <div className="h-20" style={{ backgroundColor: hex }} />
-            <div className="p-3">
-                <h3 className="text-sm font-semibold text-gray-500">{label}</h3>
-                <p className="font-mono text-sm">HEX: {hex}</p>
-                <p className="font-mono text-sm">RGB: {rgba}</p>
-            </div>
-        </div>
-    );
-};
-
-const PreviewSection = ({ primary, accent, background, text }) => {
-    return (
-        <div
-            className="p-6 mt-6 rounded-lg shadow-lg border"
-            style={{ backgroundColor: background, color: text }}
-        >
-            <h2 className="text-2xl font-bold mb-2" style={{ color: primary }}>
-                Product Card Example
-            </h2>
-            <p className="mb-4">This is how your color palette looks on a sample component.</p>
-            <button
-                className="px-4 py-2 rounded-md font-semibold"
-                style={{ backgroundColor: accent, color: '#fff' }}
-            >
-                Call to Action
-            </button>
-        </div>
-    );
-};
-
-const ExportModal = ({ open, onClose, palette }) => {
-    const [tab, setTab] = useState('css');
-    const [copied, setCopied] = useState(false);
-
-    // CSS Variables format
-    const cssVariables = `
-:root {
-  --primary-100: ${palette[0]};
-  --primary-200: ${palette[1]};
-  --primary-300: ${palette[2]};
-  --accent-100: ${palette[1]};
-  --accent-200: ${palette[2]};
-  --accent-300: ${palette[3]};
-  --background-100: ${palette[4]};
-  --background-200: ${palette[3]};
-  --background-300: ${palette[2]};
-  --text-100: ${palette[5]};
-  --text-200: ${palette[0]};
-  --text-300: ${palette[1]};
 }
-`.trim();
-
-    // Free Text format (as in your screenshot)
-    const freeText = `
-Primary-100: ${palette[0]};
-Primary-200: ${palette[1]};
-Primary-300: ${palette[2]};
-Accent-100: ${palette[1]};
-Accent-200: ${palette[2]};
-Accent-300: ${palette[3]};
-Background-100: ${palette[4]};
-Background-200: ${palette[3]};
-Background-300: ${palette[2]};
-Text-100: ${palette[5]};
-Text-200: ${palette[0]};
-Text-300: ${palette[1]};
-`.trim();
-
-    // Copy to clipboard handler
-    const handleCopy = async () => {
-        try {
-            await navigator.clipboard.writeText(tab === 'css' ? cssVariables : freeText);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 1500);
-        } catch (err) {
-            setCopied(false);
-        }
-    };
-
-    if (!open) return null;
-
-    return (
-        <>
-            <div
-                className="fixed inset-0 bg-black/40 z-90 flex items-center justify-center bg-opacity-40"
-                onClick={onClose}
-            >
-                <div
-                    className="bg-white rounded-lg p-6 shadow-lg min-w-[500px] max-w-[90vw]"
-                    onClick={e => e.stopPropagation()}
-                >
-                    <div className="flex gap-4 mb-4">
-                        <button
-                            className={`px-4 py-2 rounded font-semibold ${tab === 'css' ? 'bg-blue-100 text-blue-700 cursor-pointer' : 'text-gray-400'}`}
-                            onClick={() => setTab('css')}
-                        >
-                            CSS Variables
-                        </button>
-                        <button
-                            className={`px-4 py-2 rounded font-semibold ${tab === 'free' ? 'bg-blue-100 text-blue-700 cursor-pointer' : 'text-gray-400'}`}
-                            onClick={() => setTab('free')}
-                        >
-                            Free Text
-                        </button>
-                    </div>
-                    <div className="mb-2 text-gray-500 font-semibold text-sm">Color List</div>
-                    <pre className="bg-gray-100 p-3 rounded text-xs overflow-x-auto mb-4" style={{ minHeight: 180 }}>
-                        {tab === 'css' ? cssVariables : freeText}
-                    </pre>
-                    <button
-                        className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black cursor-pointer px-4 py-2 rounded-md"
-                        onClick={handleCopy}
-                    >
-                        {copied ? 'Copied!' : 'Copy Colors'}
-                    </button>
-                    <button
-                        className="ml-2 px-4 py-2 rounded-md cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black"
-                        onClick={onClose}
-                    >
-                        Close
-                    </button>
-                </div>
-            </div>
-
-        </>
-    );
-};
-
-const hexToRgba = (hex) => {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return `rgb(${r}, ${g}, ${b})`;
-};
-
-
-export default ColorPaletteGenerator;

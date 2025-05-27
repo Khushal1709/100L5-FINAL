@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import {
   FaCheck,
@@ -20,7 +20,6 @@ const LOREM =
 
 function LoremIpsumGenerator({ id = "Lorem Ipsum Generator" }) {
   const { updateFavorites } = useContext(FavoritesContext);
-
   const [paragraphs, setParagraphs] = useState(1);
   const [wordsPerSentence, setWordsPerSentence] = useState(25);
   const [sentencesPerParagraph, setSentencesPerParagraph] = useState(11);

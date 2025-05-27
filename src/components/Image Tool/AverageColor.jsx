@@ -16,7 +16,6 @@ import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
-
 // Helper functions for color calculations
 function rgbToHex(r, g, b) {
   return (
