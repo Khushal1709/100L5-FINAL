@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Oval2 from "../../image/Oval2.svg";
 import leaf1 from "../../image/leaf1.svg";
-import search from "../../image/search.svg";
+import Miscellaneousimg from "../../image/Miscellaneousimg.svg";
 import Miscellaneoustool1 from "../Miscellaneous tool Grid/Miscellaneoustool1";
 
 function Miscellaneoustool() {
@@ -43,12 +43,14 @@ function Miscellaneoustool() {
             buttonText1="LOGIN / REGISTER"
             buttonText2="SIGN IN"
             srcImg={arror}
-            srcImg1={search}
+            srcImg1={Miscellaneousimg}
+            exploreLinkState={{ scrollTo: 'featured-tools' }}
+
           />
 
           {/* image grid section */}
 
-          <Miscellaneoustool1/>
+          <Miscellaneoustool1 />
         </div>
       </div>
       <Footer />

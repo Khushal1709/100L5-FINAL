@@ -293,53 +293,52 @@ export default function Sidebar() {
       </div>
 
       {/* Sidebar */}
-      <aside
-        className={`
-    bg-white w-full md:w-72 border-r border-gray-200 p-4 space-y-4 overflow-y-auto z-10 transition-all duration-300 ease-in-out
-    md:sticky md:top-0 md:h-screen md:block
+   <aside
+  className={`
+    bg-white w-full lg:w-72 border-r border-gray-200 p-4 space-y-3 overflow-y-auto z-10 transition-all duration-300 ease-in-out
     fixed top-14 left-0 right-0 max-h-[calc(100vh-3.5rem)]
     ${sidebarOpen ? "block" : "hidden"}
+    lg:sticky lg:top-0 lg:left-0 lg:h-screen lg:max-h-screen lg:block
   `}
+>
+  <h2 className="text-gray-500 font-bold text-sm tracking-wider uppercase">Tool Categories</h2>
+  {sections.map(({ key, icon, label, items }) => (
+    <div key={key}>
+      <button
+        onClick={() => toggleDropdown(key)}
+        className="flex justify-between items-center w-full text-left font-semibold text-gray-700 mb-1"
       >
-        <h2 className="text-gray-500 font-bold text-sm tracking-wider uppercase">Tool Categories</h2>
-        {sections.map(({ key, icon, label, items }) => (
-          <div key={key}>
-            <button
-              onClick={() => toggleDropdown(key)}
-              className="flex justify-between items-center w-full text-left font-semibold text-gray-700 mb-1"
+        <span className="flex items-center gap-2">
+          <span className="text-lg">{icon}</span> {label}
+        </span>
+        <FaChevronDown
+          className={`text-gray-500 transition-transform duration-200 ${openDropdownKey === key ? "rotate-180" : ""}`}
+        />
+      </button>
+      {openDropdownKey === key && (
+        <ul className="ml-5 mt-1 space-y-1">
+          {items.map((item, idx) => (
+            <li
+              key={idx}
+              onClick={() => {
+                setSelectedTool(item.label);
+                if (item.link) navigate(item.link);
+                setSidebarOpen(false); // close on mobile/tablet
+              }}
+              className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${selectedTool === item.label
+                ? "bg-blue-100 text-blue-600 font-semibold"
+                : "text-gray-600 hover:bg-gray-100"
+                }`}
             >
-              <span className="flex items-center gap-2">
-                <span className="text-lg">{icon}</span> {label}
-              </span>
-              <FaChevronDown
-                className={`text-gray-500 transition-transform duration-200 ${openDropdownKey === key ? "rotate-180" : ""
-                  }`}
-              />
-            </button>
-            {openDropdownKey === key && (
-              <ul className="ml-5 mt-1 space-y-1">
-                {items.map((item, idx) => (
-                  <li
-                    key={idx}
-                    onClick={() => {
-                      setSelectedTool(item.label);
-                      if (item.link) navigate(item.link);
-                      setSidebarOpen(false); // close on mobile
-                    }}
-                    className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${selectedTool === item.label
-                      ? "bg-blue-100 text-blue-600 font-semibold"
-                      : "text-gray-600 hover:bg-gray-100"
-                      }`}
-                  >
-                    {item.icon}
-                    {item.label}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
-      </aside>
+              {item.icon}
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  ))}
+</aside>
     </div>
   );
 }

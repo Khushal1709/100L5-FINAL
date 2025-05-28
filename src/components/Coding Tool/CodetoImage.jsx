@@ -32,6 +32,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 import { RiCodeBlock } from "react-icons/ri";
+import Comment from "../Text tools/Comment";
 
 
 // Map UI themes to syntax highlighter themes
@@ -1152,6 +1153,7 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
             </button>
           </div>
         </div>
+        <Comment/>
     </div>
   );
 };

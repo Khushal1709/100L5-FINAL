@@ -299,7 +299,7 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
           <div>
             <label className="block font-medium mb-1 text-sm sm:text-base">Preset Gradients</label>
             <select
-              className="w-full border border-gray-200 rounded px-3 py-2 outline-none text-sm sm:text-base focus:ring-2 focus:ring-indigo-300"
+              className="w-full border border-gray-200 rounded px-3 py-2 outline-none text-sm sm:text-base"
               onChange={handlePresetChange}
             >
               {presetGradients.map((preset, index) => (

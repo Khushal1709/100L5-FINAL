@@ -45,6 +45,8 @@ function Codingtool() {
             buttonText2="SIGN IN"
             srcImg={arror}
             srcImg1={coding}
+            exploreLinkState={{ scrollTo: 'featured-tools' }}
+
           />
 
           {/* image grid section */}

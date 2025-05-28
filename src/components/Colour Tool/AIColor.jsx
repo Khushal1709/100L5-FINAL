@@ -5,6 +5,7 @@ import { FiAlertCircle, FiShare2 } from "react-icons/fi";
 import Comment from "../Text tools/Comment";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
+
 const baseColors = {
     light: {
         red: ['#ff0000', '#ff4d4d', '#ff7373', '#ff9999', '#fff2f2', '#290000'],
@@ -31,7 +32,7 @@ const generateColors = (prompt, theme) => {
 
 function ColorCard({ label, hex }) {
     return (
-        <div className="border rounded-xl p-4 flex justify-between items-center shadow">
+        <div className="border border-gray-200 rounded-xl p-4 flex justify-between items-center shadow">
             <div>
                 <p className="text-sm text-gray-500">{label}</p>
                 <p className="font-semibold">{hex}</p>
@@ -127,38 +128,50 @@ export default function ColorPaletteGenerator({ id = "AI Color Palette Generator
     return (
         <>
             <div className="max-w-4xl mx-auto px-4 py-6 mt-3">
-                <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
-                    <div className="flex items-center gap-3">
-                        <span className="text-4xl text-indigo-400"><FaBrain /></span>
-                        <h1 className="text-2xl font-bold text-gray-900">AI Color Palette Generator</h1>
-                    </div>
-                    <div className="flex flex-wrap gap-2 justify-center sm:justify-end">
-                        <button onClick={() => setShareOpen(true)} className="px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600">
-                            <FiShare2 className="inline-block mr-2" /> Share
-                        </button>
-                        <button onClick={() => setOpen(true)} className="px-3 py-2 text-sm rounded-xl border border-indigo-500 bg-indigo-50 text-indigo-600">
-                            <FiAlertCircle className="inline-block mr-2" /> Report Bug
-                        </button>
-                        <button
-                            onClick={onFavoriteToggle}
-                            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
-                                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                                : "bg-indigo-50 border-indigo-500 text-indigo-600"
-                                }`}
-                        >
-                            {isFavorite ? (
-                                <>
-                                    <FaCheck className="inline-block mr-1" size={12} /> Added
-                                </>
-                            ) : (
-                                <>
-                                    <FaRegStar className="inline-block mr-1" size={12} /> Add to
-                                    Favorites
-                                </>
-                            )}
-                        </button>
-                    </div>
-                </div>
+                 <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
+                                <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                                    <span className="text-4xl text-indigo-400">
+                                        <FaBrain/>
+                                    </span>
+                                    <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                                        AI&nbsp;Color
+                                    </h1>
+                                </div>
+                                <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-2 sm:gap-3">
+                                    <button
+                                        onClick={() => setShareOpen(true)}
+                                        className="flex items-center justify-center w-full sm:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer"
+                                    >
+                                        <FiShare2 className="mr-2" size={18} />
+                                        Share
+                                    </button>
+                                    <button
+                                        className="flex items-center justify-center gap-2 w-full sm:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer hover:bg-indigo-100 transition"
+                                        onClick={() => setOpen(true)}
+                                    >
+                                        <FiAlertCircle className="text-indigo-600 text-base" />
+                                        Report Bug
+                                    </button>
+                                    <button
+                                        onClick={onFavoriteToggle}
+                                        className={`px-3 py-2 rounded-xl border text-sm w-full sm:w-auto ${
+                                            isFavorite
+                                                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                                                : "bg-indigo-50 border-indigo-600 text-indigo-600"
+                                        }`}
+                                    >
+                                        {isFavorite ? (
+                                            <>
+                                                <FaCheck className="inline-block mr-1" size={12} /> Added
+                                            </>
+                                        ) : (
+                                            <>
+                                                <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </div>
 
                 <div className="flex flex-col md:flex-row gap-4">
                     <input
@@ -166,12 +179,12 @@ export default function ColorPaletteGenerator({ id = "AI Color Palette Generator
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
                         placeholder="Enter a color (e.g., red)"
-                        className="flex-1 p-3 border border-gray-300 rounded-md"
+                        className="flex-1 p-3 border border-gray-300 rounded-md outline-none"
                     />
                     <select
                         value={theme}
                         onChange={(e) => setTheme(e.target.value)}
-                        className="p-3 border border-gray-300 rounded-md"
+                        className="p-3 border border-gray-300 rounded-md outline-none"
                     >
                         <option value="light">Light</option>
                         <option value="dark">Dark</option>
@@ -186,14 +199,14 @@ export default function ColorPaletteGenerator({ id = "AI Color Palette Generator
 
                 <div className="mt-4">
                     <h2 className="text-lg mb-2">Color Palette</h2>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 ">
                         {palette.map((color, idx) => (
-                            <div key={idx} className="h-6 w-6 rounded-sm" style={{ backgroundColor: color }} title={color}></div>
+                            <div key={idx} className="h-6 w-6 rounded-sm " style={{ backgroundColor: color }} title={color}></div>
                         ))}
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 mt-4">
+                <div className="grid md:grid-cols-2 gap-4 mt-4 ">
                     <ColorCard label="Primary" hex={primary} />
                     <ColorCard label="Accent" hex={accent} />
                     <ColorCard label="Background" hex={background} />

@@ -299,7 +299,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
           <div>
             <label className="block text-sm text-gray-600 mb-1">Glitch Effect</label>
             <select
-              className="w-full p-3 border border-gray-300 rounded outline-none text-sm focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-3 border border-gray-300 rounded outline-none text-sm"
               value={glitchEffect}
               onChange={(e) => setGlitchEffect(e.target.value)}
             >
@@ -312,7 +312,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
             <label className="block text-sm text-gray-600 mb-1">Text</label>
             <input
               type="text"
-              className="w-full p-3 border border-gray-300 rounded outline-none text-sm focus:ring-2 focus:ring-indigo-300"
+              className="w-full p-3 border border-gray-300 rounded outline-none text-sm"
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
@@ -392,7 +392,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
               <div className="w-6 h-6 rounded" style={{ backgroundColor: backgroundColor }}></div>
               <input
                 type="text"
-                className="w-full p-3 border border-gray-300 rounded outline-none text-sm focus:ring-2 focus:ring-indigo-300"
+                className="w-full p-3 border border-gray-300 rounded outline-none text-sm"
                 value={backgroundColor}
                 onChange={(e) => setBackgroundColor(e.target.value)}
               />
@@ -404,7 +404,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
               <div className="w-6 h-6 rounded" style={{ backgroundColor: textColor }}></div>
               <input
                 type="text"
-                className="w-full p-3 border border-gray-300 rounded outline-none text-sm focus:ring-2 focus:ring-indigo-300"
+                className="w-full p-3 border border-gray-300 rounded outline-none text-sm"
                 value={textColor}
                 onChange={(e) => setTextColor(e.target.value)}
               />
@@ -416,7 +416,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
               <div className="w-6 h-6 rounded" style={{ backgroundColor: glitchColor1 }}></div>
               <input
                 type="text"
-                className="w-full p-3 border border-gray-300 rounded outline-none text-sm focus:ring-2 focus:ring-indigo-300"
+                className="w-full p-3 border border-gray-300 rounded outline-none text-sm"
                 value={glitchColor1}
                 onChange={(e) => setGlitchColor1(e.target.value)}
               />
@@ -428,7 +428,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
               <div className="w-6 h-6 rounded" style={{ backgroundColor: glitchColor2 }}></div>
               <input
                 type="text"
-                className="w-full p-3 border border-gray-300 rounded outline-none text-sm focus:ring-2 focus:ring-indigo-300"
+                className="w-full p-3 border border-gray-300 rounded outline-none text-sm"
                 value={glitchColor2}
                 onChange={(e) => setGlitchColor2(e.target.value)}
               />

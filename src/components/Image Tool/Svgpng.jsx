@@ -265,8 +265,8 @@ export default function SvgToPngTool({id="SVG to PNG Converter"}) {
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-md p-4 md:p-6">
         {/* Upload Box */}
         {!imageSrc && (
-          <div className="border-2 border-dashed border-indigo-300 rounded-lg h-40 flex flex-col items-center justify-center mb-6 text-center">
-            <label htmlFor="file-input" className="cursor-pointer flex flex-col items-center text-indigo-400">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg h-40 flex flex-col items-center justify-center mb-6 text-center">
+            <label htmlFor="file-input" className="cursor-pointer flex flex-col items-center text-gray-500">
               <svg width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2" className="mb-2">
                 <path d="M12 16v6h8v-6h5l-9-9-9 9h5z" />
                 <path d="M20 21v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2" />

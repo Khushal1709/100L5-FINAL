@@ -346,7 +346,7 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
         <div>
           <label className="block text-sm sm:text-base text-gray-600 mb-1">Preview Type</label>
           <select
-            className="w-full outline-none border border-gray-200 rounded py-2 px-3 focus:ring-2 focus:ring-indigo-300"
+            className="w-full outline-none border border-gray-200 rounded py-2 px-3 "
             value={previewType}
             onChange={(e) => setPreviewType(e.target.value)}
           >

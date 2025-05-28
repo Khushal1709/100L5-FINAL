@@ -5,7 +5,7 @@ import Oval2 from "../../image/Oval2.svg";
 import leaf1 from "../../image/leaf1.svg";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import search from "../../image/search.svg";
+import Soicalimg from "../../image/Soicalimg.svg";
 import Socialmediatool1 from "./Socialmediatool1";
 
 function Socialmediatool() {
@@ -43,10 +43,12 @@ function Socialmediatool() {
           buttonText1="LOGIN / REGISTER"
           buttonText2="SIGN IN"
           srcImg={arror}
-          srcImg1={search}
+          srcImg1={Soicalimg}
+          exploreLinkState={{ scrollTo: 'featured-tools' }}
+
         />
 
-        <Socialmediatool1/>
+        <Socialmediatool1 />
       </div>
       <Footer />
     </>

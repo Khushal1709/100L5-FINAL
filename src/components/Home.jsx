@@ -37,17 +37,34 @@ import Miscellaneoustool1 from "../Pages/Miscellaneous tool Grid/Miscellaneousto
 import Layout from "../components/Layout";
 import Sidebar from "../components/Sidebar";
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 
 function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo === 'featured-tools' && featuredToolsRef.current) {
+      setTimeout(() => {
+        featuredToolsRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
+
+      // Clear the state to prevent scrolling on subsequent renders
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
   const tools = [
     { title: "AI Color Palette Generator", icon: a1, bgColor: "bg-[#D5C7FF]", link: "/AIColor" },
-    { title: "Tweet Generator", icon: a2, bgColor: "bg-[#AEDFFF]",link :"/TweetGenerator" },
-    { title: "Bionic Reading Converter", icon: a3, bgColor: "bg-[#D5C7FF]",link:"/BionicReading" },
+    { title: "Tweet Generator", icon: a2, bgColor: "bg-[#AEDFFF]", link: "/TweetGenerator" },
+    { title: "Bionic Reading Converter", icon: a3, bgColor: "bg-[#D5C7FF]", link: "/BionicReading" },
     {
       title: "Text to Handwriting Converter",
       icon: a4,
       bgColor: "bg-[#AEDFFF]",
-      link :"/Text"
+      link: "/Text"
     },
     {
       title: "Code to Image Converter",
@@ -60,20 +77,20 @@ function Home() {
     { title: "Image Caption Generator", icon: a7, bgColor: "bg-[#D5C7FF]" },
     { title: "Instagram Post Generator", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/InstagramPostGenerator" },
     { title: "CSS Glassmorphism Generator", icon: a7, bgColor: "bg-[#D5C7FF]", link: "/Cssglassmorphism" },
-    { title: "CSS Clip Path Generator", icon: a8, bgColor: "bg-[#AEDFFF]",link:"/Cssclippathgenerator"},
-    { title: "Tweet Generator", icon: a7, bgColor: "bg-[#D5C7FF]",link:"/TweetGenerator" },
-    { title: "SVG Pattern Generator", icon: a8, bgColor: "bg-[#AEDFFF]",link:"/SVGpattern" },
+    { title: "CSS Clip Path Generator", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/Cssclippathgenerator" },
+    { title: "Tweet Generator", icon: a7, bgColor: "bg-[#D5C7FF]", link: "/TweetGenerator" },
+    { title: "SVG Pattern Generator", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/SVGpattern" },
     {
       title: "CSS Background Pattern Generator",
       icon: a7,
       bgColor: "bg-[#D5C7FF]",
-      link:"/CSSbackgroundpattern",
+      link: "/CSSbackgroundpattern",
     },
-    { title: "Photo Censor", icon: a8, bgColor: "bg-[#AEDFFF]",link:"/Photocensor" },
+    { title: "Photo Censor", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/Photocensor" },
     {
       title: "Twitter Ad Revenue Generator",
       icon: a8,
-      bgColor: "bg-[#D5C7FF]",link: "/Twitteradrevenuegenerator"
+      bgColor: "bg-[#D5C7FF]", link: "/Twitteradrevenuegenerator"
     },
   ];
 
@@ -95,7 +112,7 @@ function Home() {
   const Colortool1Ref = useRef(null);
   const Socialmedia1Ref = useRef(null);
   const MiscTools1Ref = useRef(null);
-      const featuredToolsRef = useRef(null);
+  const featuredToolsRef = useRef(null);
 
 
   useEffect(() => {
@@ -158,11 +175,14 @@ function Home() {
     }
   };
 
- const scrollToFeaturedTools = () => {
-      if (featuredToolsRef.current) {
-        featuredToolsRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    };
+  const scrollToFeaturedTools = () => {
+    if (featuredToolsRef.current) {
+      featuredToolsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   return (
     <>
       <div className="mx-auto">
@@ -206,8 +226,8 @@ function Home() {
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
               <div className="relative inline-flex items-center">
-                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap"
-                 onClick={scrollToFeaturedTools}
+                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer"
+                  onClick={scrollToFeaturedTools}
                 >
                   EXPLORE TOOL
                 </button>
@@ -334,7 +354,7 @@ function Home() {
         </div>
       </div>
 
-      <div ref={featuredToolsRef}  className="bg-white w-full overflow-hidden py-12 md:py-16">
+      <div ref={featuredToolsRef} className="bg-white w-full overflow-hidden py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="mb-0 lg:mb-0 w-full md:w-2/4 lg:w-1/5">
@@ -369,7 +389,8 @@ function Home() {
                   const content = (
                     <div
                       key={index}
-                      className={`${tool.bgColor} rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
+                      onClick={scrollToTop}
+                      className={`${tool.bgColor}  rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
                     >
                       <img
                         src={tool.icon || "/placeholder.svg"}

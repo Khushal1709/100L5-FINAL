@@ -6,7 +6,7 @@ import Oval2 from "../../image/Oval2.svg";
 import leaf1 from "../../image/leaf1.svg";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import search from "../../image/search.svg";
+import CSSimg from "../../image/CSSimg.svg";
 
 function Csstool() {
   return (
@@ -43,7 +43,9 @@ function Csstool() {
           buttonText1="LOGIN / REGISTER"
           buttonText2="SIGN IN"
           srcImg={arror}
-          srcImg1={search}
+          srcImg1={CSSimg}
+          exploreLinkState={{ scrollTo: 'featured-tools' }}
+
         />
 
         <CSStool1 />

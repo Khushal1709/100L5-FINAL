@@ -78,10 +78,10 @@ import Contact from "../image/contact.svg";
 import Support from "./Support";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
 import ston from "../image/ston.svg";
 import Oval2 from "../image/Oval2.svg";
 import leaf1 from "../image/leaf1.svg";
+import { Link } from "react-router-dom";
 
 const ContactSection = () => {
   return (
@@ -134,9 +134,9 @@ const ContactSection = () => {
                   />
                 </div>
                 <div className="relative inline-flex items-center">
-                  <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap">
+               <Link to ="/Productfinder"> <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap"> 
                     PRODUCT FINDER
-                  </button>
+                  </button></Link>
                   <img
                     src={finder}
                     alt="Finder Icon"

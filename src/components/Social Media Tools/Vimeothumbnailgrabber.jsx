@@ -133,7 +133,7 @@ const Vimeothumbnailgrabber = ({id="Vimeo Thumbnail Grabber"}) => {
   
   return (
     <div className="max-w-4xl mx-auto mt-7 p-2">
-      <div className="max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto bg-white rounded-lg shadow p-2 sm:p-6">
+      <div className="max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto bg-white rounded-lg  p-2 sm:p-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
           <div className="flex items-center gap-3 mb-2 sm:mb-0">
@@ -294,7 +294,7 @@ const Vimeothumbnailgrabber = ({id="Vimeo Thumbnail Grabber"}) => {
 
       <input
         type="text"
-        className="w-full border border-gray-300 rounded-md px-3 py-2 mb-6 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-200 text-sm sm:text-base"
+        className="w-full border border-gray-300 rounded-md px-3 py-2 mb-6 text-gray-700 outline-none text-sm sm:text-base"
         placeholder="e.g. https://vimeo.com/22439234"
         value={vimeoUrl}
         onChange={handleUrlChange}

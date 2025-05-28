@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import { FavoritesContext } from "../../Context/FavoriteContext";
+import Comment from "../Text tools/Comment";
 
 const SVGpattern = ({id="SVGpattern"}) => {
     const { updateFavorites } = useContext(FavoritesContext);
@@ -744,6 +745,7 @@ const SVGpattern = ({id="SVGpattern"}) => {
                     </div>
                 </div>
             </div>
+            <Comment/>
         </div>
     );
 };

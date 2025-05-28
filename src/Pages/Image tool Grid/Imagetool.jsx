@@ -6,7 +6,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Oval2 from "../../image/Oval2.svg";
 import leaf1 from "../../image/leaf1.svg";
-import search from "../../image/search.svg";
+import Imageimg from "../../image/Imageimg.svg";
 
 function Imagetool() {
   return (
@@ -43,7 +43,8 @@ function Imagetool() {
             buttonText1="LOGIN / REGISTER"
             buttonText2="SIGN IN"
             srcImg={arror}
-            srcImg1={search}
+            srcImg1={Imageimg}
+            exploreLinkState={{ scrollTo: 'featured-tools' }}
           />
 
           {/* image grid section */}

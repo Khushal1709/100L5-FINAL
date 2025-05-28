@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa6";
 import { MdShare } from "react-icons/md";
 import { FavoritesContext } from "../../Context/FavoriteContext";
+import Comment from "../Text tools/Comment";
 
 export default function ImageResizer({id="Image Resizer"}) {
     const { updateFavorites } = useContext(FavoritesContext);
@@ -374,6 +375,7 @@ export default function ImageResizer({id="Image Resizer"}) {
                     )}
                 </div>
             )}
+            <Comment/>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, useEffect,useContext } from "react";
+import React, { useRef, useState, useCallback, useEffect, useContext } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { FaCropSimple } from "react-icons/fa6";
@@ -42,7 +42,7 @@ function getRotatedImage(imageSrc, rotation = 0) {
     });
 }
 
-export default function ImageCropper({id="Image Cropper"}) {
+export default function ImageCropper({ id = "Image Cropper" }) {
     const { updateFavorites } = useContext(FavoritesContext);
     const [open, setOpen] = useState(false);
     const [bugDescription, setBugDescription] = useState("");
@@ -198,27 +198,27 @@ export default function ImageCropper({id="Image Cropper"}) {
         alert("Crop functionality handled on selection. Download to save cropped image.");
     };
 
-     const onFavoriteToggle = () => {
-          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
-          let newFavorites;
-      
-          if (favorites.includes(id)) {
+    const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+
+        if (favorites.includes(id)) {
             newFavorites = favorites.filter((favId) => favId !== id);
             setIsFavorite(false);
-          } else {
+        } else {
             newFavorites = [...favorites, id];
             setIsFavorite(true);
-          }
-      
-          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
-          updateFavorites();
-        };
-      
-        useEffect(() => {
-          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
-          setIsFavorite(favorites.includes(id));
-        }, [id]);
-    
+        }
+
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+    };
+
+    useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+    }, [id]);
+
 
     return (
         <div className="max-w-4xl mx-auto p-2">
@@ -461,7 +461,7 @@ export default function ImageCropper({id="Image Cropper"}) {
                     />
                 </div>
             )}
-            <Comment/>
+            <Comment />
         </div>
     );
 }

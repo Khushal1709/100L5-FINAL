@@ -1,11 +1,11 @@
-// import arror from "../image/arror.svg";
+import arror from "../../image/arror.svg";
 import ston from "../../image/ston.svg";
 import Information from "../../components/Information";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Oval2 from "../../image/Oval2.svg";
 import leaf1 from "../../image/leaf1.svg";
-import search from "../../image/search.svg";
+import Textimg from "../../image/Textimg.svg";
 import Texttool1 from "../Text tool Grid/Texttool1";
 
 function Texttool() {
@@ -44,8 +44,10 @@ Our text tools are the best in the web and they're all available for free. Wheth
             buttonText="EXPLORE TOOL"
             buttonText1="LOGIN / REGISTER"
             buttonText2="SIGN IN"
-            // srcImg={arror}
-            srcImg1={search}
+            srcImg={arror}
+            srcImg1={Textimg}
+            exploreLinkState={{ scrollTo: 'featured-tools' }}
+
           />
 
           {/* image grid section */}
@@ -59,3 +61,5 @@ Our text tools are the best in the web and they're all available for free. Wheth
 }
 
 export default Texttool;
+
+

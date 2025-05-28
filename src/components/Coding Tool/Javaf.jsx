@@ -266,7 +266,7 @@ export default function JsFormatter() {
         </label>
         <select
           id="indent"
-          className="w-48 border border-gray-200 rounded-lg px-4 py-2 bg-white text-gray-700 focus:outline-none focus:border-[#5b63e6] mb-2"
+          className="w-48 border border-gray-200 rounded-lg px-4 py-2 bg-white text-gray-700 outline-none mb-2"
           value={indent}
           onChange={e => setIndent(e.target.value)}
         >

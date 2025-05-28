@@ -8,6 +8,7 @@ function Information({
   buttonText2,
   srcImg,
   srcImg1,
+  exploreLinkState,
 }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +27,11 @@ function Information({
           </p>
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-4">
-            <Link to="/">
+            <Link
+      to="/"
+      state={exploreLinkState} 
+    >
+
               <div className="relative inline-flex items-center cursor-pointer">
                 <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap">
                   {buttonText}
