@@ -51,7 +51,7 @@ import ImageCropper from "./components/Image Tool/ImageCropper";
 import AverageColor from "./components/Image Tool/AverageColor";
 import ImageColorPicker from "./components/Image Tool/ImageColorPicker";
 import SVGpattern from "./components/Image Tool/SVGpattern";
-import BlobGenerator from "./components/Image Tool/BlobGenerator.JSX";
+import BlobGenerator from "./components/Image Tool/BlobGenerator";
 import Opengraphmetagenerator from "./components/Social Media Tools/Opengraphmetagenerator";
 import Vimeothumbnailgrabber from "./components/Social Media Tools/Vimeothumbnailgrabber";
 import Youtubethumbnailgrabber from "./components/Social Media Tools/Youtubethumbnailgrabber";
