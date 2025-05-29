@@ -1,14 +1,12 @@
-
-import React, { useState,useRef,useContext,useEffect } from 'react';
+import { useRef, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { FavoritesContext } from "../../Context/FavoriteContext";
-
+// Register align format for Quill
 Quill.register('formats/align', Quill.import('formats/align'), true);
 
-// Import your frame images
+// ... your frame and icon imports here ...
 import frame1 from "../../image/frame1.png";
 import frame2 from "../../image/frame2.png";
 import frame3 from "../../image/frame3.png";
@@ -16,6 +14,11 @@ import frame4 from "../../image/frame4.png";
 import frame5 from "../../image/frame5.png";
 import frame6 from "../../image/frame6.png";
 import frame7 from "../../image/frame7.png";
+import frame8 from "../../image/frame8.png";
+import frame9 from "../../image/frame9.png";
+import frame10 from "../../image/frame10.png";
+import frame11 from "../../image/frame11.png";
+import frame12 from "../../image/frame12.png";
 import { BsLayoutTextSidebarReverse } from "react-icons/bs";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
@@ -30,7 +33,9 @@ import {
 } from "react-icons/fa6";
 import { MdShare } from "react-icons/md";
 
-// Font options for the dropdown
+
+// ... fontOptions and paperFrames as in your code ...
+
 const fontOptions = [
   { label: "Satisfy", value: "Satisfy" },
   { label: "Homemade Apple", value: "Homemade Apple" },
@@ -54,7 +59,6 @@ const fontOptions = [
   { label: "Amarante", value: "Amarante" },
 ];
 
-// Paper frame options for the dropdown and preview
 const paperFrames = [
   { label: "frame 1", value: "frame1", image: frame1 },
   { label: "frame 2", value: "frame2", image: frame2 },
@@ -63,9 +67,16 @@ const paperFrames = [
   { label: "frame 5", value: "frame5", image: frame5 },
   { label: "frame 6", value: "frame6", image: frame6 },
   { label: "frame 7", value: "frame7", image: frame7 },
+  { label: "frame 8", value: "frame8", image: frame8 },
+  { label: "frame 9", value: "frame9", image: frame9 },
+  { label: "frame 10", value: "frame10", image: frame10 },
+  { label: "frame 11", value: "frame11", image: frame11 },
+    { label: "frame 12", value: "frame12", image: frame12 },
+
+
 ];
 
-// Custom Quill toolbar with alignment group horizontally
+
 const quillModules = {
   toolbar: [
     [
@@ -80,52 +91,29 @@ const quillModules = {
   ]
 };
 
-// Simple Input component
-const Input = React.forwardRef(function Input({ className = '', ...props }, ref) {
-  return (
-    <input
-      ref={ref}
-      className={`border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition ${className}`}
-      {...props}
-    />
-  );
-});
-
-// Simple Card component
-function Card({ className = '', children, ...props }) {
-  return (
-    <div className={`bg-white rounded-lg shadow-md p-4 ${className}`} {...props}>
-      {children}
-    </div>
-  );
-}
-
-
-
-// Main Handwriting Converter component
-export default function HandwritingConverter({id="Text"}) {
-  const { updateFavorites } = useContext(FavoritesContext);
+export default function HandwritingConverter() {
   const [open, setOpen] = useState(false);
   const [bugDescription, setBugDescription] = useState("");
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  // State variables
-  const [tabchange, setTabchange] = useState('textarea'); // 'textarea' or 'editor'
+  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+  const [tabchange, setTabchange] = useState('textarea');
   const [textAreaValue, setTextAreaValue] = useState('');
   const [editorValue, setEditorValue] = useState('');
   const [font, setFont] = useState('Satisfy');
   const [fontSize, setFontSize] = useState('18px');
   const [inkColor, setInkColor] = useState('#8B0000');
   const [frame, setFrame] = useState('frame2');
-    const previewRef = useRef(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const previewRef = useRef(null);
+  
 
 
-  // Get the selected frame object (for image preview)
   const selectedFrame = paperFrames.find(f => f.value === frame) || paperFrames[1];
 
-  // Handle font size input with automatic px suffix if needed
+  // const cardRef = useRef(null);
+
   const handleFontSizeChange = (e) => {
     let value = e.target.value.trim();
     if (/^\d+$/.test(value)) {
@@ -136,16 +124,40 @@ export default function HandwritingConverter({id="Text"}) {
     }
   };
 
-
-
-
-  // Get the text to preview based on active tab
   const previewText = tabchange === 'textarea'
     ? (textAreaValue ? textAreaValue.replace(/\n/g, '<br/>') : 'Your handwriting text will appear here...')
     : (editorValue || 'Your handwriting text will appear here...');
 
+  // Download as image
+  //  const handleDownload = () => {
+  //   if (!cardRef.current || !imageLoaded) {
+  //     alert('Please wait for the frame image to load before downloading.');
+  //     return;
+  //   }
+  //   const node = cardRef.current;
+  //   const width = node.offsetWidth;
+  //   const height = node.offsetHeight;
 
-      const handleDownloadImage = async () => {
+  //   toPng(node, {
+  //     cacheBust: true,
+  //     width,
+  //     height,
+  //     backgroundColor: null, 
+  //   })
+  //     .then((dataUrl) => {
+  //       const link = document.createElement('a');
+  //       link.download = 'handwriting-card.png';
+  //       link.href = dataUrl;
+  //       link.click();
+  //     })
+  //     .catch((err) => {
+  //       alert('Could not generate image. Try again.');
+  //       console.error(err);
+  //     });
+  // };
+
+  // Download as PNG
+  const handleDownloadImage = async () => {
     if (previewRef.current) {
       const canvas = await html2canvas(previewRef.current);
       const link = document.createElement("a");
@@ -169,29 +181,10 @@ export default function HandwritingConverter({id="Text"}) {
     }
   };
 
-  const onFavoriteToggle = () => {
-      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
-      let newFavorites;
-  
-      if (favorites.includes(id)) {
-        newFavorites = favorites.filter((favId) => favId !== id);
-        setIsFavorite(false);
-      } else {
-        newFavorites = [...favorites, id];
-        setIsFavorite(true);
-      }
-  
-      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
-      updateFavorites();
-    };
-  
-    useEffect(() => {
-      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
-      setIsFavorite(favorites.includes(id));
-    }, [id]);
 
   return (
-    <div className="max-w-4xl mx-auto p-2">
+
+    <div className="max-w-4xl mx-auto p-3">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
@@ -202,7 +195,6 @@ export default function HandwritingConverter({id="Text"}) {
             Text&nbsp;to&nbsp;Handwriting&nbsp;Converter
           </span>
         </div>
-
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
           <button
             onClick={() => setShareOpen(true)}
@@ -219,8 +211,8 @@ export default function HandwritingConverter({id="Text"}) {
             Report Bug
           </button>
           <button
-            onClick={ onFavoriteToggle}
-            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+            onClick={onFavoriteToggle}
+            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer  ${isFavorite
               ? "bg-indigo-100 border-indigo-600 text-indigo-700"
               : "bg-indigo-50  text-indigo-600"
               }`}
@@ -340,104 +332,98 @@ export default function HandwritingConverter({id="Text"}) {
           </div>
         </div>
       )}
-      <div className="max-w-3xl mx-auto space-y-4">
 
-        {/* Tab Switcher */}
-        <div className="flex bg-[#f3f4fa] rounded-lg p-1 w-fit mx-auto mb-2">
-          <button
-            className={`flex items-center gap-2 px-6 py-2 rounded-md transition font-medium text-base
-              ${tabchange === 'textarea'
-                ? 'cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]    shadow'
-                : 'text-[#7a7a9d]'
-              }`}
-            onClick={() => setTabchange('textarea')}
-            style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
-          >
-            <span role="img" aria-label="textarea" style={{ fontSize: 18 }}>📋</span>
-            Text Area
-          </button>
-          <button
-            className={`flex items-center gap-2 px-6 py-2 rounded-md transition font-medium text-base ml-2
-              ${tabchange === 'editor'
-                ? 'cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF]   shadow'
-                : 'text-[#7a7a9d]'
-              }`}
-            onClick={() => setTabchange('editor')}
-            style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
-          >
-            <span style={{ fontStyle: 'italic', fontWeight: 700, fontSize: 18 }}>T</span>
-            Text Editor
-          </button>
-        </div>
 
-        {/* Text Input Section */}
-        {tabchange === 'textarea' ? (
-          <textarea
-            className="w-full min-h-[120px] border border-gray-300  rounded px-3 py-2 outline-none"
-            placeholder="Enter text here..."
-            value={textAreaValue}
-            onChange={e => setTextAreaValue(e.target.value)}
-          />
-        ) : (
-          <ReactQuill
-            theme="snow"
-            value={editorValue}
-            onChange={setEditorValue}
-            modules={quillModules}
-            placeholder="Type here..."
-            style={{
-              background: "white",
-              borderRadius: "8px",
-              height: "300px",
-              marginBottom: "8px",
-            }}
-          />
-        )}
 
-        {/* Controls: Font, Font Size, Ink Color, Frame */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-15">
-          {/* Font Dropdown */}
-          <select
-            className="border border-gray-300 rounded px-3 py-2 outline-none"
-            value={font}
-            onChange={e => setFont(e.target.value)}
-          >
-            {fontOptions.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
 
-          {/* Font Size Input */}
-          <input
-            type="text"
-            value={fontSize}
-            onChange={handleFontSizeChange}
-            placeholder="Font Size (e.g. 18px)"
-            className="border border-gray-300 rounded px-3 py-2  outline-none"
-          />
+      <div className="flex bg-[#f3f4fa] rounded-lg p-1 w-fit mx-auto mb-2">
+        <button
+          className={`flex items-center gap-2 px-6 py-2 rounded-md transition font-medium text-base
+            ${tabchange === 'textarea'
+              ? 'cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] shadow'
+              : 'text-[#7a7a9d]'
+            }`}
+          onClick={() => setTabchange('textarea')}
+          style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
+        >
+          <span role="img" aria-label="textarea" style={{ fontSize: 18 }}>📋</span>
+          Text Area
+        </button>
+        <button
+          className={`flex items-center gap-2 px-6 py-2 rounded-md transition font-medium text-base ml-2
+            ${tabchange === 'editor'
+              ? 'cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] shadow'
+              : 'text-[#7a7a9d]'
+            }`}
+          onClick={() => setTabchange('editor')}
+          style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
+        >
+          <span style={{ fontStyle: 'italic', fontWeight: 700, fontSize: 18 }}>T</span>
+          Text Editor
+        </button>
+      </div>
 
-          {/* Ink Color Picker */}
-          <input
-            type="color"
-            value={inkColor}
-            onChange={e => setInkColor(e.target.value)}
-            className="border border-gray-300 rounded  outline-none"
+      {/* Text Input Section */}
+      {tabchange === 'textarea' ? (
+        <textarea
+          className="w-full min-h-[120px] border border-gray-300 rounded px-3 py-2 outline-none"
+          placeholder="Enter text here..."
+          value={textAreaValue}
+          onChange={e => setTextAreaValue(e.target.value)}
+        />
+      ) : (
+        <ReactQuill
+          theme="snow"
+          value={editorValue}
+          onChange={setEditorValue}
+          modules={quillModules}
+          placeholder="Type here..."
+          style={{
+            background: "white",
+            borderRadius: "8px",
+            height: "300px",
+            marginBottom: "8px",
+          }}
+        />
+      )}
 
-          />
+      {/* Controls: Font, Font Size, Ink Color, Frame */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-20">
+        <select
+          className="border border-gray-300 rounded px-3 py-2 outline-none"
+          value={font}
+          onChange={e => setFont(e.target.value)}
+        >
+          {fontOptions.map(opt => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
+          ))}
+        </select>
+        <input
+          type="text"
+          value={fontSize}
+          onChange={handleFontSizeChange}
+          placeholder="Font Size (e.g. 18px)"
+          className="border border-gray-300 rounded px-3 py-2 outline-none"
+        />
+        <input
+          type="color"
+          value={inkColor}
+          onChange={e => setInkColor(e.target.value)}
+          className="border border-gray-300 rounded outline-none"
+        />
+        <select
+          className="border border-gray-300 rounded px-3 py-2 outline-none"
+          value={frame}
+          onChange={e => setFrame(e.target.value)}
+        >
+          {paperFrames.map(opt => (
+            <option key={opt.value} value={opt.value} className='bottom-full'>{opt.label}</option>
+          ))}
+        </select>
 
-          {/* Frame Dropdown */}
-          <select
-            className="border border-gray-300 rounded px-3 py-2 outline-none"
-            value={frame}
-            onChange={e => setFrame(e.target.value)}
-          >
-            {paperFrames.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-        </div>
 
-         <div className="flex gap-3 justify-start mt-4">
+      </div>
+      <div className="flex gap-3 justify-start mt-4">
         <button
           onClick={handleDownloadImage}
           className="cursor-pointer bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]  px-8 py-2 rounded-lg shadow-md"
@@ -451,53 +437,75 @@ export default function HandwritingConverter({id="Text"}) {
           Download as PDF
         </button>
       </div>
-
-        <div className="mt-8 flex flex-col items-center">
+      {/* Card Preview */}
+      <div className="mt-8 flex flex-col items-center relative ">
+        <div
+          ref={previewRef}
+          style={{
+            backgroundImage: `url(${selectedFrame.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: 490,
+            height: 750,
+            maxWidth: '100%',
+            borderRadius: 14,
+            padding: '48px 36px',
+            margin: '0 auto',
+            position: 'relative',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            overflow: 'hidden',
+            backgroundColor: '#fff',
+          }}
+        >
+          {/* <div ref={previewRef} className="relative w-full p-4 bg-white shadow-md rounded-md">
           <div
-            ref={previewRef}
+            className="text-center"
             style={{
+              fontFamily: font,
+              fontSize: fontSize,
+              color: inkColor,
               backgroundImage: `url(${selectedFrame.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              width: 550,
-              height: 750,
-              maxWidth: '100%',
-              borderRadius: 14,
-              padding: '48px 36px',
-              margin: '0 auto',
-              position: 'relative',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'flex-start',
-
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              minHeight: "400px",
+              padding: "40px",
+              lineHeight: 1.5,
             }}
-          >
-            <div
-              className="ql-editor lg:mt-[55px]  lg:ml-[50px] "  // <-- THIS LINE IS THE KEY!
-              style={{
-                width: '100%',
-                minHeight: 250,
-                fontFamily: font,
-                fontSize: fontSize,
-                color: inkColor,
-                wordBreak: 'break-word',
-                padding: 0,
-                border: 'none',
-                background: 'transparent',
-               
-
-              }}
-              dangerouslySetInnerHTML={{
-                __html: previewText
+            dangerouslySetInnerHTML={{ __html: previewText }}
+          />
+        </div> */}
 
 
-              }}
+          {/* Hidden image to detect load */}
+          <img
+            src={selectedFrame.image}
+            alt="frame"
+            style={{ display: 'none' }}
+            onLoad={() => setImageLoaded(true)}
+          />
 
-            />
-          </div>
+          <div
+            className="ql-editor container mx-auto "
+            style={{
+              width: 500,
+              minHeight: 250,
+              fontFamily: font,
+              fontSize: fontSize,
+              color: inkColor,
+              wordBreak: 'break-word',
+              padding: 0,
+              border: 'none',
+              background: 'transparent',
+              marginTop: '50px',
+              marginLeft: '30px',
+            }}
+            dangerouslySetInnerHTML={{ __html: previewText }}
+          />
         </div>
-        {/* Card with handwriting preview */}
+
 
       </div>
     </div>

@@ -7,6 +7,7 @@ import home from "../image/home.svg";
 import chrome from "../image/chrome.svg";
 import fire from "../image/fire.svg";
 
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [featuredOpen, setFeaturedOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function Navbar() {
       : "text-gray-700 hover:text-gray-900";
 
   return (
-    <header className="w-full lg-static top-0 left-0 z-50 relative">
+    <header className="w-full sticky  lg:static top-0 left-0 z-50 relative bg-transparent">
       <div
         className={`w-full mx-auto px-4 py-3 lg:px-8 flex justify-between items-center ${
           mobileMenuOpen ? "relative z-50" : ""
@@ -57,7 +58,7 @@ export default function Navbar() {
         {/* Left Section: Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src={logo}
+            src={logo || "/placeholder.svg"}
             alt="Logo"
             className="h-8 w-auto"
           />
@@ -68,7 +69,7 @@ export default function Navbar() {
           <div className="relative p-1 top-1">
             <button onClick={toggleSearch}>
               <img
-                src={s1}
+                src={s1 || "/placeholder.svg"}
                 alt="Search"
                 className="h-6 w-6 cursor-pointer transition-transform duration-300 transform hover:scale-125"
               />
@@ -100,7 +101,7 @@ export default function Navbar() {
           </div>
           <Link to="/" className="p-1">
             <img
-              src={home}
+              src={home || "/placeholder.svg"}
               alt="Home"
               className="h-6 w-6 cursor-pointer transition-transform duration-300 transform hover:scale-125"
             />
@@ -128,7 +129,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <img
-                  src={logo}
+                  src={logo || "/placeholder.svg"}
                   alt="Logo"
                   className="h-8 w-auto"
                 />
@@ -266,7 +267,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <img
-                        src={chrome}
+                        src={chrome || "/placeholder.svg"}
                         alt="Chrome"
                         className="h-5 w-5 mr-3"
                       />
@@ -280,7 +281,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <img
-                        src={fire}
+                        src={fire || "/placeholder.svg"}
                         alt="Firefox"
                         className="h-5 w-5 mr-3"
                       />
@@ -306,7 +307,7 @@ export default function Navbar() {
           <div className="relative">
             <button className="p-2 rounded-lg" onClick={toggleSearch}>
               <img
-                src={s1}
+                src={s1 || "/placeholder.svg"}
                 alt="Search"
                 className="h-6 w-6 lg:h-8 lg:w-8 cursor-pointer transition-transform duration-300 transform hover:scale-125"
               />
@@ -339,7 +340,7 @@ export default function Navbar() {
 
           <Link to="/" className="p-2 lg:p-0">
             <img
-              src={home}
+              src={home || "/placeholder.svg"}
               alt="Home"
               className="h-5 w-5 lg:h-6 lg:w-6 transition-transform duration-300 transform hover:scale-125"
             />
@@ -451,7 +452,7 @@ export default function Navbar() {
                   className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   <img
-                    src={chrome}
+                    src={chrome || "/placeholder.svg"}
                     alt="Chrome"
                     className="h-5 w-5 mr-3"
                   />
@@ -464,7 +465,7 @@ export default function Navbar() {
                   className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   <img
-                    src={fire}
+                    src={fire || "/placeholder.svg"}
                     alt="Firefox"
                     className="h-5 w-5 mr-3"
                   />
@@ -485,3 +486,4 @@ export default function Navbar() {
     </header>
   );
 }
+    
