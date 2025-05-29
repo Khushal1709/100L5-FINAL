@@ -1,6 +1,6 @@
 import explore from "../image/explore.svg";
 import finder from "../image/finder.svg";
-import Contact from "../image/contact.svg";
+import Contact from "../image/Contact.svg";
 import Support from "./Support";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
