@@ -15,7 +15,7 @@ export default function Support() {
       <img
         src={leaf}
         alt="Decorative Leaf"
-        className="absolute bottom-1 right-0 w-30 opacity-90 pointer-events-none select-none"
+        className="absolute bottom-1 right-1 w-30 opacity-90 pointer-events-none select-none"
       />
 
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
