@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import leaf from "../image/leaf.svg";
 import oval from "../image/oval.svg";
-import flogo from "../image/flogo.svg";
+// import flogo from "../image/flogo.svg";
+import footerlogo from "../image/footerlogo.svg"; // Footer logo
 import leaffooter from "../image/leaffooter.svg";
 import twitter1 from "../image/twitter1.svg";
 import linkedin1 from "../image/linkedin1.svg";
@@ -55,7 +56,7 @@ export default function Footer() {
               <div>
                 <Link to="/">
                   <img
-                    src={flogo}
+                    src={footerlogo}
                     alt="Footer Logo"
                     className=" rounded flex items-center justify-center mr-2"
                     onClick={scrollToTop}
