@@ -130,7 +130,7 @@ const HexToRgbaConverter = ({ id="HEX to RGBA Converter" }) => {
           <span className="text-4xl text-indigo-400">
             <IoColorFilterOutline />
           </span>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+          <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-gray-900">
             HEX&nbsp;to&nbsp;RGBA&nbsp;Converter
           </h1>
         </div>

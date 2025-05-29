@@ -124,7 +124,7 @@ export default function JsFormatter() {
           <span className="text-3xl sm:text-4xl text-indigo-400">
            <PiFileJsxBold />
           </span>
-          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+          <h1 className="text-lg sm:text-xl md:text-lg  lg:text-2xl font-bold text-gray-900">
             Javascript&nbsp;Formatter&nbsp;
           </h1>
         </div>

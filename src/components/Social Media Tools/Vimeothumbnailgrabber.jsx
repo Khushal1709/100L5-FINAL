@@ -141,7 +141,7 @@ const Vimeothumbnailgrabber = ({id="Vimeo Thumbnail Grabber"}) => {
             <span className="text-4xl text-indigo-400">
              <IoLogoVimeo />
             </span>
-            <span className="text-xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+            <span className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
               Vimeo&nbsp;Thumbnail&nbsp;Grabber
             </span>
           </div>

@@ -77,7 +77,7 @@ const UrlSlugGenerator = () => {
        <span className="text-4xl text-indigo-400">
                   <FaLink />
                 </span>
-      <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+      <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
         URL&nbsp;Slug&nbsp;Generator
       </h1>
       </div>

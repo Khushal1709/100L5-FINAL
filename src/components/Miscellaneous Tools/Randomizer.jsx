@@ -102,7 +102,7 @@ export default function ListRandomizer({id="List Randomizer"}) {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <MdOutlineContentPaste className="text-4xl text-indigo-500" />
-          <h1 className="text-2xl font-bold text-gray-900 sm:text-lg md:text-xl lg:text-2xl">List Randomizer</h1>
+          <h1 className="text-2xl font-bold text-gray-900 sm:text-lg md:text-lg lg:text-2xl">List Randomizer</h1>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <button

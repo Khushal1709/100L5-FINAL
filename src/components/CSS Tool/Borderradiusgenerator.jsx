@@ -144,7 +144,7 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
             CSS Border Radius Generator
           </span>
         </div>
-        <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto">
+        <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto md:mt-3">
           <button
             onClick={() => setShareOpen(true)}
             className="flex items-center justify-center px-4 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition w-full sm:w-auto min-w-[120px]"

@@ -154,11 +154,11 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
           <span className="text-3xl sm:text-4xl text-indigo-400">
             <CgGoogle />
           </span>
-          <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 text-center sm:text-left">
+          <h1 className="text-lg sm:text-xl md:text-lg font-bold text-gray-900 text-center sm:text-left">
             CSS Text Glitch Effect Generator
           </h1>
         </div>
-        <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto">
+        <div className="flex flex-wrap justify-center sm:justify-end md:mt-2 gap-3 w-full sm:w-auto">
           <button
             onClick={() => setShareOpen(true)}
             className="flex items-center justify-center px-4 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition w-full sm:w-auto"

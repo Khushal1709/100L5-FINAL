@@ -65,7 +65,7 @@ export default function QRCodeGenerator({id="QR Code Generator"}) {
           <span className="text-4xl text-indigo-400 mt-4">
             <BsQrCode />
           </span>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mt-4">
+          <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-gray-900 mt-4">
             QR&nbsp;Code&nbsp;Generator
           </h1>
         </div>

@@ -144,7 +144,7 @@ export default function CubicBezierGenerator({id="CSS Cubic"}) {
             <LuSpline />
 
           </span>
-          <span className="text-xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <span className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             CSS&nbsp;Cubic&nbsp;Bezier&nbsp;Generator
           </span>
         </div>

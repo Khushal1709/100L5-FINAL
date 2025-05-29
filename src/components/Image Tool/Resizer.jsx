@@ -121,7 +121,7 @@ export default function ImageResizer({id="Image Resizer"}) {
                         Image&nbsp;Resizer
                     </span>
                 </div>
-                <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-2 sm:gap-3">
+                <div className="flex flex-col w-full sm:w-auto sm:flex-row sm:items-center gap-2 sm:gap-3 md:mt-5">
                     <button
                         onClick={() => setShareOpen(true)}
                         className="flex items-center justify-center w-full sm:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 cursor-pointer"

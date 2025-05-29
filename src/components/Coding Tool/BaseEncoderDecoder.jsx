@@ -1,5 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import { TbTransform } from "react-icons/tb";
+import  { useContext, useState, useRef, useEffect } from "react";
 import { FiShare2, FiAlertCircle } from "react-icons/fi";
 import { PiDatabaseBold } from "react-icons/pi";
 import {
@@ -97,7 +96,7 @@ export default function Base64EncoderDecoder({ id = "Base64 Encoder Decoder Gene
             <span className="text-4xl text-indigo-400">
               <PiDatabaseBold />
             </span>
-            <span className="text-1xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-sm">
+            <span className="text-1xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-sm">
               Base&nbsp;Encoder&nbsp;Decoder&nbsp;Generator
             </span>
           </div>

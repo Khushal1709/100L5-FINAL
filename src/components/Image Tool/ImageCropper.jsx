@@ -229,12 +229,12 @@ export default function ImageCropper({ id = "Image Cropper" }) {
                     <span className="text-4xl text-indigo-400 mt-6">
                         <FaCropSimple />
                     </span>
-                    <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-5">
+                    <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-5">
                         {/* Java&nbsp;Script&nbsp;Minifier */}
                         Images&nbsp;Cropper
                     </span>
                 </div>
-                <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+                <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 md:mt-6 lg:justify-end lg:gap-2">
                     <button
                         onClick={() => setShareOpen(true)}
                         className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"

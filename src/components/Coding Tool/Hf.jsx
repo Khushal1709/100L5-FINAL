@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { html as beautifyHtml } from "js-beautify";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import {MdShare } from "react-icons/md";
 import {
   FaCheck,
   FaRegCopy,
@@ -12,7 +12,6 @@ import {
   FaRegStar,
 } from "react-icons/fa6";
 import Comment from "../Text tools/Comment";
-import { MdGroups } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
 import { LiaHtml5 } from "react-icons/lia";
@@ -117,7 +116,7 @@ export default function HtmlFormatter() {
               <span className="text-4xl text-indigo-400">
                   <LiaHtml5 />              
               </span>
-              <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+              <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
                 HTML&nbsp;Formatter
               </span>
             </div>

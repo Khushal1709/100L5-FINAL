@@ -2,8 +2,7 @@ import React, { useContext,useState, useRef, useEffect } from "react";
 import { css as beautifyCss } from "js-beautify";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
-import { MdGroups } from "react-icons/md";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { MdShare } from "react-icons/md";
 import {
   FaCheck,
   FaRegCopy,
@@ -128,7 +127,7 @@ export default function CssFormatter({id="CSS Formatter"}) {
           <span className="text-4xl text-indigo-400">
             <SiCsswizardry />
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             CSS&nbsp;Formatter
           </span>
         </div>

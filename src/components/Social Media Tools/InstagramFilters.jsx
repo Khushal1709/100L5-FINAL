@@ -113,14 +113,14 @@ export default function InstagramFilters({id="Instagram Filters"}) {
 
     return (
         <>
-        <div className="max-w-4xl mx-auto p-3">
+        <div className="max-w-4xl mx-auto p-3 md:p-7">
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
                 <div className="flex items-center gap-3 mb-2 sm:mb-0">
                     <span className="text-4xl text-indigo-400 mt-4">
                         <MdMovieFilter />
                     </span>
-                    <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-4">
+                    <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
                         Instagram&nbsp;Filters
                     </span>
                 </div>

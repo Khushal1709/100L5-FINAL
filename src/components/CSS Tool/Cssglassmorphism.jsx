@@ -155,7 +155,7 @@ ${useBorder ? `border: 1px solid rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.25);` : ""
             <IoMdPhonePortrait />
 
           </span>
-          <span className="text-base font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <span className="text-base font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             CSS&nbsp;Glassmorphism&nbsp;Generator
           </span>
         </div>

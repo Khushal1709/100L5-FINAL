@@ -91,7 +91,7 @@ export default function JsMinifier() {
           <span className="text-4xl text-indigo-400">
             <PiFileJsxBold />
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             Java&nbsp;Script&nbsp;Minifier
           </span>
         </div>

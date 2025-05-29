@@ -32,7 +32,7 @@ const ProductFinderHero = () => {
       <img
         src={Oval2 || "/placeholder.svg"}
         alt="Background"
-        className="absolute w-150 h-auto object-cover hidden md:block  "
+        className="absolute w-150 h-auto object-cover hidden lg:block  "
       />
       <Navbar />
       <div
@@ -50,7 +50,7 @@ const ProductFinderHero = () => {
         <img
           src={Getleaf || "/placeholder.svg"}
           alt="Leaf Background"
-          className="hidden sm:block absolute left-0 top-0 w-48 md:w-64 lg:w-80 opacity-5 z-0"
+          className="hidden lg:block absolute left-0 top-0 w-48 md:w-64 lg:w-80 opacity-5 z-0"
         />
         <div className="max-w-7xl mx-auto">
           {/* Main Blur Container */}

@@ -1,8 +1,5 @@
-import React, { useState, useRef, useEffect,useContext } from "react";
+import { useState, useRef, useEffect,useContext } from "react";
 import {
-  Share,
-  Heart,
-  Flag,
   Settings,
   Upload,
   Download,
@@ -10,7 +7,6 @@ import {
 } from "lucide-react";
 import {
   FaCheck,
-  FaRegCopy,
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
@@ -483,7 +479,7 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
           <span className="text-4xl text-indigo-400 mt-3">
             <RiCodeBlock />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-3">
+          <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-3">
             Code&nbsp;to&nbsp;Image&nbsp;Converter
           </h1>
         </div>

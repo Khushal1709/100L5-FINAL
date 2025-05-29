@@ -183,7 +183,7 @@ const Twitteradrevenuegenerator = ({id="Twitter Ad Revenue Generator"}) => {
             <FaXTwitter />
 
           </span>
-          <span className="text-lg font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg ">
+          <span className="text-lg font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg ">
             Twitter&nbsp;Ad&nbsp;Revenue&nbsp;Generator
           </span>
         </div>

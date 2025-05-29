@@ -123,7 +123,7 @@ export default function RgbaToHexConverter({id="Color Mixer"}) {
                     <span className="text-4xl text-indigo-400">
                         <HiCircleStack />
                     </span>
-                    <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                    <h1 className="text-xl sm:text-2xl lg:text-lg font-bold text-gray-900">
                         Color&nbsp;Mixer
                     </h1>
                 </div>

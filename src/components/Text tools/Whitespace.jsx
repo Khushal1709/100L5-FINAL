@@ -80,7 +80,7 @@ export default function WhitespaceRemover({ id = "Multiple Whitespace Remove" })
             <BsScissors />
           </span>
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             Multiple&nbsp;Whitespace&nbsp;Remover
           </span>
         </div>

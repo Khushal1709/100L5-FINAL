@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { MdShare } from "react-icons/md";
 import {
   FaCheck,
   FaRegCopy,
@@ -11,7 +11,6 @@ import {
   FaRegStar,
 } from "react-icons/fa6";
 import Comment from "../Text tools/Comment";
-import { MdGroups } from "react-icons/md";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
 import { PiFileCssLight } from "react-icons/pi";
@@ -86,7 +85,7 @@ export default function HtmlMinifier() {
                 <span className="text-4xl text-indigo-400 mt-2">
                  <PiFileCssLight />
                 </span>
-                <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-2">
+                <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-2">
                   CSS&nbsp;Minifier
                 </span>
               </div>

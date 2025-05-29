@@ -82,7 +82,7 @@ export default function HtmlMinifier() {
           <span className="text-4xl text-indigo-400">
             <ImHtmlFive2 />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             HTML&nbsp;Minifier&nbsp;
           </h1>
         </div>

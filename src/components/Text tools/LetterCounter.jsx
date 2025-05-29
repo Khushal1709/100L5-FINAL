@@ -108,7 +108,7 @@ function LetterCounter({ id = "Letter Counter" }) {
           <span className="text-4xl text-indigo-400">
             <SlEnvolopeLetter />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">Letter&nbsp;Counter</h1>
+          <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">Letter&nbsp;Counter</h1>
         </div>
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
            <button

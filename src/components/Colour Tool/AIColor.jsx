@@ -133,7 +133,7 @@ export default function ColorPaletteGenerator({ id = "AI Color Palette Generator
                                     <span className="text-4xl text-indigo-400">
                                         <FaBrain/>
                                     </span>
-                                    <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                                    <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-gray-900">
                                         AI&nbsp;Color
                                     </h1>
                                 </div>

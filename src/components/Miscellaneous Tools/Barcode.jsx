@@ -99,7 +99,7 @@ const BarcodeGenerator = ({id="Bar Code Generator"}) => {
           <span className="text-4xl text-indigo-400 mt-3">
             <ImBarcode />
           </span>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mt-3">
+          <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-gray-900 mt-3">
             Bar&nbsp;Code&nbsp;Generator
           </h1>
         </div>

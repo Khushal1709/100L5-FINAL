@@ -58,7 +58,7 @@ const ProductFinderHero = () => {
       <img
         src={Getleaf}
         alt="Leaf Background"
-        className="absolute left-0 top-0 w-48 md:w-64 lg:w-80 opacity-5 z-0 hidden md:block"
+        className="absolute left-0 top-0 w-48 md:w-64 lg:w-80 opacity-5 z-0 hidden lg:block"
       />
       <div className="max-w-7xl mx-auto">
         {/* Main Blur Container */}
@@ -156,7 +156,7 @@ const ProductFinderHero = () => {
               <img
                 src={search}
                 alt="Illustration"
-                className="w-full max-w-md hidden md:block"
+                className="w-full max-w-md hidden lg:block"
               />
             </div>
           </div>

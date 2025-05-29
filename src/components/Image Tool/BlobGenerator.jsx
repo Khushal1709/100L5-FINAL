@@ -152,11 +152,11 @@ export default function BlobGenerator({id="BlobGenerator"}) {
                     <span className="text-4xl text-indigo-400 mt-6">
                         <GiSlowBlob />
                     </span>
-                    <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-5">
+                    <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-5">
                         SVG&nbsp;Blob&nbsp;Generator
                     </span>
                 </div>
-                <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+                <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 md:mt-6 lg:justify-end lg:gap-2">
                     <button
                         onClick={() => setShareOpen(true)}
                         className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 mb-2 md:mb-0 cursor-pointer"
@@ -254,7 +254,7 @@ export default function BlobGenerator({id="BlobGenerator"}) {
                 <div className="fixed inset-0 bg-black/30 z-40 flex justify-center items-center">
                     <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
                         <h2 className="text-xl font-bold mb-2">Bug Report</h2>
-                        <p className="text-sm mb-4">
+                        <p className="text-sm mb-4 ">
                             <strong>Tool:</strong> SVG Blob Generator
                         </p>
                         <label className="text-sm mb-1 block" htmlFor="bugDescription">

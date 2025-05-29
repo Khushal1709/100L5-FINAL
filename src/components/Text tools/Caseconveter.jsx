@@ -78,13 +78,13 @@ function CaseConverter({ id = "Case Converter" }) {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto mt-7">
+      <div className="max-w-4xl mx-auto mt-7 md:py-2">
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 ">
           <div className="flex items-center gap-2 mb-2 sm:mb-0">
             <span className="text-4xl text-indigo-400">
               <VscCaseSensitive />
             </span>
-            <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">Case&nbsp;Converter</h1>
+            <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">Case&nbsp;Converter</h1>
           </div>
           <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
             <button

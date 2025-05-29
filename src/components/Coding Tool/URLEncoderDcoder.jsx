@@ -74,7 +74,7 @@ export default function UrlEncoderDecoder() {
                 <span className="text-4xl text-indigo-400">
                   <PiFileHtmlBold />
                 </span>
-                <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">URL&nbsp;Encoder&nbsp;Decoder</h1>
+                <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">URL&nbsp;Encoder&nbsp;Decoder</h1>
               </div>
               <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
                  <button
