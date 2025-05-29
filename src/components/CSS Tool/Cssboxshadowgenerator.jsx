@@ -98,11 +98,11 @@ box-shadow: ${shadowValue};
             <span className="text-3xl sm:text-4xl text-indigo-400">
               <FaBoxArchive />
             </span>
-            <span className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 text-center sm:text-left">
-              CSS Box Shadow Generator
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 text-center">
+              CSS&nbsp;Box&nbsp;Shadow&nbsp;Generator
             </span>
           </div>
-          <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto">
+          <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 md:mt-5 lg:justify-end lg:gap-2">
             <button
               onClick={() => setShareOpen(true)}
               className="flex items-center justify-center px-4 py-2 text-sm rounded-xl border border-indigo-600 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition w-full sm:w-auto min-w-[120px]"
