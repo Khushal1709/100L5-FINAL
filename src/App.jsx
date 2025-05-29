@@ -71,7 +71,7 @@ import { FavoritesProvider } from "./Context/FavoriteContext";
 import About from "./components/About";
 import Home from "./components/Home";
 import Texttool from "./Pages/Text tool Grid/Texttool";
-import Imagetool from "./Pages/Image Tool Grid/Imagetool";
+import Imagetool from "./Pages/Image tool Grid/Imagetool";
 import CSStool from "./Pages/CSS tool Grid/CSStool";
 import Codingtool from "./Pages/Coding tool Grid/Codingtool";
 import Colortool from "./Pages/Color tool Grid/Colortool";
