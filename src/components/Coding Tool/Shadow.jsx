@@ -232,10 +232,10 @@ export default function ShadowGenerator() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
           <div className="flex items-center gap-3 mb-2 sm:mb-0">
-            <span className="text-4xl text-indigo-400">
+            <span className="text-4xl text-indigo-400 mt-6">
               <FaReact />
             </span>
-            <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg ">
+            <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-6 ">
               React&nbsp;Native&nbsp;Shadow&nbsp;Generator
             </span>
           </div>
@@ -375,8 +375,6 @@ export default function ShadowGenerator() {
             </div>
           </div>
         )}
-
-
 
         {/* Controls */}
         <div className="w-full max-w-4xl flex gap-6 items-center mb-8">
@@ -535,8 +533,8 @@ elevation: ${shadowStyle.elevation},`}
             </button>
           </div>
         </div>
-        <Comment />
       </div>
-    </>
+        <Comment />
+        </>
   );
 }

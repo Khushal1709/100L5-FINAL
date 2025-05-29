@@ -57,6 +57,7 @@ export default function QRCodeGenerator({id="QR Code Generator"}) {
   
 
   return (
+    <>
     <div className="max-w-3xl mx-auto px-2 sm:px-4 py-4 sm:py-8 font-sans">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-2">
@@ -247,7 +248,8 @@ export default function QRCodeGenerator({id="QR Code Generator"}) {
           Download QR Code
         </button>
       </div>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 }

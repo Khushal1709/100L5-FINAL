@@ -146,6 +146,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
   }, [id]);
 
   return (
+    <>
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-8 mt-7">
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
@@ -505,8 +506,9 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
           word-break: break-word;
         }
       `}</style>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 };
 

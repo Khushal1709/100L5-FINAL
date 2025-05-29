@@ -475,14 +475,15 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
   }, [id]);
 
   return (
+    <>
     <div className="max-w-4xl mx-auto  p-2 sm:p-4">
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-6 bg-white rounded-lg p-3 sm:p-4  gap-2">
            <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-4xl text-indigo-400">
+          <span className="text-4xl text-indigo-400 mt-3">
             <RiCodeBlock />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">
+          <h1 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-3">
             Code&nbsp;to&nbsp;Image&nbsp;Converter
           </h1>
         </div>
@@ -626,7 +627,7 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
         </div>
 
         {/* Settings Panel */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6 p-3">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Highlight Language
@@ -811,7 +812,7 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
         {/* Code Editor and Preview */}
         <div className="bg-white rounded-lg shadow-sm mb-4 sm:mb-6">
           <div className="p-3 sm:p-6">
-            {/* Code Editor */}
+           
             <div className="mb-4 sm:mb-6">
               <div className="flex flex-col sm:flex-row justify-between items-center mb-2 gap-2">
                 <label className="block text-sm font-medium text-gray-700">
@@ -840,7 +841,7 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
                 }}
               />
             </div>
-            {/* Preview */}
+       
             <PreviewWrapper>
               {previewMode !== "Square" && (
                 <div
@@ -1153,8 +1154,9 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
             </button>
           </div>
         </div>
-        <Comment/>
     </div>
+        <Comment/>
+        </>
   );
 };
 

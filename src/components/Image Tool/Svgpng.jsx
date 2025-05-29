@@ -112,6 +112,7 @@ export default function SvgToPngTool({id="SVG to PNG Converter"}) {
   
 
   return (
+    <>
    <div className="max-w-4xl mx-auto p-3">
              {/* Header */}
              <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -359,7 +360,8 @@ export default function SvgToPngTool({id="SVG to PNG Converter"}) {
           </div>
         )}
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 }

@@ -19,7 +19,7 @@ import { FaBrain } from "react-icons/fa";
 import { IoColorFilterOutline } from "react-icons/io5";
 import { FaHashtag } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { FaSwatchbook } from "react-icons/fa";
 import { HiCircleStack } from "react-icons/hi2";
 import { FaReact } from "react-icons/fa6";
@@ -69,34 +69,8 @@ export default function Sidebar() {
   const [openDropdownKey, setOpenDropdownKey] = useState(null);
   const [selectedTool, setSelectedTool] = useState("");
 
-  // useEffect(() => {
-  //   const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
-  //   const favoriteItems = favorites.map((id) => ({
-  //     label: id,
-  //     component: toolComponents[id] || null, // Map ID to component
-  //   }));
-  //   setFavoriteTools(favoriteItems);
-  // }, []);
-
   const toggleDropdown = (key) => {
     setOpenDropdownKey((prev) => (prev === key ? null : key));
-  };
-
-  // const [favoriteTools, setFavoriteTools] = useState([]);
-
-  // const addToFavorites = (tool) => {
-  //   setFavoriteTools((prev) => {
-  //     if (!prev.find((t) => t.label === tool.label)) {
-  //       return [...prev, tool];
-  //     }
-  //     return prev;
-  //   });
-  // };
-
-  const toolComponents = {
-    "Case Converter": CaseConverter,
-    "Lorem Ipsum Generator": LoremIpsumGenerator,
-    // "Letter Counter": LetterCounter,
   };
 
   const allTools = [
@@ -158,9 +132,7 @@ export default function Sidebar() {
 
   const favoriteItems = favoriteTools
     .map((id) => allTools.find((tool) => tool.label === id))
-    .filter(Boolean); // Remove undefined items
-
-
+    .filter(Boolean);
 
   const sections = [
     {
@@ -197,7 +169,6 @@ export default function Sidebar() {
         { label: "SVGpattern", icon: <TbFileTypeSvg />, link: "/SVGpattern" },
         { label: "BlobGenerator", icon: <GiSlowBlob />, link: "/BlobGenerator" },
         { label: "Image Color Extractor", icon: <FaCropSimple />, link: "/ImageColorExtractor" },
-
       ],
     },
     {
@@ -215,29 +186,26 @@ export default function Sidebar() {
         { label: "CSS Triangle Generator", icon: <IoTriangleSharp />, link: "/CSStrianglegenerator" },
         { label: "CSS Box Shadow Generator", icon: <FaBoxArchive />, link: "/Cssboxshadowgenerator" },
         { label: "Border Radius Generator", icon: <AiOutlineRadiusUpright />, link: "/Borderradiusgenerator" },
-
-
       ],
     },
     {
       key: "coding",
       icon: <FaCode />,
       label: "Coding Tools",
-      items: [{ label: "Code to Image Generator", icon: <RiCodeBlock />, link: "/CodetoImage" },
-      { label: "URL Slug Generator", icon: <FaLink />, link: "/Slug" },
-      { label: "React Native Shadow Generator", icon: <FaReact />, link: "/Shadow" },
-      { label: "Base64 Encoder Decoder Generator", icon: <FaBrain />, link: "/BaseEncoderDecoder" },
-      { label: "HTML Encoder/Decoder", icon: <TbHtml />, link: "/HTMLEncoderDecoder" },
-      { label: "URL Encoder/Decoder", icon: <PiFileHtmlBold />, link: "/URLEncoderDcoder" },
-      { label: "HTML Minifier", icon: <ImHtmlFive2 />, link: "/HTMLMinifier" },
-      { label: "CSS Minifier", icon: <PiFileCssLight />, link: "/CSSMinifier" },
-      { label: "JavaScript Minifier", icon: <PiFileJsxBold />, link: "/JavaScriptMinifier" },
-      { label: "HTML Formatter", icon: <LiaHtml5 />, link: "/Hf" },
-      { label: "CSS Formatter", icon: <SiCsswizardry />, link: "/Cs" },
-      { label: "Javascript Formatter", icon: <PiFileJsxBold />, link: "/Javaf" },
-        // { label: "MD5 Encrypt/Decrypt", icon: <IoLockClosedSharp />, link: "/MD5" },
-        // { label: "SHA1 Encrypt/Decrypt", icon: <IoLockClosedSharp />, link: "/SHA1" },
-      ]
+      items: [
+        { label: "Code to Image Generator", icon: <RiCodeBlock />, link: "/CodetoImage" },
+        { label: "URL Slug Generator", icon: <FaLink />, link: "/Slug" },
+        { label: "React Native Shadow Generator", icon: <FaReact />, link: "/Shadow" },
+        { label: "Base64 Encoder Decoder Generator", icon: <FaBrain />, link: "/BaseEncoderDecoder" },
+        { label: "HTML Encoder/Decoder", icon: <TbHtml />, link: "/HTMLEncoderDecoder" },
+        { label: "URL Encoder/Decoder", icon: <PiFileHtmlBold />, link: "/URLEncoderDcoder" },
+        { label: "HTML Minifier", icon: <ImHtmlFive2 />, link: "/HTMLMinifier" },
+        { label: "CSS Minifier", icon: <PiFileCssLight />, link: "/CSSMinifier" },
+        { label: "JavaScript Minifier", icon: <PiFileJsxBold />, link: "/JavaScriptMinifier" },
+        { label: "HTML Formatter", icon: <LiaHtml5 />, link: "/Hf" },
+        { label: "CSS Formatter", icon: <SiCsswizardry />, link: "/Cs" },
+        { label: "Javascript Formatter", icon: <PiFileJsxBold />, link: "/Javaf" },
+      ],
     },
     {
       key: "color",
@@ -279,9 +247,9 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row h-screen overflow-hidden ">
-      {/* Mobile Topbar */}
-      <div className="md:hidden bg-white border-b border-gray-200 p-2 flex justify-between items-center fixed top-0 left-0 right-0 z-20">
+    <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+      {/* Topbar for mobile and tablet (hidden on large screens) */}
+      <div className="lg:hidden bg-white border-b border-gray-200 p-2 flex justify-between items-center fixed top-0 left-0 right-0 z-20">
         <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-gray-600">
           <FaChevronDown
             className={`transition-transform duration-200 mt-15 ${sidebarOpen ? "rotate-180" : ""}`}
@@ -292,53 +260,53 @@ export default function Sidebar() {
         <div />
       </div>
 
-      {/* Sidebar */}
-   <aside
-  className={`
-    bg-white w-full lg:w-72 border-r border-gray-200 p-4 space-y-3 overflow-y-auto z-10 transition-all duration-300 ease-in-out
-    fixed top-14 left-0 right-0 max-h-[calc(100vh-3.5rem)]
-    ${sidebarOpen ? "block" : "hidden"}
-    lg:sticky lg:top-0 lg:left-0 lg:h-screen lg:max-h-screen lg:block
-  `}
->
-  <h2 className="text-gray-500 font-bold text-sm tracking-wider uppercase">Tool Categories</h2>
-  {sections.map(({ key, icon, label, items }) => (
-    <div key={key}>
-      <button
-        onClick={() => toggleDropdown(key)}
-        className="flex justify-between items-center w-full text-left font-semibold text-gray-700 mb-1"
+      {/* Sidebar: toggled on mobile/tablet, always visible on large screens */}
+      <aside
+        className={`
+          bg-white w-full lg:w-72 border-r border-gray-200 p-4 space-y-3 overflow-y-auto z-10 transition-all duration-300 ease-in-out
+          fixed top-14 left-0 right-0 max-h-[calc(100vh-3.5rem)]
+          ${sidebarOpen ? "block" : "hidden"}
+          lg:sticky lg:top-0 lg:left-0 lg:h-screen lg:max-h-screen lg:block
+        `}
       >
-        <span className="flex items-center gap-2">
-          <span className="text-lg">{icon}</span> {label}
-        </span>
-        <FaChevronDown
-          className={`text-gray-500 transition-transform duration-200 ${openDropdownKey === key ? "rotate-180" : ""}`}
-        />
-      </button>
-      {openDropdownKey === key && (
-        <ul className="ml-5 mt-1 space-y-1">
-          {items.map((item, idx) => (
-            <li
-              key={idx}
-              onClick={() => {
-                setSelectedTool(item.label);
-                if (item.link) navigate(item.link);
-                setSidebarOpen(false); // close on mobile/tablet
-              }}
-              className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${selectedTool === item.label
-                ? "bg-blue-100 text-blue-600 font-semibold"
-                : "text-gray-600 hover:bg-gray-100"
-                }`}
+        <h2 className="text-gray-500 font-bold text-sm tracking-wider uppercase">Tool Categories</h2>
+        {sections.map(({ key, icon, label, items }) => (
+          <div key={key}>
+            <button
+              onClick={() => toggleDropdown(key)}
+              className="flex justify-between items-center w-full text-left font-semibold text-gray-700 mb-1"
             >
-              {item.icon}
-              {item.label}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  ))}
-</aside>
+              <span className="flex items-center gap-2">
+                <span className="text-lg">{icon}</span> {label}
+              </span>
+              <FaChevronDown
+                className={`text-gray-500 transition-transform duration-200 ${openDropdownKey === key ? "rotate-180" : ""}`}
+              />
+            </button>
+            {openDropdownKey === key && (
+              <ul className="ml-5 mt-1 space-y-1">
+                {items.map((item, idx) => (
+                  <li
+                    key={idx}
+                    onClick={() => {
+                      setSelectedTool(item.label);
+                      if (item.link) navigate(item.link);
+                      setSidebarOpen(false); // close on mobile/tablet
+                    }}
+                    className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${selectedTool === item.label
+                      ? "bg-blue-100 text-blue-600 font-semibold"
+                      : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                  >
+                    {item.icon}
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </aside>
     </div>
   );
 }

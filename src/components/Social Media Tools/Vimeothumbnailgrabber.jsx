@@ -132,6 +132,7 @@ const Vimeothumbnailgrabber = ({id="Vimeo Thumbnail Grabber"}) => {
       }, [id]);
   
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-7 p-2">
       <div className="max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto bg-white rounded-lg  p-2 sm:p-6">
         {/* Header */}
@@ -391,8 +392,9 @@ const Vimeothumbnailgrabber = ({id="Vimeo Thumbnail Grabber"}) => {
           </>
         )}
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 };
 

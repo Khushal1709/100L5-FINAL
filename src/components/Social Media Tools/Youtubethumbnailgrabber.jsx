@@ -126,6 +126,7 @@ const Youtubethumbnailgrabber = ({id="YouTube Thumbnail Grabber"}) => {
       }, [id]);
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-7 p-2">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
@@ -360,8 +361,9 @@ const Youtubethumbnailgrabber = ({id="YouTube Thumbnail Grabber"}) => {
           )}
         </div>
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 };
 

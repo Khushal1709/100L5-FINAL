@@ -89,7 +89,8 @@ box-shadow: ${shadowValue};
   }, [id]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-6 px-4 sm:px-6 md:px-8">
+    <>
+    <div className="w-full max-w-4xl mx-auto mt-6 px-4 sm:px-6 md:px-8">
       <div className="bg-white shadow-md p-4 sm:p-6 rounded-xl">
         {/* Header */}
         <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
@@ -577,8 +578,9 @@ box-shadow: ${shadowValue};
           }
         }
       `}</style>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 };
 

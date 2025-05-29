@@ -126,6 +126,7 @@ export default function PasswordGenerator({id="Strong Random Password Generator"
   
 
   return (
+    <>
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-8 bg-white mt-4 font-sans">
       {/* Heading */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-2">
@@ -422,7 +423,8 @@ export default function PasswordGenerator({id="Strong Random Password Generator"
         </button>
       </div>
 
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 }

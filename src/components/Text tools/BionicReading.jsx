@@ -17,7 +17,7 @@ import {
   FaCopy,
   FaRegStar,
 } from "react-icons/fa6";
-import { FaCropSimple } from "react-icons/fa6";
+import { FaBookOpen } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FavoritesContext } from "../../Context/FavoriteContext";
@@ -522,11 +522,11 @@ export default function BionicReadingConverter({ id = "Bionic Reading Converter"
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
           <span className="text-4xl text-indigo-400 mt-6">
-            <FaCropSimple />
+            <FaBookOpen />
           </span>
           <span className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg mt-5">
             {/* Java&nbsp;Script&nbsp;Minifier */}
-            Images&nbsp;Cropper
+            Bionic&nbsp;Reading&nbsp;Converter
           </span>
         </div>
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">

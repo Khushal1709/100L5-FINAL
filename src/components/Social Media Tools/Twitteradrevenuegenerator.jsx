@@ -174,6 +174,7 @@ const Twitteradrevenuegenerator = ({id="Twitter Ad Revenue Generator"}) => {
 
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-7 p-2">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -591,8 +592,9 @@ const Twitteradrevenuegenerator = ({id="Twitter Ad Revenue Generator"}) => {
           Export Screenshot
         </button>
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 };
 

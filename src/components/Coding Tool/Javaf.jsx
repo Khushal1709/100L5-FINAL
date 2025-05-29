@@ -116,6 +116,7 @@ export default function JsFormatter() {
   const onFavoriteToggle = () => setIsFavorite((v) => !v);
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -377,7 +378,8 @@ export default function JsFormatter() {
       </div>
       {/* If you want to add a comment in JSX, use: */}
       {/* This is a JSX comment */}
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 }

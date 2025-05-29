@@ -132,6 +132,7 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
   }, [id]);
 
   return (
+    <>
     <div className="w-full max-w-4xl mx-auto mt-6 px-4 sm:px-5 md:px-8">
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
@@ -641,8 +642,9 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
           }
         }
       `}</style>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 };
 

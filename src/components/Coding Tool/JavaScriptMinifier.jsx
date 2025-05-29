@@ -83,6 +83,7 @@ export default function JsMinifier() {
   };
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-7">
       {/* Header */}
        <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -322,8 +323,9 @@ export default function JsMinifier() {
           {isCopied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 }
     

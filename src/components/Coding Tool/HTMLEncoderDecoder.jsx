@@ -62,6 +62,7 @@ export default function HTMLEncoderDecoder() {
   };
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-8">
       {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 ">
@@ -340,7 +341,8 @@ export default function HTMLEncoderDecoder() {
           {isCopied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 }

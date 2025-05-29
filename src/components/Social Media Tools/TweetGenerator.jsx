@@ -160,9 +160,8 @@ function TweetGenerator({id="Tweet Generator"}) {
       setIsFavorite(favorites.includes(id));
     }, [id]);
 
-
-
     return (
+        <>
        <div className="max-w-4xl mx-auto p-3">
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -505,8 +504,9 @@ function TweetGenerator({id="Tweet Generator"}) {
                         )}
                     </div>
                 </div>
-                <Comment/>
             </div>
+                <Comment/>
+                </>
     );
 }
 

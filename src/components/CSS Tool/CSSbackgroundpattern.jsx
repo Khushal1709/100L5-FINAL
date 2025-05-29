@@ -570,8 +570,8 @@ export default function PatternGenerator({id="CSS Background Pattern"}) {
             </button>
           </div>
         </div>
-        <Comment/>
       </div>
+        <Comment/>
     </>
   );
 }

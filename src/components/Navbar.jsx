@@ -48,9 +48,9 @@ export default function Navbar() {
       : "text-gray-700 hover:text-gray-900";
 
   return (
-    <header className="max-w-7xl mx-auto top-0 left-0 z-50 relative bg-transparent">
+    <header className="w-full top-0 left-0 z-50 relative bg-transparent">
       <div
-        className={`w-full mx-auto px-4 py-3 md:px-8 flex justify-between items-center ${
+        className={`w-full mx-auto px-4 py-3 lg:px-8 flex justify-between items-center ${
           mobileMenuOpen ? "relative z-50" : ""
         }`}
       >
@@ -63,8 +63,8 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Center Icons (Mobile only) */}
-        <div className="flex items-center gap-4 md:hidden">
+        {/* Center Icons (Mobile/Tablet only) */}
+        <div className="flex items-center gap-4 lg:hidden">
           <div className="relative p-1 top-1">
             <button onClick={toggleSearch}>
               <img
@@ -107,8 +107,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Hamburger Menu (Mobile) */}
-        <div className="md:hidden">
+        {/* Hamburger Menu (Mobile/Tablet) */}
+        <div className="lg:hidden">
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? (
               <X className="h-6 w-6 text-gray-800" />
@@ -118,9 +118,9 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile/Tablet Menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-40 md:hidden">
+          <div className="fixed inset-0 bg-white z-40 lg:hidden">
             <div className="flex justify-between items-center p-4">
               <Link
                 to="/"
@@ -174,7 +174,6 @@ export default function Navbar() {
                   Product Finder
                 </Link>
               )}
-
               {/* Categories Dropdown for other pages */}
               {!isSpecialPage && (
                 <div className="relative z-10">
@@ -244,7 +243,6 @@ export default function Navbar() {
                   )}
                 </div>
               )}
-
               {/* Extensions Dropdown Mobile */}
               <div className="relative z-10">
                 <button
@@ -304,13 +302,13 @@ export default function Navbar() {
         )}
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex md:items-center md:space-x-6 lg:space-x-10">
+        <nav className="hidden lg:flex lg:items-center lg:space-x-6 xl:space-x-10">
           <div className="relative">
             <button className="p-2 rounded-lg" onClick={toggleSearch}>
               <img
                 src={s1 || "/placeholder.svg"}
                 alt="Search"
-                className="h-6 w-6 md:h-8 md:w-8 cursor-pointer transition-transform duration-300 transform hover:scale-125"
+                className="h-6 w-6 lg:h-8 lg:w-8 cursor-pointer transition-transform duration-300 transform hover:scale-125"
               />
             </button>
             <div
@@ -339,11 +337,11 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link to="/" className="p-2 md:p-0">
+          <Link to="/" className="p-2 lg:p-0">
             <img
               src={home || "/placeholder.svg"}
               alt="Home"
-              className="h-5 w-5 md:h-6 md:w-6 transition-transform duration-300 transform hover:scale-125"
+              className="h-5 w-5 lg:h-6 lg:w-6 transition-transform duration-300 transform hover:scale-125"
             />
           </Link>
 
@@ -434,7 +432,6 @@ export default function Navbar() {
               )}
             </div>
           )}
-
           {/* Extensions Dropdown Desktop */}
           <div
             className="relative"

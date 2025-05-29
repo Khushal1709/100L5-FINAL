@@ -112,6 +112,7 @@ export default function InstagramFilters({id="Instagram Filters"}) {
 
 
     return (
+        <>
         <div className="max-w-4xl mx-auto p-3">
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -355,7 +356,7 @@ export default function InstagramFilters({id="Instagram Filters"}) {
                 {/* ✅ Mobile View: Two Rows */}
                 <div className="space-y-2 md:hidden">
                     {rows.map((row, rowIndex) => (
-                        <div key={rowIndex} className="flex gap-2 min-w-max">
+                        <div key={rowIndex} className="flex gap-2 ">
                             {row.map((filter) => (
                                 <button
                                     key={filter.name}
@@ -432,7 +433,8 @@ export default function InstagramFilters({id="Instagram Filters"}) {
                     Download
                 </button>
             </div>
-            <Comment/>
         </div>
+            <Comment/>
+            </>
     );
 }

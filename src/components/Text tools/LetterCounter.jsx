@@ -101,6 +101,7 @@ function LetterCounter({ id = "Letter Counter" }) {
   
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-8">
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
@@ -230,33 +231,62 @@ function LetterCounter({ id = "Letter Counter" }) {
         <div className="text-sm font-semibold text-gray-700 mb-2">
           Web and Social Media Limits
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border border-gray-300 rounded-lg bg-white">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="py-2 px-3 text-left font-semibold">Name</th>
-                <th className="py-2 px-3 text-left font-semibold">Min/Max</th>
-                <th className="py-2 px-3 text-left font-semibold">Limit</th>
-                <th className="py-2 px-3 text-left font-semibold">Type</th>
-                <th className="py-2 px-3 text-left font-semibold">Current Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {LIMITS.map((limit, i) => (
-                <tr key={limit.name} className={i % 2 ? "bg-gray-50" : ""}>
-                  <td className="py-2 px-3">{limit.name}</td>
-                  <td className="py-2 px-3">{limit.minmax}</td>
-                  <td className="py-2 px-3">{limit.limit}</td>
-                  <td className="py-2 px-3">{limit.type}</td>
-                  <td className="py-2 px-3">{getStatus(limit)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+       <div className="w-full overflow-x-auto">
+  <table className="hidden md:table w-full text-sm border border-gray-300 rounded-lg bg-white">
+    <thead>
+      <tr className="bg-gray-50">
+        <th className="py-2 px-3 text-left font-semibold">Name</th>
+        <th className="py-2 px-3 text-left font-semibold">Min/Max</th>
+        <th className="py-2 px-3 text-left font-semibold">Limit</th>
+        <th className="py-2 px-3 text-left font-semibold">Type</th>
+        <th className="py-2 px-3 text-left font-semibold">Current Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {LIMITS.map((limit, i) => (
+        <tr key={limit.name} className={i % 2 ? "bg-gray-50" : ""}>
+          <td className="py-2 px-3">{limit.name}</td>
+          <td className="py-2 px-3">{limit.minmax}</td>
+          <td className="py-2 px-3">{limit.limit}</td>
+          <td className="py-2 px-3">{limit.type}</td>
+          <td className="py-2 px-3">{getStatus(limit)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {/* Mobile Version */}
+  <div className="md:hidden space-y-4">
+    {LIMITS.map((limit, i) => (
+      <div
+        key={limit.name}
+        className="bg-white border border-gray-300 rounded-lg p-4 shadow-sm"
+      >
+        <div className="mb-2">
+          <span className="font-semibold">Name:</span> {limit.name}
+        </div>
+        <div className="mb-2">
+          <span className="font-semibold">Min/Max:</span> {limit.minmax}
+        </div>
+        <div className="mb-2">
+          <span className="font-semibold">Limit:</span> {limit.limit}
+        </div>
+        <div className="mb-2">
+          <span className="font-semibold">Type:</span> {limit.type}
+        </div>
+        <div>
+          <span className="font-semibold">Current Status:</span>{" "}
+          {getStatus(limit)}
         </div>
       </div>
-      <Comment />
+    ))}
+  </div>
+</div>
+
+      </div>
     </div>
+      <Comment />
+      </>
   );
 }
 

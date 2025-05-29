@@ -163,6 +163,7 @@ export default function Photocensor({id="Photo Censor"}) {
           }, [id]);
   
   return (
+    <>
      <div className="max-w-4xl mx-auto p-3">
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -401,7 +402,8 @@ export default function Photocensor({id="Photo Censor"}) {
             Download
           </button>
         </div>
-        <Comment/>
       </div>
+        <Comment/>
+        </>
   );
 }

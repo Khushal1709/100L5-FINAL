@@ -338,6 +338,7 @@ export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
       }, [id]);
   
   return (
+    <>
     <div
       className="max-w-4xl mx-auto mt-7 p-2
 "
@@ -793,7 +794,8 @@ export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
           Copy
         </button>
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 }

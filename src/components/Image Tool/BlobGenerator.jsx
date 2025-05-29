@@ -144,6 +144,7 @@ export default function BlobGenerator({id="BlobGenerator"}) {
         }, [id]);
     
     return (
+        <>
         <div className="max-w-4xl mx-auto p-2">
             {/* Header */}
             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -291,10 +292,10 @@ export default function BlobGenerator({id="BlobGenerator"}) {
                     </div>
                 </div>
             )}
-            <div className="flex flex-col md:flex-row bg-white rounded-xl shadow-lg p-6 gap-8 w-full max-w-4xl">
+            <div className="flex flex-col md:flex-row bg-white rounded-xl shadow-lg p-6 gap-8 w-full max-w-3xl">
                 {/* Blob Display */}
                 <div className="flex-1 flex flex-col items-center">
-                    <div className="bg-gray-100 rounded-lg flex items-center justify-center w-[350px] h-[350px] mb-4">
+                    <div className="bg-gray-100 rounded-lg flex items-center justify-center w-[300px] h-[350px] mb-4">
                         <svg
                             ref={svgRef}
                             viewBox="0 0 200 200"
@@ -411,7 +412,8 @@ export default function BlobGenerator({id="BlobGenerator"}) {
                     )}
                 </div>
             </div>
-            <Comment />
         </div>
+            <Comment />
+            </>
     );
 }

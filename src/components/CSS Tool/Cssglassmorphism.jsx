@@ -146,6 +146,7 @@ ${useBorder ? `border: 1px solid rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.25);` : ""
       }, [id]);
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-7 p-2">
       <div className="max-w-4xl w-full">
          <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -507,7 +508,8 @@ ${useBorder ? `border: 1px solid rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.25);` : ""
           </div>
         </div>
       </div>
-      <Comment/>
     </div>
+      <Comment/>
+      </>
   );
 }

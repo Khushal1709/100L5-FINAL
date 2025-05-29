@@ -135,6 +135,7 @@ export default function CubicBezierGenerator({id="CSS Cubic"}) {
       }, [id]);
 
   return (
+    <>
     <div className="max-w-4xl mx-auto mt-7 p-2">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -539,7 +540,8 @@ export default function CubicBezierGenerator({id="CSS Cubic"}) {
           to { transform: translateX(92%); }
         }
       `}</style>
-      <Comment/>
     </div>
+  <Comment/>
+  </>
   );
 }

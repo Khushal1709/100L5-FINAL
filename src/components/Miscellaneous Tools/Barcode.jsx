@@ -91,6 +91,7 @@ const BarcodeGenerator = ({id="Bar Code Generator"}) => {
       }, [id]);
 
   return (
+    <>
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-6 mt-2 sm:mt-3">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -358,8 +359,9 @@ const BarcodeGenerator = ({id="Bar Code Generator"}) => {
           </div>
         )}
       </div>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 };
 

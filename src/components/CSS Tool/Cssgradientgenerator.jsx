@@ -142,7 +142,8 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
   }, [id]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-6 px-4 sm:px-6 md:px-8">
+    <>
+    <div className="w-full max-w-4xl mx-auto mt-6 px-4 sm:px-6 md:px-8">
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <div className="flex items-center gap-3">
@@ -612,8 +613,9 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
           }
         }
       `}</style>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 };
 

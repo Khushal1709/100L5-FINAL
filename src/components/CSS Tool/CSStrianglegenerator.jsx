@@ -151,14 +151,15 @@ border-color: ${borderStyles.borderColor};
   }, [id]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-6 px-4 sm:px-6 md:px-8">
+    <>
+    <div className="w-full max-w-4xl mx-auto mt-6 px-4 sm:px-6 md:px-8">
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <div className="flex items-center gap-3">
-          <span className="text-3xl sm:text-4xl text-indigo-400">
+          <span className="text-3xl sm:text-4xl mt-3 text-indigo-400">
             <IoTriangleSharp />
           </span>
-          <span className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 text-center sm:text-left">
+          <span className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 text-center sm:text-left mt-3">
             CSS Triangle Generator
           </span>
         </div>
@@ -554,7 +555,8 @@ border-color: ${borderStyles.borderColor};
           }
         }
       `}</style>
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 }

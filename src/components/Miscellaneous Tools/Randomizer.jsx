@@ -96,6 +96,7 @@ export default function ListRandomizer({id="List Randomizer"}) {
   
 
   return (
+    <>
     <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-6 mt-3">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
@@ -311,7 +312,8 @@ export default function ListRandomizer({id="List Randomizer"}) {
         </div>
       )}
 
-      <Comment />
     </div>
+      <Comment />
+      </>
   );
 }
