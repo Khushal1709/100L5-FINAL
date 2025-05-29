@@ -20,7 +20,7 @@ import t6 from "../image/t6.svg";
 import text2 from "../image/text2.svg";
 import Textool1 from "../Pages/Text tool Grid/Texttool1";
 import Imagestools1 from "../Pages/Image tool Grid/Imagetool1";
-import CSStool1 from "../Pages/CSS tool Grid/CSStool1"
+import CSStool1 from "../Pages/CSS tool Grid/CSStool1";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import firefox from "../image/firefox.svg";
@@ -34,63 +34,94 @@ import Codingtool1 from "../Pages/Coding tool Grid/Codingtool1";
 import Colortool1 from "../Pages/Color tool Grid/Colortool1";
 import Socialmediatool1 from "../Pages/Socialmedia tool Grid/Socialmediatool1";
 import Miscellaneoustool1 from "../Pages/Miscellaneous tool Grid/Miscellaneoustool1";
-import Layout from "../components/Layout";
-import Sidebar from "../components/Sidebar";
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-
-
+import tool from "../image/tool.svg";
 function Home() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state?.scrollTo === 'featured-tools' && featuredToolsRef.current) {
-      setTimeout(() => {
-        featuredToolsRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }, 100);
-
-      // Clear the state to prevent scrolling on subsequent renders
-      window.history.replaceState({}, document.title);
-    }
-  }, [location]);
   const tools = [
-    { title: "AI Color Palette Generator", icon: a1, bgColor: "bg-[#D5C7FF]", link: "/AIColor" },
-    { title: "Tweet Generator", icon: a2, bgColor: "bg-[#AEDFFF]", link: "/TweetGenerator" },
-    { title: "Bionic Reading Converter", icon: a3, bgColor: "bg-[#D5C7FF]", link: "/BionicReading" },
+    {
+      title: "AI Color Palette Generator",
+      icon: a1,
+      bgColor: "bg-[#D5C7FF]",
+      link: "/AIColor",
+    },
+    {
+      title: "Tweet Generator",
+      icon: a2,
+      bgColor: "bg-[#AEDFFF]",
+      link: "/TweetGenerator",
+    },
+    {
+      title: "Bionic Reading Converter",
+      icon: a3,
+      bgColor: "bg-[#D5C7FF]",
+      link: "/BionicReading",
+    },
     {
       title: "Text to Handwriting Converter",
       icon: a4,
       bgColor: "bg-[#AEDFFF]",
-      link: "/Text"
+      link: "/Text",
     },
     {
       title: "Code to Image Converter",
       icon: a5,
       bgColor: "bg-[#D5C7FF]",
       style: "absolute -top-4 -left-4 w-10 h-10",
-      link: "/CodetoImage"
+      link: "/CodetoImage",
     },
-    { title: "CSS Loader Generator", icon: a6, bgColor: "bg-[#AEDFFF]", link: "/Cssloader" },
+    {
+      title: "CSS Loader Generator",
+      icon: a6,
+      bgColor: "bg-[#AEDFFF]",
+      link: "/Cssloader",
+    },
     { title: "Image Caption Generator", icon: a7, bgColor: "bg-[#D5C7FF]" },
-    { title: "Instagram Post Generator", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/InstagramPostGenerator" },
-    { title: "CSS Glassmorphism Generator", icon: a7, bgColor: "bg-[#D5C7FF]", link: "/Cssglassmorphism" },
-    { title: "CSS Clip Path Generator", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/Cssclippathgenerator" },
-    { title: "Tweet Generator", icon: a7, bgColor: "bg-[#D5C7FF]", link: "/TweetGenerator" },
-    { title: "SVG Pattern Generator", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/SVGpattern" },
+    {
+      title: "Instagram Post Generator",
+      icon: a8,
+      bgColor: "bg-[#AEDFFF]",
+      link: "/InstagramPostGenerator",
+    },
+    {
+      title: "CSS Glassmorphism Generator",
+      icon: a7,
+      bgColor: "bg-[#D5C7FF]",
+      link: "/Cssglassmorphism",
+    },
+    {
+      title: "CSS Clip Path Generator",
+      icon: a8,
+      bgColor: "bg-[#AEDFFF]",
+      link: "/Cssclippathgenerator",
+    },
+    {
+      title: "Tweet Generator",
+      icon: a7,
+      bgColor: "bg-[#D5C7FF]",
+      link: "/TweetGenerator",
+    },
+    {
+      title: "SVG Pattern Generator",
+      icon: a8,
+      bgColor: "bg-[#AEDFFF]",
+      link: "/SVGpattern",
+    },
     {
       title: "CSS Background Pattern Generator",
       icon: a7,
       bgColor: "bg-[#D5C7FF]",
       link: "/CSSbackgroundpattern",
     },
-    { title: "Photo Censor", icon: a8, bgColor: "bg-[#AEDFFF]", link: "/Photocensor" },
+    {
+      title: "Photo Censor",
+      icon: a8,
+      bgColor: "bg-[#AEDFFF]",
+      link: "/Photocensor",
+    },
     {
       title: "Twitter Ad Revenue Generator",
       icon: a8,
-      bgColor: "bg-[#D5C7FF]", link: "/Twitteradrevenuegenerator"
+      bgColor: "bg-[#D5C7FF]",
+      link: "/Twitteradrevenuegenerator",
     },
   ];
 
@@ -113,7 +144,6 @@ function Home() {
   const Socialmedia1Ref = useRef(null);
   const MiscTools1Ref = useRef(null);
   const featuredToolsRef = useRef(null);
-
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -180,9 +210,6 @@ function Home() {
       featuredToolsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
   return (
     <>
       <div className="mx-auto">
@@ -226,7 +253,8 @@ function Home() {
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
               <div className="relative inline-flex items-center">
-                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer"
+                <button
+                  className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap"
                   onClick={scrollToFeaturedTools}
                 >
                   EXPLORE TOOL
@@ -354,7 +382,10 @@ function Home() {
         </div>
       </div>
 
-      <div ref={featuredToolsRef} className="bg-white w-full overflow-hidden py-12 md:py-16">
+      <div
+        ref={featuredToolsRef}
+        className="bg-white w-full overflow-hidden py-12 md:py-16"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="mb-0 lg:mb-0 w-full md:w-2/4 lg:w-1/5">
@@ -389,8 +420,7 @@ function Home() {
                   const content = (
                     <div
                       key={index}
-                      onClick={scrollToTop}
-                      className={`${tool.bgColor}  rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
+                      className={`${tool.bgColor} rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
                     >
                       <img
                         src={tool.icon || "/placeholder.svg"}
@@ -418,52 +448,63 @@ function Home() {
       </div>
 
       {/* Tool Categories */}
-      <div className="w-full py-12 bg-white overflow-hidden">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1F2B56]">
-            Tool Categories
-          </h2>
-          <p className="text-gray-400 mt-1 text-sm md:text-base">
-            "Find the Right Tool for Every Task"
-          </p>
-        </div>
-        <div className="overflow-x-hidden w-full">
-          <div
-            className="flex w-max space-x-6 animate-marquee"
-            style={{ animation: "marquee 18s linear infinite" }}
-          >
-            {categories.concat(categories).map((cat, idx) => (
+      <div className="w-full py-6 bg-white overflow-hidden relative ">
+        <div className="flex items-center justify-center  rounded-lg overflow-hidden z-50 relative">
+          <img
+            src={tool}
+            alt="Tool Background"
+            className=" opacity-100 relative h-[150px] md:h-[13rem]"
+          />
+
+          <div className="absolute md:top-12 left-0 w-full h flex flex-col items-center justify-center px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1F2B56]">
+                Tool Categories
+              </h2>
+              <p className="text-gray-400 mt-1 text-sm md:text-base">
+                "Find the Right Tool for Every Task"
+              </p>
+            </div>
+
+            <div className="overflow-hidden w-full">
               <div
-                key={idx}
-                className="relative flex items-center px-6 py-3 cursor-pointer rounded-[2rem] transition-all hover:bg-[#BAD9FF] border border-gray-200 opacity-80 duration-200 min-w-[200px] md:min-w-[260px] max-w-xs"
-                onClick={() => handleCategoryClick(cat.name)}
+                className="flex w-max  space-x-6 animate-marquee"
+                style={{ animation: "marquee 20s linear infinite" }}
               >
-                <img
-                  src={cat.icon || "/placeholder.svg"}
-                  className="mr-3 flex items-center justify-center w-8 h-8 rounded-full bg-white shadow"
-                  alt={cat.name}
-                />
-                <span className="font-medium text-base">{cat.name}</span>
+                {[...categories, ...categories].map((cat, idx) => (
+                  <div
+                    key={idx}
+                    className="relative flex items-center px-6 py-3 cursor-pointer rounded-[2rem] bg-[#F6F5F8]  transition-all hover:bg-blue-200  border border-gray-200 opacity-80 duration-200 min-w-[200px] md:min-w-[260px]   max-w-xs"
+                    onClick={() => handleCategoryClick(cat.name)}
+                  >
+                    <img
+                      src={cat.icon || "/placeholder.svg"}
+                      className="mr-3 flex items-center justify-center w-8 h-8 rounded-full shadow"
+                      alt={cat.name}
+                    />
+                    <span className="font-medium text-base">{cat.name}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-          <style>
-            {`
-            @keyframes marquee {
-              0% { transform: translateX(0%); }
-              100% { transform: translateX(-50%); }
-            }
-          `}
-          </style>
         </div>
+
+        <style>
+          {`
+      @keyframes marquee {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+      }
+    `}
+        </style>
       </div>
 
       {/* ALL TOOLS SECTIONS */}
       <div className="max-w-7xl mx-auto">
         <div
-
           ref={Textool1Ref}
-          className="transition-transform duration-700 ease-out opacity-100"
+          // className="transition-transform duration-700 ease-out opacity-100"
         >
           <Textool1 />
         </div>
@@ -485,7 +526,6 @@ function Home() {
         <div ref={MiscTools1Ref}>
           <Miscellaneoustool1 />
         </div>
-
       </div>
       <Footer />
     </>
@@ -493,3 +533,4 @@ function Home() {
 }
 
 export default Home;
+
