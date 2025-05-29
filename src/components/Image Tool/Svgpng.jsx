@@ -1,6 +1,5 @@
 import React, { useRef, useState,useContext,useEffect } from "react";
 import { SiConvertio } from "react-icons/si";
-import { MdMovieFilter } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
 import {
