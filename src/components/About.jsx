@@ -23,7 +23,7 @@ export default function About() {
       <div className="mx-auto">
         <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
-            src={Oval2 || "/placeholder.svg"}
+            src={Oval2}
             alt="Background"
             className="w-150 h-auto object-cover "
           />
@@ -33,14 +33,14 @@ export default function About() {
           style={{ zIndex: -1 }}
         >
           <img
-            src={ston || "/placeholder.svg"}
+            src={ston}
             alt="Background Shape"
             className="w-full h-auto object-cover"
           />
         </div>
         <Navbar />
         <img
-          src={leaf1 || "/placeholder.svg"}
+          src={leaf1}
           alt="leav"
           className="top-15 absolute hidden lg:block"
         />
@@ -109,7 +109,7 @@ export default function About() {
                     className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     <img
-                      src={chrome || "/placeholder.svg"}
+                      src={chrome}
                       alt="Chrome"
                       className="w-6 h-6"
                     />
@@ -121,7 +121,7 @@ export default function About() {
                     className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     <img
-                      src={firefox || "/placeholder.svg"}
+                      src={firefox}
                       alt="Firefox"
                       className="w-6 h-6"
                     />
@@ -148,7 +148,7 @@ export default function About() {
           <div className="flex flex-col items-center justify-center bg-[#bddafd] py-8 px-4 md:flex-row md:justify-center md:items-center">
             {/* Illustration */}
             <img
-              src={boy || "/placeholder.svg"}
+              src={boy}
               alt="Boy Illustration"
               className="w-28 md:w-32 mb-4 md:mb-0 md:mr-8"
             />
@@ -237,21 +237,21 @@ export default function About() {
           <div className="flex space-x mt-10">
             <a href="#" className=" ">
               <img
-                src={facebook || "/placeholder.svg"}
+                src={facebook}
                 alt="Facebook"
                 className=""
               />
             </a>
             <a href="#" className="">
               <img
-                src={tiweter || "/placeholder.svg"}
+                src={tiweter}
                 alt="Twitter"
                 className=""
               />
             </a>
             <a href="#" className="">
               <img
-                src={linkedin || "/placeholder.svg"}
+                src={linkedin}
                 alt="LinkedIn"
                 className=""
               />

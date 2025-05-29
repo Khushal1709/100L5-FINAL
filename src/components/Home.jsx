@@ -215,7 +215,7 @@ function Home() {
       <div className="mx-auto">
         <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
-            src={Oval2 || "/placeholder.svg"}
+            src={Oval2}
             alt="Background"
             className="w-150 h-auto object-cover "
           />
@@ -225,14 +225,14 @@ function Home() {
           style={{ zIndex: -1 }}
         >
           <img
-            src={ston || "/placeholder.svg"}
+            src={ston}
             alt="Background Shape"
             className="w-full h-auto object-cover"
           />
         </div>
         <Navbar />
         <img
-          src={leaf1 || "/placeholder.svg"}
+          src={leaf1}
           alt="leav"
           className="top-15 absolute hidden lg:block"
         />
@@ -260,7 +260,7 @@ function Home() {
                   EXPLORE TOOL
                 </button>
                 <img
-                  src={explore || "/placeholder.svg"}
+                  src={explore}
                   alt="Arrow Icon"
                   className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                 />
@@ -272,7 +272,7 @@ function Home() {
                   </button>
                 </Link>
                 <img
-                  src={finder || "/placeholder.svg"}
+                  src={finder}
                   alt="Finder Icon"
                   className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                 />
@@ -306,7 +306,7 @@ function Home() {
                     className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     <img
-                      src={chrome || "/placeholder.svg"}
+                      src={chrome}
                       alt="Chrome"
                       className="w-6 h-6"
                     />
@@ -318,7 +318,7 @@ function Home() {
                     className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     <img
-                      src={firefox || "/placeholder.svg"}
+                      src={firefox}
                       alt="Firefox"
                       className="w-6 h-6"
                     />
@@ -331,7 +331,7 @@ function Home() {
 
           <div className="flex-1 flex justify-center max-w-md w-full">
             <img
-              src={home1 || "/placeholder.svg"}
+              src={home1}
               alt="Illustration"
               className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
             />
@@ -342,12 +342,12 @@ function Home() {
       <div className="bg-[#BAD9FF] relative overflow-hidden">
         <div className="absolute right-0 top-1/4 opacity-5 pointer-events-none">
           <img
-            src={leaf2 || "/placeholder.svg"}
+            src={leaf2}
             alt=""
             className="h-auto w-auto"
           />
           <img
-            src={text2 || "/placeholder.svg"}
+            src={text2}
             alt=""
             className="h-auto w-auto"
           />
@@ -402,7 +402,7 @@ function Home() {
 
             <div className="flex-shrink-0 mb-8 lg:mb-0">
               <img
-                src={men || "/placeholder.svg"}
+                src={men}
                 alt="3D Character"
                 className="h-auto w-40 md:w-52 lg:w-64 max-w-xs hidden lg:block"
               />
@@ -423,7 +423,7 @@ function Home() {
                       className={`${tool.bgColor} rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
                     >
                       <img
-                        src={tool.icon || "/placeholder.svg"}
+                        src={tool.icon}
                         className="w-10 h-10"
                         alt={tool.title}
                       />
@@ -478,7 +478,7 @@ function Home() {
                     onClick={() => handleCategoryClick(cat.name)}
                   >
                     <img
-                      src={cat.icon || "/placeholder.svg"}
+                      src={cat.icon}
                       className="mr-3 flex items-center justify-center w-8 h-8 rounded-full shadow"
                       alt={cat.name}
                     />

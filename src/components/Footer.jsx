@@ -20,7 +20,7 @@ export default function Footer() {
       {/* Decorative image at bottom left */}
       <div className="absolute bottom-0 left-0 w-[480px] h-auto pointer-events-none">
         <img
-          src={oval || "/placeholder.svg"}
+          src={oval}
           /* You can replace this with another image if needed */
           alt="decorative"
           width={300}
@@ -31,7 +31,7 @@ export default function Footer() {
       {/* Decorative background elements */}
       <div className="absolute top-20 h-70 opacity-8  pointer-events-none">
         <img
-          src={leaffooter || "/placeholder.svg"}
+          src={leaffooter}
           alt="leaf"
           width={400}
           height={400}
@@ -40,7 +40,7 @@ export default function Footer() {
       </div>
       <div className="absolute top-10 right-0 w-[200px] h-full pointer-events-none">
         <img
-          src={leaf || "/placeholder.svg"}
+          src={leaf}
           alt="leaf"
           width={400}
           height={400}

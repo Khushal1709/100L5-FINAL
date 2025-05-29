@@ -57,7 +57,7 @@ export default function Navbar() {
         {/* Left Section: Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src={logo || "/placeholder.svg"}
+            src={logo}
             alt="Logo"
             className="h-8 w-auto"
           />
@@ -68,7 +68,7 @@ export default function Navbar() {
           <div className="relative p-1 top-1">
             <button onClick={toggleSearch}>
               <img
-                src={s1 || "/placeholder.svg"}
+                src={s1}
                 alt="Search"
                 className="h-6 w-6 cursor-pointer transition-transform duration-300 transform hover:scale-125"
               />
@@ -100,7 +100,7 @@ export default function Navbar() {
           </div>
           <Link to="/" className="p-1">
             <img
-              src={home || "/placeholder.svg"}
+              src={home}
               alt="Home"
               className="h-6 w-6 cursor-pointer transition-transform duration-300 transform hover:scale-125"
             />
@@ -128,7 +128,7 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <img
-                  src={logo || "/placeholder.svg"}
+                  src={logo}
                   alt="Logo"
                   className="h-8 w-auto"
                 />
@@ -266,7 +266,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <img
-                        src={chrome || "/placeholder.svg"}
+                        src={chrome}
                         alt="Chrome"
                         className="h-5 w-5 mr-3"
                       />
@@ -280,7 +280,7 @@ export default function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <img
-                        src={fire || "/placeholder.svg"}
+                        src={fire}
                         alt="Firefox"
                         className="h-5 w-5 mr-3"
                       />
@@ -306,7 +306,7 @@ export default function Navbar() {
           <div className="relative">
             <button className="p-2 rounded-lg" onClick={toggleSearch}>
               <img
-                src={s1 || "/placeholder.svg"}
+                src={s1}
                 alt="Search"
                 className="h-6 w-6 lg:h-8 lg:w-8 cursor-pointer transition-transform duration-300 transform hover:scale-125"
               />
@@ -339,7 +339,7 @@ export default function Navbar() {
 
           <Link to="/" className="p-2 lg:p-0">
             <img
-              src={home || "/placeholder.svg"}
+              src={home}
               alt="Home"
               className="h-5 w-5 lg:h-6 lg:w-6 transition-transform duration-300 transform hover:scale-125"
             />
@@ -451,7 +451,7 @@ export default function Navbar() {
                   className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   <img
-                    src={chrome || "/placeholder.svg"}
+                    src={chrome}
                     alt="Chrome"
                     className="h-5 w-5 mr-3"
                   />
@@ -464,7 +464,7 @@ export default function Navbar() {
                   className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   <img
-                    src={fire || "/placeholder.svg"}
+                    src={fire}
                     alt="Firefox"
                     className="h-5 w-5 mr-3"
                   />

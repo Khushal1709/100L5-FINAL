@@ -30,7 +30,7 @@ const ProductFinderHero = () => {
   return (
     <>
       <img
-        src={Oval2 || "/placeholder.svg"}
+        src={Oval2}
         alt="Background"
         className="absolute w-150 h-auto object-cover hidden lg:block  "
       />
@@ -40,7 +40,7 @@ const ProductFinderHero = () => {
         style={{ zIndex: -1 }}
       >
         <img
-          src={ston || "/placeholder.svg"}
+          src={ston}
           alt="Background Shape"
           className="w-full h-auto object-cover"
         />
@@ -48,7 +48,7 @@ const ProductFinderHero = () => {
       <section className="w-full relative">
         {/* Leaf Background */}
         <img
-          src={Getleaf || "/placeholder.svg"}
+          src={Getleaf}
           alt="Leaf Background"
           className="hidden lg:block absolute left-0 top-0 w-48 md:w-64 lg:w-80 opacity-5 z-0"
         />
@@ -78,7 +78,7 @@ const ProductFinderHero = () => {
                   EXPLORE TOOL
                 </Link>
                     <img
-                      src={explore || "/placeholder.svg"}
+                      src={explore}
                       alt="Arrow Icon"
                       className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                     />
@@ -88,7 +88,7 @@ const ProductFinderHero = () => {
                       PRODUCT FINDER
                     </button></Link>
                     <img
-                      src={finder || "/placeholder.svg"}
+                      src={finder}
                       alt="Finder Icon"
                       className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                     />
@@ -118,7 +118,7 @@ const ProductFinderHero = () => {
                         className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         <img
-                          src={chrome || "/placeholder.svg"}
+                          src={chrome}
                           alt="Chrome"
                           className="w-6 h-6"
                         />
@@ -130,7 +130,7 @@ const ProductFinderHero = () => {
                         className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         <img
-                          src={firefox || "/placeholder.svg"}
+                          src={firefox}
                           alt="Firefox"
                           className="w-6 h-6"
                         />
@@ -143,7 +143,7 @@ const ProductFinderHero = () => {
 
               <div className="flex-1 flex justify-center max-w-md w-full">
                 <img
-                  src={search || "/placeholder.svg"}
+                  src={search}
                   alt="Illustration"
                   className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
                 />

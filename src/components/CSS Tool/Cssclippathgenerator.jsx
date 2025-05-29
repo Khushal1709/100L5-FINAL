@@ -606,7 +606,7 @@ export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
           {showOutside && currentImage && (
             <div className="absolute inset-0">
               <img
-                src={currentImage || "/placeholder.svg"}
+                src={currentImage}
                 alt="Full image background"
                 style={{
                   width: `${width}px`,
@@ -638,7 +638,7 @@ export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
               <div className="w-full h-full flex items-center justify-center">
                 <img
                   key={`${seed}-${customBackgroundUrl}`}
-                  src={currentImage || "/placeholder.svg"}
+                  src={currentImage}
                   alt="Clip path preview"
                   style={{
                     width: `${width}px`,

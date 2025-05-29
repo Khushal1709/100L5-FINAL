@@ -2,11 +2,9 @@ import arrowIcon from "../../image/arrowIcon.svg";
 import arrowIcon2 from "../../image/arrowIcon2.svg";
 import whishlist from "../../image/whishlist.svg"; 
 import whishlist2 from "../../image/whishlist2.svg";
-import { TbFilters } from "react-icons/tb";
 import { GiResize } from "react-icons/gi";
 import { SiConvertio } from "react-icons/si";
 import { TbFileTypeSvg } from "react-icons/tb";
-import { GiSlowBlob } from "react-icons/gi";
 import { TbColorPicker } from "react-icons/tb";
 import { FaCropSimple } from "react-icons/fa6";
 import { MdMovieFilter } from "react-icons/md";
@@ -131,7 +129,7 @@ function Imagestools1() {
                   />
                   {!isFavorite && (
                     <img
-                      src={whishlist2 || "/placeholder.svg"}
+                      src={whishlist2}
                       alt="Wishlist"
                       className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                     />
@@ -157,12 +155,12 @@ function Imagestools1() {
                 <div className="group absolute bottom-5.5 right-1">
                   <div className="relative w-28 h-10 flex items-center justify-center bg-gray-100 rounded-full z-0">
                     <img
-                      src={arrowIcon || "/placeholder.svg"}
+                      src={arrowIcon}
                       alt="Arrow"
                       className="absolute inset-0 m-auto transition-opacity duration-300 opacity-100 group-hover:opacity-0"
                     />
                     <img
-                      src={arrowIcon2 || "/placeholder.svg"}
+                      src={arrowIcon2}
                       alt="Arrow"
                       className="absolute inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
                     />

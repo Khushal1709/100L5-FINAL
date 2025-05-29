@@ -38,7 +38,7 @@ const ProductFinderHero = () => {
       <Navbar />
              <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
-            src={Oval2 || "/placeholder.svg"}
+            src={Oval2}
             alt="Background"
             className="w-150 h-auto object-cover "
           />
@@ -48,7 +48,7 @@ const ProductFinderHero = () => {
         style={{ zIndex: -1 }}
       >
         <img
-          src={ston || "/placeholder.svg"}
+          src={ston}
           alt="Background Shape"
           className="w-full h-auto object-cover"
         />
@@ -85,7 +85,7 @@ const ProductFinderHero = () => {
                                    EXPLORE TOOL
                                  </button>
                                  <img
-                                   src={explore || "/placeholder.svg"}
+                                   src={explore}
                                    alt="Arrow Icon"
                                    className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                                  />
@@ -95,7 +95,7 @@ const ProductFinderHero = () => {
                                    PRODUCT FINDER
                                  </button></Link>
                                  <img
-                                   src={finder || "/placeholder.svg"}
+                                   src={finder}
                                    alt="Finder Icon"
                                    className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                                  />
@@ -128,7 +128,7 @@ const ProductFinderHero = () => {
                       className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       <img
-                        src={chrome || "/placeholder.svg"}
+                        src={chrome}
                         alt="Chrome"
                         className="w-6 h-6"
                       />
@@ -140,7 +140,7 @@ const ProductFinderHero = () => {
                       className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
                       <img
-                        src={firefox || "/placeholder.svg"}
+                        src={firefox}
                         alt="Firefox"
                         className="w-6 h-6"
                       />

@@ -23,12 +23,12 @@ const ContactSection = () => {
         {/* Background Image - Hidden on mobile/tablet, visible on lg screens */}
         <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
-            src={Oval2 || "/placeholder.svg"}
+            src={Oval2}
             alt="Background"
             className="w-150 h-auto object-cover "
           />
           <img
-            src={leaf1 || "/placeholder.svg"}
+            src={leaf1}
             alt="leav"
             className="top-15 absolute hidden lg:block"
           />
@@ -65,7 +65,7 @@ const ContactSection = () => {
                     EXPLORE TOOL
                   </button></Link>
                   <img
-                    src={explore || "/placeholder.svg"}
+                    src={explore}
                     alt="Arrow Icon"
                     className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                   />
@@ -75,7 +75,7 @@ const ContactSection = () => {
                     PRODUCT FINDER
                   </button></Link>
                   <img
-                    src={finder || "/placeholder.svg"}
+                    src={finder}
                     alt="Finder Icon"
                     className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                   />
@@ -107,7 +107,7 @@ const ContactSection = () => {
                       alt="Chrome"
                       className="w-6 h-6"
                     />
-                    <img src={firefox || "/placeholder.svg"} alt="Firefox" className="w-6 h-6" />
+                    <img src={firefox} alt="Firefox" className="w-6 h-6" />
                     <div className="h-px w-12 bg-gray-300" />
                   </div>
                 </div> */}
@@ -116,7 +116,7 @@ const ContactSection = () => {
 
             <div className="flex-1 flex justify-center max-w-md w-full">
               <img
-                src={Contact || "/placeholder.svg"}
+                src={Contact}
                 alt="Illustration"
                 className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
               />
