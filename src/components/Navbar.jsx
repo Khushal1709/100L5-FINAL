@@ -48,7 +48,7 @@ export default function Navbar() {
       : "text-gray-700 hover:text-gray-900";
 
   return (
-    <header className="w-full sticky lg-static top-0 left-0 z-50 relative bg-transparent">
+    <header className="w-full lg-static top-0 left-0 z-50 relative bg-transparent">
       <div
         className={`w-full mx-auto px-4 py-3 lg:px-8 flex justify-between items-center ${
           mobileMenuOpen ? "relative z-50" : ""
