@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logo from "../image/flogo.svg";
+import logo from "../image/logo.svg";
 import s1 from "../image/searchicon.svg";
 import home from "../image/home.svg";
 import chrome from "../image/chrome.svg";
