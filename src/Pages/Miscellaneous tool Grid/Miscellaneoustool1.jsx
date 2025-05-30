@@ -15,28 +15,28 @@ const tools = [
     title: "Bar Code Generator",
     description:
       "Generate barcodes for different internatinal standardizations with desired sizes",
-    icon: <ImBarcode className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <ImBarcode className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Barcode'
   },
   {
     title: "QR Code Generator",
     description:
       "Generate QR code for your links or texts easily and download them as an image file",
-    icon: <BsQrCode className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <BsQrCode className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/QRcode'
   },
   {
     title: "List Randomizer",
     description:
       "Randomize your lists, make lotteries, draw campigns or select random people from a group",
-    icon: <MdOutlineContentPaste className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <MdOutlineContentPaste className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Randomizer'
   },
   {
     title: "Strong Random Password Generator",
     description:
       "Generate strong random passwords and check its stregth with password strength meter",
-    icon: <BiSolidLock className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <BiSolidLock className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/StrongRandom'
   },
 ];
@@ -110,17 +110,17 @@ const Miscellaneoustool1 = () => {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">{tool.icon}</div>
+                <div className="rounded-md flex items-center justify-start mb-4">
+              {tool.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">
                   {tool.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">{tool.description}</p>
+                <p className="text-left text-gray-600 mb-8">{tool.description}</p>
 
                 {/* Arrow Button */}
                 <div className="group absolute bottom-5.5 right-1">

@@ -78,6 +78,7 @@ import Colortool from "./Pages/Color tool Grid/Colortool";
 import Socialmediatool from "./Pages/Socialmedia tool Grid/Socialmediatool";
 import Miscellaneoustool from "./Pages/Miscellaneous tool Grid/Miscellaneoustool";
 import Imagefilter from "./components/Image Tool/Imagefilter";
+import ImageCaptionGenerator from "./components/Image Tool/ImageCaptionGenerator";
 import Sidebar from "./components/Sidebar";
 
 function App() {
@@ -148,6 +149,7 @@ function App() {
               <Route path="/Borderradiusgenerator" element={<Borderradiusgenerator />} />
               <Route path="/ImageColorExtractor" element={<ImageColorExtractor />} />
               <Route path="/Imagefilter" element={<Imagefilter />} />
+              <Route path="/ImageCaptionGenerator" element={<ImageCaptionGenerator />} />
             </Route>
             <Route path="/Getfeatured" element={<Getfeatured />} />
             <Route path="/Contact" element={<Contact />} />

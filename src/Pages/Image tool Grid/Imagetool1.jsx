@@ -16,61 +16,69 @@ import { TbFilters } from "react-icons/tb"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { FavoritesContext } from "../../Context/FavoriteContext"
+import { MdOutlineImageSearch } from "react-icons/md";
+
 
 const tools = [
   {
     title: "Image Resizer",
     description: "Resize any image to desired width and height either by protecting aspect ratio or not",
-    icon: <GiResize className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <GiResize className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/Resizer",
   },
   {
     title: "Image Cropper",
     description: "Crop unwanted parts of images and download desired part of the image as a new file",
-    icon: <FaCropSimple className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <FaCropSimple className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/ImageCropper",
   },
   {
     title: "Image Average Color Finder",
     description: "Calculate average and dominant color of an image by ignoring transparency",
-    icon: <MdFormatColorFill className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <MdFormatColorFill className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/AverageColor",
   },
   {
     title: "Image Color Extractor",
     description: "Extract all colors from an image and get color codes and details of this colors as a list",
-    icon: <PiImageSquareFill className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <PiImageSquareFill className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/ImageColorExtractor",
   },
   {
     title: "Image Color Picker",
     description: "Pick any color from an image with an eyedropper and get detailed info about the color you picked",
-    icon: <TbColorPicker className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <TbColorPicker className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/ImageColorPicker",
   },
   {
     title: "SVGpattern",
     description: "Generate SVG patterns with different shapes and download it as SVG or an image file",
-    icon: <TbFileTypeSvg className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <TbFileTypeSvg className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/SVGpattern",
   },
   {
     title: "Photo Censor",
     description: "Censor photos and hide faces by pixelating/blurring them or by putting a black bar",
-    icon: <MdMovieFilter className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <MdMovieFilter className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/Photocensor",
   },
   {
     title: "SVG to PNG Converter",
     description: "Convert any SVG file into PNG format image and scale it to desired size by preserving aspect ratio",
-    icon: <SiConvertio className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <SiConvertio className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/Svgpng",
   },
   {
     title: "Image Filter",
     description: "Apply various filters to images like brightness, contrast, blur and more effects",
-    icon: <TbFilters className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <TbFilters className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/Imagefilter",
+  },
+  {
+    title: "Image Caption",
+    description: "Apply various filters to images like brightness, contrast, blur and more effects",
+    icon: <MdOutlineImageSearch className="w-[60px] h-[60px] text-indigo-400" />,
+    filename: "/ImageCaptionGenerator",
   },
 ]
 
@@ -137,9 +145,8 @@ function Imagestools1() {
                   <img
                     src={isToolFavorite ? whishlist2 : whishlist}
                     alt="Wishlist"
-                    className={`absolute top-4 right-4 w-5 h-5 transition-all duration-300 cursor-pointer hover:scale-110 ${
-                      isToolFavorite ? "opacity-100" : "opacity-100 group-hover:opacity-0"
-                    }`}
+                    className={`absolute top-4 right-4 w-5 h-5 transition-all duration-300 cursor-pointer hover:scale-110 ${isToolFavorite ? "opacity-100" : "opacity-100 group-hover:opacity-0"
+                      }`}
                   />
                   {!isToolFavorite && (
                     <img
@@ -151,17 +158,17 @@ function Imagestools1() {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">
-                    {tool.icon}
-                  </div>
+                <div className="rounded-md flex items-center justify-start mb-4">
+
+                  {tool.icon}
+
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">{tool.description}</p>
+                <p className="text-left text-gray-600 mb-8">{tool.description}</p>
 
                 {/* Arrow Button */}
                 <div className="group absolute bottom-5.5 right-1">

@@ -40,7 +40,7 @@ const ProductFinderHero = () => {
           <img
             src={Oval2}
             alt="Background"
-            className="w-150 h-auto object-cover "
+            className="w-150 h-auto object-cover"
           />
         </div>
       <div
@@ -152,11 +152,11 @@ const ProductFinderHero = () => {
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 mt-10 lg:mt-0 flex justify-center">
+            <div className="flex-1 flex justify-center max-w-md w-full">
               <img
                 src={search}
                 alt="Illustration"
-                className="w-full max-w-md hidden lg:block"
+                className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
               />
             </div>
           </div>

@@ -21,49 +21,49 @@ function Texttool1() {
       id: "case-converter",
       title: "Case Converter",
       description: "Convert your text or string to uppercase, lowercase, title case & sentence case",
-      icon: <VscCaseSensitive className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <VscCaseSensitive className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/caseconverter",
     },
     {
       id: "lorem-ipsum-generator",
       title: "Lorem Ipsum Generator",
       description: "Create your placeholder texts with desired number of paragraphs and properties",
-      icon: <MdOutlineContentPaste className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <MdOutlineContentPaste className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/lorem",
     },
     {
       id: "letter-counter",
       title: "Letter Counter",
       description: "Count letters, words and sentences in a text and analyze this numbers with common limits",
-      icon: <SlEnvolopeLetter className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <SlEnvolopeLetter className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/letter",
     },
     {
       id: "text-to-handwriting-converter",
       title: "Text to Handwriting", // Changed to match sidebar exactly
       description: "Convert your text into handwriting with desired paper type and ink color and download as PDF",
-      icon: <TbTransform className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <TbTransform className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/Text",
     },
     {
       id: "bionic-reading-converter",
       title: "Bionic Reading Converter",
       description: "Convert your texts into Bionic Reading mode to read them faster than before",
-      icon: <FaBookReader className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <FaBookReader className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/BionicReading",
     },
     {
       id: "multiple-whitespace-remover",
       title: "Multiple Whitespace Remove", // Changed to match sidebar exactly
       description: "Remove multiple whitespaces and line breaks in a text and clear unwanted characters",
-      icon: <BsScissors className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <BsScissors className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/Whitespace",
     },
     {
       id: "google-fonts-pair-finder",
       title: "Google Fonts Pair Finder",
       description: "Find font pairs which looks cool together on your designs, pages or apps as heading and body font",
-      icon: <MdGroups className="w-[200px] h-[60px] text-indigo-400" />,
+      icon: <MdGroups className="w-[60px] h-[60px] text-indigo-400" />,
       filename: "/Googlefont",
     },
   ]
@@ -127,9 +127,8 @@ function Texttool1() {
                   <img
                     src={isToolFavorite ? whishlist2 : whishlist}
                     alt="Wishlist"
-                    className={`absolute top-4 right-4 w-5 h-5 transition-all duration-300 cursor-pointer hover:scale-110 ${
-                      isToolFavorite ? "opacity-100" : "opacity-100 group-hover:opacity-0"
-                    }`}
+                    className={`absolute top-4 right-4 w-5 h-5 transition-all duration-300 cursor-pointer hover:scale-110 ${isToolFavorite ? "opacity-100" : "opacity-100 group-hover:opacity-0"
+                      }`}
                   />
                   {!isToolFavorite && (
                     <img
@@ -141,17 +140,17 @@ function Texttool1() {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">
-                    {tool.icon}
-                  </div>
+                <div className="rounded-md flex items-center justify-start mb-4">
+
+                  {tool.icon}
+
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">{tool.description}</p>
+                <p className="text-left text-gray-600 mb-8">{tool.description}</p>
 
                 {/* Arrow Button */}
                 <div className="group absolute bottom-5.5 right-1">

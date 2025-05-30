@@ -18,49 +18,49 @@ const tools = [
     title: "Instagram Filters",
     description:
       "Apply instagram filters to you photos either by uploading local files or uploading image from a URL",
-    icon: <MdMovieFilter className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <MdMovieFilter className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/InstagramFilters'
   },
   {
     title: "Instagram Post Generator",
     description:
       "Create Instagram posts as if they were real, download them as an image and make jokes to your friends",
-    icon: <MdPostAdd className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <MdPostAdd className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/InstagramPostGenerator'
   },
   {
     title: "Tweet Generator",
     description:
       "Create tweets as if they were real, download them as an image and make jokes to your friends",
-    icon: <FaTwitterSquare className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <FaTwitterSquare className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/TweetGenerator'
   },
   {
     title: "Twitter Ad Revenue Generator",
     description:
       "Generate Twitter ad revenue screenshots and make jokes to your friends",
-    icon: <FaXTwitter className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <FaXTwitter className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/Twitteradrevenuegenerator'
   },
   {
     title: "YouTube Thumbnail Grabber",
     description:
       "Get all available thumbnail images of a YouTube videos just by entering the URL",
-    icon: <FaYoutube className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <FaYoutube className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/Youtubethumbnailgrabber'
   },
   {
     title: "Vimeo Thumbnail Grabber",
     description:
       "Get all available thumbnail images of a Vimeo videos just by entering the URL",
-    icon: <IoLogoVimeo className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <IoLogoVimeo className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/Vimeothumbnailgrabber'
   },
   {
     title: "Open Graph Meta Generator",
     description:
       "Generate open graph meta code for your web page and add it to your site's head section",
-    icon: <LuGitGraph className='w-[200px] h-[60px] text-indigo-400'/>,
+    icon: <LuGitGraph className='w-[60px] h-[60px] text-indigo-400'/>,
     filename: '/Opengraphmetagenerator'
   },
 ];
@@ -134,17 +134,17 @@ function Socialmediatool1() {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">{tool.icon}</div>
+                <div className="rounded-md flex items-center justify-start mb-4">
+               {tool.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">
                   {tool.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">
+                <p className="text-left text-gray-600 mb-8">
                   {tool.description}
                 </p>
 

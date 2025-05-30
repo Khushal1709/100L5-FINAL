@@ -16,21 +16,21 @@ const tools = [
     title: "AI Color Palette Generator",
     description:
       "Craft perfect color palettes effortlessly with AI-driven creativity.",
-    icon: <FaBrain className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <FaBrain className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/AIColor",
   },
   {
     title: "HEX to RGBA Converter",
     description:
       "Convert HEX color codes to RGBA equivalents and see all details of a color",
-    icon: <IoColorFilterOutline className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <IoColorFilterOutline className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/HEX",
   },
   {
     title: "RGBA to HEX Converter",
     description:
       "Convert RGBA color codes to alpha supported 6 or 8 digit HEX equivalents",
-    icon: <FaHashtag className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <FaHashtag className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/RGBA",
   },
   {
@@ -38,7 +38,7 @@ const tools = [
     description:
       "Get all shades of a color by setting up steps for darken, lighten, saturation and desaturation",
     icon: (
-      <FaSwatchbook className="w-[200px] h-[60px] text-indigo-400" />
+      <FaSwatchbook className="w-[60px] h-[60px] text-indigo-400" />
     ),
     filename: "/ColorMixer",
   },
@@ -46,7 +46,7 @@ const tools = [
     title: "Color Mixer",
     description:
       "Mix 2 colors and get color codes for intermediate colors from 2 to 10 steps",
-    icon: <HiCircleStack className="w-[200px] h-[60px] text-indigo-400" />,
+    icon: <HiCircleStack className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/ColorShades",
   },
 ];
@@ -123,19 +123,19 @@ function Colortool1() {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">
+                <div className="rounded-md flex items-center justify-start mb-4">
+        
                     {tool.icon}
-                  </div>
+              
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">
                   {tool.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">{tool.description}</p>
+                <p className="text-left text-gray-600 mb-8">{tool.description}</p>
 
                 {/* Arrow Button */}
                 <div className="group absolute bottom-5.5 right-1">

@@ -21,70 +21,70 @@ const tools = [
     title: "CSS Clip Path Generator",
     description:
       "Generate CSS clip-path with different patterns and use clip-path property in your projects",
-    icon:<MdOutlineDocumentScanner className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <MdOutlineDocumentScanner className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Cssclippathgenerator'
   },
   {
     title: "CSS Loader",
     description:
       "Generate fancy CSS loaders by specifying the type,color, and sizeo of the loading indicator",
-    icon:<LuLoader className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <LuLoader className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Cssloader'
   },
   {
     title: "CSS Background Pattern",
     description:
       "Generate beautiful CSS-only background patterns with and use it in your projects right away",
-    icon:<TbBackground className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <TbBackground className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/CSSbackgroundpattern'
   },
   {
     title: "CSS Cubic Bezier Generator",
     description:
       "Generate CSS cubic Bezier easing functions by previewing animation and time-progress graph",
-    icon:<LuSpline className='w-[200px] h-[60px] text-indigo-400' />,
+    icon: <LuSpline className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Csscubic'
   },
   {
     title: "CSS Glass Morphism",
     description:
       "Generate CSS for applying frosted-glass effect on your HTML elements by using background blur",
-    icon:<IoMdPhonePortrait className='w-[200px] h-[60px] text-indigo-400' />,    
+    icon: <IoMdPhonePortrait className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Cssglassmorphism'
   },
   {
     title: "CSS Text Glitch",
     description:
       "Generate CSS text glitch effect and create fancy text animations by using pure CSS",
-    icon:<CgGoogle className='w-[200px] h-[60px] text-indigo-400' />,    
+    icon: <CgGoogle className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Csstextglitch'
   },
   {
     title: "CSS Gradient Generator",
     description:
       "Generate beautiful CSS gradients either by using presets or customizing your own",
-    icon:<MdGradient className='w-[200px] h-[60px] text-indigo-400' />,   
+    icon: <MdGradient className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Cssgradientgenerator'
   },
   {
     title: "CSS Triangle Generator",
     description:
       "Generate CSS Code for triangles shapes with desired width, height and color",
-    icon:<IoTriangleSharp className='w-[200px] h-[60px] text-indigo-400' />,  
+    icon: <IoTriangleSharp className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/CSStrianglegenerator'
   },
   {
     title: "CSS Box Shadow Generator",
     description:
       "Generate CSS Code for box shadows while previewing it for box,circle or header design",
-    icon:<FaBoxArchive className='w-[200px] h-[60px] text-indigo-400' />,  
+    icon: <FaBoxArchive className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Cssboxshadowgenerator'
   },
   {
     title: "Border Radius Generator",
     description:
-      "Generate advanced CSS border radius to shape your HTML elements corners individually", 
-    icon:<AiOutlineRadiusUpright className='w-[200px] h-[60px] text-indigo-400' />,  
+      "Generate advanced CSS border radius to shape your HTML elements corners individually",
+    icon: <AiOutlineRadiusUpright className='w-[60px] h-[60px] text-indigo-400' />,
     filename: '/Borderradiusgenerator'
   },
 ];
@@ -99,9 +99,9 @@ function CSStools1() {
 
   const handleWishlistClick = (e, tool) => {
     e.stopPropagation(); // Prevent card click navigation
-    
+
     const isAlreadyFavorite = favoriteTools.includes(tool.title);
-    
+
     if (isAlreadyFavorite) {
       removeFromFavorites(tool.title);
     } else {
@@ -130,7 +130,7 @@ function CSStools1() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tools.map((tool, index) => {
             const isFavorite = favoriteTools.includes(tool.title);
-            
+
             return (
               <div
                 key={index}
@@ -138,18 +138,17 @@ function CSStools1() {
                 onClick={() => handleCardClick(tool.filename)}
               >
                 {/* Wishlist Icon */}
-                <div 
+                <div
                   className="group relative"
                   onClick={(e) => handleWishlistClick(e, tool)}
                 >
                   <img
                     src={isFavorite ? whishlist2 : whishlist}
                     alt="Wishlist"
-                    className={`absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 ${
-                      isFavorite 
-                        ? "opacity-100" 
+                    className={`absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 ${isFavorite
+                        ? "opacity-100"
                         : "opacity-100 group-hover:opacity-0"
-                    }`}
+                      }`}
                   />
                   {!isFavorite && (
                     <img
@@ -161,17 +160,17 @@ function CSStools1() {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">{tool.icon}</div>
+                <div className="rounded-md flex items-center justify-start mb-4">
+                  {tool.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">
                   {tool.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">{tool.description}</p>
+                <p className="text-left text-gray-600 mb-8">{tool.description}</p>
 
                 {/* Arrow Button */}
                 <div className="group absolute bottom-5.5 right-1">

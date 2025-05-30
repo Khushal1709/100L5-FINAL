@@ -60,6 +60,7 @@ import { IoLogoVimeo } from "react-icons/io"
 import { FaYoutube } from "react-icons/fa"
 import { FavoritesContext } from "../Context/FavoriteContext"
 import { TbFilters } from "react-icons/tb"
+import { MdOutlineImageSearch } from "react-icons/md"
 
 export default function Sidebar() {
   const navigate = useNavigate()
@@ -82,7 +83,7 @@ export default function Sidebar() {
     { label: "Case Converter", icon: <VscCaseSensitive />, link: "/caseconverter" },
     { label: "Lorem Ipsum Generator", icon: <MdOutlineContentPaste />, link: "/lorem" },
     { label: "Letter Counter", icon: <SlEnvolopeLetter />, link: "/letter" },
-    { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" }, // Fixed name
+    { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" },
     { label: "Bionic Reading Converter", icon: <FaBookReader />, link: "/BionicReading" },
     { label: "Multiple Whitespace Remove", icon: <BsScissors />, link: "/Whitespace" },
     { label: "Google Fonts Pair Finder", icon: <MdGroups />, link: "/Googlefont" },
@@ -134,6 +135,7 @@ export default function Sidebar() {
     { label: "QR Code Generator", icon: <BsQrCode />, link: "/QRcode" },
     { label: "Bar Code Generator", icon: <ImBarcode />, link: "/Barcode" },
     { label: "Image Filter", icon: <TbFilters />, link: "/Imagefilter" },
+    { label: "Image Caption", icon: <MdOutlineImageSearch />, link: "/ImageCaptionGenerator" }, // Added missing tool
   ]
 
   // Find favorite tools by matching labels
@@ -154,7 +156,7 @@ export default function Sidebar() {
         { label: "Case Converter", icon: <VscCaseSensitive />, link: "/caseconverter" },
         { label: "Lorem Ipsum Generator", icon: <MdOutlineContentPaste />, link: "/lorem" },
         { label: "Letter Counter", icon: <SlEnvolopeLetter />, link: "/letter" },
-        { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" }, // Fixed name
+        { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" },
         { label: "Bionic Reading Converter", icon: <FaBookReader />, link: "/BionicReading" },
         { label: "Multiple Whitespace Remove", icon: <BsScissors />, link: "/Whitespace" },
         { label: "Google Fonts Pair Finder", icon: <MdGroups />, link: "/Googlefont" },
@@ -175,6 +177,7 @@ export default function Sidebar() {
         { label: "BlobGenerator", icon: <GiSlowBlob />, link: "/BlobGenerator" },
         { label: "Image Color Extractor", icon: <FaCropSimple />, link: "/ImageColorExtractor" },
         { label: "Image Filter", icon: <TbFilters />, link: "/Imagefilter" },
+        { label: "Image Caption", icon: <MdOutlineImageSearch />, link: "/ImageCaptionGenerator" }, // Fixed icon
       ],
     },
     {

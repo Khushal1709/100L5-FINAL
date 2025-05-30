@@ -1,7 +1,7 @@
 import arrow from "../../image/arrow.svg";
 import arrow2 from "../../image/arrow2.svg";
-import whishlist from "../../image/whishlist.svg"; // wishlist icon
-import whishlist2 from "../../image/whishlist2.svg";// wishlist icon
+import whishlist from "../../image/whishlist.svg";
+import whishlist2 from "../../image/whishlist2.svg";
 import { RiCodeBlock } from "react-icons/ri";
 import { FaLink } from "react-icons/fa";
 import { PiFileHtmlBold } from "react-icons/pi";
@@ -22,73 +22,73 @@ function Codingtools1() {
     {
       title: "Code to Image Converter",
       description: "Convert your codes to fancy images and share with your friends or colleagues",
-      icon: <RiCodeBlock className='w-[200px] h-[60px] text-indigo-400'/>,
+      icon: <RiCodeBlock className='w-[60px] h-[60px] text-indigo-400'/>,
       filename: '/CodetoImage'
     },
     {
       title: "URL Slug Generator",
       description: "Generate SEO-friendly slugs from titles or any other strings for your webpages or blog posts",
-      icon: <FaLink className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <FaLink className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/Slug'
     },
     {
       title: "React Native Shadow Generator",
       description: "Generate fancy box shadows in React Native both for iOS and Android",
-      icon: <FaReact className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <FaReact className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/Shadow'
     },
     {
       title: "Base64 Encoder Decoder Generator",
       description: "Encode your strings to Base64 or decode strings encoded with Base64",
-      icon: <PiDatabaseBold className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <PiDatabaseBold className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/BaseEncoderDecoder'
     },
     {
       title: "HTML Encoder/Decoder",
       description: "Encode or decode your HTML by replacing special characters into equivalent escape forms",
-      icon: <TbHtml className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <TbHtml className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/HTMLEncoderDecoder'
     },
     {
       title: "URL Encoder/Decoder",
       description: "Encode your URL by escaping characters that may break your navigation and decode it ",
-      icon: <PiFileHtmlBold className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <PiFileHtmlBold className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/URLEncoderDcoder'
     },
     {
       title: "HTML Minifier",
       description: "Minify your HTML code and copy the minified code to your clipboard or download as .html file",
-      icon: <ImHtmlFive2 className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <ImHtmlFive2 className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/HTMLMinifier'
     },
     {
       title: "CSS Minifier",
       description: "Minify your CSS code and copy the minified code to your clipboard or download as style.min.css file",
-      icon: <PiFileCssLight className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <PiFileCssLight className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/CSSMinifier'
     },
     {
       title: "JavaScript Minifier",
       description: "Minify your JavaScript code and copy the minified code to your clipboard or download as .min.js file",
-      icon: <PiFileJsxBold className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <PiFileJsxBold className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/JavaScriptMinifier'
     },
     {
       title: "HTML Formatter",
       description: "Format your HTML code with HTML beautifier and either copy the formatted HTML or download it",
-      icon: <LiaHtml5 className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <LiaHtml5 className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/Hf'
     },
     {
       title: "CSS Formatter",
       description: "Format your CSS code and copy the beautified code to your clipboard or download as style.css file",
-      icon: <SiCsswizardry className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <SiCsswizardry className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/Cs'
     },
     {
       title: "JavaScript Formatter",
       description: "Format/beautify your JavaScript code and copy the formatted code to your clipboard or download as a file",
-      icon: <PiFileJsxBold className='w-[200px] h-[60px] text-indigo-400' />,
+      icon: <PiFileJsxBold className='w-[60px] h-[60px] text-indigo-400' />,
       filename: '/Javaf'
     },
   ];
@@ -161,17 +161,17 @@ function Codingtools1() {
                 </div>
 
                 {/* Tool Icon with background */}
-                <div className="rounded-md flex items-center justify-center mb-4">
-                  <div alt="Tool Icon" className="">{tool.icon}</div>
+                <div className="rounded-md flex items-center justify-start mb-4">
+                 {tool.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-[#1F2B56] mb-2 break-words">
+                <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">
                   {tool.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-center text-gray-600 mb-8">
+                <p className="text-left text-gray-600 mb-8">
                   {tool.description}
                 </p>
 
