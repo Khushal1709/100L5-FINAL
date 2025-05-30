@@ -62,6 +62,7 @@ import { FavoritesContext } from "../Context/FavoriteContext"
 import { TbFilters } from "react-icons/tb"
 import { MdOutlineImageSearch } from "react-icons/md"
 
+
 export default function Sidebar() {
   const navigate = useNavigate()
   const { favoriteTools, updateFavorites } = useContext(FavoritesContext)

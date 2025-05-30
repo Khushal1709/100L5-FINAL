@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { FavoritesContext } from "../../Context/FavoriteContext"
 import { MdOutlineImageSearch } from "react-icons/md";
-
+import { GiSlowBlob } from "react-icons/gi";
 
 const tools = [
   {
@@ -79,6 +79,12 @@ const tools = [
     description: "Apply various filters to images like brightness, contrast, blur and more effects",
     icon: <MdOutlineImageSearch className="w-[60px] h-[60px] text-indigo-400" />,
     filename: "/ImageCaptionGenerator",
+  },
+   {
+    title: "BlobGenerator",
+    description: "Apply various filters to images like brightness, contrast, blur and more effects",
+    icon: <GiSlowBlob className="w-[60px] h-[60px] text-indigo-400" />,
+    filename: "/BlobGenerator",
   },
 ]
 
