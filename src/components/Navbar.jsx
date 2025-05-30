@@ -7,7 +7,6 @@ import home from "../image/home.svg";
 import chrome from "../image/chrome.svg";
 import fire from "../image/fire.svg";
 
-
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [featuredOpen, setFeaturedOpen] = useState(false);
@@ -49,7 +48,7 @@ export default function Navbar() {
       : "text-gray-700 hover:text-gray-900";
 
   return (
-    <header className="w-full sticky  lg:static top-0 left-0 z-50 relative bg-transparent">
+    <header className="w-full  lg-static top-0 left-0 z-50 relative bg-transparent">
       <div
         className={`w-full mx-auto px-4 py-3 lg:px-8 flex justify-between items-center ${
           mobileMenuOpen ? "relative z-50" : ""
@@ -486,4 +485,3 @@ export default function Navbar() {
     </header>
   );
 }
-    

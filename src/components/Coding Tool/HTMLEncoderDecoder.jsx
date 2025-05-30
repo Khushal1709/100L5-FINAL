@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useContext,useEffect } from "react";
 import { TbHtml } from "react-icons/tb";
 import { FiShare2 } from "react-icons/fi";
 import { FaCheck, FaRegStar, FaRegCopy, FaCopy, FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import { FiAlertCircle } from 'react-icons/fi';
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 // Utility functions for HTML encode/decode
 function htmlEncode(str) {
@@ -19,7 +21,8 @@ function htmlDecode(str) {
   return div.textContent;
 }
 
-export default function HTMLEncoderDecoder() {
+export default function HTMLEncoderDecoder({id="HTML Encoder/Decoder"}) {
+   const { updateFavorites } = useContext(FavoritesContext);
   const [tab, setTab] = useState("encode");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -27,7 +30,6 @@ export default function HTMLEncoderDecoder() {
   const [shareOpen, setShareOpen] = useState(false);
   const [bugDescription, setBugDescription] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
 
@@ -60,6 +62,29 @@ export default function HTMLEncoderDecoder() {
       alert("Copy failed. Please try again.");
     }
   };
+
+  
+     const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
+  
 
   return (
     <>

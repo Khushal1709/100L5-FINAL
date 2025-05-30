@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef,useContext,useEffect } from "react";
 import { js as beautifyJs } from "js-beautify";
 import {
   FaCheck,
@@ -14,9 +14,12 @@ import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
 import { PiFileJsxBold } from "react-icons/pi";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 // ... other imports as needed
 
-export default function JsFormatter() {
+export default function JsFormatter({id="JavaScript Formatter"}) {
+        const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [indent, setIndent] = useState("2");
@@ -113,7 +116,27 @@ export default function JsFormatter() {
   const [bugDescription, setBugDescription] = useState("");
   const [open, setOpen] = useState(false);
 
-  const onFavoriteToggle = () => setIsFavorite((v) => !v);
+const onFavoriteToggle = () => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        let newFavorites;
+    
+        if (favorites.includes(id)) {
+          newFavorites = favorites.filter((favId) => favId !== id);
+          setIsFavorite(false);
+        } else {
+          newFavorites = [...favorites, id];
+          setIsFavorite(true);
+        }
+    
+        localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+        updateFavorites();
+      };
+    
+      useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+        setIsFavorite(favorites.includes(id));
+      }, [id]);
+
 
   return (
     <>
@@ -143,23 +166,24 @@ export default function JsFormatter() {
             <FiAlertCircle className="text-indigo-600 text-base" />
             Report Bug
           </button>
-          <button
-            onClick={onFavoriteToggle}
-            className={`px-3 py-2 rounded-xl border text-sm cursor-pointer ${isFavorite
-                ? "bg-indigo-100 border-indigo-600 text-indigo-700"
-                : "bg-indigo-50 border-indigo-500 text-indigo-600"
-              }`}
-          >
-            {isFavorite ? (
-              <>
-                <FaCheck className="inline-block mr-1" size={12} /> Added
-              </>
-            ) : (
-              <>
-                <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
-              </>
-            )}
-          </button>
+         <button
+                   onClick={onFavoriteToggle}
+                   className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+                     ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                     : "bg-indigo-50 border-indigo-500 text-indigo-600"
+                   }`}
+                 >
+                   {isFavorite ? (
+                     <>
+                       <FaCheck className="inline-block mr-1" size={12} /> Added
+                     </>
+                   ) : (
+                     <>
+                       <FaRegStar className="inline-block mr-1" size={12} /> Add to
+                       Favorites
+                     </>
+                   )}
+                 </button>
         </div>
       </div>
 

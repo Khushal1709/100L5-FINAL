@@ -1,7 +1,7 @@
 import React, { useState, useRef,useContext,useEffect } from "react";
 import Barcode from "react-barcode";
 import { saveAs } from "file-saver";
-import { MdOutlineContentPaste, MdShare } from "react-icons/md";
+import { MdShare } from "react-icons/md";
 import {
   FaCheck,
   FaRegCopy,

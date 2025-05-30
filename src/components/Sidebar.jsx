@@ -1,83 +1,88 @@
-import { FaChevronDown } from "react-icons/fa";
-import { IoText, IoImages } from "react-icons/io5";
-import { IoLogoCss3 } from "react-icons/io";
-import { BiSolidColorFill } from "react-icons/bi";
-import { TbSocial } from "react-icons/tb";
-import { MdOutlineContentPaste } from "react-icons/md";
-import { SlEnvolopeLetter } from "react-icons/sl";
-import { VscCaseSensitive } from "react-icons/vsc";
-import { FaCode } from "react-icons/fa6";
-import { BsQrCode } from "react-icons/bs";
-import { BiSolidLock } from "react-icons/bi";
-import { ImBarcode } from "react-icons/im";
-import { IoIosSettings } from "react-icons/io";
-import { MdGroups } from "react-icons/md";
-import { BsScissors } from "react-icons/bs";
-import { FaBookReader } from "react-icons/fa";
-import { TbTransform } from "react-icons/tb";
-import { FaBrain } from "react-icons/fa";
-import { IoColorFilterOutline } from "react-icons/io5";
-import { FaHashtag } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { FaSwatchbook } from "react-icons/fa";
-import { HiCircleStack } from "react-icons/hi2";
-import { FaReact } from "react-icons/fa6";
-import { FaLink } from "react-icons/fa";
-import { RiCodeBlock } from "react-icons/ri";
-import { TbHtml } from "react-icons/tb";
-import { PiFileHtmlBold } from "react-icons/pi";
-import { ImHtmlFive2 } from "react-icons/im";
-import { PiFileCssLight } from "react-icons/pi";
-import { PiFileJsxBold } from "react-icons/pi";
-import { LiaHtml5 } from "react-icons/lia";
-import { SiCsswizardry } from "react-icons/si";
-import { AiOutlineRadiusUpright } from "react-icons/ai";
-import { TbBackground } from "react-icons/tb";
-import { FaBoxArchive } from "react-icons/fa6";
-import { MdOutlineDocumentScanner } from "react-icons/md";
-import { LuSpline } from "react-icons/lu";
-import { IoMdPhonePortrait } from "react-icons/io";
-import { MdGradient } from "react-icons/md";
-import { CgGoogle } from "react-icons/cg";
-import { IoTriangleSharp } from "react-icons/io5";
-import { LuLoader } from "react-icons/lu";
-import { IoLockClosedSharp } from "react-icons/io5";
-import { MdFormatColorFill } from "react-icons/md";
-import { GiSlowBlob } from "react-icons/gi";
-import { FaCropSimple } from "react-icons/fa6";
-import { TbColorPicker } from "react-icons/tb";
-import { MdMovieFilter } from "react-icons/md";
-import { BsTextareaResize } from "react-icons/bs";
-import { TbFileTypeSvg } from "react-icons/tb";
-import { SiConvertio } from "react-icons/si";
-import { MdPostAdd } from "react-icons/md";
-import { LuGitGraph } from "react-icons/lu";
-import { FaTwitterSquare } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoVimeo } from "react-icons/io";
-import { FaYoutube } from "react-icons/fa";
-import CaseConverter from "./Text tools/Caseconveter";
-import LoremIpsumGenerator from "./Text tools/LoremIpsum";
-import { FavoritesContext } from "../Context/FavoriteContext";
+"use client"
+
+import { FaChevronDown } from "react-icons/fa"
+import { IoText, IoImages } from "react-icons/io5"
+import { IoLogoCss3 } from "react-icons/io"
+import { BiSolidColorFill } from "react-icons/bi"
+import { TbSocial } from "react-icons/tb"
+import { MdOutlineContentPaste } from "react-icons/md"
+import { SlEnvolopeLetter } from "react-icons/sl"
+import { VscCaseSensitive } from "react-icons/vsc"
+import { FaCode } from "react-icons/fa6"
+import { BsQrCode } from "react-icons/bs"
+import { BiSolidLock } from "react-icons/bi"
+import { ImBarcode } from "react-icons/im"
+import { IoIosSettings } from "react-icons/io"
+import { MdGroups } from "react-icons/md"
+import { BsScissors } from "react-icons/bs"
+import { FaBookReader } from "react-icons/fa"
+import { TbTransform } from "react-icons/tb"
+import { FaBrain } from "react-icons/fa"
+import { IoColorFilterOutline } from "react-icons/io5"
+import { FaHashtag } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+import { useContext, useState, useEffect } from "react"
+import { FaSwatchbook } from "react-icons/fa"
+import { HiCircleStack } from "react-icons/hi2"
+import { FaReact } from "react-icons/fa6"
+import { FaLink } from "react-icons/fa"
+import { RiCodeBlock } from "react-icons/ri"
+import { TbHtml } from "react-icons/tb"
+import { PiFileHtmlBold } from "react-icons/pi"
+import { ImHtmlFive2 } from "react-icons/im"
+import { PiFileCssLight } from "react-icons/pi"
+import { PiFileJsxBold } from "react-icons/pi"
+import { LiaHtml5 } from "react-icons/lia"
+import { SiCsswizardry } from "react-icons/si"
+import { AiOutlineRadiusUpright } from "react-icons/ai"
+import { TbBackground } from "react-icons/tb"
+import { FaBoxArchive } from "react-icons/fa6"
+import { MdOutlineDocumentScanner } from "react-icons/md"
+import { LuSpline } from "react-icons/lu"
+import { IoMdPhonePortrait } from "react-icons/io"
+import { MdGradient } from "react-icons/md"
+import { CgGoogle } from "react-icons/cg"
+import { IoTriangleSharp } from "react-icons/io5"
+import { LuLoader } from "react-icons/lu"
+import { MdFormatColorFill } from "react-icons/md"
+import { GiSlowBlob } from "react-icons/gi"
+import { FaCropSimple } from "react-icons/fa6"
+import { TbColorPicker } from "react-icons/tb"
+import { MdMovieFilter } from "react-icons/md"
+import { BsTextareaResize } from "react-icons/bs"
+import { TbFileTypeSvg } from "react-icons/tb"
+import { SiConvertio } from "react-icons/si"
+import { MdPostAdd } from "react-icons/md"
+import { LuGitGraph } from "react-icons/lu"
+import { FaTwitterSquare } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
+import { IoLogoVimeo } from "react-icons/io"
+import { FaYoutube } from "react-icons/fa"
+import { FavoritesContext } from "../Context/FavoriteContext"
+import { TbFilters } from "react-icons/tb"
 
 export default function Sidebar() {
-  const navigate = useNavigate();
-  const { favoriteTools } = useContext(FavoritesContext);
+  const navigate = useNavigate()
+  const { favoriteTools, updateFavorites } = useContext(FavoritesContext)
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openDropdownKey, setOpenDropdownKey] = useState(null);
-  const [selectedTool, setSelectedTool] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [openDropdownKey, setOpenDropdownKey] = useState(null)
+  const [selectedTool, setSelectedTool] = useState("")
+
+  // Update favorites when component mounts
+  useEffect(() => {
+    updateFavorites()
+  }, [])
 
   const toggleDropdown = (key) => {
-    setOpenDropdownKey((prev) => (prev === key ? null : key));
-  };
+    setOpenDropdownKey((prev) => (prev === key ? null : key))
+  }
 
   const allTools = [
     { label: "Case Converter", icon: <VscCaseSensitive />, link: "/caseconverter" },
     { label: "Lorem Ipsum Generator", icon: <MdOutlineContentPaste />, link: "/lorem" },
     { label: "Letter Counter", icon: <SlEnvolopeLetter />, link: "/letter" },
-    { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" },
+    { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" }, // Fixed name
     { label: "Bionic Reading Converter", icon: <FaBookReader />, link: "/BionicReading" },
     { label: "Multiple Whitespace Remove", icon: <BsScissors />, link: "/Whitespace" },
     { label: "Google Fonts Pair Finder", icon: <MdGroups />, link: "/Googlefont" },
@@ -128,11 +133,11 @@ export default function Sidebar() {
     { label: "List Randomizer", icon: <SlEnvolopeLetter />, link: "/Randomizer" },
     { label: "QR Code Generator", icon: <BsQrCode />, link: "/QRcode" },
     { label: "Bar Code Generator", icon: <ImBarcode />, link: "/Barcode" },
-  ];
+    { label: "Image Filter", icon: <TbFilters />, link: "/Imagefilter" },
+  ]
 
-  const favoriteItems = favoriteTools
-    .map((id) => allTools.find((tool) => tool.label === id))
-    .filter(Boolean);
+  // Find favorite tools by matching labels
+  const favoriteItems = favoriteTools.map((label) => allTools.find((tool) => tool.label === label)).filter(Boolean)
 
   const sections = [
     {
@@ -149,7 +154,7 @@ export default function Sidebar() {
         { label: "Case Converter", icon: <VscCaseSensitive />, link: "/caseconverter" },
         { label: "Lorem Ipsum Generator", icon: <MdOutlineContentPaste />, link: "/lorem" },
         { label: "Letter Counter", icon: <SlEnvolopeLetter />, link: "/letter" },
-        { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" },
+        { label: "Text to Handwriting", icon: <TbTransform />, link: "/Text" }, // Fixed name
         { label: "Bionic Reading Converter", icon: <FaBookReader />, link: "/BionicReading" },
         { label: "Multiple Whitespace Remove", icon: <BsScissors />, link: "/Whitespace" },
         { label: "Google Fonts Pair Finder", icon: <MdGroups />, link: "/Googlefont" },
@@ -169,6 +174,7 @@ export default function Sidebar() {
         { label: "SVGpattern", icon: <TbFileTypeSvg />, link: "/SVGpattern" },
         { label: "BlobGenerator", icon: <GiSlowBlob />, link: "/BlobGenerator" },
         { label: "Image Color Extractor", icon: <FaCropSimple />, link: "/ImageColorExtractor" },
+        { label: "Image Filter", icon: <TbFilters />, link: "/Imagefilter" },
       ],
     },
     {
@@ -179,7 +185,7 @@ export default function Sidebar() {
         { label: "CSS Clip Path Generator", icon: <MdOutlineDocumentScanner />, link: "/Cssclippathgenerator" },
         { label: "CSS Loader", icon: <LuLoader />, link: "/Cssloader" },
         { label: "CSS Background Pattern", icon: <TbBackground />, link: "/CSSbackgroundpattern" },
-        { label: "CSS Cubic", icon: <LuSpline />, link: "/Csscubic" },
+        { label: "CSS Cubic Bezier Generator", icon: <LuSpline />, link: "/Csscubic" },
         { label: "CSS Glass Morphism", icon: <IoMdPhonePortrait />, link: "/Cssglassmorphism" },
         { label: "CSS Text Glitch", icon: <CgGoogle />, link: "/Csstextglitch" },
         { label: "CSS Gradient Generator", icon: <MdGradient />, link: "/Cssgradientgenerator" },
@@ -204,7 +210,7 @@ export default function Sidebar() {
         { label: "JavaScript Minifier", icon: <PiFileJsxBold />, link: "/JavaScriptMinifier" },
         { label: "HTML Formatter", icon: <LiaHtml5 />, link: "/Hf" },
         { label: "CSS Formatter", icon: <SiCsswizardry />, link: "/Cs" },
-        { label: "Javascript Formatter", icon: <PiFileJsxBold />, link: "/Javaf" },
+        { label: "JavaScript Formatter", icon: <PiFileJsxBold />, link: "/Javaf" },
       ],
     },
     {
@@ -244,7 +250,14 @@ export default function Sidebar() {
         { label: "Bar Code Generator", icon: <ImBarcode />, link: "/Barcode" },
       ],
     },
-  ];
+  ]
+
+  // Auto-open favorites section if there are favorites
+  useEffect(() => {
+    if (favoriteItems.length > 0 && openDropdownKey === null) {
+      setOpenDropdownKey("favorite")
+    }
+  }, [favoriteItems.length])
 
   return (
     <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
@@ -278,6 +291,11 @@ export default function Sidebar() {
             >
               <span className="flex items-center gap-2">
                 <span className="text-lg">{icon}</span> {label}
+                {key === "favorite" && items.length > 0 && (
+                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                    {items.length}
+                  </span>
+                )}
               </span>
               <FaChevronDown
                 className={`text-gray-500 transition-transform duration-200 ${openDropdownKey === key ? "rotate-180" : ""}`}
@@ -289,14 +307,15 @@ export default function Sidebar() {
                   <li
                     key={idx}
                     onClick={() => {
-                      setSelectedTool(item.label);
-                      if (item.link) navigate(item.link);
-                      setSidebarOpen(false); // close on mobile/tablet
+                      setSelectedTool(item.label)
+                      if (item.link) navigate(item.link)
+                      setSidebarOpen(false) // close on mobile/tablet
                     }}
-                    className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${selectedTool === item.label
-                      ? "bg-blue-100 text-blue-600 font-semibold"
-                      : "text-gray-600 hover:bg-gray-100"
-                      }`}
+                    className={`flex items-center gap-2 p-2 rounded cursor-pointer  ${
+                      selectedTool === item.label
+                        ? "bg-blue-100 text-blue-600 font-semibold"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
                   >
                     {item.icon}
                     {item.label}
@@ -308,5 +327,5 @@ export default function Sidebar() {
         ))}
       </aside>
     </div>
-  );
+  )
 }

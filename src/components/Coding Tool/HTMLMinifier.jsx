@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useStateuseRef,useContext,useEffect } from "react";
 import { FiShare2, FiAlertCircle } from "react-icons/fi";
 import {
   FaCheck,
@@ -12,6 +12,8 @@ import {
 import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
 import { ImHtmlFive2 } from "react-icons/im";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 // Simple HTML minifier function
 function minifyHTML(html) {
@@ -23,7 +25,8 @@ function minifyHTML(html) {
     .trim();
 }
 
-export default function HtmlMinifier() {
+export default function HtmlMinifier({id="HTML Minifier"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
@@ -32,7 +35,6 @@ export default function HtmlMinifier() {
   const [bugDescription, setBugDescription] = useState("");
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
 
   // Minify on button click
@@ -72,6 +74,27 @@ export default function HtmlMinifier() {
     a.click();
     URL.revokeObjectURL(url);
   };
+
+     const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
 
   return (
     <>

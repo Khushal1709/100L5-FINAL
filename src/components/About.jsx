@@ -6,6 +6,7 @@ import facebook from "../image/facebook.svg";
 import instagram from "../image/instagram.svg";
 import linkedin from "../image/linkedin.svg";
 import tiweter from "../image/tiweter.svg";
+
 import Support from "./Support";
 import arror from "../image/arror.svg";
 import finder from "../image/finder.svg";
@@ -235,34 +236,38 @@ export default function About() {
           </div>
           {/* Social Icons */}
           <div className="flex space-x mt-10">
-            <a href="#" className=" ">
+            <Link
+              to="https://www.facebook.com/" className=" ">
               <img
                 src={facebook}
                 alt="Facebook"
                 className=""
               />
-            </a>
-            <a href="#" className="">
+            </Link>
+            <Link
+                to="https://x.com/" className="">
               <img
                 src={tiweter}
                 alt="Twitter"
                 className=""
               />
-            </a>
-            <a href="#" className="">
+            </Link>
+            <Link
+              to="https://in.linkedin.com/" className="">
               <img
                 src={linkedin}
                 alt="LinkedIn"
                 className=""
               />
-            </a>
-            <a href="#" className="">
+            </Link>
+            <Link
+              to="https://www.instagram.com/" className="">
               <img
                 src={instagram || "/placeholder.svg"}
                 alt="LinkedIn"
                 className=""
               />
-            </a>
+            </Link>
           </div>
         </section>
       </div>

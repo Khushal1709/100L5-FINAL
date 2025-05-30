@@ -25,14 +25,14 @@ const tools = [
     filename: '/Cssclippathgenerator'
   },
   {
-    title: "CSS Loader Generator",
+    title: "CSS Loader",
     description:
       "Generate fancy CSS loaders by specifying the type,color, and sizeo of the loading indicator",
     icon:<LuLoader className='w-[200px] h-[60px] text-indigo-400' />,
     filename: '/Cssloader'
   },
   {
-    title: "CSS Background Pattern Generator",
+    title: "CSS Background Pattern",
     description:
       "Generate beautiful CSS-only background patterns with and use it in your projects right away",
     icon:<TbBackground className='w-[200px] h-[60px] text-indigo-400' />,
@@ -46,14 +46,14 @@ const tools = [
     filename: '/Csscubic'
   },
   {
-    title: "CSS Glassmorphism Generator",
+    title: "CSS Glass Morphism",
     description:
       "Generate CSS for applying frosted-glass effect on your HTML elements by using background blur",
     icon:<IoMdPhonePortrait className='w-[200px] h-[60px] text-indigo-400' />,    
     filename: '/Cssglassmorphism'
   },
   {
-    title: "CSS Text Glitch Effect Generator",
+    title: "CSS Text Glitch",
     description:
       "Generate CSS text glitch effect and create fancy text animations by using pure CSS",
     icon:<CgGoogle className='w-[200px] h-[60px] text-indigo-400' />,    
@@ -81,7 +81,7 @@ const tools = [
     filename: '/Cssboxshadowgenerator'
   },
   {
-    title: "CSS Border Radius Generator",
+    title: "Border Radius Generator",
     description:
       "Generate advanced CSS border radius to shape your HTML elements corners individually", 
     icon:<AiOutlineRadiusUpright className='w-[200px] h-[60px] text-indigo-400' />,  

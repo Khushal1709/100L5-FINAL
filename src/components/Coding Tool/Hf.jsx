@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useRef,useContext, useEffect } from "react";
 import { html as beautifyHtml } from "js-beautify";
 import {MdShare } from "react-icons/md";
 import {
@@ -15,8 +15,10 @@ import Comment from "../Text tools/Comment";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
 import { LiaHtml5 } from "react-icons/lia";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
-export default function HtmlFormatter() {
+export default function HtmlFormatter({id="HTML Formatter"}) {
+        const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [indent, setIndent] = useState("2");
@@ -105,7 +107,27 @@ export default function HtmlFormatter() {
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
   
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
+    const onFavoriteToggle = () => {
+            const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+            let newFavorites;
+        
+            if (favorites.includes(id)) {
+              newFavorites = favorites.filter((favId) => favId !== id);
+              setIsFavorite(false);
+            } else {
+              newFavorites = [...favorites, id];
+              setIsFavorite(true);
+            }
+        
+            localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+            updateFavorites();
+          };
+        
+          useEffect(() => {
+            const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+            setIsFavorite(favorites.includes(id));
+          }, [id]);
+    
 
   return (
     <>

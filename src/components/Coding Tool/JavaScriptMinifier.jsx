@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef,useContext,useEffect } from "react";
 import { PiFileCssLight } from "react-icons/pi";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import {
@@ -16,6 +16,7 @@ import { MdGroups } from "react-icons/md";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
 import { PiFileJsxBold } from "react-icons/pi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
 
 
 // Simple JS minifier: removes comments and unnecessary whitespace
@@ -32,7 +33,8 @@ function minifyJS(js) {
     .trim();
 }
 
-export default function JsMinifier() {
+export default function JsMinifier({id="JavaScript Minifier"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
@@ -41,8 +43,6 @@ export default function JsMinifier() {
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
   // Minify on button click
   const handleMinify = () => {
@@ -81,6 +81,27 @@ export default function JsMinifier() {
     a.click();
     URL.revokeObjectURL(url);
   };
+
+     const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
 
   return (
     <>

@@ -38,7 +38,7 @@ function Codingtools1() {
       filename: '/Shadow'
     },
     {
-      title: "Base64 Encoder/Decoder",
+      title: "Base64 Encoder Decoder Generator",
       description: "Encode your strings to Base64 or decode strings encoded with Base64",
       icon: <PiDatabaseBold className='w-[200px] h-[60px] text-indigo-400' />,
       filename: '/BaseEncoderDecoder'

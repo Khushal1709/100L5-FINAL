@@ -1,4 +1,4 @@
-import React, { useContext,useState, useRef, useEffect } from "react";
+import React, { useState, useRef,useContext,useEffect } from "react";
 import { css as beautifyCss } from "js-beautify";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
@@ -18,6 +18,8 @@ import { SiCsswizardry } from "react-icons/si";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
 export default function CssFormatter({id="CSS Formatter"}) {
+        const { updateFavorites } = useContext(FavoritesContext);
+  
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [indent, setIndent] = useState("5");

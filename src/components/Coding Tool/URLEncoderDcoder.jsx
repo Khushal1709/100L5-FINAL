@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { PiFileHtmlBold } from "react-icons/pi";
 import { FiShare2 } from "react-icons/fi";
 import { FiAlertCircle } from 'react-icons/fi';
@@ -14,18 +14,22 @@ import {
 } from "react-icons/fa6";
 import { MdOutlineContentPaste, MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
+import { FavoritesContext } from "../../Context/FavoriteContext"
+
 
 export default function UrlEncoderDecoder() {
+    const { addToFavorites, removeFromFavorites, updateFavorites, isFavorite } = useContext(FavoritesContext)
   const [tab, setTab] = useState("encode");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
-  const [isFavorite, setIsFavorite] = useState(false);
   const [open, setOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [bugDescription, setBugDescription] = useState("");
+
+    const toolName = "URL Encoder/Decoder" // Consistent with sidebar and Imagestools1
+
 
   // Encode or decode on button click
   const handleAction = () => {
@@ -65,6 +69,21 @@ export default function UrlEncoderDecoder() {
     }
   };
 
+  const onFavoriteToggle = () => {
+    if (isFavorite(toolName)) {
+      removeFromFavorites(toolName)
+      console.log(`Removed "${toolName}" from favorites`)
+    } else {
+      addToFavorites(toolName)
+      console.log(`Added "${toolName}" to favorites`)
+    }
+
+    // Update favorites to sync with sidebar
+    if (updateFavorites) {
+      updateFavorites()
+    }
+  }
+
   return (
     <>
     <div className="max-w-4xl mx-auto mt-8">
@@ -92,21 +111,24 @@ export default function UrlEncoderDecoder() {
                     Report Bug
                   </button>
                   
-                <button
-                  onClick={onFavoriteToggle}
-                  className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ${isFavorite ? "bg-indigo-100 border-indigo-600 text-indigo-700" : "bg-indigo-50 border-indigo-600 text-indigo-600"
-                    }`}
-                >
-                  {isFavorite ? (
-                    <>
-                      <FaCheck className="inline-block mr-1" size={12} /> Added
-                    </>
-                  ) : (
-                    <>
-                      <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
-                    </>
-                  )}
-                </button>
+               <button
+              onClick={onFavoriteToggle}
+              className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${
+                isFavorite(toolName)
+                  ? "bg-indigo-100 border-indigo-600 text-indigo-700"
+                  : "bg-indigo-50 border-indigo-600 text-indigo-600"
+              }`}
+            >
+              {isFavorite(toolName) ? (
+                <>
+                  <FaCheck className="inline-block mr-1" size={12} /> Added
+                </>
+              ) : (
+                <>
+                  <FaRegStar className="inline-block mr-1" size={12} /> Add to Favorites
+                </>
+              )}
+            </button>
               </div>
             </div>
              {/* Share Popup */}

@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useContext,useRef, useState,useEffect } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import Comment from "../Text tools/Comment";
 // Register align format for Quill
 Quill.register('formats/align', Quill.import('formats/align'), true);
 
@@ -32,6 +33,8 @@ import {
   FaRegStar,
 } from "react-icons/fa6";
 import { MdShare } from "react-icons/md";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 
 // ... fontOptions and paperFrames as in your code ...
@@ -91,13 +94,13 @@ const quillModules = {
   ]
 };
 
-export default function HandwritingConverter() {
+export default function HandwritingConverter({id="Text to Handwriting"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [open, setOpen] = useState(false);
   const [bugDescription, setBugDescription] = useState("");
   const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
   const [isFavorite, setIsFavorite] = useState(false);
-  const onFavoriteToggle = () => setIsFavorite(!isFavorite);
   const [tabchange, setTabchange] = useState('textarea');
   const [textAreaValue, setTextAreaValue] = useState('');
   const [editorValue, setEditorValue] = useState('');
@@ -181,9 +184,30 @@ export default function HandwritingConverter() {
     }
   };
 
+   const onFavoriteToggle = () => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      let newFavorites;
+  
+      if (favorites.includes(id)) {
+        newFavorites = favorites.filter((favId) => favId !== id);
+        setIsFavorite(false);
+      } else {
+        newFavorites = [...favorites, id];
+        setIsFavorite(true);
+      }
+  
+      localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+      updateFavorites();
+    };
+  
+    useEffect(() => {
+      const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+      setIsFavorite(favorites.includes(id));
+    }, [id]);
+
 
   return (
-
+    <>
     <div className="max-w-4xl mx-auto p-3">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
@@ -505,9 +529,9 @@ export default function HandwritingConverter() {
             dangerouslySetInnerHTML={{ __html: previewText }}
           />
         </div>
-
-
       </div>
     </div>
+    <Comment/>
+    </>
   );
 }

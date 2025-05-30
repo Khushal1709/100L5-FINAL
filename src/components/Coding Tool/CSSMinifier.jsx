@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,seRef,useContext,useEffect } from "react";
 import { MdShare } from "react-icons/md";
 import {
   FaCheck,
@@ -14,6 +14,8 @@ import Comment from "../Text tools/Comment";
 import { FiAlertCircle } from 'react-icons/fi';
 import { FiShare2 } from "react-icons/fi";
 import { PiFileCssLight } from "react-icons/pi";
+import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 
 // Simple HTML minifier function
@@ -26,7 +28,8 @@ function minifyHTML(html) {
     .trim();
 }
 
-export default function HtmlMinifier() {
+export default function HtmlMinifier({id="CSS Minifier"}) {
+  const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
@@ -36,7 +39,6 @@ export default function HtmlMinifier() {
     const [activeTab, setActiveTab] = useState("tool");
     const [isFavorite, setIsFavorite] = useState(false);
   
-    const onFavoriteToggle = () => setIsFavorite(!isFavorite);
 
   // Minify on button click
   const handleMinify = () => {
@@ -75,6 +77,29 @@ export default function HtmlMinifier() {
     a.click();
     URL.revokeObjectURL(url);
   };
+
+  
+     const onFavoriteToggle = () => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          let newFavorites;
+      
+          if (favorites.includes(id)) {
+            newFavorites = favorites.filter((favId) => favId !== id);
+            setIsFavorite(false);
+          } else {
+            newFavorites = [...favorites, id];
+            setIsFavorite(true);
+          }
+      
+          localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
+          updateFavorites();
+        };
+      
+        useEffect(() => {
+          const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
+          setIsFavorite(favorites.includes(id));
+        }, [id]);
+  
 
   return (
     <>
