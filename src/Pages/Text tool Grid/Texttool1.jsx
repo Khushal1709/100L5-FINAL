@@ -1,5 +1,3 @@
-"use client"
-
 import arrow from "../../image/arrow.svg" // arrow icon
 import arrow2 from "../../image/arrow2.svg"
 import whishlist from "../../image/whishlist.svg" // wishlist icon
