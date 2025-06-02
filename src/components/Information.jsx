@@ -22,7 +22,7 @@ function Information({
           >
             {title}
           </h1>
-          <p className="text-gray-600 text-base sm:text-lg text-justify">
+          <p className="text-gray-500 text-base sm:text-lg text-justify">
             {description}
           </p>
           {/* Buttons */}
@@ -59,11 +59,11 @@ function Information({
           </div>
         </div>
         {/* Right: Illustration */}
-        <div className="flex-1 flex justify-center w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+        <div className="flex-1 flex justify-center  w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
           <img
             src={srcImg1}
             alt="Product Finder Illustration"
-            className="w-48 sm:w-64 md:w-80 lg:w-96 hidden lg:block"
+            className="w-48 sm:w-64 md:w-80 lg:w-96 hidden lg:block "
           />
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function About() {
               <div className="relative inline-flex items-center">
                 <Link
                   to="/"
-                  state={{ scrollTo: 'featured-tools' }}
+                  state={{ scrollTo: "featured-tools" }}
                   className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer inline-block text-center"
                 >
                   EXPLORE TOOL
@@ -72,9 +72,11 @@ export default function About() {
                 />
               </div>
               <div className="relative inline-flex items-center">
-                <Link to="/Productfinder"><button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap">
-                  PRODUCT FINDER
-                </button></Link>
+                <Link to="/Productfinder">
+                  <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap">
+                    PRODUCT FINDER
+                  </button>
+                </Link>
                 <img
                   src={finder}
                   alt="Finder Icon"
@@ -109,11 +111,7 @@ export default function About() {
                     rel="noopener noreferrer"
                     className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
-                    <img
-                      src={chrome}
-                      alt="Chrome"
-                      className="w-6 h-6"
-                    />
+                    <img src={chrome} alt="Chrome" className="w-6 h-6" />
                   </a>
                   <a
                     href="https://chrome.google.com/webstore"
@@ -121,11 +119,7 @@ export default function About() {
                     rel="noopener noreferrer"
                     className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
-                    <img
-                      src={firefox}
-                      alt="Firefox"
-                      className="w-6 h-6"
-                    />
+                    <img src={firefox} alt="Firefox" className="w-6 h-6" />
                   </a>
                   <div className="h-px w-12 bg-gray-300" />
                 </div>
@@ -236,32 +230,16 @@ export default function About() {
           </div>
           {/* Social Icons */}
           <div className="flex space-x mt-10">
-            <Link
-              to="https://www.facebook.com/" className=" ">
-              <img
-                src={facebook}
-                alt="Facebook"
-                className=""
-              />
+            <Link to="https://www.facebook.com/" className=" ">
+              <img src={facebook} alt="Facebook" className="" />
             </Link>
-            <Link
-                to="https://x.com/" className="">
-              <img
-                src={tiweter}
-                alt="Twitter"
-                className=""
-              />
+            <Link to="https://x.com/" className="">
+              <img src={tiweter} alt="Twitter" className="" />
             </Link>
-            <Link
-              to="https://in.linkedin.com/" className="">
-              <img
-                src={linkedin}
-                alt="LinkedIn"
-                className=""
-              />
+            <Link to="https://in.linkedin.com/" className="">
+              <img src={linkedin} alt="LinkedIn" className="" />
             </Link>
-            <Link
-              to="https://www.instagram.com/" className="">
+            <Link to="https://www.instagram.com/" className="">
               <img
                 src={instagram || "/placeholder.svg"}
                 alt="LinkedIn"
