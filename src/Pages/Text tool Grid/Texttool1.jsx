@@ -21,49 +21,49 @@ function Texttool1() {
       id: "case-converter",
       title: "Case Converter",
       description: "Convert your text or string to uppercase, lowercase, title case & sentence case",
-      icon: <VscCaseSensitive className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <VscCaseSensitive className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/caseconverter",
     },
     {
       id: "lorem-ipsum-generator",
       title: "Lorem Ipsum Generator",
       description: "Create your placeholder texts with desired number of paragraphs and properties",
-      icon: <MdOutlineContentPaste className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdOutlineContentPaste className="w-[60px] h-[60px] text-yellow-400" />,
       filename: "/lorem",
     },
     {
       id: "letter-counter",
       title: "Letter Counter",
       description: "Count letters, words, sentences in text and analyze numbers with common limits.",
-      icon: <SlEnvolopeLetter className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <SlEnvolopeLetter className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/letter",
     },
     {
       id: "text-to-handwriting-converter",
       title: "Text to Handwriting",
       description: "Convert text to handwriting with chosen paper, ink color, and download PDF",
-      icon: <TbTransform className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <TbTransform className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/Text",
     },
     {
       id: "bionic-reading-converter",
       title: "Bionic Reading Converter",
       description: "Convert your texts into Bionic Reading mode to read them faster than before",
-      icon: <FaBookReader className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaBookReader className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/BionicReading",
     },
     {
       id: "multiple-whitespace-remover",
       title: "Multiple Whitespace Remove",
       description: "Remove multiple whitespaces and line breaks in a text and clear unwanted characters",
-      icon: <BsScissors className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <BsScissors className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/Whitespace",
     },
     {
       id: "google-fonts-pair-finder",
       title: "Google Fonts Pair Finder",
       description: "Find font pairs that look great on designs, pages, apps, headings, body",
-      icon: <MdGroups className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdGroups className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/Googlefont",
     },
   ]
@@ -115,7 +115,7 @@ function Texttool1() {
 
     return (
       <div
-        className="relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
+        className="group relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
@@ -131,7 +131,7 @@ function Texttool1() {
             <img
               src={whishlist2 || "/placeholder.svg"}
               alt="Wishlist"
-              className="absolute top-4 right-4 w-5 h-5 transition-all duration-300 opacity-0 group-hover:opacity-100 cursor-pointer hover:scale-110"
+              className="absolute top-4 right-4 w-5 h-5 transition-all duration-300 opacity-10 hover:opacity-100 cursor-pointer hover:scale-110"
             />
           )}
         </div>

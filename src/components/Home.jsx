@@ -52,13 +52,13 @@ function Home() {
     {
       title: "Bionic Reading Converter",
       icon: a3,
-      bgColor: "bg-[#D5C7FF]",
+      bgColor: "bg-[#AEDFFF]",
       link: "/BionicReading",
     },
     {
       title: "Text to Handwriting Converter",
       icon: a4,
-      bgColor: "bg-[#AEDFFF]",
+      bgColor: "bg-[#D5C7FF]",
       link: "/Text",
     },
     {
@@ -74,11 +74,11 @@ function Home() {
       bgColor: "bg-[#AEDFFF]",
       link: "/Cssloader",
     },
-    { title: "Image Caption Generator", icon: a7, bgColor: "bg-[#D5C7FF]" },
+    { title: "Image Caption Generator", icon: a7, bgColor: "bg-[#AEDFFF]" },
     {
       title: "Instagram Post Generator",
       icon: a8,
-      bgColor: "bg-[#AEDFFF]",
+      bgColor: " bg-[#D5C7FF]",
       link: "/InstagramPostGenerator",
     },
     {
@@ -96,13 +96,13 @@ function Home() {
     {
       title: "Tweet Generator",
       icon: a7,
-      bgColor: "bg-[#D5C7FF]",
+      bgColor: " bg-[#AEDFFF]",
       link: "/TweetGenerator",
     },
     {
       title: "SVG Pattern Generator",
       icon: a8,
-      bgColor: "bg-[#AEDFFF]",
+      bgColor: "bg-[#D5C7FF]",
       link: "/SVGpattern",
     },
     {
@@ -120,7 +120,7 @@ function Home() {
     {
       title: "Twitter Ad Revenue Generator",
       icon: a8,
-      bgColor: "bg-[#D5C7FF]",
+      bgColor: "bg-[#AEDFFF]",
       link: "/Twitteradrevenuegenerator",
     },
   ];

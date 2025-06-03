@@ -1,6 +1,6 @@
 import arror from "../../image/arror.svg";
 import ston from '../../image/ston.svg';
-import Colortool1 from '../CSS tool Grid/CSStool1';
+import Colortool1 from '../Color tool Grid/Colortool1';
 import Information from "../../components/Information";
 import Oval2 from "../../image/Oval2.svg";
 import leaf1 from "../../image/leaf1.svg";

@@ -1,5 +1,3 @@
-"use client"
-
 import { FaChevronDown } from "react-icons/fa"
 import { IoText, IoImages } from "react-icons/io5"
 import { IoLogoCss3 } from "react-icons/io"
@@ -264,7 +262,7 @@ export default function Sidebar() {
   }, [favoriteItems.length])
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+    <div className="flex flex-col lg:flex-row ">
       {/* Topbar for mobile and tablet (hidden on large screens) */}
       <div className="lg:hidden bg-white border-b border-gray-200 p-2 flex justify-between items-center fixed top-0 left-0 right-0 z-20">
         <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-gray-600">
@@ -280,7 +278,7 @@ export default function Sidebar() {
       {/* Sidebar: toggled on mobile/tablet, always visible on large screens */}
       <aside
         className={`
-          bg-white w-full lg:w-72 border-r border-gray-200 p-4 space-y-3 overflow-y-auto z-10 transition-all duration-300 ease-in-out
+          bg-white w-full lg:w-72 border-r border-gray-200 p-4 h-[100%] space-y-3 overflow-y-auto z-10 transition-all duration-300 ease-in-out
           fixed top-14 left-0 right-0 max-h-[calc(100vh-3.5rem)]
           ${sidebarOpen ? "block" : "hidden"}
           lg:sticky lg:top-0 lg:left-0 lg:h-screen lg:max-h-screen lg:block

@@ -16,32 +16,32 @@ function Colortool1() {
     {
       title: "AI Color Palette Generator",
       description: "Craft perfect color palettes effortlessly with AI-driven creativity.",
-      icon: <FaBrain className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaBrain className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/AIColor",
     },
     {
       title: "HEX to RGBA Converter",
       description: "Convert HEX color codes to RGBA equivalents and see all details of a color",
-      icon: <IoColorFilterOutline className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <IoColorFilterOutline className="w-[60px] h-[60px] text-yellow-400" />,
       filename: "/HEX",
     },
     {
       title: "RGBA to HEX Converter",
       description: "Convert RGBA color codes to alpha-supported 6 or 8 digit HEX equivalents",
-      icon: <FaHashtag className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaHashtag className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/RGBA",
     },
     {
       title: "Color Shades Generator",
       description:
         "Generate all color shades using steps: darken, lighten, saturate, desaturate systematically",
-      icon: <FaSwatchbook className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaSwatchbook className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/ColorMixer",
     },
     {
       title: "Color Mixer",
       description: "Mix 2 colors and get color codes for intermediate colors from 2 to 10 steps",
-      icon: <HiCircleStack className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <HiCircleStack className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/ColorShades",
     },
   ];
@@ -87,7 +87,7 @@ function Colortool1() {
     return (
       <div
         key={index}
-        className="relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
+        className="group relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
@@ -103,7 +103,7 @@ function Colortool1() {
             <img
               src={whishlist2 || "/placeholder.svg"}
               alt="Wishlist"
-              className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-0 group-hover:opacity-100 cursor-pointer hover:scale-110"
+              className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-10 hover:opacity-100 cursor-pointer hover:scale-110"
             />
           )}
         </div>

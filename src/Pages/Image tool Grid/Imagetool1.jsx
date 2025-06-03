@@ -22,67 +22,67 @@ function Imagestools1() {
     {
       title: "Image Resizer",
       description: "Resize any image to desired width and height either by protecting aspect ratio or not",
-      icon: <GiResize className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <GiResize className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/Resizer",
     },
     {
       title: "Image Cropper",
       description: "Crop unwanted parts of images and download desired part of the image as a new file",
-      icon: <FaCropSimple className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaCropSimple className="w-[60px] h-[60px] text-yellow-400" />,
       filename: "/ImageCropper",
     },
     {
       title: "Image Average Color Finder",
       description: "Calculate average and dominant color of an image by ignoring transparency",
-      icon: <MdFormatColorFill className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdFormatColorFill className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/AverageColor",
     },
     {
       title: "Image Color Extractor",
       description: "Extract all colors from an image and get color codes and details of this colors as a list",
-      icon: <PiImageSquareFill className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <PiImageSquareFill className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/ImageColorExtractor",
     },
     {
       title: "Image Color Picker",
       description: "Pick any color from image using eyedropper and get detailed info",
-      icon: <TbColorPicker className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <TbColorPicker className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/ImageColorPicker",
     },
     {
       title: "SVGpattern",
       description: "Generate SVG patterns with different shapes and download it as SVG or an image file",
-      icon: <TbFileTypeSvg className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <TbFileTypeSvg className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/SVGpattern",
     },
     {
       title: "Photo Censor",
       description: "Censor photos and hide faces by pixelating/blurring them or by putting a black bar",
-      icon: <MdMovieFilter className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdMovieFilter className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/Photocensor",
     },
     {
       title: "SVG to PNG Converter",
       description: "Easily convert any SVG file into a PNG image and scale it proportionally",
-      icon: <SiConvertio className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <SiConvertio className="w-[60px] h-[60px] text-yellow-400" />,
       filename: "/Svgpng",
     },
     {
       title: "Image Filter",
       description: "Apply various filters to images like brightness, contrast, blur and more effects",
-      icon: <TbFilters className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <TbFilters className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/Imagefilter",
     },
     {
       title: "Image Caption",
       description: "Generate descriptive captions for images by applying advanced image analysis ",
-      icon: <MdOutlineImageSearch className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdOutlineImageSearch className="w-[60px] h-[60px] text-yellow-400" />,
       filename: "/ImageCaptionGenerator",
     },
     {
       title: "Blob Generator",
       description: "Create unique and customizable blob shapes to use backgrounds or design elements easily",
-      icon: <GiSlowBlob className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <GiSlowBlob className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/BlobGenerator",
     },
   ];
@@ -130,7 +130,7 @@ function Imagestools1() {
     return (
       <div
         key={index}
-        className="relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
+        className="group relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
@@ -146,7 +146,7 @@ function Imagestools1() {
             <img
               src={whishlist2 || "/placeholder.svg"}
               alt="Wishlist"
-              className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-0 group-hover:opacity-100 cursor-pointer hover:scale-110"
+              className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-10 hover:opacity-100 cursor-pointer hover:scale-110"
             />
           )}
         </div>

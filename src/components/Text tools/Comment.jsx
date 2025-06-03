@@ -21,7 +21,7 @@ function ReportModal({ open, onClose, onSubmit }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/30  flex items-center justify-center z-50">
+    <div className="fixed  inset-0 bg-black/30  flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-96 shadow-lg">
         <h3 className="text-2xl font-bold text-gray-900 md:text-sm lg:text-2xl sm:text-lg">Report Comment</h3>
         <select

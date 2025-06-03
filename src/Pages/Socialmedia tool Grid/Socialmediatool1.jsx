@@ -180,8 +180,8 @@
 
 import arrow from "../../image/arrow.svg"
 import arrow2 from "../../image/arrow2.svg"
-import whishlist from "../../image/whishlist.svg" // wishlist icon
-import whishlist2 from "../../image/whishlist2.svg" // wishlist icon
+import whishlist from "../../image/whishlist.svg" 
+import whishlist2 from "../../image/whishlist2.svg" 
 import { MdMovieFilter } from "react-icons/md"
 import { MdPostAdd } from "react-icons/md"
 import { FaTwitterSquare } from "react-icons/fa"
@@ -199,44 +199,44 @@ function Socialmediatool1() {
       title: "Instagram Filters",
       description:
         "Apply Instagram-like filters to photos by uploading local files or image URLs",
-      icon: <MdMovieFilter className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdMovieFilter className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/InstagramFilters",
     },
     {
       title: "Instagram Post Generator",
       description:
         "Create realistic Instagram posts, download as images, and prank your friends playfully",
-      icon: <MdPostAdd className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <MdPostAdd className="w-[60px] h-[60px] text-yellow-400" />,
       filename: "/InstagramPostGenerator",
     },
     {
       title: "Tweet Generator",
       description: "Create realistic tweets, download as images, and prank or joke with friends playfully",
-      icon: <FaTwitterSquare className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaTwitterSquare className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/TweetGenerator",
     },
     {
       title: "Twitter Ad Revenue Generator",
       description: "Generate Twitter ad revenue screenshots and make jokes to your friends",
-      icon: <FaXTwitter className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaXTwitter className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/Twitteradrevenuegenerator",
     },
     {
       title: "YouTube Thumbnail Grabber",
       description: "Get all available thumbnail images of a YouTube videos just by entering the URL",
-      icon: <FaYoutube className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <FaYoutube className="w-[60px] h-[60px] text-pink-400" />,
       filename: "/Youtubethumbnailgrabber",
     },
     {
       title: "Vimeo Thumbnail Grabber",
       description: "Get all available thumbnail images of a Vimeo videos just by entering the URL",
-      icon: <IoLogoVimeo className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <IoLogoVimeo className="w-[60px] h-[60px] text-orange-400" />,
       filename: "/Vimeothumbnailgrabber",
     },
     {
       title: "Open Graph Meta Generator",
       description: "Generate open graph meta code for your web page and add it to your site's head section",
-      icon: <LuGitGraph className="w-[60px] h-[60px] text-indigo-400" />,
+      icon: <LuGitGraph className="w-[60px] h-[60px] text-blue-400" />,
       filename: "/Opengraphmetagenerator",
     },
   ]
@@ -282,7 +282,7 @@ function Socialmediatool1() {
     return (
       <div
         key={index}
-        className="relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
+        className="group relative rounded-2xl shadow-md cursor-pointer p-6 bg-[#F6F5F8] flex flex-col justify-between transition-all duration-300 hover:shadow-lg w-full max-w-[280px]"
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
@@ -298,7 +298,7 @@ function Socialmediatool1() {
             <img
               src={whishlist2 || "/placeholder.svg"}
               alt="Wishlist"
-              className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-0 group-hover:opacity-100 cursor-pointer hover:scale-110"
+              className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-20 hover:opacity-100 cursor-pointer hover:scale-110"
             />
           )}
         </div>
@@ -313,7 +313,7 @@ function Socialmediatool1() {
         <p className="text-left text-gray-600 mb-8">{tool.description}</p>
 
         {/* Arrow Button */}
-        <div className="group absolute bottom-5.5 right-1">
+        <div className=" absolute bottom-5.5 right-1">
           <div className="relative w-28 h-10 flex items-center justify-center bg-gray-100 rounded-full z-0 transition-all duration-300">
             <img
               src={arrow || "/placeholder.svg"}
