@@ -547,7 +547,7 @@ export default function Navbar() {
     active
       ? "text-[#00063F]"
       : "text-gray-700 hover:text-gray-700";
-
+  
   return (
     <header className="w-full lg-static top-0 left-0 z-50 relative bg-transparent">
       <div

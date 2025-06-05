@@ -1,4 +1,4 @@
-import React from "react";
+import  {useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./components/Contact";
 import Getfeatured from "./components/Getfeatured";
@@ -79,13 +79,20 @@ import Socialmediatool from "./Pages/Socialmedia tool Grid/Socialmediatool";
 import Miscellaneoustool from "./Pages/Miscellaneous tool Grid/Miscellaneoustool";
 import Imagefilter from "./components/Image Tool/Imagefilter";
 import ImageCaptionGenerator from "./components/Image Tool/ImageCaptionGenerator";
-import Sidebar from "./components/Sidebar";
+import ScrollToTop from "./components/ScrollToTop";
+
+
+
 
 function App() {
+  
+
   return (
     <>
       <FavoritesProvider>
         <Router>
+          
+          <ScrollToTop />
           <Routes>
             {/* Home route WITHOUT layout */}
             <Route path="/" element={<Home />} />
@@ -174,6 +181,14 @@ function App() {
   )
 }
 export default App;
+
+
+
+
+
+
+
+
 
 
 

@@ -620,3 +620,4 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
 };
 
 export default GradientGenerator;
+

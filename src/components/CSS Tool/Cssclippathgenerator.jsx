@@ -799,3 +799,9 @@ export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
       </>
   );
 }
+
+
+
+
+
+

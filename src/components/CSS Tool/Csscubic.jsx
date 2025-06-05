@@ -540,3 +540,12 @@ export default function CubicBezierGenerator({ id = "CSS Cubic Bezier Generator"
     </>
   );
 }
+
+
+
+
+
+
+
+
+

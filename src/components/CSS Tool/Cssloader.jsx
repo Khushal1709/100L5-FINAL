@@ -1894,7 +1894,7 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
      const onFavoriteToggle = () => {
         const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
         let newFavorites;
-    
+
         if (favorites.includes(id)) {
           newFavorites = favorites.filter((favId) => favId !== id);
           setIsFavorite(false);
@@ -1902,16 +1902,15 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
           newFavorites = [...favorites, id];
           setIsFavorite(true);
         }
-    
+
         localStorage.setItem("FavoriteTools", JSON.stringify(newFavorites));
         updateFavorites();
       };
-    
+
       useEffect(() => {
         const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
         setIsFavorite(favorites.includes(id));
       }, [id]);
-  
 
   return (
     <>
@@ -2066,7 +2065,6 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
       )}
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
-      
 
         {/* Category selector and counter */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
@@ -2403,3 +2401,5 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
       </>
   );
 }
+
+

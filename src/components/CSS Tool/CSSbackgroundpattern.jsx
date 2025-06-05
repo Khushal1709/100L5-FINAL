@@ -575,3 +575,12 @@ export default function PatternGenerator({id="CSS Background Pattern"}) {
     </>
   );
 }
+
+
+
+
+
+
+
+
+

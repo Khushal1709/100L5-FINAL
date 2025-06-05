@@ -513,3 +513,11 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
 };
 
 export default CSSTextGlitchEffectGenerator;
+
+
+
+
+
+
+
+
