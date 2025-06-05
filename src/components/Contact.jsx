@@ -18,7 +18,7 @@ const ContactSection = () => {
 
   return (
     <>
-      <div className="relative bg-[# ] ">
+      <div className="relative ">
         {/* Background Image - Hidden on mobile/tablet, visible on lg screens */}
         <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
