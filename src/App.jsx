@@ -1,4 +1,4 @@
-import  {useEffect} from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./components/Contact";
 import Getfeatured from "./components/Getfeatured";
@@ -6,7 +6,7 @@ import Submit from "./components/Submit";
 import Productfinder from "./components/Productfinder";
 import Productfinder1 from "./components/Productfinder1";
 import Login from "./components/Login";
-import Signup from "./components/Signup"
+import Signup from "./components/Signup";
 import Caseconveter from "./components/Text tools/Caseconveter";
 import LoremIpsumGenerator from "./components/Text tools/LoremIpsum";
 import Layout from "./components/Layout";
@@ -80,115 +80,246 @@ import Miscellaneoustool from "./Pages/Miscellaneous tool Grid/Miscellaneoustool
 import Imagefilter from "./components/Image Tool/Imagefilter";
 import ImageCaptionGenerator from "./components/Image Tool/ImageCaptionGenerator";
 import ScrollToTop from "./components/ScrollToTop";
+// Dark Theme Imports
+import DarkHf from "./Darktheme/Coding Tool/Hf";
+import DarkCs from "./Darktheme/Coding Tool/Cs";
+import DarkJavaf from "./Darktheme/Coding Tool/Javaf";
+import DarkMD5 from "./Darktheme/Coding Tool/MD5";
+import DarkSHA1 from "./Darktheme/Coding Tool/SHA1";
+import DarkSlug from "./Darktheme/Coding Tool/Slug";
+import DarkShadow from "./Darktheme/Coding Tool/Shadow";
+// import DarkCodetoImage from "./Darktheme/Coding Tool/CodetoImage";
+// import DarkBaseEncoderDecoder from "./Darktheme/Coding Tool/BaseEncoderDecoder";
+// import DarkCSSMinifier from "./Darktheme/Coding Tool/CSSMinifier";
+import DarkHTMLEncoderDecoder from "./Darktheme/Coding Tool/HTMLEncoderDecoder";
+import DarkURLEncoderDcoder from "./Darktheme/Coding Tool/URLEncoderDcoder";
+import DarkHTMLMinifier from "./Darktheme/Coding Tool/HTMLMinifier";
+import DarkAIColor from "./Darktheme/Colour Tool/AIColor";
+import DarkHEX from "./Darktheme/Colour Tool/HEX";
+import DarkRGBA from "./Darktheme/Colour Tool/RGBA";
+import DarkColorMixer from "./Darktheme/Colour Tool/ColorMixer";
+import DarkColorShades from "./Darktheme/Colour Tool/ColorShades";
+import DarkInstagramFilters from "./Darktheme/Social Media Tools/InstagramFilters";
+import DarkInstagramPostGenerator from "./Darktheme/Social Media Tools/InstagramPostGenerator";
+import DarkTweetGenerator from "./Darktheme/Social Media Tools/TweetGenerator";
+import DarkOpengraphmetagenerator from "./Darktheme/Social Media Tools/Opengraphmetagenerator";
+import DarkVimeothumbnailgrabber from "./Darktheme/Social Media Tools/Vimeothumbnailgrabber";
+import DarkYoutubethumbnailgrabber from "./Darktheme/Social Media Tools/Youtubethumbnailgrabber";
+import DarkTwitteradrevenuegenerator from "./Darktheme/Social Media Tools/Twitteradrevenuegenerator";
+import DarkStrongRandom from "./Darktheme/Miscellaneous Tools/StrongRandom";
+import DarkRandomizer from "./Darktheme/Miscellaneous Tools/Randomizer";
+import DarkQRcode from "./Darktheme/Miscellaneous Tools/QRcode";
+import DarkBarcode from "./Darktheme/Miscellaneous Tools/Barcode";
+import DarkPhotocensor from "./Darktheme/Image Tool/Photocensor";
+import DarkResizer from "./Darktheme/Image Tool/Resizer";
+import DarkSvgpng from "./Darktheme/Image Tool/Svgpng";
+import DarkImageCropper from "./Darktheme/Image Tool/ImageCropper";
+import DarkAverageColor from "./Darktheme/Image Tool/AverageColor";
+import DarkImageColorPicker from "./Darktheme/Image Tool/ImageColorPicker";
+import DarkSVGpattern from "./Darktheme/Image Tool/SVGpattern";
+import DarkBlobGenerator from "./Darktheme/Image Tool/BlobGenerator";
+import DarkImagefilter from "./Darktheme/Image Tool/Imagefilter";
+import DarkImageCaptionGenerator from "./Darktheme/Image Tool/ImageCaptionGenerator";
+import DarkImageColorExtractor from "./Darktheme/Image Tool/ImageColorExtractor";
+import DarkCaseConverter from "./Darktheme/Text tools/Caseconveter";
+import DarkLoremIpsumGenerator from "./Darktheme/Text tools/LoremIpsum";
+import DarkLetterCounter from "./Darktheme/Text tools/LetterCounter";
+import DarkHandwriting from "./Darktheme/Text tools/Handwriting";
+import DarkBionicReading from "./Darktheme/Text tools/BionicReading";
+import DarkWhitespace from "./Darktheme/Text tools/Whitespace";
+import DarkGooglefont from "./Darktheme/Text tools/Googlefont";
 
+import DarkCssclippathgenerator from "./Darktheme/CSS Tool/Cssclippathgenerator";
+import DarkCssloader from "./Darktheme/CSS Tool/Cssloader";
+import DarkCSSbackgroundpattern from "./Darktheme/CSS Tool/CSSbackgroundpattern";
+import DarkCsscubic from "./Darktheme/CSS Tool/Csscubic";
+import DarkCssglassmorphism from "./Darktheme/CSS Tool/Cssglassmorphism";
+import DarkCsstextglitch from "./Darktheme/CSS Tool/Csstextglitch";
+import DarkCssgradientgenerator from "./Darktheme/CSS Tool/Cssgradientgenerator";
+import DarkCSStrianglegenerator from "./Darktheme/CSS Tool/CSStrianglegenerator";
+import DarkCssboxshadowgenerator from "./Darktheme/CSS Tool/Cssboxshadowgenerator";
+import DarkBorderradiusgenerator from "./Darktheme/CSS Tool/Borderradiusgenerator";
 
-
-
+import DarkAbout from "../src/Darktheme/About";
+import DarkContact from "../src/Darktheme/Contact";
+import DarkSubmit from "../src/Darktheme/Submit";
+import DarkProductfinder from "../src/Darktheme/Productfinder";
+import DarkProductfinder1 from "../src/Darktheme/Productfinder1";
+import DarkGetfeatured from "../src/Darktheme/Getfeatured";
+import DarkLayout from "./Darktheme/DarkLayout";
+import DarkHome from "./Darktheme/Home";
+import DarkTexttool from "../src/Darktheme/Pages/Text tool Grid/Texttool"
 function App() {
-  
+  const [mode, setMode] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const newMode = localStorage.getItem("theme") || "light";
+      setMode(newMode);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  useEffect(() => {
+    const observer = setInterval(() => {
+      const newMode = localStorage.getItem("theme") || "light";
+      if (newMode !== mode) {
+        setMode(newMode);
+      }
+    }, 500); 
+    return () => clearInterval(observer);
+  }, [mode]);
+
+  console.log(mode, "mode");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname, mode]);
 
   return (
     <>
       <FavoritesProvider>
         <Router>
-          
           <ScrollToTop />
           <Routes>
             {/* Home route WITHOUT layout */}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={mode === "light" ?<Home /> : <DarkHome /> } />
 
             {/* All other routes WITH sidebar/footer layout */}
-            <Route element={<Layout />}>
-              <Route path="/lorem" element={<LoremIpsumGenerator />} />
-              <Route path="/caseconverter" element={<CaseConverter />} />
-              <Route path="/letter" element={<LetterCounter />} />
-              <Route path="/Text" element={<Handwriting />} />
-              <Route path="/BionicReading" element={<BionicReading />} />
-              <Route path="/Whitespace" element={<Whitespace />} />
-              <Route path="/Googlefont" element={<Googlefont />} />
-              <Route path="/Randomizer" element={<Randomizer />} />
-              <Route path="/QRcode" element={<QRcode />} />
-              <Route path="/StrongRandom" element={<StrongRandom />} />
-              <Route path="/Barcode" element={<Barcode />} />
-              <Route path="/AIColor" element={<AIColor />} />
-              <Route path="/HEX" element={<HEX />} />
-              <Route path="/RGBA" element={<RGBA />} />
-              <Route path="/ColorMixer" element={<ColorMixer />} />
-              <Route path="/Resizer" element={<Resizer />} />
-              <Route path="/Svgpng" element={<Svgpng />} />
-              <Route path="/ColorShades" element={<ColorShades />} />
-              <Route path="/CodetoImage" element={<CodetoImage />} />
-              <Route path="/Slug" element={<Slug />} />
-              <Route path="/Shadow" element={<Shadow />} />
-              <Route path="/BaseEncoderDecoder" element={<BaseEncoderDecoder />} />
-              <Route path="/HTMLEncoderDecoder" element={<HTMLEncoderDecoder />} />
-              <Route path="/URLEncoderDcoder" element={<URLEncoderDcoder />} />
-              <Route path="/HTMLMinifier" element={<HTMLMinifier />} />
-              <Route path="/CSSMinifier" element={<CSSMinifier />} />
-              <Route path="/JavaScriptMinifier" element={<JavaScriptMinifier />} />
-              <Route path="/Hf" element={<Hf />} />
-              <Route path="/Cs" element={<Cs />} />
-              <Route path="/Javaf" element={<Javaf />} />
-              <Route path="/MD5" element={<MD5 />} />
-              <Route path="/SHA1" element={<SHA1 />} />
-              <Route path="/InstagramFilters" element={<InstagramFilters />} />
-              <Route path="/InstagramPostGenerator" element={<InstagramPostGenerator />} />
-              <Route path="/TweetGenerator" element={<TweetGenerator />} />
-              <Route path="/Photocensor" element={<Photocensor />} />
-              <Route path="/ImageCropper" element={<ImageCropper />} />
-              <Route path="/AverageColor" element={<AverageColor />} />
-              <Route path="/ImageColorPicker" element={<ImageColorPicker />} />
-              <Route path="/SVGpattern" element={<SVGpattern />} />
-              <Route path="/BlobGenerator" element={<BlobGenerator />} />
-              <Route path="/Opengraphmetagenerator" element={<Opengraphmetagenerator />} />
-              <Route path="/Vimeothumbnailgrabber" element={<Vimeothumbnailgrabber />} />
-              <Route path="/Youtubethumbnailgrabber" element={<Youtubethumbnailgrabber />} />
-              <Route path="/Twitteradrevenuegenerator" element={<Twitteradrevenuegenerator />} />
-              <Route path="/Cssclippathgenerator" element={<Cssclippathgenerator />} />
-              <Route path="/Cssloader" element={<Cssloader />} />
-              <Route path="/CSSbackgroundpattern" element={<CSSbackgroundpattern />} />
-              <Route path="/Csscubic" element={<Csscubic />} />
-              <Route path="/Cssglassmorphism" element={<Cssglassmorphism />} />
-              <Route path="/Csstextglitch" element={<Csstextglitch />} />
-              <Route path="/Cssgradientgenerator" element={<Cssgradientgenerator />} />
-              <Route path="/CSStrianglegenerator" element={<CSStrianglegenerator />} />
-              <Route path="/Cssboxshadowgenerator" element={<Cssboxshadowgenerator />} />
-              <Route path="/Borderradiusgenerator" element={<Borderradiusgenerator />} />
-              <Route path="/ImageColorExtractor" element={<ImageColorExtractor />} />
-              <Route path="/Imagefilter" element={<Imagefilter />} />
-              <Route path="/ImageCaptionGenerator" element={<ImageCaptionGenerator />} />
+            <Route element={mode === "light" ?<Layout /> : <DarkLayout />}>
+              <Route path="/caseconverter" element={mode === "light" ?<CaseConverter />: <DarkCaseConverter />} />
+              <Route path="/lorem" element={mode === "light" ?<LoremIpsumGenerator />:<DarkLoremIpsumGenerator /> } />
+              <Route path="/letter" element={mode === "light" ?<LetterCounter />:<DarkLetterCounter /> } />
+              <Route path="/Text" element={mode === "light" ?<Handwriting />:<DarkHandwriting /> } />
+              <Route path="/BionicReading" element={mode === "light" ?<BionicReading />:<DarkBionicReading /> } />
+              <Route path="/Whitespace" element={mode === "light" ?<Whitespace />: <DarkWhitespace />} />
+              <Route path="/Googlefont" element={mode === "light" ?<Googlefont />: <DarkGooglefont />} />
+: 
+              <Route path="/StrongRandom" element={mode === "light" ?<StrongRandom /> : <DarkStrongRandom />} />
+              <Route path="/Randomizer" element={mode === "light" ?<Randomizer /> : <DarkRandomizer /> }  />
+              <Route path="/QRcode" element={mode === "light" ?<QRcode /> : <DarkQRcode /> } />
+              <Route path="/Barcode" element={mode === "light" ?<Barcode /> : <DarkBarcode /> } />
+              
+              <Route path="/AIColor" element={mode === "light" ? <AIColor /> : <DarkAIColor />} />
+              <Route path="/HEX" element={mode === "light" ? <HEX /> : <DarkHEX /> } />
+              <Route path="/RGBA" element={mode === "light" ? <RGBA /> : <DarkRGBA />} />
+              <Route path="/ColorMixer" element={mode === "light" ? <ColorMixer /> : <DarkColorMixer />} />
+              <Route path="/ColorShades" element={mode === "light" ? <ColorShades /> :  <DarkColorShades />} />
+              {/* <Route path="/CodetoImage" element={mode === "light"  ?<CodetoImage /> : <DarkCodetoImage />} /> */}
+              {/* <Route
+                path="/BaseEncoderDecoder"
+                element={mode === "light"  ? <BaseEncoderDecoder /> : <DarkBaseEncoderDecoder />}
+                /> */}
+              {/* <Route path="/CSSMinifier" element={mode === "light" ? <CSSMinifier /> : <DarkCSSMinifier /> } /> */}
+              <Route path="/Slug" element={mode === "light"  ? <Slug /> : <DarkSlug />} />
+              <Route path="/Shadow" element={mode === "light"  ? <Shadow /> : <DarkShadow />} />
+              <Route
+                path="/HTMLEncoderDecoder"
+                element={mode === "light" ? <HTMLEncoderDecoder /> : <DarkHTMLEncoderDecoder />}
+              />
+              <Route path="/URLEncoderDcoder" element={mode === "light" ? <URLEncoderDcoder /> : <DarkURLEncoderDcoder />} />
+              <Route path="/HTMLMinifier"element={mode === "light" ? <HTMLMinifier /> : <DarkHTMLMinifier /> } />
+              <Route
+                path="/JavaScriptMinifier"
+                element={mode === "light" ? <JavaScriptMinifier /> :  <JavaScriptMinifier /> }
+              />
+              <Route
+                path="/Hf"
+                element={mode === "light" ? <Hf /> : <DarkHf />}
+              />{" "}
+              <Route path="/Cs" element={mode === "light"  ? <Cs /> :<DarkCs />} />
+              <Route path="/Javaf" element= {mode === "light"  ? <Javaf /> : <DarkJavaf />} />
+              <Route path="/MD5" element={mode === "light"  ?<MD5 /> : <DarkMD5 />} />
+              <Route path="/SHA1" element={mode === "light"  ?<SHA1 /> : <DarkSHA1 />} />
+              <Route path="/InstagramFilters" element={mode === "light" ?<InstagramFilters /> : <DarkInstagramFilters />} />
+              <Route
+                path="/InstagramPostGenerator"
+                element={mode === "light" ?<InstagramPostGenerator /> : <DarkInstagramPostGenerator /> }
+              />
+              <Route path="/TweetGenerator" element={mode === "light" ?<TweetGenerator /> : <DarkTweetGenerator /> } />
+              <Route
+                path="/Opengraphmetagenerator"
+                element={mode === "light" ?<Opengraphmetagenerator /> : <DarkOpengraphmetagenerator /> }
+              />
+              <Route
+                path="/Vimeothumbnailgrabber"
+                element={mode === "light" ?<Vimeothumbnailgrabber /> : <DarkVimeothumbnailgrabber /> }
+              />
+              <Route
+                path="/Youtubethumbnailgrabber"
+                element={mode === "light" ?<Youtubethumbnailgrabber /> : <DarkYoutubethumbnailgrabber />}
+              />
+              <Route
+                path="/Twitteradrevenuegenerator"
+                element={mode === "light" ?<Twitteradrevenuegenerator /> : <DarkTwitteradrevenuegenerator />}
+              />
+              <Route path="/Photocensor" element={mode === "light" ?<Photocensor />: <DarkPhotocensor /> } />
+                <Route path="/Resizer" element={mode === "light" ?<Resizer />: <DarkResizer /> } />
+                <Route path="/Svgpng" element={mode === "light" ?<Svgpng />: <DarkSvgpng /> } />
+              <Route path="/ImageCropper" element={mode === "light" ?<ImageCropper />: <DarkImageCropper /> } />
+              <Route path="/AverageColor" element={mode === "light" ?<AverageColor />:<DarkAverageColor /> } />
+              <Route path="/ImageColorPicker" element={mode === "light" ?<ImageColorPicker /> : <DarkImageColorPicker /> } />
+              <Route path="/SVGpattern" element={mode === "light" ?<SVGpattern />: <DarkSVGpattern /> } />
+              <Route path="/Imagefilter" element={mode === "light" ?<Imagefilter />: <DarkImagefilter /> } />
+              <Route path="/BlobGenerator" element={mode === "light" ?<BlobGenerator />: <DarkBlobGenerator /> } />
+              <Route
+                path="/ImageCaptionGenerator"
+                element={mode === "light" ? <ImageCaptionGenerator /> : <DarkImageCaptionGenerator />}
+              />
             </Route>
-            <Route path="/Getfeatured" element={<Getfeatured />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/Submit" element={<Submit />} />
-            <Route path="/Productfinder" element={<Productfinder />} />
-            <Route path="/Productfinder1" element={<Productfinder1 />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Texttool" element={<Texttool />} />
+              <Route
+                path="/Cssclippathgenerator"
+                element={mode === "light" ?<Cssclippathgenerator />:<DarkCssclippathgenerator />}
+              />
+              <Route path="/Cssloader" element={mode === "light" ?<Cssloader /> : <DarkCssloader /> } />
+              <Route
+                path="/CSSbackgroundpattern"
+                element={mode === "light" ?<CSSbackgroundpattern /> : <DarkCSSbackgroundpattern />}
+              />
+              <Route path="/Csscubic" element={mode === "light" ?<Csscubic /> : <DarkCsscubic />} />
+              <Route path="/Cssglassmorphism"  element={mode === "light" ?<Cssglassmorphism />: <DarkCssglassmorphism />} />
+              <Route path="/Csstextglitch"  element={mode === "light" ?<Csstextglitch />: <DarkCsstextglitch />} />
+              <Route
+                path="/Cssgradientgenerator"
+                element={mode === "light" ?<Cssgradientgenerator /> : <DarkCssgradientgenerator />}
+              />
+              <Route
+                path="/CSStrianglegenerator"
+                element={mode === "light" ?<CSStrianglegenerator /> : <DarkCSStrianglegenerator />}
+              />
+              <Route
+                path="/Cssboxshadowgenerator"
+                element={mode === "light" ?<Cssboxshadowgenerator />: <DarkCssboxshadowgenerator />}
+              />
+              <Route
+                path="/Borderradiusgenerator"
+                element={mode === "light" ?<Borderradiusgenerator />: <DarkBorderradiusgenerator />}
+              />
+              <Route
+                path="/ImageColorExtractor"
+                element={mode === "light" ?<ImageColorExtractor />: <DarkImageColorExtractor />}
+              />
+            <Route path="/Getfeatured" element={mode === "light" ?<Getfeatured />: <DarkGetfeatured />} />
+            <Route path="/Contact" element={mode === "light" ? <Contact/> : <DarkContact/>} />
+            <Route path="/Submit" element={mode === "light" ?<Submit /> :<DarkSubmit /> } />
+            <Route path="/Productfinder" element={mode === "light" ?<Productfinder /> : <DarkProductfinder />} />
+            <Route path="/Productfinder1" element={mode === "light" ?<Productfinder1 /> : <DarkProductfinder1 /> } />
+            <Route path="/About" element={mode === "light" ? <About />: <DarkAbout />} />
+            <Route path="/Texttool"element={mode === "light" ?  <Texttool /> :  <DarkTexttool/>} />
             <Route path="/Imagetool" element={<Imagetool />} />
             <Route path="/CSStool" element={<CSStool />} />
             <Route path="/Codingtool" element={<Codingtool />} />
             <Route path="/Colortool" element={<Colortool />} />
             <Route path="/Socialmediatool" element={<Socialmediatool />} />
             <Route path="/Miscellaneoustool" element={<Miscellaneoustool />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
           </Routes>
         </Router>
-
       </FavoritesProvider>
     </>
-  )
+  );
 }
 export default App;
-
-
-
-
-
-
-
-
-
-
-

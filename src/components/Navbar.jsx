@@ -486,8 +486,6 @@
 //   );
 // }
 
-
-
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -505,14 +503,30 @@ export default function Navbar() {
   const [mobileExtensionsOpen, setMobileExtensionsOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [themeOpen, setThemeOpen] = useState(false); // State for theme dropdown
-  const [mobileThemeOpen, setMobileThemeOpen] = useState(false); // State for mobile theme dropdown
+  const [themeOpen, setThemeOpen] = useState(false);
+  const [mobileThemeOpen, setMobileThemeOpen] = useState(false);
 
   const location = useLocation();
   const isSpecialPage =
     location.pathname === "/Productfinder" ||
     location.pathname === "/Getfeatured" ||
     location.pathname === "/Submit";
+
+  // List of tools for search filtering
+  const tools = [
+    { name: "Text Tool", path: "/Texttool" },
+    { name: "Image Tool", path: "/Imagetool" },
+    { name: "CSS Tool", path: "/CSStool" },
+    { name: "Coding Tools", path: "/Codingtool" },
+    { name: "Color Tools", path: "/Colortool" },
+    { name: "Social Media Tools", path: "/Socialmediatool" },
+    { name: "Miscellaneous Tools", path: "/Miscellaneoustool" },
+  ];
+
+  // Filter tools based on search term
+  const filteredTools = tools.filter((tool) =>
+    tool.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const toggleMobileFeatured = (e) => {
     e.preventDefault();
@@ -542,12 +556,9 @@ export default function Navbar() {
     }
   };
 
-  // Helper to set active class
   const getNavLinkClass = (active) =>
-    active
-      ? "text-[#00063F]"
-      : "text-gray-700 hover:text-gray-700";
-  
+    active ? "text-[#00063F]" : "text-gray-700 hover:text-gray-700";
+
   return (
     <header className="w-full lg-static top-0 left-0 z-50 relative bg-transparent">
       <div
@@ -597,6 +608,31 @@ export default function Navbar() {
                   <X className="h-4 w-4" />
                 </button>
               </div>
+              {/* Search Results */}
+              {showSearch && searchTerm && (
+                <div className="max-h-60 overflow-y-hidden p-10">
+                  {filteredTools.length > 0 ? (
+                    filteredTools.map((tool) => (
+                      <Link
+                        key={tool.path}
+                        to={tool.path}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => {
+                          setShowSearch(false);
+                          setSearchTerm("");
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        {tool.name}
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="px-4 py-2 text-sm text-gray-500">
+                      No tools found
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
           <Link to="/" className="p-1">
@@ -660,7 +696,9 @@ export default function Navbar() {
                   </Link>
                   <Link
                     to="/Getfeatured"
-                    className={getNavLinkClass(location.pathname === "/Getfeatured")}
+                    className={getNavLinkClass(
+                      location.pathname === "/Getfeatured"
+                    )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Get Featured
@@ -669,7 +707,9 @@ export default function Navbar() {
               ) : (
                 <Link
                   to="/Productfinder"
-                  className={getNavLinkClass(location.pathname === "/Productfinder")}
+                  className={getNavLinkClass(
+                    location.pathname === "/Productfinder"
+                  )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Product Finder
@@ -691,55 +731,16 @@ export default function Navbar() {
                   </button>
                   {mobileFeaturedOpen && (
                     <div className="w-full bg-gray-50 rounded-lg mt-2 py-2">
-                      <Link
-                        to="/Texttool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Text Tool
-                      </Link>
-                      <Link
-                        to="/Imagetool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Image Tool
-                      </Link>
-                      <Link
-                        to="/CSStool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        CSS Tool
-                      </Link>
-                      <Link
-                        to="/Codingtool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Coding Tools
-                      </Link>
-                      <Link
-                        to="/Colortool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Color Tools
-                      </Link>
-                      <Link
-                        to="/Socialmediatool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Social Media Tools
-                      </Link>
-                      <Link
-                        to="/Miscellaneoustool"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Miscellaneous Tools
-                      </Link>
+                      {tools.map((tool) => (
+                        <Link
+                          key={tool.path}
+                          to={tool.path}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {tool.name}
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -865,6 +866,30 @@ export default function Navbar() {
                   <X className="h-4 w-4" />
                 </button>
               </div>
+              {/* Search Results */}
+              {showSearch && searchTerm && (
+                <div className="max-h-60 overflow-y-auto p-2">
+                  {filteredTools.length > 0 ? (
+                    filteredTools.map((tool) => (
+                      <Link
+                        key={tool.path}
+                        to={tool.path}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => {
+                          setShowSearch(false);
+                          setSearchTerm("");
+                        }}
+                      >
+                        {tool.name}
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="px-4 py-2 text-sm text-gray-500">
+                      No tools found
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -890,7 +915,9 @@ export default function Navbar() {
               </Link>
               <Link
                 to="/Getfeatured"
-                className={getNavLinkClass(location.pathname === "/Getfeatured")}
+                className={getNavLinkClass(
+                  location.pathname === "/Getfeatured"
+                )}
               >
                 Get Featured
               </Link>
@@ -898,7 +925,9 @@ export default function Navbar() {
           ) : (
             <Link
               to="/Productfinder"
-              className={getNavLinkClass(location.pathname === "/Productfinder")}
+              className={getNavLinkClass(
+                location.pathname === "/Productfinder"
+              )}
             >
               Product Finder
             </Link>
@@ -917,48 +946,15 @@ export default function Navbar() {
               </button>
               {featuredOpen && (
                 <div className="absolute top-full w-60 bg-white rounded-xl shadow-lg py-2 z-10 text-center">
-                  <Link
-                    to="/Texttool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Text Tool
-                  </Link>
-                  <Link
-                    to="/Imagetool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Image Tool
-                  </Link>
-                  <Link
-                    to="/CSStool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    CSS Tool
-                  </Link>
-                  <Link
-                    to="/Codingtool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Coding Tools
-                  </Link>
-                  <Link
-                    to="/Colortool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Color Tools
-                  </Link>
-                  <Link
-                    to="/Socialmediatool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Social Media Tools
-                  </Link>
-                  <Link
-                    to="/Miscellaneoustool"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Miscellaneous Tools
-                  </Link>
+                  {tools.map((tool) => (
+                    <Link
+                      key={tool.path}
+                      to={tool.path}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      {tool.name}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
@@ -1017,12 +1013,20 @@ export default function Navbar() {
             {themeOpen && (
               <div className="absolute top-full w-41 bg-white rounded-xl shadow-lg py-2 z-10">
                 <button
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-center cursor-pointer "
+                  onClick={() => {
+                    localStorage.removeItem("theme");
+                    localStorage.setItem("theme", "dark");
+                  }}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-center cursor-pointer"
                 >
                   Dark Theme
                 </button>
                 <button
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-center cursor-pointer"
+                  onClick={() => {
+                    localStorage.removeItem("theme");
+                    localStorage.setItem("theme", "light");
+                  }}
                 >
                   Light Theme
                 </button>
