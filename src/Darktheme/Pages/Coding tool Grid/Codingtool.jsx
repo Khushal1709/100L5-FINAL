@@ -1,19 +1,21 @@
 import arror from "../../../image/arror.svg";
 // import ston from "../../image/ston.svg";
-import Information from "../../components/Information";
+import Information from "../../../Darktheme/Information"
 import Codingtool1 from "./Codingtool1";
 
-import Navbar from "../../components/Navbar"
-import Footer from "../../components/Footer";
-import Oval2 from "../../image/Oval2.svg";
-import leaf1 from "../../image/leaf1.svg";
-import coding from "../../image/coding.svg";
+import Navbar from "../../Navbar";
+import Footer from "../../../Darktheme/Footer";
+import Oval2 from "../../../image/Oval2.svg";
+import leaf1 from "../../../image/leaf1.svg";
+import coding from "../../../image/coding.svg";
 
 function Codingtool() {
   return (
     <>
+        <div className="bg-[#16283E]">
+
     <div className="bg-[#16283E]">
-      <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
+      <div className="absolute h-[500px] hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
         <img
           src={Oval2}
           alt="Background"
@@ -59,6 +61,8 @@ function Codingtool() {
       <Footer />
       </div>
     </div>
+          </div>
+
     </>
   );
 }

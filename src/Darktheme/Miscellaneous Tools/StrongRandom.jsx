@@ -131,7 +131,7 @@ export default function PasswordGenerator({id="Strong Random Password Generator"
       {/* Heading */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-4xl text-indigo-400">
+          <span className="text-4xl text-blue-400">
             <BiSolidLock />
           </span>
           <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-white">

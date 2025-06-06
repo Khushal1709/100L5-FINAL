@@ -19,7 +19,7 @@ import t4 from "../image/t4.svg";
 import t5 from "../image/t5.svg";
 import t6 from "../image/t6.svg";
 import text2 from "../image/text2.svg";
-import CSStool1 from "../Pages/CSS tool Grid/CSStool1";
+// import CSStool1 from "../Pages/CSS tool Grid/CSStool1";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import firefox from "../image/firefox.svg";
@@ -33,6 +33,7 @@ import Textool1 from "../Darktheme/Pages/Text tool Grid/Texttool1"
 import Imagestools1 from "../Darktheme/Pages/Image tool Grid/Imagetool1";
 import Codingtool1 from "../Darktheme/Pages/Coding tool Grid/Codingtool1";
 import Colortool1 from "../Darktheme/Pages/Color tool Grid/Colortool1";
+import CSStool1 from "../Darktheme/Pages/CSS tool Grid/CSStool1";
 import Socialmediatool1 from "../Darktheme/Pages/Socialmedia tool Grid/Socialmediatool1";
 import Miscellaneoustool1 from "../Darktheme/Pages/Miscellaneous tool Grid/Miscellaneoustool1";
 import tool from "../image/tool.svg";
@@ -217,7 +218,7 @@ function Home() {
       <div className="bg-[#16283E]">
         {/* Background Decorations */}
         <div className="mx-auto">
-          <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
+          <div className="absolute h-[500px] hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
             <img
               src={Oval2}
               alt="Background"

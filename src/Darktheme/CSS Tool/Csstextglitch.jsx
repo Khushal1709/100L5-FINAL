@@ -151,7 +151,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <div className="flex items-center gap-3">
-          <span className="text-3xl sm:text-4xl text-indigo-400">
+          <span className="text-3xl sm:text-4xl text-orange-400">
             <CgGoogle />
           </span>
           <h1 className="text-lg sm:text-xl md:text-lg font-bold text-white text-center sm:text-left">

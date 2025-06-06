@@ -61,7 +61,7 @@ export default function QRCodeGenerator({id="QR Code Generator"}) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-4xl text-indigo-400 mt-4">
+          <span className="text-4xl text-pink-400 mt-4">
             <BsQrCode />
           </span>
           <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-white mt-4">

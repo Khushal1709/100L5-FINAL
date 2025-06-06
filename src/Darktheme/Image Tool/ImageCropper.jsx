@@ -227,7 +227,7 @@ export default function ImageCropper({ id = "Image Cropper" }) {
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
                         <div className="flex items-center gap-3 mb-2 mt-5 sm:mb-0">
-                            <span className="text-4xl text-indigo-400 mt-6">
+                            <span className="text-4xl text-yellow-400 mt-6">
                                 <FaCropSimple />
                             </span>
                             <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">

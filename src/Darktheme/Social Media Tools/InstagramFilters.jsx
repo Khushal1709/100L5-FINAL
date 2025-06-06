@@ -118,7 +118,7 @@ export default function InstagramFilters({ id = "Instagram Filters" }) {
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
                     <div className="flex items-center gap-3 mb-2 sm:mb-0">
-                        <span className="text-4xl text-white mt-4">
+                        <span className="text-4xl text-blue-400 mt-4">
                             <MdMovieFilter />
                         </span>
                         <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
@@ -162,7 +162,7 @@ export default function InstagramFilters({ id = "Instagram Filters" }) {
                 </div>
                 {/* Share Popup */}
                 {shareOpen && (
-                    <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center">
+                    <div className="fixed inset-0 z-50 flex justify-center items-center">
                         <div className="bg-[#16283E] border border-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
                             <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
                                 <button

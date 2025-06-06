@@ -156,7 +156,7 @@ border-color: ${borderStyles.borderColor};
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <div className="flex items-center gap-3">
-          <span className="text-3xl sm:text-4xl mt-3 text-indigo-400">
+          <span className="text-3xl sm:text-4xl mt-3 text-yellow-400">
             <IoTriangleSharp />
           </span>
           <span className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center sm:text-left mt-3">

@@ -486,7 +486,7 @@
 //   );
 // }
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "../image/logo.svg";
@@ -494,6 +494,7 @@ import s1 from "../image/searchicon.svg";
 import home from "../image/home.svg";
 import chrome from "../image/chrome.svg";
 import fire from "../image/fire.svg";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -528,6 +529,19 @@ export default function Navbar() {
     tool.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Initialize theme on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    } else {
+      // Default to system preference if no theme is saved
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", prefersDark);
+      localStorage.setItem("theme", prefersDark ? "dark" : "light");
+    }
+  }, []);
+
   const toggleMobileFeatured = (e) => {
     e.preventDefault();
     setMobileFeaturedOpen(!mobileFeaturedOpen);
@@ -556,8 +570,13 @@ export default function Navbar() {
     }
   };
 
+  const setTheme = (theme) => {
+    localStorage.setItem("theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  };
+
   const getNavLinkClass = (active) =>
-    active ? "text-[#00063F]" : "text-gray-700 hover:text-gray-700";
+    active ? "text-gray-600" : "text-gray-700";
 
   return (
     <header className="w-full lg-static top-0 left-0 z-50 relative bg-transparent">
@@ -610,7 +629,9 @@ export default function Navbar() {
               </div>
               {/* Search Results */}
               {showSearch && searchTerm && (
-                <div className="max-h-60 overflow-y-hidden p-10">
+                <div 
+                  className="max-h-60 overflow-y-hidden p-10"
+                >
                   {filteredTools.length > 0 ? (
                     filteredTools.map((tool) => (
                       <Link
@@ -807,16 +828,22 @@ export default function Navbar() {
                 {mobileThemeOpen && (
                   <div className="w-full bg-gray-50 rounded-lg mt-2 py-2">
                     <button
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-2 text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full"
+                      onClick={() => {
+                        setTheme("dark");
+                        setMobileMenuOpen(false);
+                      }}
                     >
-                      Dark Theme
+                      <MdDarkMode size={20} /> Dark Theme
                     </button>
                     <button
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-2 text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full"
+                      onClick={() => {
+                        setTheme("light");
+                        setMobileMenuOpen(false);
+                      }}
                     >
-                      Light Theme
+                      <MdOutlineLightMode size={20} /> Light Theme
                     </button>
                   </div>
                 )}
@@ -839,6 +866,7 @@ export default function Navbar() {
             <button className="p-2 rounded-lg" onClick={toggleSearch}>
               <img
                 src={s1 || "/placeholder.svg"}
+ Imagine
                 alt="Search"
                 className="h-6 w-6 lg:h-8 lg:w-8 cursor-pointer transition-transform duration-300 transform hover:scale-125"
               />
@@ -1013,22 +1041,16 @@ export default function Navbar() {
             {themeOpen && (
               <div className="absolute top-full w-41 bg-white rounded-xl shadow-lg py-2 z-10">
                 <button
-                  onClick={() => {
-                    localStorage.removeItem("theme");
-                    localStorage.setItem("theme", "dark");
-                  }}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-center cursor-pointer"
+                  onClick={() => setTheme("dark")}
+                  className="flex items-center gap-2 text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full cursor-pointer"
                 >
-                  Dark Theme
+                  <MdDarkMode size={20} /> Dark Theme
                 </button>
                 <button
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-center cursor-pointer"
-                  onClick={() => {
-                    localStorage.removeItem("theme");
-                    localStorage.setItem("theme", "light");
-                  }}
+                  className="flex items-center gap-2 text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full cursor-pointer"
+                  onClick={() => setTheme("light")}
                 >
-                  Light Theme
+                  <MdOutlineLightMode size={20} /> Light Theme
                 </button>
               </div>
             )}

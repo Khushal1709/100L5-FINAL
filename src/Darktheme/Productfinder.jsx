@@ -345,7 +345,7 @@ const ProductFinderHero = () => {
                   className="
                   hidden xl:block  2xl:block lg:block
                   absolute
-                  xl:right-[-40px]  top-1/4   2xl:right-[-200px] lg:right-[-30px]
+                  xl:right-[-40px]  top-1/4   2xl:right-[-80px] lg:right-[-30px]
                   -translate-y-1/2
                   w-190  h-100
                   rounded-full

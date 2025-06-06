@@ -29,7 +29,7 @@ function Texttool() {
         />
       </div>
       <Navbar />
-      <img src={leaf1} alt="leav" className="top-15 absolute hidden lg:block" />
+      <img src={leaf1} alt="leave" className="top-15 absolute hidden lg:block" />
       <div>
         <div className="">
           <Information

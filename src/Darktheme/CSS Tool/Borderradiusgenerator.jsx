@@ -137,7 +137,7 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
           {/* Header */}
           <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-3xl sm:text-3xl text-indigo-400 mt-4">
+              <span className="text-3xl sm:text-3xl text-pink-400 mt-4">
                 <AiOutlineRadiusUpright />
               </span>
               <span className="text-lg sm:text-sm md:text-2xl font-bold text-white text-center sm:text-left mt-4">

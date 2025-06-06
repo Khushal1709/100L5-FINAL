@@ -17,7 +17,7 @@ export default function About() {
   return (
     <>
       <div className="mx-auto bg-[#16283E]">
-        <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
+        <div className="absolute h-[500px] hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
             src={Oval2}
             alt="Background"
@@ -124,7 +124,7 @@ export default function About() {
                   className="
                   hidden xl:block  2xl:block lg:block
                   absolute
-                  xl:right-[-40px]  top-1/4   2xl:right-[-200px] lg:right-[-30px]
+                  xl:right-[-40px]  top-1/4   2xl:right-[-80px] lg:right-[-30px]
                   -translate-y-1/2
                   w-190  h-100
                   rounded-full

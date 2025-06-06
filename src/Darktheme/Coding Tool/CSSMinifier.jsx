@@ -1,7 +1,8 @@
-import React, { useState, useStateuseRef, useContext, useEffect } from "react";
-import { FiShare2, FiAlertCircle } from "react-icons/fi";
+import React, { useState, seRef, useContext, useEffect } from "react";
+import { MdShare } from "react-icons/md";
 import {
   FaCheck,
+  FaRegCopy,
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
@@ -9,10 +10,12 @@ import {
   FaCopy,
   FaRegStar,
 } from "react-icons/fa6";
-import { MdShare } from "react-icons/md";
 import Comment from "../Text tools/Comment";
-import { ImHtmlFive2 } from "react-icons/im";
+import { FiAlertCircle } from 'react-icons/fi';
+import { FiShare2 } from "react-icons/fi";
+import { PiFileCssLight } from "react-icons/pi";
 import { FavoritesContext } from "../../Context/FavoriteContext";
+
 
 
 // Simple HTML minifier function
@@ -25,16 +28,16 @@ function minifyHTML(html) {
     .trim();
 }
 
-export default function HtmlMinifier({ id = "HTML Minifier" }) {
+export default function HtmlMinifier({ id = "CSS Minifier" }) {
   const { updateFavorites } = useContext(FavoritesContext);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [shareOpen, setShareOpen] = useState(false);
-  const [bugDescription, setBugDescription] = useState("");
   const [open, setOpen] = useState(false);
+  const [bugDescription, setBugDescription] = useState("");
+  const [shareOpen, setShareOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("tool");
+  const [isFavorite, setIsFavorite] = useState(false);
 
 
   // Minify on button click
@@ -75,6 +78,7 @@ export default function HtmlMinifier({ id = "HTML Minifier" }) {
     URL.revokeObjectURL(url);
   };
 
+
   const onFavoriteToggle = () => {
     const favorites = JSON.parse(localStorage.getItem("FavoriteTools") || "[]");
     let newFavorites;
@@ -96,20 +100,21 @@ export default function HtmlMinifier({ id = "HTML Minifier" }) {
     setIsFavorite(favorites.includes(id));
   }, [id]);
 
+
   return (
     <>
-      <div className="max-w-4xl mx-auto mt-8">
+      <div className="max-w-4xl mx-auto mt-7">
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
-          <div className="flex items-center gap-2 mb-2 sm:mb-0">
-            <span className="text-4xl text-blue-400">
-              <ImHtmlFive2 />
+          <div className="flex items-center gap-3 mb-2 sm:mb-0">
+            <span className="text-4xl text-yellow-400 mt-2">
+              <PiFileCssLight />
             </span>
-            <h1 className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
-              HTML&nbsp;Minifier&nbsp;
-            </h1>
+            <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-2">
+              CSS&nbsp;Minifier
+            </span>
           </div>
-          <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
+          <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
             <button
               onClick={() => setShareOpen(true)}
               className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white mb-2 md:mb-0 cursor-pointer"
@@ -281,13 +286,13 @@ export default function HtmlMinifier({ id = "HTML Minifier" }) {
         {/* Action Buttons */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 max-w-4xl mx-auto">
           <button
-            className="px-6 py-2 bg-[#273D58] text-white border border-white rounded-lg cursor-pointer flex items-center gap-2"
+            className="px-6 py-2 bg-[#273D58] text-white border border-white rounded-lg transition cursor-pointer flex items-center gap-2"
             onClick={handleReset}
           >
             <span className="text-lg"></span> Reset
           </button>
           <button
-            className="px-8 py-2 bg-[#273D58] text-white border border-white rounded-lg cursor-pointer"
+            className="px-8 py-2 bg-[#273D58] text-white border border-white cursor-pointer rounded-lg transition"
             onClick={handleMinify}
           >
             Minify &rarr;
@@ -305,12 +310,33 @@ export default function HtmlMinifier({ id = "HTML Minifier" }) {
           </button>
           <button
             className={`px-6 py-2 bg-[#273D58] text-white border border-white rounded-lg cursor-pointer flex items-center gap-2 transition ${isCopied
-              ? "text-green-600  border-white"
-              : "text-[#5b63e6] "
+                ? "text-green-600 bg-[#273D58] border-white"
+                : "text-white bg-[#273D58]"
               }`}
             onClick={handleCopy}
             disabled={!output}
           >
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
+              <rect
+                x="7"
+                y="7"
+                width="10"
+                height="10"
+                rx="2"
+                stroke="#5b63e6"
+                strokeWidth="2"
+              />
+              <rect
+                x="3"
+                y="3"
+                width="10"
+                height="10"
+                rx="2"
+                stroke="#5b63e6"
+                strokeWidth="2"
+                opacity="0.4"
+              />
+            </svg>
             {isCopied ? "Copied!" : "Copy"}
           </button>
         </div>

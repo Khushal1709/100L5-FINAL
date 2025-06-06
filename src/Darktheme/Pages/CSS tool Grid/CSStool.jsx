@@ -1,17 +1,19 @@
-import arror from "../../image/arror.svg";
-import ston from "../../image/ston.svg";
+import arror from "../../../image/arror.svg";
+import ston from "../../../image/ston.svg";
 import CSStool1 from "../CSS tool Grid/CSStool1";
-import Information from "../../components/Information";
-import Oval2 from "../../image/Oval2.svg";
-import leaf1 from "../../image/leaf1.svg";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import CSSimg from "../../image/CSSimg.svg";
+import Information from "../../../Darktheme/Information"
+import Oval2 from "../../../image/Oval2.svg";
+import leaf1 from "../../../image/leaf1.svg";
+import Navbar from "../../Navbar";
+import Footer from "../../../Darktheme/Footer";
+import CSSimg from "../../../image/CSSimg.svg";
 
 function Csstool() {
   return (
     <>
-      <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
+        <div className="bg-[#16283E]">
+
+      <div className="absolute h-[500px] hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
         <img
           src={Oval2}
           alt="Background"
@@ -53,6 +55,8 @@ function Csstool() {
        <div className="bg-[#16283E]">
       <Footer />
       </div>
+            </div>
+
     </>
   );
 }

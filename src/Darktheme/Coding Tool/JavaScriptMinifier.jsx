@@ -108,10 +108,10 @@ export default function JsMinifier({id="JavaScript Minifier"}) {
       {/* Header */}
        <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-4xl text-indigo-400">
+          <span className="text-4xl text-blue-400">
             <PiFileJsxBold />
           </span>
-          <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
+          <span className="text-2xl text-white md:text-lg lg:text-2xl sm:text-lg">
             Java&nbsp;Script&nbsp;Minifier
           </span>
         </div>

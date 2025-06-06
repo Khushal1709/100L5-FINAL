@@ -172,18 +172,15 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
     setIsFavorite(favorites.includes(id));
   }, [id]);
 
-
   return (
     <>
       <div className=" bg-[#16283E]">
-
         <div className="max-w-4xl mx-auto mt-7 p-2">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
             <div className="flex items-center gap-3 mb-2 sm:mb-0">
-              <span className="text-4xl text-indigo-400">
+              <span className="text-4xl text-blue-400">
                 <FaXTwitter />
-
               </span>
               <span className="text-lg font-bold text-white md:text-lg lg:text-2xl sm:text-lg ">
                 Twitter&nbsp;Ad&nbsp;Revenue&nbsp;Generator
@@ -206,10 +203,9 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
               </button>
               <button
                 onClick={onFavoriteToggle}
-                className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer bg-[#273D58] text-white ${isFavorite
-                    ? ""
-                    : ""
-                  }`}
+                className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer bg-[#273D58] text-white ${
+                  isFavorite ? "" : ""
+                }`}
               >
                 {isFavorite ? (
                   <>
@@ -226,55 +222,61 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
           </div>
           {/* Share Popup */}
           {shareOpen && (
-            <div className="fixed inset-0 bg-black/30 z-50 flex justify-center items-center">
-              <div className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
+            <div className="fixed inset-0 z-50 flex justify-center items-center">
+              <div className="bg-[#16283E] border border-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
                 <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
                   <button
                     onClick={() => setActiveTab("tool")}
-                    className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "tool"
-                        ? "bg-indigo-600 text-white"
-                        : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
-                      }`}
+                    className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${
+                      activeTab === "tool"
+                        ? "bg-[#273D58] text-white"
+                        : "text-black"
+                    }`}
                   >
                     ⚙️ Share Tool
                   </button>
                   <button
                     onClick={() => setActiveTab("home")}
-                    className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${activeTab === "home"
-                        ? "bg-indigo-600 text-white"
-                        : "text-indigo-600 hover:bg-indigo-600 hover:text-white"
-                      }`}
+                    className={`w-1/2 px-4 py-2 rounded-xl font-semibold text-sm ${
+                      activeTab === "home"
+                        ? "bg-[#273D58] text-white"
+                        : "text-black"
+                    }`}
                   >
                     🏠 Share 10015
                   </button>
                 </div>
                 <div className="text-center border border-gray-300 rounded-xl p-6">
-                  <p className="text-sm mb-1 text-gray-500">
+                  <p className="text-sm mb-1 text-white">
                     You are currently sharing:
                   </p>
-                  <h2 className="text-xl font-semibold mb-5 text-gray-600">
+                  <h2 className="text-xl font-semibold mb-5 text-white">
                     {activeTab === "tool"
                       ? "Google Fonts Pair Finder"
                       : "10015 Tools"}
                   </h2>
                   <div className="flex justify-center mb-6">
-                    <MdShare className="text-indigo-500 text-7xl" />
+                    <MdShare className="text-white text-7xl" />
                   </div>
                   <div className="flex justify-center gap-4">
-                    {[FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaCopy].map(
-                      (Icon, i) => (
-                        <button
-                          key={i}
-                          className="text-white bg-indigo-500 rounded-full w-10 h-10 flex items-center justify-center"
-                        >
-                          <Icon />
-                        </button>
-                      )
-                    )}
+                    {[
+                      FaFacebookF,
+                      FaTwitter,
+                      FaLinkedinIn,
+                      FaEnvelope,
+                      FaCopy,
+                    ].map((Icon, i) => (
+                      <button
+                        key={i}
+                        className="text-black bg-white rounded-full w-10 h-10 flex items-center justify-center"
+                      >
+                        <Icon />
+                      </button>
+                    ))}
                   </div>
                 </div>
                 <button
-                  className="absolute top-0 h-2 w-2 right-4 text-gray-600 text-lg cursor-pointer"
+                  className="absolute top-0 h-2 w-2 right-4 text-white text-lg cursor-pointer"
                   onClick={() => setShareOpen(false)}
                 >
                   ✕
@@ -285,8 +287,8 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
 
           {/* Bug Report Popup */}
           {open && (
-            <div className="fixed inset-0 bg-black/30 z-40 flex justify-center items-center">
-              <div className="bg-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
+            <div className="fixed inset-0  z-40 flex justify-center items-center text-white ">
+              <div className="bg-[#16283E] border border-white max-w-md w-full p-6 rounded-2xl shadow-lg relative">
                 <h2 className="text-xl font-bold mb-2">Bug Report</h2>
                 <p className="text-sm mb-4">
                   <strong>Tool:</strong> Lorem Ipsum Generator
@@ -296,7 +298,7 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                 </label>
                 <textarea
                   id="bugDescription"
-                  className="w-full p-3 border border-blue-300 rounded-xl text-base h-32 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                  className="w-full p-3 border border-gray-300 rounded-xl text-base h-32 "
                   placeholder="Description*"
                   value={bugDescription}
                   onChange={(e) => setBugDescription(e.target.value)}
@@ -304,7 +306,7 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                 <div className="flex justify-end gap-3 mt-4">
                   <button
                     onClick={() => setOpen(false)}
-                    className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+                    className="px-4 py-2 bg-[#273D58] text-white border border-white rounded-lg"
                   >
                     Cancel
                   </button>
@@ -318,7 +320,7 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                       setOpen(false);
                       setBugDescription("");
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-black rounded-lg"
+                    className="px-4 py-2 bg-[#273D58] border border-white text-white rounded-lg"
                   >
                     Submit
                   </button>
@@ -410,7 +412,9 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                             ${formData.revenue} has been deposited into your
                             account.
                           </div>
-                          <div className="text-xs text-gray-500 mt-1">9m ago</div>
+                          <div className="text-xs text-gray-500 mt-1">
+                            9m ago
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -471,10 +475,11 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                         {WALLPAPER_OPTIONS.map((option) => (
                           <button
                             key={option.value}
-                            className={`flex items-center w-full px-4 py-2 transition ${selectedWallpaper === option.value
+                            className={`flex items-center w-full px-4 py-2 transition ${
+                              selectedWallpaper === option.value
                                 ? " font-bold"
                                 : ""
-                              }`}
+                            }`}
                             onClick={(e) => {
                               e.stopPropagation();
                               setSelectedWallpaper(option.value);
@@ -500,8 +505,9 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                 <div className="flex items-center mx-4">or</div>
                 <div className="w-full">
                   <label
-                    className={`flex items-center justify-center w-full p-2.5 border border-gray-300  bg-[#16283E]  text-white rounded-md cursor-pointer ${wallpaperType === "custom" ? "bg-blue-50" : ""
-                      }`}
+                    className={`flex items-center justify-center w-full p-2.5 border border-gray-300  bg-[#16283E]  text-white rounded-md cursor-pointer ${
+                      wallpaperType === "custom" ? "bg-blue-50" : ""
+                    }`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -558,7 +564,8 @@ const Twitteradrevenuegenerator = ({ id = "Twitter Ad Revenue Generator" }) => {
                 </div>
               </div>
               <div className="mt-6 text-xs text-gray-500">
-                By using Twitter Ad Revenue Generator by 10015.io, you agree to our{" "}
+                By using Twitter Ad Revenue Generator by 10015.io, you agree to
+                our{" "}
                 <a href="#" className="text-blue-500">
                   Usage Policy
                 </a>

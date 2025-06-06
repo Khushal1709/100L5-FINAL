@@ -62,7 +62,7 @@ function Information({
                 className="
                   hidden xl:block  2xl:block lg:block
                   absolute
-                  xl:right-[-40px]  top-1/4   2xl:right-[-200px] lg:right-[-30px]
+                  xl:right-[-40px]  top-1/4   2xl:right-[-50px] lg:right-[-30px]
                   -translate-y-1/2
                   w-190  h-100
                   rounded-full
@@ -77,7 +77,7 @@ function Information({
               <img
                 src={srcImg1}
                 alt="Illustration"
-                className="hidden xl:block 2xl:block lg:block w-full max-w-xs sm:max-w-sm md:max-w-md relative z-10  2xl:left-70"
+                className="hidden xl:block 2xl:block lg:block w-full max-w-xs sm:max-w-sm md:max-w-md relative z-10  2xl:left-50"
               />
             </div>
 

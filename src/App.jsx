@@ -88,9 +88,9 @@ import DarkMD5 from "./Darktheme/Coding Tool/MD5";
 import DarkSHA1 from "./Darktheme/Coding Tool/SHA1";
 import DarkSlug from "./Darktheme/Coding Tool/Slug";
 import DarkShadow from "./Darktheme/Coding Tool/Shadow";
-// import DarkCodetoImage from "./Darktheme/Coding Tool/CodetoImage";
+import DarkCodetoImage from "./Darktheme/Coding Tool/CodetoImage";
 // import DarkBaseEncoderDecoder from "./Darktheme/Coding Tool/BaseEncoderDecoder";
-// import DarkCSSMinifier from "./Darktheme/Coding Tool/CSSMinifier";
+import DarkCSSMinifier from "./Darktheme/Coding Tool/CSSMinifier";
 import DarkHTMLEncoderDecoder from "./Darktheme/Coding Tool/HTMLEncoderDecoder";
 import DarkURLEncoderDcoder from "./Darktheme/Coding Tool/URLEncoderDcoder";
 import DarkHTMLMinifier from "./Darktheme/Coding Tool/HTMLMinifier";
@@ -148,7 +148,15 @@ import DarkProductfinder1 from "../src/Darktheme/Productfinder1";
 import DarkGetfeatured from "../src/Darktheme/Getfeatured";
 import DarkLayout from "./Darktheme/DarkLayout";
 import DarkHome from "./Darktheme/Home";
+import DarkBase64EncoderDecoder from "./Darktheme/Coding Tool/Base64EncoderDecoder";
 import DarkTexttool from "../src/Darktheme/Pages/Text tool Grid/Texttool"
+import DarkImagetool from "../src/Darktheme/Pages/Image tool Grid/Imagetool";
+import DarkCSStool from "../src/Darktheme/Pages/CSS tool Grid/CSStool";
+import DarkCodingtool from "../src/Darktheme/Pages/Coding tool Grid/Codingtool";
+import DarkColortool from "../src/Darktheme/Pages/Color tool Grid/Colortool";
+import DarkSocialmediatool from "../src/Darktheme/Pages/Socialmedia tool Grid/Socialmediatool";
+
+import DarkMiscellaneoustool from "../src/Darktheme/Pages/Miscellaneous tool Grid/Miscellaneoustool";
 function App() {
   const [mode, setMode] = useState(localStorage.getItem("theme") || "light");
 
@@ -207,12 +215,13 @@ function App() {
               <Route path="/RGBA" element={mode === "light" ? <RGBA /> : <DarkRGBA />} />
               <Route path="/ColorMixer" element={mode === "light" ? <ColorMixer /> : <DarkColorMixer />} />
               <Route path="/ColorShades" element={mode === "light" ? <ColorShades /> :  <DarkColorShades />} />
-              {/* <Route path="/CodetoImage" element={mode === "light"  ?<CodetoImage /> : <DarkCodetoImage />} /> */}
-              {/* <Route
+              <Route path="/CodetoImage" element={mode === "light"  ? <CodetoImage /> : <DarkCodetoImage />} />
+             
+              <Route
                 path="/BaseEncoderDecoder"
-                element={mode === "light"  ? <BaseEncoderDecoder /> : <DarkBaseEncoderDecoder />}
-                /> */}
-              {/* <Route path="/CSSMinifier" element={mode === "light" ? <CSSMinifier /> : <DarkCSSMinifier /> } /> */}
+                element={mode === "light"  ? <BaseEncoderDecoder /> : <DarkBase64EncoderDecoder />}
+                />
+              <Route path="/CSSMinifier" element={mode === "light" ? <CSSMinifier /> : <DarkCSSMinifier /> } />
               <Route path="/Slug" element={mode === "light"  ? <Slug /> : <DarkSlug />} />
               <Route path="/Shadow" element={mode === "light"  ? <Shadow /> : <DarkShadow />} />
               <Route
@@ -268,10 +277,8 @@ function App() {
                 path="/ImageCaptionGenerator"
                 element={mode === "light" ? <ImageCaptionGenerator /> : <DarkImageCaptionGenerator />}
               />
-            </Route>
               <Route
-                path="/Cssclippathgenerator"
-                element={mode === "light" ?<Cssclippathgenerator />:<DarkCssclippathgenerator />}
+                path="/Cssclippathgenerator"element={mode === "light" ?<Cssclippathgenerator />:<DarkCssclippathgenerator />}
               />
               <Route path="/Cssloader" element={mode === "light" ?<Cssloader /> : <DarkCssloader /> } />
               <Route
@@ -301,6 +308,7 @@ function App() {
                 path="/ImageColorExtractor"
                 element={mode === "light" ?<ImageColorExtractor />: <DarkImageColorExtractor />}
               />
+            </Route>
             <Route path="/Getfeatured" element={mode === "light" ?<Getfeatured />: <DarkGetfeatured />} />
             <Route path="/Contact" element={mode === "light" ? <Contact/> : <DarkContact/>} />
             <Route path="/Submit" element={mode === "light" ?<Submit /> :<DarkSubmit /> } />
@@ -308,12 +316,12 @@ function App() {
             <Route path="/Productfinder1" element={mode === "light" ?<Productfinder1 /> : <DarkProductfinder1 /> } />
             <Route path="/About" element={mode === "light" ? <About />: <DarkAbout />} />
             <Route path="/Texttool"element={mode === "light" ?  <Texttool /> :  <DarkTexttool/>} />
-            <Route path="/Imagetool" element={<Imagetool />} />
-            <Route path="/CSStool" element={<CSStool />} />
-            <Route path="/Codingtool" element={<Codingtool />} />
-            <Route path="/Colortool" element={<Colortool />} />
-            <Route path="/Socialmediatool" element={<Socialmediatool />} />
-            <Route path="/Miscellaneoustool" element={<Miscellaneoustool />} />
+            <Route path="/Imagetool" element={mode === "light" ? <Imagetool /> : <DarkImagetool />} />
+            <Route path="/CSStool" element={mode === "light" ? <CSStool /> : <DarkCSStool />}  />
+            <Route path="/Codingtool"  element={mode === "light" ? <Codingtool /> : <DarkCodingtool />} />
+            <Route path="/Colortool"  element={mode === "light" ?<Colortool /> : <DarkColortool /> } />
+            <Route path="/Socialmediatool" element={mode === "light" ? <Socialmediatool /> :  <DarkSocialmediatool /> } />
+            <Route path="/Miscellaneoustool" element={mode === "light" ? <Miscellaneoustool /> : <DarkMiscellaneoustool />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
           </Routes>

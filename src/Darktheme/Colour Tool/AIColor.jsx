@@ -130,7 +130,7 @@ export default function ColorPaletteGenerator({ id = "AI Color Palette Generator
             <div className="max-w-4xl mx-auto px-4 py-6 mt-3">
                 <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
                     <div className="flex items-center gap-3 mb-2 sm:mb-0">
-                        <span className="text-4xl text-indigo-400">
+                        <span className="text-4xl text-blue-400">
                             <FaBrain />
                         </span>
                         <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-white">
