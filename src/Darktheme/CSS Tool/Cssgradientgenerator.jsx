@@ -151,41 +151,41 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
             <MdGradient />
           </span>
           <span className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center sm:text-left mt-3">
-            CSS Gradient Generator
+            CSS&nbsp;Gradient&nbsp;Generator
           </span>
         </div>
-        <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto md:mt-3">
-   <button
-                             onClick={() => setShareOpen(true)}
-                             className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white mb-2 md:mb-0 cursor-pointer"
-                           >
-                             <FiShare2 className="mr-2" size={18} />
-                             Share
-                           </button>    <button
-                             className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white cursor-pointer transition"
-                             onClick={() => setOpen(true)}
-                           >
-                             <FiAlertCircle className="text-white text-base" />
-                             Report Bug
-                           </button>
-                            <button
-                                      onClick={onFavoriteToggle}
-                                      className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
-                                        ? "border border-white bg-[#273D58]  border border-white text-white"
-                                        : "bg-[#273D58]  border border-white text-white"
-                                        }`}
-                                    >
-                                      {isFavorite ? (
-                                        <>
-                                          <FaCheck className="inline-block mr-1" size={12} /> Added
-                                        </>
-                                      ) : (
-                                        <>
-                                          <FaRegStar className="inline-block mr-1" size={12} /> Add to
-                                          Favorites
-                                        </>
-                                      )}
-                                    </button>
+           <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+           <button
+            onClick={() => setShareOpen(true)}
+            className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white mb-2 md:mb-0 cursor-pointer"
+          >
+            <FiShare2 className="mr-2" size={18} />
+            Share
+          </button> <button
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white cursor-pointer transition"
+            onClick={() => setOpen(true)}
+          >
+            <FiAlertCircle className="text-white text-base" />
+            Report Bug
+          </button>
+           <button
+                     onClick={onFavoriteToggle}
+                     className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+                       ? "border border-white bg-[#273D58]  border border-white text-white"
+                       : "bg-[#273D58]  border border-white text-white"
+                       }`}
+                   >
+                     {isFavorite ? (
+                       <>
+                         <FaCheck className="inline-block mr-1" size={12} /> Added
+                       </>
+                     ) : (
+                       <>
+                         <FaRegStar className="inline-block mr-1" size={12} /> Add to
+                         Favorites
+                       </>
+                     )}
+                   </button>
         </div>
       </div>
 

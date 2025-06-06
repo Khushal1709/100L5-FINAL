@@ -100,7 +100,7 @@ box-shadow: ${shadowValue};
                   <FaBoxArchive />
                 </span>
                 <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
-                  Image&nbsp;Color&nbsp;Picker
+                 CSS&nbsp;Box&nbsp;Shadow&nbsp;Generator
                 </span>
               </div>
               <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 md:mt-5 lg:justify-end lg:gap-2 mt-5">

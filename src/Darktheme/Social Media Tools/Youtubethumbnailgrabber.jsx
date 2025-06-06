@@ -141,7 +141,7 @@ const Youtubethumbnailgrabber = ({ id = "YouTube Thumbnail Grabber" }) => {
                   YouTube&nbsp;Thumbnail&nbsp;Grabber
                 </span>
               </div>
-              <div className="flex flex-col w-full md:flex-row mt-7 md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2 ">
+              <div className="flex flex-col w-full md:flex-row mt-5 md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2 ">
                 <button
                   onClick={() => setShareOpen(true)}
                   className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border  mb-2 md:mb-0 cursor-pointer bg-[#273D58] text-white"

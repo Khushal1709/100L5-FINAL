@@ -151,47 +151,46 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
       {/* Header */}
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <div className="flex items-center gap-3">
-          <span className="text-3xl sm:text-4xl text-orange-400">
+          <span className="text-3xl sm:text-4xl text-orange-400 mt-3">
             <CgGoogle />
           </span>
-          <h1 className="text-lg sm:text-xl md:text-lg font-bold text-white text-center sm:text-left">
-            CSS Text Glitch Effect Generator
+          <h1 className="text-lg sm:text-xl md:text-lg font-bold text-white text-center sm:text-left mt-3">
+            CSS&nbsp;Text&nbsp;Glitch&nbsp;Effect&nbsp;Generator
           </h1>
         </div>
-        <div className="flex flex-wrap justify-center sm:justify-end md:mt-2 gap-3 w-full sm:w-auto">
-            <button
-                             onClick={() => setShareOpen(true)}
-                             className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white mb-2 md:mb-0 cursor-pointer"
-                           >
-                             <FiShare2 className="mr-2" size={18} />
-                             Share
-                           </button>    <button
-                             className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white cursor-pointer transition"
-                             onClick={() => setOpen(true)}
-                           >
-                             <FiAlertCircle className="text-white text-base" />
-                             Report Bug
-                           </button>
-                            <button
-                                      onClick={onFavoriteToggle}
-                                      className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
-                                        ? "border border-white bg-[#273D58]  border border-white text-white"
-                                        : "bg-[#273D58]  border border-white text-white"
-                                        }`}
-                                    >
-                                      {isFavorite ? (
-                                        <>
-                                          <FaCheck className="inline-block mr-1" size={12} /> Added
-                                        </>
-                                      ) : (
-                                        <>
-                                          <FaRegStar className="inline-block mr-1" size={12} /> Add to
-                                          Favorites
-                                        </>
-                                      )}
-                                    </button>
-
-        </div>
+          <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2 mt-3">
+                  <button
+                   onClick={() => setShareOpen(true)}
+                   className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white mb-2 md:mb-0 cursor-pointer"
+                 >
+                   <FiShare2 className="mr-2" size={18} />
+                   Share
+                 </button> <button
+                   className="flex items-center justify-center gap-2 w-full md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white cursor-pointer transition"
+                   onClick={() => setOpen(true)}
+                 >
+                   <FiAlertCircle className="text-white text-base" />
+                   Report Bug
+                 </button>
+                  <button
+                            onClick={onFavoriteToggle}
+                            className={`px-3 py-2 rounded-xl border text-sm mt-2 md:mt-0 ml-0 cursor-pointer ${isFavorite
+                              ? "border border-white bg-[#273D58]  border border-white text-white"
+                              : "bg-[#273D58]  border border-white text-white"
+                              }`}
+                          >
+                            {isFavorite ? (
+                              <>
+                                <FaCheck className="inline-block mr-1" size={12} /> Added
+                              </>
+                            ) : (
+                              <>
+                                <FaRegStar className="inline-block mr-1" size={12} /> Add to
+                                Favorites
+                              </>
+                            )}
+                          </button>
+               </div>
       </div>
 
       {/* Share Popup */}

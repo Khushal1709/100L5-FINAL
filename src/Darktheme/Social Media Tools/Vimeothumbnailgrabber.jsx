@@ -139,14 +139,14 @@ const Vimeothumbnailgrabber = ({ id = "Vimeo Thumbnail Grabber" }) => {
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
             <div className="flex items-center gap-3 mb-2 sm:mb-0">
-              <span className="text-4xl text-pink-400">
+              <span className="text-4xl text-pink-400 mt-4">
                 <IoLogoVimeo />
               </span>
-              <span className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
+              <span className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
                 Vimeo&nbsp;Thumbnail&nbsp;Grabber
               </span>
             </div>
-            <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+            <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2 mt-5">
               <button
                 onClick={() => setShareOpen(true)}
                 className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border bg-[#273D58] text-white mb-2 md:mb-0 cursor-pointer"

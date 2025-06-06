@@ -153,14 +153,14 @@ const Opengraphmetagenerator = ({ id = "Open Graph Meta Generator" }) => {
         <div className="max-w-4xl mx-auto  p-2">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
             <div className="flex items-center gap-3 mb-2 sm:mb-0">
-              <span className="text-4xl text-orange-400">
+              <span className="text-4xl text-orange-400 mt-5">
                 <LuGitGraph />
               </span>
-              <span className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
+              <span className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
                 Open&nbsp;Graph&nbsp;Meta&nbsp;Generator
               </span>
             </div>
-            <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2">
+            <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-2 mt-5">
               <button
                 onClick={() => setShareOpen(true)}
                 className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border mb-2 md:mb-0 cursor-pointer bg-[#273D58] text-white"

@@ -1990,7 +1990,7 @@ export default function Navbar() {
 
               <Link
                 to="/Contact"
-                className="bg-[#00063F] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors text-center mt-4"
+                className="bg-[#D5C7FF] text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors text-center mt-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 CONTACT US

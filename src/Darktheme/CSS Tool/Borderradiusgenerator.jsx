@@ -135,16 +135,16 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
       <div className=" bg-[#16283E] ">
         <div className="w-full max-w-4xl mx-auto  px-4 sm:px-5 md:px-8">
           {/* Header */}
-          <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+          <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="text-3xl sm:text-3xl text-pink-400 mt-4">
+              <span className="text-3xl sm:text-3xl text-pink-400 mt-9">
                 <AiOutlineRadiusUpright />
               </span>
-              <span className="text-lg sm:text-sm md:text-2xl font-bold text-white text-center sm:text-left mt-4">
+              <span className="text-lg sm:text-sm md:text-2xl font-bold text-white text-center sm:text-left mt-9">
                 CSS Border Radius Generator
               </span>
             </div>
-            <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto md:mt-3">
+            <div className="flex flex-wrap justify-center sm:justify-end gap-3 w-full sm:w-auto md:mt-9">
               <button
                 onClick={() => setShareOpen(true)}
                 className="flex items-center justify-center px-4 py-2 text-sm rounded-xl border  bg-[#273D58] text-white transition w-full sm:w-auto min-w-[120px]"

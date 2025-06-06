@@ -45,7 +45,10 @@ export default function ShadowGenerator() {
             <span className="text-4xl text-pink-400 mt-6">
               <FaReact />
             </span>
-            <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-6 ">
+            {/* <span className="text-2xl font-bold text-white md:text-xs lg:text-2xl sm:text-xl mt-6 ">
+              React&nbsp;Native&nbsp;Shadow
+            </span> */}
+               <span className="text-xl sm:text-2xl md:text-lg font-bold text-white mt-6">
               React&nbsp;Native&nbsp;Shadow&nbsp;Generator
             </span>
           </div>
@@ -163,7 +166,7 @@ export default function ShadowGenerator() {
                     <div className="flex justify-end gap-3 mt-4">
                       <button
                         onClick={() => setOpen(false)}
-                        className="px-4 py-2 bg-[#273D58]  border border-white text-white border border-white rounded-lg"
+                        className="px-4 py-2 bg-[#273D58]  border border-white text-white  rounded-lg"
                       >
                         Cancel
                       </button>

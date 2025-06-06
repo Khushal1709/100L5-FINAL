@@ -521,15 +521,15 @@ export default function BionicReadingConverter({ id = "Bionic Reading Converter"
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-4xl text-pink-400 mt-6">
+          <span className="text-4xl text-pink-400 mt-5">
             <FaBookOpen />
           </span>
-          <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
+          <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
             {/* Java&nbsp;Script&nbsp;Minifier */}
             Bionic&nbsp;Reading&nbsp;Converter
           </span>
         </div>
-        <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 mt-2 lg:justify-end lg:gap-2">
+        <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 mt-2 lg:justify-end lg:gap-2 ">
           <button
             onClick={() => setShareOpen(true)}
             className="flex items-center justify-center md:w-auto px-3 py-2 text-sm rounded-xl border border-white bg-[#273D58]  border border-white text-white mb-2 md:mb-0 cursor-pointer"
