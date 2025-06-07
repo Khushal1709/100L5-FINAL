@@ -24,19 +24,18 @@ export default function Footer() {
           src={oval}
           /* You can replace this with another image if needed */
           alt="decorative"
-          width={300}
-          height={300}
-          className="w-full h-full object-contain opacity-70"
+         
+          className="w-full h-full object-contain "
         />
       </div>
       {/* Decorative background elements */}
-      <div className="absolute top-20 h-70 opacity-8  pointer-events-none">
+      <div className="absolute top-20 h-70 opacity-30  pointer-events-none">
         <img
           src={leaffooter}
           alt="leaf"
           width={400}
           height={400}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain  "
         />
       </div>
       <div className="absolute top-10 right-0 w-[200px] h-full pointer-events-none">

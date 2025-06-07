@@ -31,11 +31,11 @@ export default function About() {
 
         </div>
         <Navbar />
-        <img
+        {/* <img
           src={leaf1}
           alt="leav"
           className="top-15 absolute hidden lg:block"
-        />
+        /> */}
 
         <div className="bg-[#16283E]">
           <div className=" max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@ export default function About() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
                   Product Finder
                 </h1>
-                <p className="text-white text-base sm:text-lg">
+                <p className="text-gray-400 text-base sm:text-lg">
                   Find Exactly What You Need <br /> Your Shortcut to the Right
                   Choice
                 </p>

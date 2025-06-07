@@ -103,7 +103,7 @@ const ProductFinderHero = () => {
                 <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 mt-10 max-w-md mx-auto lg:mx-0">
                   <div className="flex flex-col items-center space-y-3">
                     <Link to="/Signup">
-                      <button className="bg-[#273D58] text-gray-400 px-8 py-2 rounded-full text-gray-600 font-semibold shadow-md whitespace-nowrap cursor-pointer">
+                      <button className="bg-[#273D58] text-gray-400 px-8 py-2 rounded-full text-gray-400 font-semibold shadow-md whitespace-nowrap cursor-pointer">
                         LOGIN / REGISTER
                       </button>
                     </Link>

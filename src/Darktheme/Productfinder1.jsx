@@ -52,11 +52,11 @@ const ProductFinderHero = () => {
         <section className="w-full relative">
           <Navbar />
           {/* Leaf Background */}
-          <img
+          {/* <img
                src={leaf1}
                alt="leav"
                className="top-15 absolute hidden lg:block"
-             />
+             /> */}
           <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
             <img
               src={Oval2}
@@ -82,7 +82,7 @@ const ProductFinderHero = () => {
                   </p>
                   <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
                     <div className="relative inline-flex items-center">
-                      <button className="bg-[#273D58]  border border-white text-white font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap">
+                      <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]   border border-white font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap">
                         EXPLORE TOOL
                       </button>
                       <img
@@ -92,7 +92,7 @@ const ProductFinderHero = () => {
                       />
                     </div>
                     <div className="relative inline-flex items-center">
-                      <button className="bg-[#273D58]  border border-white text-white font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap">
+                      <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]  border border-white  font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap">
                         PRODUCT FINDER
                       </button>
                       <img

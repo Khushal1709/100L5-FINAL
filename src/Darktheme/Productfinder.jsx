@@ -252,7 +252,7 @@ const ProductFinderHero = () => {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
                   Product Finder
                 </h1>
-                <p className="text-gray-500 text-base sm:text-lg">
+                <p className="text-gray-400 text-base sm:text-lg">
                   Find Exactly What You Need <br /> Your Shortcut to the Right
                   Choice
                 </p>
