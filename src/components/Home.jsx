@@ -25,7 +25,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import firefox from "../image/firefox.svg";
 import ston from "../image/ston.svg";
-import { Link } from "react-router-dom";
+import { Link,useLocation,useNavigate } from "react-router-dom";
 import chrome from "../image/chrome.svg";
 import leaf1 from "../image/leaf1.svg";
 import explore from "../image/explore.svg";
@@ -36,6 +36,8 @@ import Socialmediatool1 from "../Pages/Socialmedia tool Grid/Socialmediatool1";
 import Miscellaneoustool1 from "../Pages/Miscellaneous tool Grid/Miscellaneoustool1";
 import tool from "../image/tool.svg";
 function Home() {
+   const location = useLocation();
+  const navigate = useNavigate();
   const tools = [
     {
       title: "AI Color Palette Generator",
@@ -210,6 +212,18 @@ function Home() {
       featuredToolsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+   useEffect(() => {
+    if (location.state?.scrollTo === "featured-tools") {
+      if (featuredToolsRef.current) {
+        featuredToolsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+      // Clear the scrollTo state so it doesn't trigger on refresh
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
+ 
   return (
     <>
       <div className="mx-auto">

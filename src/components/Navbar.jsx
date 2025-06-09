@@ -1284,6 +1284,7 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-gray-900"
                 onClick={() => setMobileMenuOpen(false)}
               >
+
                 About
               </Link>
               {isSpecialPage ? (
@@ -1531,7 +1532,7 @@ export default function Navbar() {
               onMouseEnter={() => setFeaturedOpen(true)}
               onMouseLeave={() => setFeaturedOpen(false)}
             >
-              <button className="flex items-center text-gray-700 hover:text-gray-900">
+              <button className="flex items-center text-gray-700 hover:text-gray-900 cursor-pointer">
                 Categories
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
@@ -1556,7 +1557,7 @@ export default function Navbar() {
             onMouseEnter={() => setExtensionsOpen(true)}
             onMouseLeave={() => setExtensionsOpen(false)}
           >
-            <button className="flex items-center text-gray-700 hover:text-gray-900">
+            <button className="flex items-center text-gray-700 hover:text-gray-900 cursor-pointer">
               Extensions
               <ChevronDown className="ml-1 h-4 w-4" />
             </button>

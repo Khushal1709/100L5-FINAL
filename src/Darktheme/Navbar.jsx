@@ -2665,7 +2665,7 @@ export default function Navbar() {
               onMouseEnter={() => setFeaturedOpen(true)}
               onMouseLeave={() => setFeaturedOpen(false)}
             >
-              <button className="flex items-center text-white">
+              <button className="flex items-center text-white cursor-pointer">
                 Categories
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
@@ -2690,7 +2690,7 @@ export default function Navbar() {
             onMouseEnter={() => setExtensionsOpen(true)}
             onMouseLeave={() => setExtensionsOpen(false)}
           >
-            <button className="flex items-center text-white">
+            <button className="flex items-center text-white cursor-pointer">
               Extensions
               <ChevronDown className="ml-1 h-4 w-4" />
             </button>

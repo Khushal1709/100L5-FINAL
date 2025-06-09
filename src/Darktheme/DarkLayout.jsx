@@ -9,7 +9,7 @@ export default function DarkLayout() {
         <div className='bg-[#16273E] text-white'>
         <Navbar />
         </div>
-        <div className="flex  bg-[#16283E]">
+        <div className="xl:flex lg:flex  bg-[#16283E]">
             <Sidebar />
             <div className="flex-1 p-4 bg-[#16283E] text-white">
                 <Outlet />

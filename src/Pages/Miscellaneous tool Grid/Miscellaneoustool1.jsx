@@ -11,33 +11,33 @@ import { useContext } from "react";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
 function Miscellaneoustool1() {
-  const tools = [
+ const tools = [
     {
       title: "Bar Code Generator",
       description:
         "Generate barcodes for different international standardizations with desired sizes",
-      icon: <ImBarcode className="w-[60px] h-[60px] text-blue-400 rounded-lg" />,
+      icon: <ImBarcode className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400 " />,
       filename: "/Barcode",
     },
     {
       title: "QR Code Generator",
       description:
         "Generate QR code for your links or texts easily and download them as an image file",
-      icon: <BsQrCode className="w-[60px] h-[60px] text-yellow-400" />,
+      icon: <BsQrCode className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-yellow-400" />,
       filename: "/QRcode",
     },
     {
       title: "List Randomizer",
       description:
         "Randomize lists, run lotteries, draw campaigns, or pick random people easily",
-      icon: <MdOutlineContentPaste className="w-[60px] h-[60px] text-pink-400" />,
+      icon: <MdOutlineContentPaste className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
       filename: "/Randomizer",
     },
     {
       title: "Strong Random Password",
       description:
         "Generate strong random passwords and check their strength using a password meter",
-      icon: <BiSolidLock className="w-[60px] h-[60px] text-orange-400" />,
+      icon: <BiSolidLock className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
       filename: "/StrongRandom",
     },
   ];

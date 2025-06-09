@@ -17,8 +17,10 @@ import explore from "../image/explore.svg";
 import { Link } from "react-router-dom";
 import Oval2 from "../image/Oval2.svg";
 import chrome from "../image/chrome.svg";
+ 
 
 export default function About() {
+ 
   return (
     <>
       <div className="mx-auto">
@@ -58,13 +60,13 @@ export default function About() {
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
               <div className="relative inline-flex items-center">
-                <Link
-                  to="/"
-                  state={{ scrollTo: "featured-tools" }}
-                  className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer inline-block text-center"
-                >
-                  EXPLORE TOOL
-                </Link>
+          <Link
+                      to="/"
+                      state={{ scrollTo: "featured-tools" }}
+                      className="inline-flex items-center bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap hover:scale-105 transition-transform"
+                    >
+                      EXPLORE TOOL
+                    </Link>
                 <img
                   src={explore}
                   alt="Arrow Icon"

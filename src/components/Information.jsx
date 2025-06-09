@@ -32,8 +32,8 @@ function Information({
       state={exploreLinkState} 
     >
 
-              <div className="relative inline-flex items-center cursor-pointer">
-                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap">
+              <div className="relative inline-flex items-center ">
+                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer">
                   {buttonText}
                 </button>
                 <img

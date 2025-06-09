@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
 import search from "../image/search.svg";
-import explore from "../image/explore.svg";
-import finder from "../image/finder.svg";
+import explore1 from "../image/explore1.svg";
+import finder1 from "../image/finder1.svg";
 import firefox from "../image/firefox.svg";
 import Getleaf from "../image/Getleaf.svg";
 import Support from "./Support"; // Import the Support component
@@ -80,7 +80,7 @@ const ProductFinderHero = () => {
                       EXPLORE TOOL
                     </Link>
                     <img
-                      src={explore}
+                      src={explore1}
                       alt="Arrow Icon"
                       className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                     />
@@ -93,7 +93,7 @@ const ProductFinderHero = () => {
                       </button>
                     </Link>
                     <img
-                      src={finder}
+                      src={finder1}
                       alt="Finder Icon"
                       className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                     />

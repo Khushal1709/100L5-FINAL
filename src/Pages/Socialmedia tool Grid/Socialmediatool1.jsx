@@ -389,49 +389,49 @@ import { useContext } from "react"
 import { FavoritesContext } from "../../Context/FavoriteContext"
 
 function Socialmediatool1() {
-  const tools = [
+ const tools = [
     {
       title: "Instagram Filters",
       description:
         "Apply Instagram-like filters to photos by uploading local files or image URLs",
-      icon: <MdMovieFilter className="w-[60px] h-[60px] text-blue-400" />,
+      icon: <MdMovieFilter className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
       filename: "/InstagramFilters",
     },
     {
       title: "Instagram Post Generator",
       description:
         "Create realistic Instagram posts, download as images, and prank your friends playfully",
-      icon: <MdPostAdd className="w-[60px] h-[60px] text-yellow-400" />,
+      icon: <MdPostAdd className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />,
       filename: "/InstagramPostGenerator",
     },
     {
       title: "Tweet Generator",
       description: "Create realistic tweets, download as images, and prank or joke with friends playfully",
-      icon: <FaTwitterSquare className="w-[60px] h-[60px] text-pink-400" />,
+      icon: <FaTwitterSquare className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
       filename: "/TweetGenerator",
     },
     {
       title: "Twitter Ad Revenue Generator",
       description: "Generate Twitter ad revenue screenshots and make jokes to your friends",
-      icon: <FaXTwitter className="w-[60px] h-[60px] text-orange-400" />,
+      icon: <FaXTwitter className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
       filename: "/Twitteradrevenuegenerator",
     },
     {
       title: "YouTube Thumbnail Grabber",
       description: "Get all available thumbnail images of a YouTube videos just by entering the URL",
-      icon: <FaYoutube className="w-[60px] h-[60px] text-pink-400" />,
+      icon: <FaYoutube className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
       filename: "/Youtubethumbnailgrabber",
     },
     {
       title: "Vimeo Thumbnail Grabber",
       description: "Get all available thumbnail images of a Vimeo videos just by entering the URL",
-      icon: <IoLogoVimeo className="w-[60px] h-[60px] text-orange-400" />,
+      icon: <IoLogoVimeo className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
       filename: "/Vimeothumbnailgrabber",
     },
     {
       title: "Open Graph Meta Generator",
       description: "Generate open graph meta code for your web page and add it to your site's head section",
-      icon: <LuGitGraph className="w-[60px] h-[60px] text-blue-400" />,
+      icon: <LuGitGraph className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
       filename: "/Opengraphmetagenerator",
     },
   ]

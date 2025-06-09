@@ -6,10 +6,10 @@ import instagram from "../image/instagram.svg";
 import linkedin from "../image/linkedin.svg";
 import tiweter from "../image/tiweter.svg";
 import Support from "./Support";
-import finder from "../image/finder.svg";
+import finder1 from "../image/finder1.svg";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import explore from "../image/explore.svg";
+import explore1 from "../image/explore1.svg";
 import { Link } from "react-router-dom";
 import Oval2 from "../image/Oval2.svg";
 
@@ -58,7 +58,7 @@ export default function About() {
                       EXPLORE TOOL
                     </Link>
                     <img
-                      src={explore}
+                      src={explore1}
                       alt="Arrow Icon"
                       className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                     />
@@ -69,7 +69,7 @@ export default function About() {
                       PRODUCT FINDER
                     </button></Link>
                     <img
-                      src={finder}
+                      src={finder1}
                       alt="Finder Icon"
                       className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                     />

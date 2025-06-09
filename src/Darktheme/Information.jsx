@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import explore from "../image/explore.svg";
+import explore1 from "../image/explore1.svg";
 
 
 function Information({
@@ -29,18 +29,18 @@ function Information({
                 {description}
               </p>
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-4 ">
                 <Link
                   to="/"
                   state={exploreLinkState}
                 >
 
-                  <div className="relative inline-flex items-center cursor-pointer">
-                    <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]  font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap">
+                  <div className="relative inline-flex items-center ">
+                    <button className="  bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B]  font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer">
                       {buttonText}
                     </button>
                     <img
-                      src={explore}
+                      src={explore1}
                       alt="Arrow Icon"
                       className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
                     />

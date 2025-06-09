@@ -247,70 +247,70 @@ function CSStools1() {
       title: "CSS Clip Path Generator",
       description:
         "Generate CSS clip-path with different patterns and use clip-path property in your projects",
-      icon: <MdOutlineDocumentScanner className="w-[60px] h-[60px] text-blue-400" />,
+      icon: <MdOutlineDocumentScanner className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-blue-400" />,
       filename: "/Cssclippathgenerator",
     },
     {
       title: "CSS Loader",
       description:
         "Generate fancy CSS loaders by specifying the type, color, and size of the loading indicator",
-      icon: <LuLoader className="w-[60px] h-[60px] text-yellow-400" />,
+      icon: <LuLoader className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />,
       filename: "/Cssloader",
     },
     {
       title: "CSS Background Pattern",
       description:
         "Generate beautiful CSS-only background patterns and use it in your projects right away",
-      icon: <TbBackground className="w-[60px] h-[60px] text-pink-400" />,
+      icon: <TbBackground className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />,
       filename: "/CSSbackgroundpattern",
     },
     {
       title: "CSS Cubic Bezier Generator",
       description:
         "Easily create CSS cubic Bezier easing by previewing animations and progress graphs live",
-      icon: <LuSpline className="w-[60px] h-[60px] text-orange-400" />,
+      icon: <LuSpline className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />,
       filename: "/Csscubic",
     },
     {
       title: "CSS Glass Morphism",
       description:
         "Easily create CSS for frosted-glass effects by adding background blur to elements",
-      icon: <IoMdPhonePortrait className="w-[60px] h-[60px] text-pink-400" />,
+      icon: <IoMdPhonePortrait className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />,
       filename: "/Cssglassmorphism",
     },
     {
       title: "CSS Text Glitch",
       description:
         "Generate CSS text glitch effect and create fancy text animations by using pure CSS",
-      icon: <CgGoogle className="w-[60px] h-[60px] text-orange-400" />,
+      icon: <CgGoogle className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />,
       filename: "/Csstextglitch",
     },
     {
       title: "CSS Gradient Generator",
       description:
         "Generate beautiful CSS gradients either by using presets or customizing your own",
-      icon: <MdGradient className="w-[60px] h-[60px] text-blue-400" />,
+      icon: <MdGradient className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-blue-400" />,
       filename: "/Cssgradientgenerator",
     },
     {
       title: "CSS Triangle Generator",
       description:
         "Generate CSS code for triangle shapes with desired width, height, and color",
-      icon: <IoTriangleSharp className="w-[60px] h-[60px] text-yellow-400" />,
+      icon: <IoTriangleSharp className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />,
       filename: "/CSStrianglegenerator",
     },
     {
       title: "CSS Box Shadow Generator",
       description:
         "Generate CSS code for box shadows while previewing it for box, circle, or header design",
-      icon: <FaBoxArchive className="w-[60px] h-[60px] text-orange-400" />,
+      icon: <FaBoxArchive className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />,
       filename: "/Cssboxshadowgenerator",
     },
     {
       title: "Border Radius Generator",
       description:
         "Generate advanced CSS border radius to shape your HTML elements' corners individually",
-      icon: <AiOutlineRadiusUpright className="w-[60px] h-[60px] text-pink-400" />,
+      icon: <AiOutlineRadiusUpright className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />,
       filename: "/Borderradiusgenerator",
     },
   ];

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import home1 from "../image/home1.svg";
-import finder from "../image/finder.svg";
+import finder1 from "../image/finder1.svg";
 import leaf2 from "../image/leaf2.svg";
 import men from "../image/men.svg";
 import a1 from "../image/a1.svg";
@@ -26,7 +26,7 @@ import firefox from "../image/firefox.svg";
 import ston from "../image/ston.svg";
 import chrome from "../image/chrome.svg";
 import leaf1 from "../image/leaf1.svg";
-import explore from "../image/explore.svg";
+import explore1 from "../image/explore1.svg";
 import Oval2 from "../image/Oval2.svg";
 // import Textool1 from "../Pages/Text tool Grid/Texttool1";
 import Textool1 from "../Darktheme/Pages/Text tool Grid/Texttool1"
@@ -255,7 +255,7 @@ function Home() {
                     EXPLORE TOOL
                   </button>
                   <img
-                    src={explore}
+                    src={explore1}
                     alt="Arrow Icon"
                     className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6 hover:scale-150"
                   />
@@ -267,7 +267,7 @@ function Home() {
                     </button>
                   </Link>
                   <img
-                    src={finder}
+                    src={finder1}
                     alt="Finder Icon"
                     className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                   />
@@ -287,8 +287,23 @@ function Home() {
               <img
                 src={home1}
                 alt="Illustration"
-                className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
+                  className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
               />
+              <div
+                  className="
+                  hidden xl:block  2xl:block lg:block
+                  absolute
+                  xl:right-[-40px]  top-1/4   2xl:right-[-80px] lg:right-[-30px]
+                  -translate-y-1/2
+                  w-190  h-100
+                  rounded-full
+                  bg-gradient-to-br from-[#1F2B56] to-[#ffffff]     
+                 blur-3xl
+                  opacity-35
+                  z-0
+                "
+                  aria-hidden="true"
+                />
             </div>
           </div>
         </div>
@@ -419,7 +434,9 @@ function Home() {
                 </div>
               </div>
             </div>
+            
           </div>
+          
           <style>
             {`
               @keyframes marquee {
