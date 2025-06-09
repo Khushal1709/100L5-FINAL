@@ -56,14 +56,14 @@ const ContactSection = () => {
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
                 <div className="relative inline-flex items-center">
-                   <Link
-      to="/"
-      state={exploreLinkState} 
-    >
-      <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
-  font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap">
-                    EXPLORE TOOL
-                  </button></Link>
+                  <Link to="/" state={exploreLinkState}>
+                    <button
+                      className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
+  font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap"
+                    >
+                      EXPLORE TOOL
+                    </button>
+                  </Link>
                   <img
                     src={explore1}
                     alt="Arrow Icon"
@@ -71,10 +71,15 @@ const ContactSection = () => {
                   />
                 </div>
                 <div className="relative inline-flex items-center">
-               <Link to ="/Productfinder"> <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
- font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap"> 
-                    PRODUCT FINDER
-                  </button></Link>
+                  <Link to="/Productfinder">
+                    {" "}
+                    <button
+                      className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
+ font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap"
+                    >
+                      PRODUCT FINDER
+                    </button>
+                  </Link>
                   <img
                     src={finder1}
                     alt="Finder Icon"
@@ -120,6 +125,21 @@ const ContactSection = () => {
                 src={Contact}
                 alt="Illustration"
                 className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
+              />
+              <div
+                className="
+                  hidden xl:block  2xl:block lg:block
+                  absolute
+                  xl:right-[-40px]  top-1/4   2xl:right-[-80px] lg:right-[-30px]
+                  -translate-y-1/2
+                  w-190  h-100
+                  rounded-full
+                  bg-gradient-to-br from-[#1F2B56] to-[#ffffff]     
+                 blur-3xl
+                  opacity-35
+                  z-0
+                "
+                aria-hidden="true"
               />
             </div>
           </div>
