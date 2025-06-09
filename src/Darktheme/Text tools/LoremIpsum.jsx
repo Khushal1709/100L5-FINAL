@@ -109,7 +109,7 @@ function LoremIpsumGenerator({ id = "Lorem Ipsum Generator" }) {
           <span className="text-4xl text-orange-400">
             <MdOutlineContentPaste />
           </span>
-          <h1 className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
+          <h1 className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
             Lorem&nbsp;Ipsum&nbsp;Generator
           </h1>
         </div>

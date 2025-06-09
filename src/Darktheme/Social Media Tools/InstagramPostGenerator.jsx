@@ -204,7 +204,7 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                             <span className="text-4xl text-yellow-400 mt-4">
                                 <MdPostAdd />
                             </span>
-                            <span className="text-2xl font-bold text-white  md:text-lg lg:text-2xl sm:text-lg mt-4">
+                            <span className="text-xl font-bold text-white  md:text-lg lg:text-2xl sm:text-lg mt-4">
                                 Instagram&nbsp;Post&nbsp;Generator
                             </span>
                         </div>

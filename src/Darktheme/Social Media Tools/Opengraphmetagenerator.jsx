@@ -156,7 +156,7 @@ const Opengraphmetagenerator = ({ id = "Open Graph Meta Generator" }) => {
               <span className="text-4xl text-orange-400 mt-5">
                 <LuGitGraph />
               </span>
-              <span className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
+              <span className="text-md font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
                 Open&nbsp;Graph&nbsp;Meta&nbsp;Generator
               </span>
             </div>

@@ -126,7 +126,7 @@ export default function FontPairingTool({ id = "Google Fonts Pair Finder" }) {
           <span className="text-4xl text-indigo-400">
             <MdGroups />
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
+          <span className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
             Google&nbsp;Fonts&nbsp;Pair&nbsp;Finder
           </span>
         </div>

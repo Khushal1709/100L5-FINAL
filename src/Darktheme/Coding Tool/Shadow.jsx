@@ -48,7 +48,7 @@ export default function ShadowGenerator() {
             {/* <span className="text-2xl font-bold text-white md:text-xs lg:text-2xl sm:text-xl mt-6 ">
               React&nbsp;Native&nbsp;Shadow
             </span> */}
-               <span className="text-xl sm:text-2xl md:text-lg font-bold text-white mt-6">
+               <span className="text-md sm:text-2xl md:text-lg font-bold text-white mt-6">
               React&nbsp;Native&nbsp;Shadow&nbsp;Generator
             </span>
           </div>

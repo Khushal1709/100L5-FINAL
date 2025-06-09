@@ -212,10 +212,10 @@ export default function HandwritingConverter({id="Text to Handwriting"}) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-2">
         <div className="flex items-center gap-3 mb-2 sm:mb-0">
-          <span className="text-3xl sm:text-4xl text-indigo-400">
+          <span className="text-3xl sm:text-4xl text-indigo-400 mt-4">
             <BsLayoutTextSidebarReverse />
           </span>
-          <span className="font-bold text-gray-900 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+          <span className="font-bold text-gray-900 text-lg sm:text-xl md:text-2xl lg:text-3xl mt-2">
             Text&nbsp;to&nbsp;Handwriting&nbsp;Converter
           </span>
         </div>
@@ -412,7 +412,7 @@ export default function HandwritingConverter({id="Text to Handwriting"}) {
       )}
 
       {/* Controls: Font, Font Size, Ink Color, Frame */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-20">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <select
           className="border border-gray-300 rounded px-3 py-2 outline-none"
           value={font}

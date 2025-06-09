@@ -206,7 +206,7 @@ export default function HandwritingConverter({ id = "Text to Handwriting" }) {
             <span className="text-3xl sm:text-4xl mt-6 text-orange-400">
               <BsLayoutTextSidebarReverse />
             </span>
-            <span className="font-bold text-white text-lg sm:text-xl mt-6 md:text-2xl lg:text-3xl">
+            <span className="font-bold text-white text-md sm:text-xl mt-6 md:text-2xl lg:text-3xl">
               Text&nbsp;to&nbsp;Handwriting&nbsp;Converter
             </span>
           </div>

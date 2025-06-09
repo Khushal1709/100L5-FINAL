@@ -288,7 +288,7 @@ function LetterCounter({ id = "Letter Counter" }) {
               </thead>
               <tbody>
                 {LIMITS.map((limit, i) => (
-                  <tr key={limit.name} className={i % 2 ? "bg-gray-50" : ""}>
+                  <tr key={limit.name} className={i % 2 ? "bg-[#16283E]" : ""}>
                     <td className="py-2 px-3">{limit.name}</td>
                     <td className="py-2 px-3">{limit.minmax}</td>
                     <td className="py-2 px-3">{limit.limit}</td>
@@ -304,7 +304,7 @@ function LetterCounter({ id = "Letter Counter" }) {
               {LIMITS.map((limit, i) => (
                 <div
                   key={limit.name}
-                  className="bg-white border border-gray-500 rounded-lg p-4 shadow-sm"
+                  className="bg-[#16283E] border border-gray-500 rounded-lg p-4 shadow-sm"
                 >
                   <div className="mb-2">
                     <span className="font-semibold">Name:</span> {limit.name}

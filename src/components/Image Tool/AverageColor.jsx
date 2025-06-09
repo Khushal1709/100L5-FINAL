@@ -214,7 +214,7 @@ export default function AverageColor({ id = "Image Average Color Finder" }) {
           <span className="text-4xl text-indigo-400 mt-5">
             <MdFormatColorFill />
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-5">
+          <span className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-5">
             Image&nbsp;Average&nbsp;Color&nbsp;Finder </span>
         </div>
         <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 md:mt-5 lg:justify-end lg:gap-2">

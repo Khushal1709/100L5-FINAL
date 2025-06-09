@@ -95,7 +95,7 @@ export default function HTMLEncoderDecoder({ id = "HTML Encoder/Decoder" }) {
             <span className="text-4xl text-pink-400">
               <TbHtml />
             </span>
-            <h1 className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">HTML&nbsp;Encoder&nbsp;Decoder</h1>
+            <h1 className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">HTML&nbsp;Encoder&nbsp;Decoder</h1>
           </div>
           <div className="flex flex-col w-full md:flex-row md:justify-center md:items-center md:gap-4 lg:justify-end lg:gap-6">
             <button

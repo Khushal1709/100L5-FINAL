@@ -133,7 +133,7 @@ const ColorShadesGenerator = ({id="Color Shades Generator"}) => {
                     <span className="text-4xl text-blue-400">
                         <FaSwatchbook />
                     </span>
-                    <h1 className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
+                    <h1 className="text-xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg">
                         Color&nbsp;Shades&nbsp;Generator&nbsp;
                     </h1>
                 </div>

@@ -307,7 +307,7 @@ export default function Sidebar() {
       {/* Sidebar: toggled on mobile/tablet, always visible on large screens */}
       <aside
         className={`
-          bg-[#16283E] w-full lg:w-72 border-r border-gray-200 p-4 h-[100%] space-y-3 overflow-y-auto z-10 transition-all duration-300 ease-in-out
+          bg-[#16283E] w-full lg:w-72 border-r border-gray-200 p-4 h-[100%] space-y-3 overflow-y-auto z-20 transition-all duration-300 ease-in-out
           fixed top-14 left-0 right-0 max-h-[calc(100vh-3.5rem)]
           ${sidebarOpen ? "block" : "hidden"}
           lg:sticky lg:top-0 lg:left-0 lg:h-screen lg:max-h-screen lg:block

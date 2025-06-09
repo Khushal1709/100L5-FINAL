@@ -235,7 +235,7 @@ export default function ShadowGenerator() {
             <span className="text-4xl text-indigo-400 mt-6">
               <FaReact />
             </span>
-            <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-6 ">
+            <span className="text-md font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-6 ">
               React&nbsp;Native&nbsp;Shadow&nbsp;Generator
             </span>
           </div>

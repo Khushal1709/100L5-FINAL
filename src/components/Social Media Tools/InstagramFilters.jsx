@@ -120,7 +120,7 @@ export default function InstagramFilters({id="Instagram Filters"}) {
                     <span className="text-4xl text-indigo-400 mt-4">
                         <MdMovieFilter />
                     </span>
-                    <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
+                    <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-2">
                         Instagram&nbsp;Filters
                     </span>
                 </div>

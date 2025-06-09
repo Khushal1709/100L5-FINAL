@@ -524,7 +524,7 @@ export default function BionicReadingConverter({ id = "Bionic Reading Converter"
           <span className="text-4xl text-pink-400 mt-5">
             <FaBookOpen />
           </span>
-          <span className="text-2xl font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
+          <span className="text-md font-bold text-white md:text-lg lg:text-2xl sm:text-lg mt-5">
             {/* Java&nbsp;Script&nbsp;Minifier */}
             Bionic&nbsp;Reading&nbsp;Converter
           </span>
@@ -805,67 +805,74 @@ export default function BionicReadingConverter({ id = "Bionic Reading Converter"
       </div>
 
       {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <button
-          onClick={handleReset}
-          className="px-6 py-2 rounded-lg cursor-pointer bg-[#273D58]  border border-white text-white border border-white"
-        >
-          Reset
-        </button>
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 px-4 py-3">
+  <button
+    onClick={handleReset}
+    className="px-6 py-2 rounded-lg bg-[#273D58] border border-white text-white hover:bg-[#2d4a6d] transition-colors"
+  >
+    Reset
+  </button>
 
-        <div className="flex gap-2">
+  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+    <button
+      onClick={handleConvert}
+      disabled={!text.trim() || isProcessing}
+      className="px-6 py-2 rounded-lg bg-[#273D58] border border-white text-white hover:bg-[#2d4a6d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+    >
+      Convert to Bionic Reading
+    </button>
+
+    <div ref={exportRef} className="relative">
+      <button
+        onClick={() => setExportOpen(!exportOpen)}
+        disabled={!bionic}
+        className="flex items-center gap-2 px-6 py-2 rounded-lg bg-[#273D58] border border-white text-white hover:bg-[#2d4a6d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        Export <ChevronDown size={16} />
+      </button>
+
+      {exportOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-[#16283E] border border-gray-200 rounded-lg shadow-lg z-10">
           <button
-            onClick={handleConvert}
-            disabled={!text.trim() || isProcessing}
-            className="px-6 py-2 rounded-lg cursor-pointer bg-[#273D58] border border-white  text-white"
+            onClick={handleExportHTML}
+            className="w-full px-4 py-2 text-left hover:bg-gray-100 hover:text-black rounded-t-lg"
           >
-            Convert to Bionic Reading
+            Download HTML
           </button>
-
-          <div ref={exportRef} className="relative">
-            <button
-              onClick={() => setExportOpen(!exportOpen)}
-              disabled={!bionic}
-              className="flex items-center gap-2 px-6 py-2 rounded-lg cursor-pointer bg-[#273D58]  border border-white text-white border border-white"
-            >
-              Export <ChevronDown size={16} />
-            </button>
-
-            {exportOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                <button
-                  onClick={handleExportHTML}
-                  className="w-full px-4 py-2 text-left hover:bg-gray-100 rounded-t-lg"
-                >
-                  Download HTML
-                </button>
-                <button
-                  onClick={handleExportPDF}
-                  disabled={isGeneratingPdf}
-                  className="w-full px-4 py-2 text-left hover:bg-gray-100 disabled:bg-gray-200 disabled:cursor-not-allowed"
-                >
-                  {isGeneratingPdf ? "Generating PDF..." : "Download PDF"}
-                </button>
-                <button onClick={handleCopyHTML} className="w-full px-4 py-2 text-left hover:bg-gray-100">
-                  Copy HTML
-                </button>
-                <button onClick={handleCopyText} className="w-full px-4 py-2 text-left hover:bg-gray-100 rounded-b-lg">
-                  Copy Text
-                </button>
-              </div>
-            )}
-          </div>
-
           <button
-            onClick={handleFullscreen}
-            disabled={!bionic.trim()}
-            className="flex items-center gap-2 px-6 py-2 rounded-lg cursor-pointer bg-[#273D58]  border border-white text-white border border-white"
+            onClick={handleExportPDF}
+            disabled={isGeneratingPdf}
+            className="w-full px-4 py-2 text-left hover:bg-gray-100 hover:text-black disabled:bg-gray-200 disabled:cursor-not-allowed"
           >
-            <Maximize size={16} />
-            Full Screen
+            {isGeneratingPdf ? "Generating PDF..." : "Download PDF"}
+          </button>
+          <button
+            onClick={handleCopyHTML}
+            className="w-full px-4 py-2 text-left hover:bg-gray-100 hover:text-black"
+          >
+            Copy HTML
+          </button>
+          <button
+            onClick={handleCopyText}
+            className="w-full px-4 py-2 text-left hover:bg-gray-100 hover:text-black rounded-b-lg"
+          >
+            Copy Text
           </button>
         </div>
-      </div>
+      )}
+    </div>
+
+    <button
+      onClick={handleFullscreen}
+      disabled={!bionic.trim()}
+      className="flex items-center gap-2 px-6 py-2 rounded-lg bg-[#273D58] border border-white text-white hover:bg-[#2d4a6d] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+    >
+      <Maximize size={16} />
+      Full Screen
+    </button>
+  </div>
+</div>
+
 
       {/* Fullscreen Modal */}
       {isFullscreen && (

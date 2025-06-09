@@ -149,6 +149,9 @@ import DarkGetfeatured from "../src/Darktheme/Getfeatured";
 import DarkLayout from "./Darktheme/DarkLayout";
 import DarkHome from "./Darktheme/Home";
 import DarkBase64EncoderDecoder from "./Darktheme/Coding Tool/Base64EncoderDecoder";
+import DarkJavaScriptMinifier from "./Darktheme/Coding Tool/JavaScriptMinifier";
+
+
 import DarkTexttool from "../src/Darktheme/Pages/Text tool Grid/Texttool"
 import DarkImagetool from "../src/Darktheme/Pages/Image tool Grid/Imagetool";
 import DarkCSStool from "../src/Darktheme/Pages/CSS tool Grid/CSStool";
@@ -232,7 +235,7 @@ function App() {
               <Route path="/HTMLMinifier"element={mode === "light" ? <HTMLMinifier /> : <DarkHTMLMinifier /> } />
               <Route
                 path="/JavaScriptMinifier"
-                element={mode === "light" ? <JavaScriptMinifier /> :  <JavaScriptMinifier /> }
+                element={mode === "light" ? <JavaScriptMinifier /> :  <DarkJavaScriptMinifier /> }
               />
               <Route
                 path="/Hf"

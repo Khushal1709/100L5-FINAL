@@ -134,7 +134,7 @@ export default function PasswordGenerator({id="Strong Random Password Generator"
           <span className="text-4xl text-indigo-400">
             <BiSolidLock />
           </span>
-          <h1 className="text-xl sm:text-2xl md:text-lg font-bold text-gray-900">
+          <h1 className="text-sm sm:text-2xl md:text-lg font-bold text-gray-900">
             Strong&nbsp;Random&nbsp;Password&nbsp;Generator
           </h1>
         </div>

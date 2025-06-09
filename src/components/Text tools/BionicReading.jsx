@@ -524,7 +524,7 @@ export default function BionicReadingConverter({ id = "Bionic Reading Converter"
           <span className="text-4xl text-indigo-400 mt-6">
             <FaBookOpen />
           </span>
-          <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg">
+          <span className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl mt-3 sm:text-lg">
             {/* Java&nbsp;Script&nbsp;Minifier */}
             Bionic&nbsp;Reading&nbsp;Converter
           </span>

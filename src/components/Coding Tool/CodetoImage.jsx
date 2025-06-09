@@ -479,7 +479,7 @@ const CodeToImageConverter = ({id="Code to Image Generator"}) => {
           <span className="text-4xl text-indigo-400 mt-3">
             <RiCodeBlock />
           </span>
-          <h1 className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-3">
+          <h1 className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-3">
             Code&nbsp;to&nbsp;Image&nbsp;Converter
           </h1>
         </div>

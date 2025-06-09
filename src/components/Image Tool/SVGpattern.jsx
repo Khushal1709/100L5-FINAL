@@ -249,7 +249,7 @@ const SVGpattern = ({id="SVGpattern"}) => {
                     <span className="text-4xl text-indigo-400 mt-4">
                         <TbFileTypeSvg />
                     </span>
-                    <span className="text-2xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-4">
+                    <span className="text-xl font-bold text-gray-900 md:text-lg lg:text-2xl sm:text-lg mt-4">
                              SVG&nbsp;Pattern&nbsp;Generator
                     </span>
                 </div>
