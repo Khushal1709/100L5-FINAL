@@ -215,6 +215,16 @@ const ProductFinderHero = () => {
     { id: "ai", label: "AI Product", icon: <FaRobot /> },
     { id: "social", label: "Social Media", icon: <FaComments /> },
     { id: "lifestyle", label: "Lifestyle", icon: <FaHeart /> },
+    { id: "all", label: "ALL", icon: <FaLayerGroup /> },
+    { id: "productivity", label: "Productivity", icon: <FaCog /> },
+    { id: "development", label: "Development", icon: <FaCode /> },
+    { id: "design", label: "Design", icon: <FaLightbulb /> },
+    { id: "marketing", label: "Marketing", icon: <FaBullhorn /> },
+    { id: "business", label: "Business", icon: <FaBriefcase /> },
+    { id: "finance", label: "Finance", icon: <FaMoneyBillWave /> },
+    { id: "ai", label: "AI Product", icon: <FaRobot /> },
+    { id: "social", label: "Social Media", icon: <FaComments /> },
+    { id: "lifestyle", label: "Lifestyle", icon: <FaHeart /> },
   ];
 
   const cards = categoryDataMap[activeCategory] || [];
@@ -260,13 +270,13 @@ const ProductFinderHero = () => {
                 </p>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
                   <div className="relative inline-flex items-center">
-                   <Link
-                  to="/"
-                  state={{ scrollTo: 'featured-tools' }}
-                  className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer inline-block text-center"
-                >
-                  EXPLORE TOOL
-                </Link>
+                    <Link
+                      to="/"
+                      state={{ scrollTo: "featured-tools" }}
+                      className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer inline-block text-center"
+                    >
+                      EXPLORE TOOL
+                    </Link>
                     <img
                       src={explore}
                       alt="Arrow Icon"
@@ -346,55 +356,53 @@ const ProductFinderHero = () => {
 
             {/* Category Buttons */}
           </div>
-            <div className="bg-white relative z-10 rounded-lg ">
+          <div className="bg-white relative z-10 rounded-lg ">
+            <div
+              className="text-center py-2 bg-white bg-no-repeat bg-center bg-contain mb-10"
+              style={{ backgroundImage: `url(${productback})` }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0D1440]">
+                Product Categories
+              </h2>
+              <p className="text-sm text-gray-500 mt-1">
+                "Find the Right Tool for Every Task"
+              </p>
               <div
-                className="text-center py-2 bg-white bg-no-repeat bg-center bg-contain mb-10"
-                style={{ backgroundImage: `url(${productback})` }}
+                ref={scrollRef}
+                className="mt-6 px-4 overflow-x-hidden whitespace-nowrap scrollbar-hide"
+                aria-label="Product categories"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0D1440]">
-                  Product Categories
-                </h2>
-                <p className="text-sm text-gray-500 mt-1">
-                  "Find the Right Tool for Every Task"
-                </p>
-                <div
-                  ref={scrollRef}
-                  className="mt-6 px-4 overflow-x-hidden whitespace-nowrap scrollbar-hide"
-                  aria-label="Product categories"
-                >
-                  <div className=" inline-flex gap-4 min-w-max ">
-                    {categories.map((cat) => {
-                      const isActive = cat.id === activeCategory;
-                      return (
-                        <button
-                          key={cat.id}
-                          onClick={() => setActiveCategory(cat.id)}
-                          className={`flex items-center gap-3 px-5 sm:px-6 py-3 rounded-full transition-all whitespace-nowrap cursor-pointer ${
+                <div className=" inline-flex gap-4 min-w-max ">
+                  {categories.map((cat) => {
+                    const isActive = cat.id === activeCategory;
+                    return (
+                      <button
+                        key={cat.id}
+                        onClick={() => setActiveCategory(cat.id)}
+                        className={`flex items-center gap-3 px-5 sm:px-6 py-3 rounded-full transition-all whitespace-nowrap cursor-pointer ${
+                          isActive
+                            ? "bg-blue-200 text-[#0D1440]"
+                            : "bg-gray-100 text-gray-600 hover:bg-blue-100"
+                        }`}
+                        aria-pressed={isActive}
+                      >
+                        <div
+                          className={`text-lg p-2 rounded-full ${
                             isActive
-                              ? "bg-blue-200 text-[#0D1440]"
-                              : "bg-gray-100 text-gray-600 hover:bg-blue-100"
+                              ? "bg-[#0D1440] text-white"
+                              : "bg-blue-100 text-blue-600"
                           }`}
-                          aria-pressed={isActive}
                         >
-                          <div
-                            className={`text-lg p-2 rounded-full ${
-                              isActive
-                                ? "bg-[#0D1440] text-white"
-                                : "bg-blue-100 text-blue-600"
-                            }`}
-                          >
-                            {cat.icon}
-                          </div>
-                          <span className="text-sm font-medium">
-                            {cat.label}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                          {cat.icon}
+                        </div>
+                        <span className="text-sm font-medium">{cat.label}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
+          </div>
 
           {/* Tags Section */}
           <div className="w-full">

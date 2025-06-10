@@ -213,6 +213,16 @@ const ProductFinderHero = () => {
     { id: "ai", label: "AI Product", icon: <FaRobot /> },
     { id: "social", label: "Social Media", icon: <FaComments /> },
     { id: "lifestyle", label: "Lifestyle", icon: <FaHeart /> },
+     { id: "all", label: "ALL", icon: <FaLayerGroup /> },
+    { id: "productivity", label: "Productivity", icon: <FaCog /> },
+    { id: "development", label: "Development", icon: <FaCode /> },
+    { id: "design", label: "Design", icon: <FaLightbulb /> },
+    { id: "marketing", label: "Marketing", icon: <FaBullhorn /> },
+    { id: "business", label: "Business", icon: <FaBriefcase /> },
+    { id: "finance", label: "Finance", icon: <FaMoneyBillWave /> },
+    { id: "ai", label: "AI Product", icon: <FaRobot /> },
+    { id: "social", label: "Social Media", icon: <FaComments /> },
+    { id: "lifestyle", label: "Lifestyle", icon: <FaHeart /> },
   ];
 
   const cards = categoryDataMap[activeCategory] || [];
