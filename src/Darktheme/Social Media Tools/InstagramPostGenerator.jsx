@@ -204,7 +204,7 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                             <span className="text-4xl text-yellow-400 mt-4">
                                 <MdPostAdd />
                             </span>
-                            <span className="text-xl font-bold text-white  md:text-lg lg:text-2xl sm:text-lg mt-4">
+                            <span className="text-2xl font-bold text-white  md:text-lg lg:text-2xl sm:text-lg mt-4">
                                 Instagram&nbsp;Post&nbsp;Generator
                             </span>
                         </div>
@@ -244,7 +244,7 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                         </div>
                     </div>
                     {/* Share Popup */}
-                   {shareOpen && (
+                    {shareOpen && (
                         <div className="fixed inset-0 z-50 flex justify-center items-center">
                             <div className="bg-[#16283E] border border-white p-6 rounded-2xl shadow-xl max-w-md w-full relative">
                                 <div className="flex justify-between mb-4 bg-indigo-50 p-1 rounded-xl">
@@ -351,7 +351,7 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                     <div className="flex flex-col lg:flex-row gap-8">
                         {/* Instagram Post Preview */}
                         <div className="flex-1">
-                            <div className="bg-white rounded-lg shadow-sm overflow-hidden" ref={postPreviewRef}>
+                            <div className="bg-white rounded-lg  shadow-sm xl:w-[440px] 2xl:w-[440px]   overflow-hidden" ref={postPreviewRef}>
                                 <div className={`instagram-post ${theme === 'Dark' ? 'bg-gray-900 text-white' : 'bg-white'}`}>
                                     {/* Post Header */}
                                     <div className="p-3 flex items-center">
@@ -393,7 +393,7 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
 
                                         <div className="ml-3">
                                             <div className="flex items-center">
-                                                <span className="font-semibold text-sm ">{username}</span>
+                                                <span className={`font-semibold text-sm ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>{username}</span>
                                                 {verified && (
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 ml-1 text-blue-500">
                                                         <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
@@ -422,43 +422,43 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                                         )}
                                     </div>
                                     {/* Post Actions */}
-                                    <div className="flex p-2">
+                                    <div className="flex p-2 xl:w-[440px]">
                                         <div className="flex space-x-4">
-                                            <button className={`${isLiked ? 'text-red-500' : ''}`}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill={isLiked ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                                            <button className={`w-7 h-7 ${isLiked ? 'text-red-500' : theme === 'Dark' ? 'text-white' : 'text-black'}`}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill={isLiked ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                                 </svg>
                                             </button>
-                                            <button>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                                            <button className={`w-7 h-7 ${theme === 'Dark' ? 'text-white' : 'text-black'}`} >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
                                                 </svg>
                                             </button>
-                                            <button>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                                            <button className={`w-7 h-7 ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                                                 </svg>
                                             </button>
                                         </div>
-                                        <div className="ml-auto">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                                        <div className={`w-7 h-7 ml-auto ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                                             </svg>
                                         </div>
                                     </div>
                                     {/* Likes */}
                                     <div className="px-4 pb-2">
-                                        <p className="font-semibold text-sm">{likeCount} likes</p>
+                                        <p className={`font-semibold text-sm  p-1 ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>{likeCount} likes</p>
                                     </div>
                                     {/* Caption */}
                                     <div className="px-4 pb-2">
-                                        <span className="font-semibold text-sm mr-1">{username}</span>
-                                        <span className="text-sm" dangerouslySetInnerHTML={{ __html: formatPostText(postText) }} />
+                                        <span className={`font-semibold text-sm mr-1 ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>{username}</span>
+                                        <span className={`text-sm ${theme === 'Dark' ? 'text-white' : 'text-black'}`} dangerouslySetInnerHTML={{ __html: formatPostText(postText) }} />
                                     </div>
                                     {/* View Comments */}
                                     {showComments && (
                                         <div className="px-4 pb-2">
-                                            <span className="text-sm text-gray-500">View all {commentCount} comments</span>
+                                            <span className={`text-sm text-gray-500 ${theme === 'Dark' ? 'text-white' : 'text-black'}`}>View all {commentCount} comments</span>
                                         </div>
                                     )}
                                 </div>
@@ -571,8 +571,8 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                                         value={postText}
                                         rows={4}
                                         onChange={(e) => setPostText(e.target.value)}
-                                        className="outline-none w-full border border-gray-300 rounded-md px-3 text-gray-500 "
-                                        maxLength={220}
+                                        className="outline-none w-full border border-gray-300 rounded-md px-3 text-gray-500 resize-none "
+                                        // maxLength={120}
                                     />
                                 </div>
                                 {/* Stats */}
@@ -699,7 +699,7 @@ export default function InstagramPostGenerator({ id = "Instagram Post Generator"
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
             <Comment />
         </>
     );
