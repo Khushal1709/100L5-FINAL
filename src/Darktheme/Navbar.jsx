@@ -2685,7 +2685,7 @@ export default function Navbar() {
             </div>
           )}
           {/* Extensions Dropdown Desktop */}
-          <div
+          {/* <div
             className="relative"
             onMouseEnter={() => setExtensionsOpen(true)}
             onMouseLeave={() => setExtensionsOpen(false)}
@@ -2724,7 +2724,7 @@ export default function Navbar() {
                 </a>
               </div>
             )}
-          </div>
+          </div> */}
           {/* Theme Toggle Desktop */}
           <button
             className="flex items-center text-white"

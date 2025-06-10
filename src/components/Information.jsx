@@ -50,13 +50,13 @@ function Information({
             </Link>
           </div>
           {/* Login Button */}
-          <div className="flex justify-center lg:justify-center">
+          {/* <div className="flex justify-center lg:justify-center">
             <Link to="/Login">
               <button className="relative text-red-600 font-semibold mt-2 cursor-pointer hover:underline select-none ">
                 {buttonText2}
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
         {/* Right: Illustration */}
         <div className="flex-1 flex justify-center  w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">

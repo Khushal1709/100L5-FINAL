@@ -292,14 +292,14 @@ const ProductFinderHero = () => {
                         LOGIN / REGISTER
                       </button>
                     </Link>
-                    <Link to="/Login">
+                    {/* <Link to="/Login">
                       <button className="text-red-600 font-semibold cursor-pointer hover:underline select-none">
                         SIGN IN
                       </button>
-                    </Link>
+                    </Link> */}
                   </div>
 
-                  <div className="text-center ">
+                  {/* <div className="text-center ">
                     <p className="text-sm text-gray-500 mb-2 max-w-xs mx-auto sm:mx-0">
                       Get the extension and access all tools with just one click
                     </p>
@@ -331,7 +331,7 @@ const ProductFinderHero = () => {
                       </a>
                       <div className="h-px w-12 bg-gray-300" />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -345,7 +345,8 @@ const ProductFinderHero = () => {
             </div>
 
             {/* Category Buttons */}
-            <div className="bg-white relative z-10 rounded-lg">
+          </div>
+            <div className="bg-white relative z-10 rounded-lg ">
               <div
                 className="text-center py-2 bg-white bg-no-repeat bg-center bg-contain mb-10"
                 style={{ backgroundImage: `url(${productback})` }}
@@ -394,7 +395,6 @@ const ProductFinderHero = () => {
                 </div>
               </div>
             </div>
-          </div>
 
           {/* Tags Section */}
           <div className="w-full">

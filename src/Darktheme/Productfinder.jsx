@@ -359,8 +359,9 @@ const ProductFinderHero = () => {
               </div>
             </div>
 
+          </div>
             {/* Category Buttons */}
-            <div className="bg-[#16283E] relative z-10 rounded-lg">
+            <div className="bg-[#16283E] relative z-10 rounded-lg ">
               <div
                 className="text-center py-2 bg-[#16283E] bg-no-repeat bg-center bg-contain mb-10 mt-10"
                 style={{ backgroundImage: `url(${productback1})` }}
@@ -407,7 +408,6 @@ const ProductFinderHero = () => {
                 </div>
               </div>
             </div>
-          </div>
 
           {/* Tags Section */}
           <div className="w-full">

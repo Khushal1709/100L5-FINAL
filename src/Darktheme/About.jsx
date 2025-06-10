@@ -27,9 +27,7 @@ export default function About() {
         <div
           className="absolute inset-0 w-140 left-280 top-[-50px] hidden lg:block md:left-150 lg:left-115 xl:left-230 2xl:left-[63%] "
           style={{ zIndex: -1 }}
-        >
-
-        </div>
+        ></div>
         <Navbar />
         {/* <img
           src={leaf1}
@@ -53,7 +51,8 @@ export default function About() {
                     <Link
                       to="/"
                       state={{ scrollTo: "featured-tools" }}
-                      className="inline-flex items-center bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap hover:scale-105 transition-transform"
+                      className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
+       font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer inline-block text-center"
                     >
                       EXPLORE TOOL
                     </Link>
@@ -64,10 +63,12 @@ export default function About() {
                     />
                   </div>
                   <div className="relative inline-flex items-center">
-                    <Link to="/Productfinder"><button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
-   font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap">
+                    <button
+                      className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
+       font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer"
+                    >
                       PRODUCT FINDER
-                    </button></Link>
+                    </button>
                     <img
                       src={finder1}
                       alt="Finder Icon"
@@ -83,7 +84,6 @@ export default function About() {
                         LOGIN / REGISTER
                       </button>
                     </Link>
-
                   </div>
 
                   {/* <div className="text-center ">
@@ -182,13 +182,13 @@ export default function About() {
                   10015.io is an online tool factory where you can get all tools
                   you needed in one place. While serving different type of tools
                   in different categories, it aims to perform this with a clean
-                  and beautiful user interface. Every tool is designed to solve a
-                  problem with minimum number of steps to save time of the users
-                  and decrease the complexity of the operation.
+                  and beautiful user interface. Every tool is designed to solve
+                  a problem with minimum number of steps to save time of the
+                  users and decrease the complexity of the operation.
                 </p>
                 <p className="text-gray-500 ">
-                  10015.io has started to operate in 2020 and it will continue to
-                  grow with time by adding new tools each day.
+                  10015.io has started to operate in 2020 and it will continue
+                  to grow with time by adding new tools each day.
                 </p>
               </div>
               {/* Why */}
@@ -202,9 +202,9 @@ export default function About() {
                 <p className="mb-4 text-[16px] text-gray-500 ">
                   There are lots of sites on web which offers you online tools.
                   Most of them focus on specific topics and they mostly have
-                  outdated designs which makes you think "Am I in 90's?". When you
-                  start to bookmark the tools you needed, the list becomes larger
-                  and larger in some point.
+                  outdated designs which makes you think "Am I in 90's?". When
+                  you start to bookmark the tools you needed, the list becomes
+                  larger and larger in some point.
                 </p>
                 <p className="text-gray-500 ">
                   10015 Tools solves all these problems. So, bookmark it and
@@ -221,45 +221,29 @@ export default function About() {
                 </h3>
                 <p className="text-gray-500 ">
                   10015.io is designed and coded by Fatih Telis (me) as a side
-                  project. I am a frontend developer based in Istanbul, Turkey. I
-                  started this project to build a platform which will work as an
-                  all-in-one toolbox while I'm challenging myself to create tools
-                  which does many different things. Even though I'm not a
-                  professional designer, I'm doing my best to construct a simple,
-                  aesthetic and easy-to-use UI system. You can contact me via
-                  email or Twitter about anything.
+                  project. I am a frontend developer based in Istanbul, Turkey.
+                  I started this project to build a platform which will work as
+                  an all-in-one toolbox while I'm challenging myself to create
+                  tools which does many different things. Even though I'm not a
+                  professional designer, I'm doing my best to construct a
+                  simple, aesthetic and easy-to-use UI system. You can contact
+                  me via email or Twitter about anything.
                 </p>
               </div>
             </div>
 
             {/* Social Icons */}
             <div className="flex space-x mt-10">
-              <Link
-                to="https://www.facebook.com/" className=" ">
-                <img
-                  src={facebook}
-                  alt="Facebook"
-                  className=""
-                />
+              <Link to="https://www.facebook.com/" className=" ">
+                <img src={facebook} alt="Facebook" className="" />
               </Link>
-              <Link
-                to="https://x.com/" className="">
-                <img
-                  src={tiweter}
-                  alt="Twitter"
-                  className=""
-                />
+              <Link to="https://x.com/" className="">
+                <img src={tiweter} alt="Twitter" className="" />
               </Link>
-              <Link
-                to="https://in.linkedin.com/" className="">
-                <img
-                  src={linkedin}
-                  alt="LinkedIn"
-                  className=""
-                />
+              <Link to="https://in.linkedin.com/" className="">
+                <img src={linkedin} alt="LinkedIn" className="" />
               </Link>
-              <Link
-                to="https://www.instagram.com/" className="">
+              <Link to="https://www.instagram.com/" className="">
                 <img
                   src={instagram || "/placeholder.svg"}
                   alt="LinkedIn"

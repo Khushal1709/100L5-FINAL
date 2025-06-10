@@ -33,7 +33,7 @@ const ContactSection = () => {
           />
         </div>
         <div
-          className="absolute inset-0 w-140 left-280 top-[-50px] hidden lg:block md:left-150 lg:left-115 xl:left-230 2xl:left-[63%]"
+          className="absolute inset-0 w-140 left-280 top-[-50px] hidden lg:block md:left-150 lg:left-115 xl:left-230 2xl:left-[61%]"
           style={{ zIndex: 1 }}
         >
           <img
@@ -89,11 +89,11 @@ const ContactSection = () => {
                       LOGIN / REGISTER
                     </button>
                   </Link>
-                  <Link to="/Signup">
+                  {/* <Link to="/Signup">
                     <button className="text-red-600 font-semibold cursor-pointer hover:underline select-none">
                       SIGN IN
                     </button>
-                  </Link>
+                  </Link> */}
                 </div>
 
                 {/* <div className="text-center ">

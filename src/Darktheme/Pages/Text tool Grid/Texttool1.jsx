@@ -349,7 +349,7 @@ function Texttool1() {
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
-          <div className="relative w-28 h-10 flex items-center justify-center rounded-full z-0 transition-all duration-300">
+          <div className="relative  w-28 h-10 flex items-center justify-center rounded-full z-0 transition-all duration-300">
             <img
               src={arrow || "/placeholder.svg"}
               alt="Arrow"
@@ -358,7 +358,7 @@ function Texttool1() {
             <img
               src={arrow2 || "/placeholder.svg"}
               alt="Arrow"
-              className="absolute inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+              className="absolute  inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
             />
           </div>
         </div>

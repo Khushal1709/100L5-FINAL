@@ -1537,7 +1537,7 @@ export default function Navbar() {
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
               {featuredOpen && (
-                <div className="absolute top-full w-60 bg-white rounded-xl shadow-lg py-2 z-10 text-center">
+                <div className="absolute top-full w-60 bg-white  rounded-xl shadow-lg py-2 z-10 text-center">
                   {tools.map((tool) => (
                     <Link
                       key={tool.path}
@@ -1552,7 +1552,7 @@ export default function Navbar() {
             </div>
           )}
           {/* Extensions Dropdown Desktop */}
-          <div
+          {/* <div
             className="relative"
             onMouseEnter={() => setExtensionsOpen(true)}
             onMouseLeave={() => setExtensionsOpen(false)}
@@ -1591,7 +1591,7 @@ export default function Navbar() {
                 </a>
               </div>
             )}
-          </div>
+          </div> */}
           {/* Theme Toggle Desktop */}
           <button
             className="flex items-center text-gray-700 hover:text-gray-900"
