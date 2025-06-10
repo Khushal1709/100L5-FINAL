@@ -1,5 +1,3 @@
-
-
 // import arrow from "../../../image/arrow.svg" // arrow icon
 // import arrow2 from "../../../image/arrow2.svg"
 // import whishlist from "../../../image/whishlist.svg"
@@ -203,10 +201,6 @@
 
 // export default Texttool1
 
-
-
-
-
 import arrow from "../../../image/arrow.svg";
 import arrow2 from "../../../image/arrow2.svg";
 import whishlist from "../../../image/whishlist.svg";
@@ -227,56 +221,78 @@ function Texttool1() {
     {
       id: "case-converter",
       title: "Case Converter",
-      description: "Convert your text or string to uppercase, lowercase, title case & sentence case",
-          icon: <VscCaseSensitive className="text-white w-[60px] h-[60px] rounded-lg bg-blue-500" />,
+      description:
+        "Convert your text or string to uppercase, lowercase, title case & sentence case",
+      icon: (
+        <VscCaseSensitive className="text-white w-[60px] h-[60px] rounded-lg bg-blue-500" />
+      ),
       filename: "/caseconverter",
     },
     {
       id: "lorem-ipsum-generator",
       title: "Lorem Ipsum Generator",
-      description: "Create your placeholder texts with desired number of paragraphs and properties",
-          icon: <MdOutlineContentPaste className="text-white w-[60px] h-[60px] p-1 rounded-lg bg-yellow-500" />,
+      description:
+        "Create your placeholder texts with desired number of paragraphs and properties",
+      icon: (
+        <MdOutlineContentPaste className="text-white w-[60px] h-[60px] p-1 rounded-lg bg-yellow-500" />
+      ),
       filename: "/lorem",
     },
     {
       id: "letter-counter",
       title: "Letter Counter",
-      description: "Count letters, words, sentences in text and analyze numbers with common limits.",
-          icon: <SlEnvolopeLetter className="text-white w-[60px] h-[60px] p-1 rounded-lg bg-pink-500" />,
+      description:
+        "Count letters, words, sentences in text and analyze numbers with common limits.",
+      icon: (
+        <SlEnvolopeLetter className="text-white w-[60px] h-[60px] p-1 rounded-lg bg-pink-500" />
+      ),
       filename: "/letter",
     },
     {
       id: "text-to-handwriting-converter",
       title: "Text to Handwriting",
-      description: "Convert text to handwriting with chosen paper, ink color, and download PDF",
-          icon: <TbTransform className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-500" />,
+      description:
+        "Convert text to handwriting with chosen paper, ink color, and download PDF",
+      icon: (
+        <TbTransform className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-500" />
+      ),
       filename: "/Text",
     },
     {
       id: "bionic-reading-converter",
       title: "Bionic Reading Converter",
-      description: "Convert your texts into Bionic Reading mode to read them faster than before",
-          icon: <FaBookReader className="text-white w-[60px] h-[60px]  p-1 rounded-lg bg-pink-500" />,
+      description:
+        "Convert your texts into Bionic Reading mode to read them faster than before",
+      icon: (
+        <FaBookReader className="text-white w-[60px] h-[60px]  p-1 rounded-lg bg-pink-500" />
+      ),
       filename: "/BionicReading",
     },
     {
       id: "multiple-whitespace-remover",
       title: "Multiple Whitespace Remove",
-      description: "Remove multiple whitespaces and line breaks in a text and clear unwanted characters",
-          icon: <BsScissors className="text-white w-[60px] h-[60px]  p-1 rounded-lg bg-orange-500" />,
+      description:
+        "Remove multiple whitespaces and line breaks in a text and clear unwanted characters",
+      icon: (
+        <BsScissors className="text-white w-[60px] h-[60px]  p-1 rounded-lg bg-orange-500" />
+      ),
       filename: "/Whitespace",
     },
     {
       id: "google-fonts-pair-finder",
       title: "Google Fonts Pair Finder",
-      description: "Find font pairs that look great on designs, pages, apps, headings, body",
-          icon: <MdGroups className="text-white w-[60px] h-[60px] rounded-lg p-1  bg-blue-500" />,
+      description:
+        "Find font pairs that look great on designs, pages, apps, headings, body",
+      icon: (
+        <MdGroups className="text-white w-[60px] h-[60px] rounded-lg p-1  bg-blue-500" />
+      ),
       filename: "/Googlefont",
     },
   ];
 
   const navigate = useNavigate();
-  const { favoriteTools, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { favoriteTools, addToFavorites, removeFromFavorites } =
+    useContext(FavoritesContext);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -321,28 +337,30 @@ function Texttool1() {
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
-        <div className="group relative" onClick={(e) => handleWishlistClick(e, tool)}>
+        <div
+          className="group relative"
+          onClick={(e) => handleWishlistClick(e, tool)}
+        >
           <img
-            src={isFavorite ? whishlist2 : whishlist}
+            src={isFavorite ? whishlist : whishlist}
             alt="Wishlist"
-            className={`absolute top-4 right-4 w-5 h-5 transition-opacity duration-300 cursor-pointer hover:scale-110 ${
-              isFavorite ? "opacity-100" : "opacity-100 group-hover:opacity-0"
-            }`}
+            className={`
+      absolute top-4 right-4 w-5 h-5 transition-transform duration-300 cursor-pointer
+      ${isFavorite ? "opacity-100" : "opacity-20"}
+      hover:scale-110
+    `}
           />
-          {!isFavorite && (
-            <img
-              src={whishlist2 || "/placeholder.svg"}
-              alt="Wishlist"
-              className="absolute top-4 right-4 w-5 h-5 transition-opacity duration-300 opacity-10 hover:opacity-100 cursor-pointer hover:scale-110"
-            />
-          )}
         </div>
 
         {/* Tool Icon */}
-        <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
+        <div className="rounded-md flex items-center justify-start mb-4">
+          {tool.icon}
+        </div>
 
         {/* Title */}
-        <h3 className="text-left font-semibold text-white mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left font-semibold text-white mb-2 break-words">
+          {tool.title}
+        </h3>
 
         {/* Description */}
         <p className="text-left text-gray-400 mb-8">{tool.description}</p>
@@ -358,7 +376,7 @@ function Texttool1() {
             <img
               src={arrow2 || "/placeholder.svg"}
               alt="Arrow"
-              className="absolute  inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+              className="absolute h-15   inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
             />
           </div>
         </div>
@@ -375,7 +393,9 @@ function Texttool1() {
         >
           Text Tools
         </h2>
-        <p className="text-center text-gray-500 mb-10">Smart Tools. Simple Solutions.</p>
+        <p className="text-center text-gray-500 mb-10">
+          Smart Tools. Simple Solutions.
+        </p>
 
         <div className="space-y-6">
           {toolChunks.map((chunk, chunkIndex) => (

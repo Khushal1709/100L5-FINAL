@@ -260,7 +260,7 @@ const ProductFinderHero = () => {
                   <div className="relative inline-flex items-center">
                     <Link
                       to="/"
-                      state={{ scrollTo: 'featured-tools' }}
+                      state={{ scrollTo: "featured-tools" }}
                       className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
  font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer inline-block text-center"
                     >
@@ -273,8 +273,10 @@ const ProductFinderHero = () => {
                     />
                   </div>
                   <div className="relative inline-flex items-center">
-                    <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
- font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer">
+                    <button
+                      className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] 
+ font-bold px-6 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer"
+                    >
                       PRODUCT FINDER
                     </button>
                     <img
@@ -358,56 +360,51 @@ const ProductFinderHero = () => {
                 />
               </div>
             </div>
-
           </div>
-            {/* Category Buttons */}
-            <div className="bg-[#16283E] relative z-10 rounded-lg ">
+          {/* Category Buttons */}
+          <div className="bg-[#16283E] relative z-10 rounded-lg ">
+            <div
+              className="text-center py-2 bg-[#16283E] bg-no-repeat bg-center bg-contain mb-10 mt-10"
+              style={{ backgroundImage: `url(${productback1})` }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
+                Product Categories
+              </h2>
+              <p className="text-sm text-gray-500 mt-1">
+                "Find the Right Tool for Every Task"
+              </p>
               <div
-                className="text-center py-2 bg-[#16283E] bg-no-repeat bg-center bg-contain mb-10 mt-10"
-                style={{ backgroundImage: `url(${productback1})` }}
+                ref={scrollRef}
+                className="mt-6 px-4 overflow-x-hidden whitespace-nowrap scrollbar-hide"
+                aria-label="Product categories"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                  Product Categories
-                </h2>
-                <p className="text-sm text-gray-500 mt-1">
-                  "Find the Right Tool for Every Task"
-                </p>
-                <div
-                  ref={scrollRef}
-                  className="mt-6 px-4 overflow-x-hidden whitespace-nowrap scrollbar-hide"
-                  aria-label="Product categories"
-                >
-                  <div className=" inline-flex gap-4 min-w-max ">
-                    {categories.map((cat) => {
-                      const isActive = cat.id === activeCategory;
-                      return (
-                        <button
-                          key={cat.id}
-                          onClick={() => setActiveCategory(cat.id)}
-                          className={`flex items-center gap-3 px-5 sm:px-6 py-3 rounded-full transition-all whitespace-nowrap cursor-pointer ${isActive
-                              ? "bg-blue-200 text-[#0D1440]"
-                              : "bg-gray-100 text-gray-600 hover:bg-blue-100"
-                            }`}
-                          aria-pressed={isActive}
+                <div className=" inline-flex gap-4 min-w-max ">
+                  {categories.map((cat) => {
+                    const isActive = cat.id === activeCategory;
+                    return (
+                      <button
+                        key={cat.id}
+                        onClick={() => setActiveCategory(cat.id)}
+                        className={`flex  bg-[#273D58] text-white transition-all hover:bg-[#D5C7FF] hover:text-black border border-gray-200 items-center gap-3 px-5 sm:px-6 py-3 rounded-full transition-all whitespace-nowrap cursor-pointer ${isActive}`}
+                        aria-pressed={isActive}
+                      >
+                        <div
+                          className={`text-lg p-2 rounded-full ${
+                            isActive
+                              ? "bg-[#0D1440] text-white"
+                              : "bg-blue-100 text-blue-600"
+                          }`}
                         >
-                          <div
-                            className={`text-lg p-2 rounded-full ${isActive
-                                ? "bg-[#0D1440] text-white"
-                                : "bg-blue-100 text-blue-600"
-                              }`}
-                          >
-                            {cat.icon}
-                          </div>
-                          <span className="text-sm font-medium">
-                            {cat.label}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                          {cat.icon}
+                        </div>
+                        <span className="text-sm font-medium">{cat.label}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
+          </div>
 
           {/* Tags Section */}
           <div className="w-full">

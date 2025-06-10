@@ -259,7 +259,7 @@ function Miscellaneoustools1() {
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
-        <div className="group relative z-10" onClick={(e) => handleWishlistClick(e, tool)}>
+        {/* <div className="group relative z-10" onClick={(e) => handleWishlistClick(e, tool)}>
           <img
             src={isFavorite ? whishlist2 : whishlist}
             alt="WishList"
@@ -272,6 +272,20 @@ function Miscellaneoustools1() {
               className="absolute top-1 right-2 w-5 h-5 transition-opacity duration-300 opacity-20 hover:opacity-100 cursor-pointer hover:scale-110"
             />
           )}
+        </div> */}
+        <div
+          className="group relative"
+          onClick={(e) => handleWishlistClick(e, tool)}
+        >
+          <img
+            src={isFavorite ? whishlist : whishlist}
+            alt="Wishlist"
+            className={`
+              absolute top-4 right-4 w-5 h-5 transition-transform duration-300 cursor-pointer
+              ${isFavorite ? "opacity-100" : "opacity-20"}
+              hover:scale-110
+            `}
+          />
         </div>
 
         {/* Tool Icon with background */}
@@ -294,7 +308,7 @@ function Miscellaneoustools1() {
             <img
               src={arrow2 || "/placeholder.svg"}
               alt="Arrow"
-              className="absolute inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+              className="absolute h-15 inset-0 m-auto transition-opacity duration-500 opacity-0 group-hover:opacity-100"
             />
           </div>
         </div>
