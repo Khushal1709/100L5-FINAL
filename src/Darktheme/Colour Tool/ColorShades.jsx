@@ -302,7 +302,7 @@ const ColorShadesGenerator = ({id="Color Shades Generator"}) => {
                         max="20"
                         value={step}
                         onChange={(e) => setStep(Number(e.target.value))}
-                        className="w-48 block"
+                        className="w-48 accent-white block"
                     />
                 </div>
 
@@ -314,7 +314,7 @@ const ColorShadesGenerator = ({id="Color Shades Generator"}) => {
                         max="5"
                         value={count}
                         onChange={(e) => setCount(Number(e.target.value))}
-                        className="w-48 block"
+                        className="w-48 accent-white block"
                     />
                 </div>
             </div>

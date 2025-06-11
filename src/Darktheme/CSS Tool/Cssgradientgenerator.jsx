@@ -389,7 +389,7 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
                 max="360"
                 value={angle}
                 onChange={(e) => setAngle(e.target.value)}
-                className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-2 accent-white rounded-lg  cursor-pointer"
               />
             </div>
           )}
@@ -415,7 +415,7 @@ const GradientGenerator = ({ id = "CSS Gradient Generator" }) => {
 
       <div className="mb-6">
         <label className="block font-medium mb-1 text-sm sm:text-base text-white">CSS</label>
-        <pre className="border border-gray-500 bg-[#16283E] p-4 rounded overflow-x-auto whitespace-pre-wrap text-xs sm:text-sm text-gray-500">
+        <pre className="border border-gray-500 bg-[#16283E] p-4 rounded overflow-x-auto whitespace-pre-wrap text-xs sm:text-sm text-gray-400">
           {cssOutput}
         </pre>
       </div>

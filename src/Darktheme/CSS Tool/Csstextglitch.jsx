@@ -329,7 +329,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
             <label className="block text-sm text-white mb-1">Font Size: {fontSize}px</label>
             <input
               type="range"
-              className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 accent-white rounded-lg  cursor-pointer"
               min="20"
               max="150"
               value={fontSize}
@@ -448,7 +448,7 @@ const CSSTextGlitchEffectGenerator = ({ id = "CSS Text Glitch" }) => {
         <div>
           <label className="block text-sm text-white mb-1">HTML & CSS Code</label>
           <div className="border border-gray-300 rounded bg-[#16283E]  p-4 overflow-x-auto">
-            <pre className="text-xs sm:text-sm whitespace-pre-wrap text-gray-500" ref={codeRef}>
+            <pre className="text-xs sm:text-sm whitespace-pre-wrap text-gray-400" ref={codeRef}>
               <code className="language-html">{generateCode()}</code>
             </pre>
           </div>

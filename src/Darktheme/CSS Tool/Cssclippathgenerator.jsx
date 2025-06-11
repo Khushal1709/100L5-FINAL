@@ -761,7 +761,7 @@ export default function ClipPathGenerator({id="CSS Clip Path Generator"}) {
       <div className="border border-gray-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
         <div className="mb-2 text-xs text-white sm:text-sm font-medium">CSS Code</div>
         <pre className="bg-[#16283E] text-white p-2 sm:p-3 rounded text-xs sm:text-sm overflow-x-auto">
-          <code>{clipPathCode}</code>
+          <code className="text-gray-400">{clipPathCode}</code>
         </pre>
       </div>
 

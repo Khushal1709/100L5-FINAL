@@ -486,7 +486,7 @@ ${useBorder ? `border: 1px solid rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.25);` : ""
           <div className=" px-4 py-2 border-b border-gray-200">
             <h3 className="text-sm font-medium text-white">CSS</h3>
           </div>
-          <pre className="p-4 text-sm font-mono text-gray-500 overflow-x-auto">
+          <pre className="p-4 text-sm font-mono text-gray-400 overflow-x-auto">
             <span className="font-bold">background:</span> {`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${opacity});`}
             {"\n"}<span className="font-bold">-webkit-backdrop-filter:</span> {`blur(${blur}px);`}
             {"\n"}<span className="font-bold">backdrop-filter:</span> {`blur(${blur}px);`}

@@ -498,10 +498,10 @@ export default function CubicBezierGenerator({ id = "CSS Cubic Bezier Generator"
 
           {/* CSS Output */}
           <div>
-            <label className="block text-xs font-medium text-gray-500 mb-1 ">
+            <label className="block text-xs font-medium text-white mb-1 ">
               CSS
             </label>
-            <pre className="bg-[#16283E] border border-gray-300 rounded px-3 py-2 font-mono text-sm text-white whitespace-pre mb-2 overflow-auto">
+            <pre className="bg-[#16283E] border border-gray-300 rounded px-3 py-2 font-mono text-sm text-gray-400 whitespace-pre mb-2 overflow-auto">
               {cssOut}
             </pre>
             <div className="flex flex-wrap gap-3">

@@ -377,7 +377,7 @@ export default function ImageCropper({ id = "Image Cropper" }) {
 
                     {/* Upload / Drag Area */}
                     <div
-                        className={`w-full max-w-4xl border-2 border-dashed rounded-lg flex flex-col items-center justify-center py-8 mb-8 transition-colors bg-white ${dragActive ? "border-indigo-400 bg-indigo-50" : "border-gray-300 bg-white"}`}
+                        className={`w-full max-w-4xl border-2 border-dashed rounded-lg flex flex-col items-center justify-center py-8 mb-8 transition-colors  ${dragActive ? "border-indigo-400 bg-[#273D58]" : "border-gray-300 bg-[#273D58]"}`}
                         onDragEnter={handleDrag}
                         onDragOver={handleDrag}
                         onDragLeave={handleDrag}
@@ -392,8 +392,8 @@ export default function ImageCropper({ id = "Image Cropper" }) {
                                     className="hidden"
                                     onChange={onSelectFile}
                                 />
-                                <label htmlFor="fileInput" className="cursor-pointer text-gray-500 text-center">
-                                    Drag your image here, or click to <span className="text-indigo-600 underline">browse</span>
+                                <label htmlFor="fileInput" className="cursor-pointer text-gray-400 text-center">
+                                    Drag your image here, or click to <span className="text-indigo-400 underline">Browse</span>
                                 </label>
                             </>
                         ) : (

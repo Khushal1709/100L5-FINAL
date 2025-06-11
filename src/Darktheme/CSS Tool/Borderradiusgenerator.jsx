@@ -365,7 +365,7 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
               </label>
               <input
                 type="range"
-                className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-2 accent-white rounded-lg  cursor-pointer"
                 min="100"
                 max="600"
                 value={width}
@@ -378,7 +378,7 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
               </label>
               <input
                 type="range"
-                className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-2 accent-white rounded-lg  cursor-pointer"
                 min="100"
                 max="360"
                 value={height}
@@ -412,8 +412,8 @@ const BorderRadiusGenerator = ({ id = "Border Radius Generator" }) => {
           {/* CSS Output */}
           <div className="mb-6 text-white">
             <label className="block text-sm sm:text-base  mb-1">CSS Code</label>
-            <div className="border border-gray-200 rounded p-3 bg-gray-100 overflow-x-auto whitespace-pre-wrap">
-              <code className="text-gray-800 text-xs sm:text-sm">
+            <div className="border border-gray-200 rounded p-3  overflow-x-auto whitespace-pre-wrap">
+              <code className="text-gray-400 text-xs sm:text-sm">
                 border-radius: {getBorderRadius()};
               </code>
             </div>

@@ -401,7 +401,7 @@ border-color: ${borderStyles.borderColor};
       {/* CSS Output */}
       <div className="mb-6">
         <div className="mb-2 font-medium text-sm sm:text-base text-white">CSS</div>
-        <pre className="border border-gray-200 bg-[316283E] text-gray-500 p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre-wrap">
+        <pre className="border border-gray-200 bg-[316283E] text-gray-400 p-4 rounded font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre-wrap">
           {cssCode}
         </pre>
         <button

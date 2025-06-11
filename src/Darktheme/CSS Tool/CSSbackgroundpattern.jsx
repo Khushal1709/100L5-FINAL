@@ -559,9 +559,9 @@ export default function PatternGenerator({id="CSS Background Pattern"}) {
           </div>
 
           {/* CSS Output */}
-          <div className="mt-6 bg-[#16283E] p-4 rounded relative">
+          <div className="mt-6 bg-[#16283E] border border-white p-4 rounded relative">
             <span className="text-xs text-white">CSS</span>
-            <pre className="text-xs sm:text-sm mt-1 text-gray-500">
+            <pre className="text-xs sm:text-sm mt-1 text-gray-400">
               {getPatternCSS(patternType, patternColor, bgColor, patternSize)}
             </pre>
             <button

@@ -470,8 +470,9 @@ const ProductFinderHero = () => {
               </div>
             </div>
           </div>
+          </section>
 
-          <Link to="/Productfinder1">
+         <Link to="/Productfinder1">
             {/* Product Cards */}
             <div className=" max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
               {cards.length > 0 ? (
@@ -526,7 +527,6 @@ const ProductFinderHero = () => {
               )}
             </div>
           </Link>
-        </section>
       </div>
 
       <div className="bg-[#16283E]">

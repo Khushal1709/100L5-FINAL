@@ -372,7 +372,7 @@ export default function BlobGenerator({ id = "BlobGenerator" }) {
                                     max={10}
                                     value={growth}
                                     onChange={handleGrowth}
-                                    className="w-full accent-blue-500"
+                                    className="w-full accent-white"
                                 />
                             </div>
                             <div>
@@ -385,7 +385,7 @@ export default function BlobGenerator({ id = "BlobGenerator" }) {
                                     max={12}
                                     value={edges}
                                     onChange={handleEdges}
-                                    className="w-full accent-blue-500 "
+                                    className="w-full accent-white "
                                 />
                             </div>
                             <div className="flex items-center gap-2 mt-2 text-white">

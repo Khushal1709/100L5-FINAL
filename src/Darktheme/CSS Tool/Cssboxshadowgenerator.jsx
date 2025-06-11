@@ -284,7 +284,7 @@ box-shadow: ${shadowValue};
                     max="50"
                     value={hOffset}
                     onChange={(e) => setHOffset(+e.target.value)}
-                    className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 accent-white rounded-lg cursor-pointer"
                   />
                 </div>
                 <div>
@@ -295,7 +295,7 @@ box-shadow: ${shadowValue};
                     max="50"
                     value={vOffset}
                     onChange={(e) => setVOffset(+e.target.value)}
-                    className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 accent-white rounded-lg  cursor-pointer"
                   />
                 </div>
                 <div>
@@ -306,7 +306,7 @@ box-shadow: ${shadowValue};
                     max="100"
                     value={blur}
                     onChange={(e) => setBlur(+e.target.value)}
-                    className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 accent-white rounded-lg  cursor-pointer"
                   />
                 </div>
                 <div>
@@ -317,7 +317,7 @@ box-shadow: ${shadowValue};
                     max="50"
                     value={spread}
                     onChange={(e) => setSpread(+e.target.value)}
-                    className="w-full h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer"
+                    className="w-full h-2 accent-white rounded-lg cursor-pointer"
                   />
                 </div>
               </div>
@@ -364,9 +364,9 @@ box-shadow: ${shadowValue};
             </div>
 
             {/* CSS Output */}
-            <div className="border border-gray-200 bg-gray-100 p-4 rounded mt-6 font-mono text-xs sm:text-sm whitespace-pre-wrap overflow-x-auto">
-              <h1 className="text-sm sm:text-base font-semibold mb-2">CSS</h1>
-              {cssCode}
+            <div className="border border-gray-200 p-4 rounded mt-6 font-mono text-xs sm:text-sm whitespace-pre-wrap overflow-x-auto">
+              <h1 className="text-sm sm:text-base font-semibold mb-2 text-white">CSS</h1>
+              <pre className="text-gray-400">{cssCode}</pre>
             </div>
 
             {/* Buttons */}

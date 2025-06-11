@@ -2135,9 +2135,9 @@ export default function CSSLoaderGenerator({ id = "CSS Loader" }) {
                 </div>
 
                 {hoveredLoaderId === loader.id && (
-                  <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center rounded-lg">
+                  <div className="absolute inset-0 bg-opacity-80 flex items-center justify-center rounded-lg">
                     <button
-                      className="bg-white px-3 py-1 rounded-md shadow-sm hover:bg-indigo-50 transition-colors"
+                      className="bg-white text-black px-3 py-1 rounded-md shadow-sm hover:bg-indigo-50 transition-colors cursor-pointer"
                       onClick={(e) => {
                         e.stopPropagation();
                         setSelectedLoader(loader);
@@ -2220,7 +2220,7 @@ export default function CSSLoaderGenerator({ id = "CSS Loader" }) {
 
         {/* Code Modal */}
         {selectedLoader && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div
               className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-auto code-modal"
               ref={modalRef}
@@ -2230,7 +2230,7 @@ export default function CSSLoaderGenerator({ id = "CSS Loader" }) {
                   {selectedLoader.name} Code
                 </h2>
                 <button
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-gray-500 hover:text-gray-700 cursor-pointer"
                   onClick={() => setSelectedLoader(null)}
                 >
                   <svg
