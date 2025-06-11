@@ -290,7 +290,7 @@ function Texttool1() {
     {
       id: "google-fonts-pair-finder",
       title: "Google Fonts Pair Finder",
-      description: "Find font pairs that look great on websites, apps, headings, body, and designs.",
+      description: "Discover font combinations that look amazing on designs, web pages, apps, headings, and body text.",
           icon: <MdGroups className="text-white w-[60px] h-[60px] rounded-lg p-1  bg-blue-500" />,
       filename: "/Googlefont",
     },

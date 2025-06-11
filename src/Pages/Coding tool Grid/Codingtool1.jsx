@@ -261,7 +261,7 @@ const tools = [
     {
       title: "React Native Shadow Generator",
       description: "Generate stylish box shadows in React Native, fully compatible with both iOS and Android platforms.",
-      icon: <FaReact className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
+      icon: <FaReact className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400 " />,
       filename: "/Shadow",
     },
     {
@@ -386,7 +386,7 @@ const tools = [
         <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
 
         {/* Title */}
-        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[17px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
 
         {/* Description */}
         <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
