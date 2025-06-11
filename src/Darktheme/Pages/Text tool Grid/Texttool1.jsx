@@ -358,12 +358,12 @@ function Texttool1() {
         </div>
 
         {/* Title */}
-        <h3 className="text-left font-semibold text-white mb-2 break-words">
+        <h3 className="text-left text-[18px] whitespace-nowrap	 font-semibold text-white mb-2 break-words">
           {tool.title}
         </h3>
 
         {/* Description */}
-        <p className="text-left text-gray-400 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-400 mb-8">{tool.description}</p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
@@ -402,7 +402,7 @@ function Texttool1() {
             <div key={chunkIndex}>
               {chunk.length === 4 ? (
                 // Full row with 4 items - use grid
-                <div className="grid grid-cols-2 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {chunk.map((tool) => (
                     <ToolCard key={tool.id} tool={tool} />
                   ))}

@@ -290,7 +290,7 @@ function Texttool1() {
     {
       id: "google-fonts-pair-finder",
       title: "Google Fonts Pair Finder",
-      description: "Find font pairs that look great on designs, pages, apps, headings, body",
+      description: "Find font pairs that look great on websites, apps, headings, body, and designs.",
           icon: <MdGroups className="text-white w-[60px] h-[60px] rounded-lg p-1  bg-blue-500" />,
       filename: "/Googlefont",
     },
@@ -380,12 +380,12 @@ function Texttool1() {
         </div>
 
         {/* Title */}
-        <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">
           {tool.title}
         </h3>
 
         {/* Description */}
-        <p className="text-left text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
 
         {/* Arrow Button */}
         <div className="group absolute bottom-5.5 right-1">

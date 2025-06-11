@@ -193,7 +193,7 @@ function Colortool1() {
  const tools = [
     {
       title: "AI Color Palette Generator",
-      description: "Craft perfect color palettes effortlessly with AI-driven creativity.",
+      description: "Create stunning color palettes easily with the help of AI-powered intelligent color suggestions.",
       icon: <FaBrain className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
       filename: "/AIColor",
     },
@@ -288,10 +288,10 @@ function Colortool1() {
         <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
 
         {/* Title */}
-        <h3 className="text-left font-semibold text-white mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-white mb-2 break-words">{tool.title}</h3>
 
         {/* Description */}
-        <p className="text-left text-gray-400 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-400 mb-8">{tool.description}</p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">

@@ -270,7 +270,7 @@ function Imagestools1() {
     },
     {
       title: "Image Color Picker",
-      description: "Pick any color from image using eyedropper and get detailed info",
+      description: "Use the eyedropper tool to pick any color from an image and view detailed information.",
       icon: <TbColorPicker className="text-white w-[60px] p-1  h-[60px] rounded-lg bg-pink-400" />,
       filename: "/ImageColorPicker",
     },
@@ -288,7 +288,7 @@ function Imagestools1() {
     },
     {
       title: "SVG to PNG Converter",
-      description: "Easily convert any SVG file into a PNG image and scale it proportionally",
+      description: "Easily convert any SVG file to a PNG image and scale it with perfect proportions.",
       icon: <SiConvertio className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />,
       filename: "/Svgpng",
     },
@@ -378,10 +378,10 @@ function Imagestools1() {
         <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
 
         {/* Title */}
-        <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
 
         {/* Description */}
-        <p className="text-left text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">

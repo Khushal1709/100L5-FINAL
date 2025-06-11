@@ -260,13 +260,13 @@ const tools = [
     },
     {
       title: "React Native Shadow Generator",
-      description: "Generate fancy box shadows in React Native both for iOS and Android",
+      description: "Generate stylish box shadows in React Native, fully compatible with both iOS and Android platforms.",
       icon: <FaReact className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
       filename: "/Shadow",
     },
     {
       title: "Base64 Encoder Decoder",
-      description: "Encode your strings to Base64 or decode strings encoded with Base64",
+      description: "Encode your strings to Base64 or decode previously Base64-encoded strings quickly and easily.",
       icon: <PiDatabaseBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
       filename: "/BaseEncoderDecoder",
     },
@@ -284,7 +284,7 @@ const tools = [
     },
     {
       title: "HTML Minifier",
-      description: "Minify your HTML code, then copy it to clipboard or download as .html file",
+      description: "Minify your HTML code, then copy it to clipboard or download it as an .html file.",
       icon: <ImHtmlFive2 className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
       filename: "/HTMLMinifier",
     },
@@ -302,19 +302,19 @@ const tools = [
     },
     {
       title: "HTML Formatter",
-      description: "Format HTML with beautifier, then copy or download the result",
+      description: "Beautify your HTML code, then easily copy it or download the formatted result.",
       icon: <LiaHtml5 className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-yellow-400" />,
       filename: "/HTMLFormatter",
     },
     {
       title: "CSS Formatter",
-      description: "Beautify CSS code, then copy to clipboard or download as style.css",
+      description: "Beautify your CSS code, then copy it to clipboard or download it as style.css file.",
       icon: <SiCsswizardry className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
       filename: "/CSSFormatter",
     },
     {
       title: "JavaScript Formatter",
-      description: "Beautify JavaScript code, then copy to clipboard or download as file",
+      description: "Beautify your JavaScript code, then copy it to clipboard or download it as a file.",
       icon: <PiFileJsxBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
       filename: "/JavaScriptFormatter",
     },
@@ -386,10 +386,10 @@ const tools = [
         <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
 
         {/* Title */}
-        <h3 className="text-left font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
 
         {/* Description */}
-        <p className="text-left text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
