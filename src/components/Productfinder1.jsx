@@ -178,7 +178,7 @@ const ProductFinderHero = () => {
                   </a>
                 </div>
                 {/* <!-- Card --> */}
-                <div class="bg-white rounded-3xl shadow p-6 md:p-10">
+                <div class="bg-white rounded-3xl shadow p-6 md:p-10 mt-5 border border-gray-300">
                   {/* <!-- Image --> */}
                   <div class="overflow-hidden rounded-2xl mb-5">
                     <img

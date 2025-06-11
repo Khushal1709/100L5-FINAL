@@ -67,7 +67,7 @@ const ContactSection = () => {
                   <img
                     src={explore1}
                     alt="Arrow Icon"
-                    className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
+                    className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6  hover:scale-150 transition-transform"
                   />
                 </div>
                 <div className="relative inline-flex items-center">

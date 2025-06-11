@@ -10,4 +10,13 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  
+  h1 {
+  font-family: 'David Libre', serif;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+

@@ -115,7 +115,7 @@ const ProductFinderHero = () => {
                       <img
                         src={explore}
                         alt="Arrow Icon"
-                        className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
+                        className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6 cursor-pointer transition-transform  hover:scale-150"
                       />
                     </div>
                     <div className="relative inline-flex items-center">
@@ -127,7 +127,7 @@ const ProductFinderHero = () => {
                       <img
                         src={finder}
                         alt="Finder Icon"
-                        className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
+                        className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform cursor-pointer"
                       />
                     </div>
                   </div>

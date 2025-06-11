@@ -201,12 +201,12 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
   function renderBasicLoader() {
     return (
       <div className="relative w-full h-full flex flex-col items-center justify-center">
-        <div className="bg-indigo-100 rounded-full w-32 h-8 mb-2"></div>
+
         <div className="relative">
           <div className="h-12 w-12 rounded-full border-4 border-indigo-200"></div>
           <div className="absolute top-0 left-0 h-12 w-12 rounded-full border-t-4 border-l-4 border-indigo-600 animate-spin"></div>
         </div>
-        <div className="bg-indigo-100 rounded-full w-32 h-8 mt-2"></div>
+   
       </div>
     );
   }
@@ -2128,9 +2128,9 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
               </div>
 
               {hoveredLoaderId === loader.id && (
-                <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center rounded-lg">
+                <div className="absolute inset-0  bg-black/60 flex items-center justify-center rounded-lg ">
                   <button
-                    className="bg-white px-3 py-1 rounded-md shadow-sm hover:bg-indigo-50 transition-colors"
+                    className="bg-white text-black px-3 py-1 rounded-md shadow-sm hover:bg-indigo-50 transition-colors"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedLoader(loader);
@@ -2213,7 +2213,7 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
 
       {/* Code Modal */}
       {selectedLoader && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div
             className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-auto code-modal"
             ref={modalRef}
@@ -2223,7 +2223,7 @@ export default function CSSLoaderGenerator({id="CSS Loader"}) {
                 {selectedLoader.name} Code
               </h2>
               <button
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 cursor-pointer"
                 onClick={() => setSelectedLoader(null)}
               >
                 <svg

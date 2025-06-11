@@ -315,11 +315,11 @@ function Home() {
             <img src={text2} alt="" className="h-auto w-auto" />
           </div>
           <div className="px-4 py-10 md:py-16">
-            <div style={{ fontFamily: "David Libre" }} className="text-center mb-10">
-              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-[#0f172a] mb-4">
+            <div className="text-center mb-10">
+              <h1  className="text-4xl md:text-5xl lg:text-5xl font-bold text-[#0f172a] mb-4">
                 Free Image to Text <br />Converter
               </h1>
-              <p className="text-gray-700 max-w-2xl mx-auto">
+              <p    className="text-gray-700 max-w-2xl mx-auto">
                 Digitize your documents and save time with this smart and reliable tool.
               </p>
             </div>
@@ -327,7 +327,7 @@ function Home() {
               <h2 className="text-2xl md:text-2xl font-semibold text-center mb-6">
                 Free Image To Text Converter
               </h2>
-              <p className="text-gray-700 leading-relaxed text-justify">
+              <p  className="text-gray-700 leading-relaxed text-justify">
                 Convert images to editable text instantly with our Free Image to Text Converter. Using powerful OCR (Optical Character Recognition) technology, this tool allows you to extract text from any image - including scanned documents, photos, screenshots, or handwritten notes - with just a few clicks. No sign-up, no fees, and no hassle.
               </p>
             </div>

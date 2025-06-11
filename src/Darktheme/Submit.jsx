@@ -230,7 +230,7 @@ const ProductFinderHero = () => {
                       <img
                         src={explore1}
                         alt="Arrow Icon"
-                        className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
+                        className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6  hover:scale-150"
                       />
                     </div>
                     <div className="relative inline-flex items-center">
@@ -243,7 +243,7 @@ const ProductFinderHero = () => {
                       <img
                         src={finder1}
                         alt="Finder Icon"
-                        className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
+                        className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6  transition-transform   hover:scale-150"
                       />
                     </div>
                   </div>
@@ -283,7 +283,7 @@ const ProductFinderHero = () => {
               />
                 </div>
               </div>
-            <div class="bg-[#273D58]  rounded-3xl p-8 max-w-7xl mx-auto mb-5 shadow-lg">
+            <div class="relative bg-[#273D58]  rounded-3xl p-8 max-w-7xl mx-auto mb-5 shadow-lg">
               <h2 class="text-2xl font-bold text-white mb-6 ">
                 Submit your product
               </h2>
@@ -299,12 +299,12 @@ const ProductFinderHero = () => {
                     id="product-url"
                     type="url"
                     placeholder="URL of your Product"
-                    class="mt-2 w-full bg-transparent text-[#888888] placeholder-[#bdbdbd] border-none focus:ring-0 focus:outline-none text-base"
+                    class="mt-2 w-full bg-transparent text-white placeholder-[#bdbdbd] border-none focus:ring-0 focus:outline-none text-base"
                   />
                 </div>
                 <button
                   type="submit"
-                  class="bg-[#D5C7FF] text-black font-medium rounded-full px-8 py-2 transition hover:bg-[#23233c]"
+                  class="bg-[#D5C7FF] text-black font-medium rounded-full px-8 py-2 transition cursor-pointer"
                 >
                   Submit
                 </button>

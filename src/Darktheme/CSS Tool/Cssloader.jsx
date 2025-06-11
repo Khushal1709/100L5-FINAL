@@ -201,12 +201,12 @@ export default function CSSLoaderGenerator({ id = "CSS Loader" }) {
   function renderBasicLoader() {
     return (
       <div className="relative w-full h-full flex flex-col items-center justify-center">
-        <div className="bg-indigo-100 rounded-full w-32 h-8 mb-2"></div>
+     
         <div className="relative">
           <div className="h-12 w-12 rounded-full border-4 border-indigo-200"></div>
           <div className="absolute top-0 left-0 h-12 w-12 rounded-full border-t-4 border-l-4 border-indigo-600 animate-spin"></div>
         </div>
-        <div className="bg-indigo-100 rounded-full w-32 h-8 mt-2"></div>
+    
       </div>
     );
   }

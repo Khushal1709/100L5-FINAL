@@ -33,13 +33,13 @@ function Information({
     >
 
               <div className="relative inline-flex items-center ">
-                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer">
+                <button className="bg-gradient-to-r from-[#B8D0FF] to-[#E8D0FF] text-[#14143B] font-bold px-6 sm:px-8 py-2 rounded-full shadow-md whitespace-nowrap cursor-pointer ">
                   {buttonText}
                 </button>
                 <img
                   src={srcImg}
                   alt="Arrow Icon"
-                  className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6"
+                  className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6 transition-transform hover:scale-150 cursor-pointer"
                 />
               </div>
             </Link>

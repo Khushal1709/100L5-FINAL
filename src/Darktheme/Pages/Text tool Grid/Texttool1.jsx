@@ -402,7 +402,7 @@ function Texttool1() {
             <div key={chunkIndex}>
               {chunk.length === 4 ? (
                 // Full row with 4 items - use grid
-                <div className="grid grid-cols-1 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {chunk.map((tool) => (
                     <ToolCard key={tool.id} tool={tool} />
                   ))}
