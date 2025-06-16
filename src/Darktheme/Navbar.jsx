@@ -2588,7 +2588,7 @@ export default function Navbar() {
                   onClick={toggleSearch}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 text-black"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-4 w-4 cursor-pointer" />
                 </button>
               </div>
               {/* Search Results */}

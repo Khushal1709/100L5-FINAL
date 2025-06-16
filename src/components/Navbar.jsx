@@ -1161,7 +1161,7 @@ export default function Navbar() {
     active ? "text-gray-600" : "text-gray-700";
 
   return (
-    <header className="w-full lg-static top-0 left-0 z-50 relative bg-transparent">
+    <header className="w-ful lg-static top-0 left-0 z-50 relative bg-transparent">
       <div
         className={`w-full mx-auto px-4 py-3 lg:px-8 flex justify-between items-center ${
           mobileMenuOpen ? "relative z-50" : ""
@@ -1455,7 +1455,7 @@ export default function Navbar() {
                   onClick={toggleSearch}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-4 w-4 cursor-pointer" />
                 </button>
               </div>
               {/* Search Results */}

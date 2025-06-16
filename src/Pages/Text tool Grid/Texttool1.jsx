@@ -419,26 +419,12 @@ function Texttool1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="space-y-6">
-          {toolChunks.map((chunk, chunkIndex) => (
-            <div key={chunkIndex}>
-              {chunk.length === 4 ? (
-                // Full row with 4 items - use grid
-                <div className="grid grid-cols-1 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {chunk.map((tool) => (
-                    <ToolCard key={tool.id} tool={tool} />
-                  ))}
-                </div>
-              ) : (
-                // Partial row with 1-3 items - use flex with center alignment
-                <div className="flex flex-wrap justify-center gap-6">
-                  {chunk.map((tool) => (
-                    <ToolCard key={tool.id} tool={tool} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+ <div className="space-y-6">
+          <div className="flex flex-wrap justify-center gap-6">
+            {tools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -11,39 +11,48 @@ import { useContext } from "react";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
 function Miscellaneoustool1() {
- const tools = [
+  const tools = [
     {
       title: "Bar Code Generator",
       description:
         "Generate barcodes for different international standardizations with desired sizes",
-      icon: <ImBarcode className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400 " />,
+      icon: (
+        <ImBarcode className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400 " />
+      ),
       filename: "/Barcode",
     },
     {
       title: "QR Code Generator",
       description:
         "Generate QR code for your links or texts easily and download them as an image file",
-      icon: <BsQrCode className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-yellow-400" />,
+      icon: (
+        <BsQrCode className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-yellow-400" />
+      ),
       filename: "/QRcode",
     },
     {
       title: "List Randomizer",
       description:
         "Randomize lists, run lotteries, draw campaigns, or pick random people easily",
-      icon: <MdOutlineContentPaste className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
+      icon: (
+        <MdOutlineContentPaste className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />
+      ),
       filename: "/Randomizer",
     },
     {
       title: "Strong Random Password",
       description:
         "Generate strong random passwords and check their strength using a password meter",
-      icon: <BiSolidLock className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
+      icon: (
+        <BiSolidLock className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />
+      ),
       filename: "/StrongRandom",
     },
   ];
 
   const navigate = useNavigate();
-  const { favoriteTools, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { favoriteTools, addToFavorites, removeFromFavorites } =
+    useContext(FavoritesContext);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -85,7 +94,10 @@ function Miscellaneoustool1() {
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
-        <div className="relative z-10" onClick={(e) => handleWishlistClick(e, tool)}>
+        <div
+          className="relative z-10"
+          onClick={(e) => handleWishlistClick(e, tool)}
+        >
           <img
             src={isFavorite ? whishlist2 : whishlist}
             alt="Wishlist"
@@ -103,13 +115,19 @@ function Miscellaneoustool1() {
         </div>
 
         {/* Tool Icon with background */}
-        <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
+        <div className="rounded-md flex items-center justify-start mb-4">
+          {tool.icon}
+        </div>
 
         {/* Title */}
-        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">
+          {tool.title}
+        </h3>
 
         {/* Description */}
-        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">
+          {tool.description}
+        </p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
@@ -139,28 +157,16 @@ function Miscellaneoustool1() {
         >
           Miscellaneous Tools
         </h2>
-        <p className="text-center text-gray-500 mb-10">Smart Tools. Simple Solutions.</p>
+        <p className="text-center text-gray-500 mb-10">
+          Smart Tools. Simple Solutions.
+        </p>
 
         <div className="space-y-6">
-          {toolChunks.map((chunk, chunkIndex) => (
-            <div key={chunkIndex}>
-              {chunk.length === 4 ? (
-                // Full row with 4 items - use flex for mobile, grid for larger screens
-                <div className="flex flex-wrap justify-center gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              ) : (
-                // Partial row with 1-3 items - use flex with center alignment
-                <div className="flex flex-wrap justify-center gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+          <div className="flex flex-wrap justify-center gap-6">
+            {tools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

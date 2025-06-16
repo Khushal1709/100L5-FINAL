@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import home1 from "../image/home1.svg";
+import testing from "../image/testing.png";
 import finder from "../image/finder.svg";
 import leaf2 from "../image/leaf2.svg";
 import men from "../image/men.svg";
@@ -25,7 +25,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import firefox from "../image/firefox.svg";
 import ston from "../image/ston.svg";
-import { Link,useLocation,useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import chrome from "../image/chrome.svg";
 import leaf1 from "../image/leaf1.svg";
 import explore from "../image/explore.svg";
@@ -35,8 +35,9 @@ import Colortool1 from "../Pages/Color tool Grid/Colortool1";
 import Socialmediatool1 from "../Pages/Socialmedia tool Grid/Socialmediatool1";
 import Miscellaneoustool1 from "../Pages/Miscellaneous tool Grid/Miscellaneoustool1";
 import tool from "../image/tool.svg";
+import Support from "./Support";
 function Home() {
-   const location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const tools = [
     {
@@ -213,7 +214,7 @@ function Home() {
     }
   };
 
-   useEffect(() => {
+  useEffect(() => {
     if (location.state?.scrollTo === "featured-tools") {
       if (featuredToolsRef.current) {
         featuredToolsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -223,7 +224,6 @@ function Home() {
     }
   }, [location, navigate]);
 
- 
   return (
     <>
       <div className="mx-auto">
@@ -251,14 +251,23 @@ function Home() {
           className="top-15 absolute hidden lg:block"
         />
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-12 flex flex-col lg:flex-row items-center justify-between relative z-10 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-screen">
+        <div className="py-20 flex flex-col lg:flex-row items-center justify-between relative z-10 gap-10">
+          {/* Image section - Moved first for tablet (sm and md) view, hidden in mobile */}
+          <div className="flex-1 flex justify-center max-w-md w-full order-first sm:order-first md:order-first lg:order-last sm:flex">
+            <img
+              src={testing}
+              alt="Illustration"
+              className="w-full scale-120 mt-[-60px]  max-w-[250px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-md"
+            />
+          </div>
+          {/* Text content section - Moved after image for tablet view, visible in mobile */}
           <div className="flex-1 text-center lg:text-left space-y-6 max-w-xl mx-auto lg:mx-0">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
               All Online Tools in <br />
               "One Box"
             </h1>
-            <p className="text-gray-600 text-base sm:text-lg">
+            <p className="text-gray-400 text-base sm:text-lg">
               No need to bookmark the tools you like separately.
             </p>
             <p className="text-gray-600 text-base sm:text-lg">
@@ -276,7 +285,7 @@ function Home() {
                 <img
                   src={explore}
                   alt="Arrow Icon"
-                  className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 cursor-pointer"
+                  className="absolute right-[-10px] w-5 h-5 sm:w-6 sm:h-6 hover:scale-150"
                 />
               </div>
               <div className="relative inline-flex items-center">
@@ -288,83 +297,27 @@ function Home() {
                 <img
                   src={finder}
                   alt="Finder Icon"
-                  className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform cursor-pointer"
+                  className="absolute -top-1 -right-2 w-5 h-5 sm:w-6 sm:h-6 hover:scale-150 transition-transform"
                 />
               </div>
             </div>
-
-            <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 mt-10 max-w-md mx-auto lg:mx-0">
+            <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-10 max-w-md mx-auto lg:mx-0">
               <div className="flex flex-col items-center space-y-3">
                 <Link to="/Signup">
-                  <button className="bg-gray-100 px-8 py-2 rounded-full text-gray-600 font-semibold shadow-md whitespace-nowrap cursor-pointer">
+                  <button className="bg-gray-100  lg:mr-14 px-12  py-2 rounded-full text-gray-600 font-semibold shadow-md whitespace-nowrap cursor-pointer">
                     LOGIN / REGISTER
                   </button>
                 </Link>
-                {/* <Link to="/Login">
-                  <div className="text-red-600 font-semibold cursor-pointer hover:underline select-none">
-                    SIGN IN
-                  </div>
-                </Link> */}
               </div>
-{/* 
-              <div className="text-center">
-                <p className="text-sm text-gray-500 mb-2 max-w-xs mx-auto sm:mx-0">
-                  Get the extension and access all tools with just one click
-                </p>
-                <div className="flex items-center justify-center gap-4">
-                  <div className="h-px w-12 bg-gray-300" />
-                  <a
-                    href="https://chrome.google.com/webstore"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    <img
-                      src={chrome}
-                      alt="Chrome"
-                      className="w-6 h-6"
-                    />
-                  </a>
-                  <a
-                    href="https://chrome.google.com/webstore"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    <img
-                      src={firefox}
-                      alt="Firefox"
-                      className="w-6 h-6"
-                    />
-                  </a>
-                  <div className="h-px w-12 bg-gray-300" />
-                </div>
-              </div> */}
             </div>
-          </div>
-
-          <div className="flex-1 flex justify-center max-w-md w-full">
-            <img
-              src={home1}
-              alt="Illustration"
-              className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
-            />
           </div>
         </div>
       </div>
 
       <div className="bg-[#BAD9FF] relative overflow-hidden">
         <div className="absolute right-0 top-1/4 opacity-5 pointer-events-none">
-          <img
-            src={leaf2}
-            alt=""
-            className="h-auto w-auto"
-          />
-          <img
-            src={text2}
-            alt=""
-            className="h-auto w-auto"
-          />
+          <img src={leaf2} alt="" className="h-auto w-auto" />
+          <img src={text2} alt="" className="h-auto w-auto" />
         </div>
         <div className="px-4 py-10 md:py-16">
           <div
@@ -434,11 +387,11 @@ function Home() {
                   const content = (
                     <div
                       key={index}
-                      className={`${tool.bgColor} rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
+                      className={`${tool.bgColor}  relative mt-2 rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
                     >
                       <img
                         src={tool.icon}
-                        className="w-10 h-10"
+                        className=" absolute hover:scale-125  z-50 w-10 h-10  -top-2 left-0 "
                         alt={tool.title}
                       />
                       <p className="text-sm font-semibold text-indigo-900 text-center w-full">
@@ -467,7 +420,7 @@ function Home() {
           <img
             src={tool}
             alt="Tool Background"
-            className=" opacity-100 relative h-[150px] md:h-[13rem]"
+            className=" relative h-[150px] md:h-[13rem]"
           />
 
           <div className="absolute md:top-12 left-0 w-full h flex flex-col items-center justify-center px-4">
@@ -488,7 +441,7 @@ function Home() {
                 {[...categories, ...categories].map((cat, idx) => (
                   <div
                     key={idx}
-                    className="relative flex items-center px-6 py-3 cursor-pointer rounded-[2rem] bg-[#F6F5F8]  transition-all hover:bg-blue-200  border border-gray-200 opacity-80 duration-200 min-w-[200px] md:min-w-[260px]   max-w-xs"
+                    className="relative flex items-center px-6 py-3 cursor-pointer rounded-[2rem] bg-[#F6F5F8]  transition-all hover:bg-blue-200  border border-gray-200  duration-200 min-w-[200px] md:min-w-[260px]   max-w-xs"
                     onClick={() => handleCategoryClick(cat.name)}
                   >
                     <img
@@ -541,10 +494,12 @@ function Home() {
           <Miscellaneoustool1 />
         </div>
       </div>
+      <div className="md:p-2">
+        <Support />
+      </div>
       <Footer />
     </>
   );
 }
 
 export default Home;
-

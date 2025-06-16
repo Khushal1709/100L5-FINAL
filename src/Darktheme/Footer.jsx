@@ -58,7 +58,7 @@ export default function Footer() {
                   <img
                     src={footerlogo}
                     alt="Footer Logo"
-                    className=" rounded flex items-center justify-center mr-2"
+                    className=" rounded flex items-center justify-center mr-2 "
                     onClick={scrollToTop}
                   />
                 </Link>
@@ -74,25 +74,25 @@ export default function Footer() {
             <div className="flex space-x-3">
               <Link
                 to="https://www.facebook.com/"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors z-20"
               >
                 <img src={facebook1} size={18} className="text-gray-700" />
               </Link>
               <Link
                 to="https://www.instagram.com/"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors z-20"
               >
                 <img src={instagram1} size={18} className="text-gray-700" />
               </Link>
               <Link
                 to="https://x.com/"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors z-20"
               >
                 <img src={twitter1} size={18} className="" />
               </Link>
               <Link
                 to="https://in.linkedin.com/"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-gray-100 transition-colors z-20"
               >
                 <img src={linkedin1} size={18} className="text-gray-700" />
               </Link>
@@ -108,7 +108,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                   onClick={scrollToTop}
                 >
                   Home
@@ -118,7 +118,7 @@ export default function Footer() {
                 <Link
                   to="/About"
                   onClick={scrollToTop}
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   About Us
                 </Link>
@@ -127,7 +127,7 @@ export default function Footer() {
                 <Link
                   to="/Contact"
                   onClick={scrollToTop}
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -144,7 +144,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Best AI Youtube Channels
                 </Link>
@@ -152,7 +152,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Top 100 AI
                 </Link>
@@ -160,15 +160,15 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   GPTs List
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
-                  className="text-white transition-colors"
+                  hregray-400
+                  className="text-gray-400 transition-colors"
                 >
                   Hubspot AI Tools
                 </Link>
@@ -176,7 +176,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Best AI Agents
                 </Link>
@@ -193,7 +193,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Tutorials, tips and blog
                 </Link>
@@ -201,7 +201,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   AI Conferences Agenda
                 </Link>
@@ -209,7 +209,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   AI Glossary & Lexicon
                 </Link>
@@ -217,7 +217,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Explore AI Jobs
                 </Link>
@@ -234,7 +234,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Terms & Conditions
                 </Link>
@@ -242,7 +242,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-white transition-colors"
+                  className="text-gray-400 transition-colors"
                 >
                   Privacy & Policy
                 </Link>
@@ -252,7 +252,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200 my-8"></div>
+        <div className="bg my-8"></div>
 
         {/* Copyright */}
         <div className="text-center text-white text-sm">

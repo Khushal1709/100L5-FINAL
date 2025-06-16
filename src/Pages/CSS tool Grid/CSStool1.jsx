@@ -219,10 +219,6 @@
 
 // export default CSStools1;
 
-
-
-
-
 import Arrow from "../../image/arrow.svg";
 import Arrow2 from "../../image/arrow2.svg";
 import whishlist from "../../image/whishlist.svg";
@@ -247,76 +243,97 @@ function CSStools1() {
       title: "CSS Clip Path Generator",
       description:
         "Generate CSS clip-path with different patterns and use clip-path property in your projects",
-      icon: <MdOutlineDocumentScanner className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-blue-400" />,
+      icon: (
+        <MdOutlineDocumentScanner className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-blue-400" />
+      ),
       filename: "/Cssclippathgenerator",
     },
     {
       title: "CSS Loader",
       description:
         "Generate fancy CSS loaders by specifying the type, color, and size of the loading indicator",
-      icon: <LuLoader className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />,
+      icon: (
+        <LuLoader className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />
+      ),
       filename: "/Cssloader",
     },
     {
       title: "CSS Background Pattern",
       description:
         "Generate beautiful CSS-only background patterns and use it in your projects right away",
-      icon: <TbBackground className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />,
+      icon: (
+        <TbBackground className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />
+      ),
       filename: "/CSSbackgroundpattern",
     },
     {
       title: "CSS Cubic Bezier Generator",
       description:
         "Easily create CSS cubic Bezier easing by previewing animations and progress graphs live",
-      icon: <LuSpline className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />,
+      icon: (
+        <LuSpline className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />
+      ),
       filename: "/Csscubic",
     },
     {
       title: "CSS Glass Morphism",
       description:
         "Easily create CSS for frosted-glass effects by adding background blur to elements",
-      icon: <IoMdPhonePortrait className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />,
+      icon: (
+        <IoMdPhonePortrait className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />
+      ),
       filename: "/Cssglassmorphism",
     },
     {
       title: "CSS Text Glitch",
       description:
         "Generate CSS text glitch effect and create fancy text animations by using pure CSS",
-      icon: <CgGoogle className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />,
+      icon: (
+        <CgGoogle className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />
+      ),
       filename: "/Csstextglitch",
     },
     {
       title: "CSS Gradient Generator",
       description:
         "Generate beautiful CSS gradients either by using presets or customizing your own",
-      icon: <MdGradient className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-blue-400" />,
+      icon: (
+        <MdGradient className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-blue-400" />
+      ),
       filename: "/Cssgradientgenerator",
     },
     {
       title: "CSS Triangle Generator",
       description:
         "Generate CSS code for triangle shapes with desired width, height, and color",
-      icon: <IoTriangleSharp className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />,
+      icon: (
+        <IoTriangleSharp className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-yellow-400" />
+      ),
       filename: "/CSStrianglegenerator",
     },
     {
       title: "CSS Box Shadow Generator",
       description:
         "Generate CSS code for box shadows while previewing it for box, circle, or header design",
-      icon: <FaBoxArchive className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />,
+      icon: (
+        <FaBoxArchive className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-orange-400" />
+      ),
       filename: "/Cssboxshadowgenerator",
     },
     {
       title: "Border Radius Generator",
       description:
         "Generate advanced CSS border radius to shape your HTML elements' corners individually",
-      icon: <AiOutlineRadiusUpright className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />,
+      icon: (
+        <AiOutlineRadiusUpright className="text-white w-[60px] p-1 h-[60px] rounded-lg bg-pink-400" />
+      ),
       filename: "/Borderradiusgenerator",
     },
   ];
 
   const navigate = useNavigate();
-  const { favoriteTools, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { favoriteTools, addToFavorites, removeFromFavorites } =
+    useContext(FavoritesContext);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -360,7 +377,10 @@ function CSStools1() {
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
-        <div className="group relative" onClick={(e) => handleWishlistClick(e, tool)}>
+        <div
+          className="group relative"
+          onClick={(e) => handleWishlistClick(e, tool)}
+        >
           <img
             src={isFavorite ? whishlist2 : whishlist}
             alt="Wishlist"
@@ -378,13 +398,19 @@ function CSStools1() {
         </div>
 
         {/* Tool Icon with background */}
-        <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
+        <div className="rounded-md flex items-center justify-start mb-4">
+          {tool.icon}
+        </div>
 
         {/* Title */}
-        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">
+          {tool.title}
+        </h3>
 
         {/* Description */}
-        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">
+          {tool.description}
+        </p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
@@ -414,28 +440,16 @@ function CSStools1() {
         >
           CSS Tools
         </h2>
-        <p className="text-center text-gray-500 mb-10">Smart Tools. Simple Solutions.</p>
+        <p className="text-center text-gray-500 mb-10">
+          Smart Tools. Simple Solutions.
+        </p>
 
         <div className="space-y-6">
-          {toolChunks.map((chunk, chunkIndex) => (
-            <div key={chunkIndex}>
-              {chunk.length === 4 ? (
-                // Full row with 4 items - use grid
-                <div className="grid grid-cols-1 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              ) : (
-                // Partial row with 1-3 items - use flex with center alignment
-                <div className="flex flex-wrap justify-center gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+          <div className="flex flex-wrap justify-center gap-6">
+            {tools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

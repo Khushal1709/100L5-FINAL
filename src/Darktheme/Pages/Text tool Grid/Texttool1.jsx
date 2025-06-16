@@ -397,7 +397,7 @@ function Texttool1() {
           Smart Tools. Simple Solutions.
         </p>
 
-        <div className="space-y-6">
+        {/* <div className="space-y-6">
           {toolChunks.map((chunk, chunkIndex) => (
             <div key={chunkIndex}>
               {chunk.length === 4 ? (
@@ -417,6 +417,13 @@ function Texttool1() {
               )}
             </div>
           ))}
+        </div> */}
+         <div className="space-y-6">
+          <div className="flex flex-wrap justify-center gap-6">
+            {tools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

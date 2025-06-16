@@ -222,9 +222,6 @@
 
 // export default Codingtools1;
 
-
-
-
 import arrow from "../../image/arrow.svg";
 import arrow2 from "../../image/arrow2.svg";
 import whishlist from "../../image/whishlist.svg";
@@ -245,83 +242,120 @@ import { useContext } from "react";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
 function Codingtools1() {
-const tools = [
+  const tools = [
     {
       title: "Code to Image Converter",
-      description: "Convert your codes to fancy images and share with your friends or colleagues",
-      icon: <RiCodeBlock className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-500" />,
+      description:
+        "Convert your codes to fancy images and share with your friends or colleagues",
+      icon: (
+        <RiCodeBlock className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-500" />
+      ),
       filename: "/CodetoImage",
     },
     {
       title: "URL Slug Generator",
-      description: "Generate SEO-friendly slugs from titles or any other strings for your webpages or blog posts",
-      icon: <FaLink className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />,
+      description:
+        "Generate SEO-friendly slugs from titles or any other strings for your webpages or blog posts",
+      icon: (
+        <FaLink className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />
+      ),
       filename: "/Slug",
     },
     {
       title: "React Native Shadow Generator",
-      description: "Generate stylish box shadows in React Native, fully compatible with both iOS and Android platforms.",
-      icon: <FaReact className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400 " />,
+      description:
+        "Generate stylish box shadows in React Native, fully compatible with both iOS and Android platforms.",
+      icon: (
+        <FaReact className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400 " />
+      ),
       filename: "/Shadow",
     },
     {
       title: "Base64 Encoder Decoder",
-      description: "Encode your strings to Base64 or decode previously Base64-encoded strings quickly and easily.",
-      icon: <PiDatabaseBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
+      description:
+        "Encode your strings to Base64 or decode previously Base64-encoded strings quickly and easily.",
+      icon: (
+        <PiDatabaseBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />
+      ),
       filename: "/BaseEncoderDecoder",
     },
     {
       title: "HTML Encoder/Decoder",
-      description: "Encode or decode your HTML by replacing special characters into equivalent escape forms",
-      icon: <TbHtml className="w-[60px] h-[60px] text-white bg-pink-500 rounded-lg  p-1"/>,
+      description:
+        "Encode or decode your HTML by replacing special characters into equivalent escape forms",
+      icon: (
+        <TbHtml className="w-[60px] h-[60px] text-white bg-pink-500 rounded-lg  p-1" />
+      ),
       filename: "/HTMLEncoderDecoder",
     },
     {
       title: "URL Encoder/Decoder",
-      description: "Encode your URL by escaping characters that may break your navigation and decode it",
-      icon: <PiFileHtmlBold className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-orange-400" />,
+      description:
+        "Encode your URL by escaping characters that may break your navigation and decode it",
+      icon: (
+        <PiFileHtmlBold className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-orange-400" />
+      ),
       filename: "/URLEncoderDecoder",
     },
     {
       title: "HTML Minifier",
-      description: "Minify your HTML code, then copy it to clipboard or download it as an .html file.",
-      icon: <ImHtmlFive2 className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
+      description:
+        "Minify your HTML code, then copy it to clipboard or download it as an .html file.",
+      icon: (
+        <ImHtmlFive2 className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />
+      ),
       filename: "/HTMLMinifier",
     },
     {
       title: "CSS Minifier",
-      description: "Minify your CSS code, then copy it to clipboard or download as style.min.css file",
-      icon: <PiFileCssLight className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />,
+      description:
+        "Minify your CSS code, then copy it to clipboard or download as style.min.css file",
+      icon: (
+        <PiFileCssLight className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />
+      ),
       filename: "/CSSMinifier",
     },
     {
       title: "JavaScript Minifier",
-      description: "Minify your JavaScript code, then copy it to clipboard or download as .min.js file",
-      icon: <PiFileJsxBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
+      description:
+        "Minify your JavaScript code, then copy it to clipboard or download as .min.js file",
+      icon: (
+        <PiFileJsxBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />
+      ),
       filename: "/JavaScriptMinifier",
     },
     {
       title: "HTML Formatter",
-      description: "Beautify your HTML code, then easily copy it or download the formatted result.",
-      icon: <LiaHtml5 className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-yellow-400" />,
+      description:
+        "Beautify your HTML code, then easily copy it or download the formatted result.",
+      icon: (
+        <LiaHtml5 className="w-[60px] h-[60px] text-white rounded-lg p-1  bg-yellow-400" />
+      ),
       filename: "/HTMLFormatter",
     },
     {
       title: "CSS Formatter",
-      description: "Beautify your CSS code, then copy it to clipboard or download it as style.css file.",
-      icon: <SiCsswizardry className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
+      description:
+        "Beautify your CSS code, then copy it to clipboard or download it as style.css file.",
+      icon: (
+        <SiCsswizardry className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />
+      ),
       filename: "/CSSFormatter",
     },
     {
       title: "JavaScript Formatter",
-      description: "Beautify your JavaScript code, then copy it to clipboard or download it as a file.",
-      icon: <PiFileJsxBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
+      description:
+        "Beautify your JavaScript code, then copy it to clipboard or download it as a file.",
+      icon: (
+        <PiFileJsxBold className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />
+      ),
       filename: "/JavaScriptFormatter",
     },
   ];
 
   const navigate = useNavigate();
-  const { favoriteTools, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { favoriteTools, addToFavorites, removeFromFavorites } =
+    useContext(FavoritesContext);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -365,7 +399,10 @@ const tools = [
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
-        <div className="group relative" onClick={(e) => handleWishlistClick(e, tool)}>
+        <div
+          className="group relative"
+          onClick={(e) => handleWishlistClick(e, tool)}
+        >
           <img
             src={isFavorite ? whishlist2 : whishlist}
             alt="Wishlist"
@@ -383,13 +420,19 @@ const tools = [
         </div>
 
         {/* Tool Icon with background */}
-        <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
+        <div className="rounded-md flex items-center justify-start mb-4">
+          {tool.icon}
+        </div>
 
         {/* Title */}
-        <h3 className="text-left text-[17px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[17px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">
+          {tool.title}
+        </h3>
 
         {/* Description */}
-        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">
+          {tool.description}
+        </p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
@@ -419,28 +462,16 @@ const tools = [
         >
           Coding Tools
         </h2>
-        <p className="text-center text-gray-500 mb-10">Smart Tools. Simple Solutions.</p>
+        <p className="text-center text-gray-500 mb-10">
+          Smart Tools. Simple Solutions.
+        </p>
 
         <div className="space-y-6">
-          {toolChunks.map((chunk, chunkIndex) => (
-            <div key={chunkIndex}>
-              {chunk.length === 4 ? (
-                // Full row with 4 items - use grid
-                <div className="grid grid-cols-1 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              ) : (
-                // Partial row with 1-3 items - use flex with center alignment
-                <div className="flex flex-wrap justify-center gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+          <div className="flex flex-wrap justify-center gap-6">
+            {tools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

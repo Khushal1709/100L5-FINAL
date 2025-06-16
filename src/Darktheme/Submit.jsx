@@ -36,7 +36,7 @@ const ProductFinderHero = () => {
 
   return (
     <>
-    <section className="w-full relative bg-[#16283E] ">
+    <section className="w-full relative bg-[#16283E]  ">
       <Navbar />
              <div className="absolute hidden lg:block left-80 top-0 bottom-120 inset-0 overflow-hidden z-0 lg:left-0 2xl:right-100 ">
           <img
@@ -68,7 +68,7 @@ const ProductFinderHero = () => {
           className="absolute inset-0 w-140 left-280 top-[-50px] hidden lg:block md:left-150 lg:left-115 xl:left-230 2xl:left-[63%] "
           style={{ zIndex: -1 }}
         >
-          <div className="py-12 px-4 relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
+          <div className="py-12 px-4 relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between h-screen ">
             {/* Left Content */}
             <div className="flex-1 text-center lg:text-left space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold text-white">
@@ -161,7 +161,7 @@ const ProductFinderHero = () => {
               />
             </div>
           </div>
-          <div class="bg-[#273D58] rounded-3xl p-8 max-w-7xl mx-auto mb-5 shadow-lg">
+          <div class="bg-[#273D58] rounded-3xl p-8 max-w-7xl mx-auto mb-5 shadow-lg ">
             <h2 class="text-2xl font-bold text-white mb-6 ">
               Submit your product
             </h2>
@@ -248,10 +248,10 @@ const ProductFinderHero = () => {
                     </div>
                   </div>
       
-                  <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 mt-10 max-w-md mx-auto lg:mx-0">
+                  <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-10 max-w-md mx-auto lg:mx-0">
                     <div className="flex flex-col items-center space-y-3">
                       <Link to="/Signup">
-                        <button className="bg-[#273D58] px-8 py-2 rounded-full text-gray-400 font-semibold shadow-md whitespace-nowrap cursor-pointer">
+                        <button className="bg-[#273D58]  lg:mr-14 px-12  py-2 rounded-full text-gray-400 font-semibold shadow-md whitespace-nowrap cursor-pointer">
                           LOGIN / REGISTER
                         </button>
                       </Link>
@@ -264,7 +264,7 @@ const ProductFinderHero = () => {
                   <img
                     src={search}
                     alt="Illustration"
-                    className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
+                    className="hidden lg:block scale-120 w-full max-w-xs sm:max-w-sm md:max-w-md"
                   />
                    <div
                 className="

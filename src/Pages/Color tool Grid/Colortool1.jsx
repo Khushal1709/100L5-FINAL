@@ -175,9 +175,6 @@
 
 // export default Colortool1;
 
-
-
-
 import arrow from "../../image/arrow.svg";
 import arrow2 from "../../image/arrow2.svg";
 import whishlist from "../../image/whishlist.svg";
@@ -192,42 +189,57 @@ import { useContext } from "react";
 import { FavoritesContext } from "../../Context/FavoriteContext";
 
 function Colortool1() {
- const tools = [
+  const tools = [
     {
       title: "AI Color Palette Generator",
-      description: "Create stunning color palettes easily with the help of AI-powered intelligent color suggestions.",
-      icon: <FaBrain className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
+      description:
+        "Create stunning color palettes easily with the help of AI-powered intelligent color suggestions.",
+      icon: (
+        <FaBrain className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />
+      ),
       filename: "/AIColor",
     },
     {
       title: "HEX to RGBA Converter",
-      description: "Convert HEX color codes to RGBA equivalents and see all details of a color",
-      icon: <IoColorFilterOutline className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />,
+      description:
+        "Convert HEX color codes to RGBA equivalents and see all details of a color",
+      icon: (
+        <IoColorFilterOutline className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-yellow-400" />
+      ),
       filename: "/HEX",
     },
     {
       title: "RGBA to HEX Converter",
-      description: "Convert RGBA color codes to alpha-supported 6 or 8 digit HEX equivalents",
-      icon: <FaHashtag className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />,
+      description:
+        "Convert RGBA color codes to alpha-supported 6 or 8 digit HEX equivalents",
+      icon: (
+        <FaHashtag className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-pink-400" />
+      ),
       filename: "/RGBA",
     },
     {
       title: "Color Shades Generator",
       description:
         "Generate all color shades using steps: darken, lighten, saturate, desaturate systematically",
-      icon: <FaSwatchbook className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />,
+      icon: (
+        <FaSwatchbook className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-orange-400" />
+      ),
       filename: "/ColorShades",
     },
     {
       title: "Color Mixer",
-      description: "Mix 2 colors and get color codes for intermediate colors from 2 to 10 steps",
-      icon: <HiCircleStack className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />,
+      description:
+        "Mix 2 colors and get color codes for intermediate colors from 2 to 10 steps",
+      icon: (
+        <HiCircleStack className="w-[60px] h-[60px] text-white rounded-lg p-1 bg-blue-400" />
+      ),
       filename: "/ColorMixer",
     },
   ];
 
   const navigate = useNavigate();
-  const { favoriteTools, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);
+  const { favoriteTools, addToFavorites, removeFromFavorites } =
+    useContext(FavoritesContext);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -271,7 +283,10 @@ function Colortool1() {
         onClick={() => handleCardClick(tool.filename)}
       >
         {/* Wishlist Icon */}
-        <div className="group relative" onClick={(e) => handleWishlistClick(e, tool)}>
+        <div
+          className="group relative"
+          onClick={(e) => handleWishlistClick(e, tool)}
+        >
           <img
             src={isFavorite ? whishlist2 : whishlist}
             alt="Wishlist"
@@ -289,13 +304,19 @@ function Colortool1() {
         </div>
 
         {/* Tool Icon with background */}
-        <div className="rounded-md flex items-center justify-start mb-4">{tool.icon}</div>
+        <div className="rounded-md flex items-center justify-start mb-4">
+          {tool.icon}
+        </div>
 
         {/* Title */}
-        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">{tool.title}</h3>
+        <h3 className="text-left text-[18px] whitespace-nowrap font-semibold text-[#1F2B56] mb-2 break-words">
+          {tool.title}
+        </h3>
 
         {/* Description */}
-        <p className="text-left text-[14px] text-gray-600 mb-8">{tool.description}</p>
+        <p className="text-left text-[14px] text-gray-600 mb-8">
+          {tool.description}
+        </p>
 
         {/* Arrow Button */}
         <div className="absolute bottom-5.5 right-1">
@@ -325,28 +346,16 @@ function Colortool1() {
         >
           Color Tools
         </h2>
-        <p className="text-center text-gray-500 mb-10">Smart Tools. Simple Solutions.</p>
+        <p className="text-center text-gray-500 mb-10">
+          Smart Tools. Simple Solutions.
+        </p>
 
         <div className="space-y-6">
-          {toolChunks.map((chunk, chunkIndex) => (
-            <div key={chunkIndex}>
-              {chunk.length === 4 ? (
-                // Full row with 4 items - use grid
-                <div className="grid grid-cols-1 max-[640px]:place-items-center sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              ) : (
-                // Partial row with 1-3 items - use flex with center alignment
-                <div className="flex flex-wrap justify-center gap-6">
-                  {chunk.map((tool, index) => (
-                    <ToolCard key={`${chunkIndex}-${index}`} tool={tool} index={index} />
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+          <div className="flex flex-wrap justify-center gap-6">
+            {tools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

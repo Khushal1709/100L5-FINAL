@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import home1 from "../image/home1.svg";
+import testing from "../image/testing.png";
 import finder1 from "../image/finder1.svg";
 import leaf2 from "../image/leaf2.svg";
 import men from "../image/men.svg";
@@ -29,7 +29,7 @@ import leaf1 from "../image/leaf1.svg";
 import explore1 from "../image/explore1.svg";
 import Oval2 from "../image/Oval2.svg";
 // import Textool1 from "../Pages/Text tool Grid/Texttool1";
-import Textool1 from "../Darktheme/Pages/Text tool Grid/Texttool1"
+import Textool1 from "../Darktheme/Pages/Text tool Grid/Texttool1";
 import Imagestools1 from "../Darktheme/Pages/Image tool Grid/Imagetool1";
 import Codingtool1 from "../Darktheme/Pages/Coding tool Grid/Codingtool1";
 import Colortool1 from "../Darktheme/Pages/Color tool Grid/Colortool1";
@@ -37,7 +37,7 @@ import CSStool1 from "../Darktheme/Pages/CSS tool Grid/CSStool1";
 import Socialmediatool1 from "../Darktheme/Pages/Socialmedia tool Grid/Socialmediatool1";
 import Miscellaneoustool1 from "../Darktheme/Pages/Miscellaneous tool Grid/Miscellaneoustool1";
 import tool from "../image/tool.svg";
-
+import Support from "../Darktheme/Support";
 function Home() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -179,19 +179,40 @@ function Home() {
   // Scroll to section on category click
   const handleCategoryClick = (catName) => {
     if (catName === "Coding Tools" && Codingtools1Ref.current) {
-      Codingtools1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      Codingtools1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else if (catName === "Text Tools" && Textool1Ref.current) {
-      Textool1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      Textool1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else if (catName === "CSS Tools" && CSStools1Ref.current) {
-      CSStools1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      CSStools1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else if (catName === "Image Tools" && Imagestools1Ref.current) {
-      Imagestools1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      Imagestools1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else if (catName === "Color Tools" && Colortool1Ref.current) {
-      Colortool1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      Colortool1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else if (catName === "Social Media Tools" && Socialmedia1Ref.current) {
-      Socialmedia1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      Socialmedia1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else if (catName === "Miscellaneous Tools" && MiscTools1Ref.current) {
-      MiscTools1Ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      MiscTools1Ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   };
 
@@ -234,17 +255,43 @@ function Home() {
         </div>
 
         {/* Hero Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="py-12 flex flex-col lg:flex-row items-center justify-between relative z-10 gap-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-screen">
+          <div className="py-20 flex flex-col lg:flex-row items-center justify-between relative z-10 gap-10">
+            {/* Image section - Moved first for tablet (sm and md) view, hidden in mobile */}
+            <div className="flex-1 flex justify-center max-w-md w-full order-first sm:order-first md:order-first lg:order-last sm:flex">
+              <img
+                src={testing}
+                alt="Illustration"
+                className="w-full scale-120 mt-[-60px]  max-w-[250px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-md"
+              />
+              <div
+                className="
+          hidden xl:block 2xl:block lg:block
+          absolute
+          xl:right-[-40px] top-1/4 2xl:right-[-80px] lg:right-[-30px]
+          -translate-y-1/2
+          w-190 h-100
+          rounded-full
+          bg-gradient-to-br from-[#1F2B56] to-[#ffffff]
+          blur-3xl
+          opacity-35
+          z-0
+        "
+                aria-hidden="true"
+              />
+            </div>
+            {/* Text content section - Moved after image for tablet view, visible in mobile */}
             <div className="flex-1 text-center lg:text-left space-y-6 max-w-xl mx-auto lg:mx-0">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-                All Online Tools in <br />"One Box"
+                All Online Tools in <br />
+                "One Box"
               </h1>
               <p className="text-gray-400 text-base sm:text-lg">
                 No need to bookmark the tools you like separately.
               </p>
               <p className="text-gray-400 text-base sm:text-lg">
-                10015.io is a "free all-in-one toolbox" solution created to ease your life by preventing bookmark mess.
+                10015.io is a "free all-in-one toolbox" solution created to ease
+                your life by preventing bookmark mess.
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-4">
                 <div className="relative inline-flex items-center">
@@ -273,37 +320,15 @@ function Home() {
                   />
                 </div>
               </div>
-              <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 mt-10 max-w-md mx-auto lg:mx-0">
+              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-10 max-w-md mx-auto lg:mx-0">
                 <div className="flex flex-col items-center space-y-3">
                   <Link to="/Signup">
-                    <button className="bg-[#273D58] px-8 py-2 rounded-full text-gray-400 font-semibold shadow-md whitespace-nowrap cursor-pointer">
+                    <button className="bg-[#273D58] lg:mr-14 px-12 py-2 rounded-full text-gray-400 font-semibold shadow-md whitespace-nowrap cursor-pointer">
                       LOGIN / REGISTER
                     </button>
                   </Link>
                 </div>
               </div>
-            </div>
-            <div className="flex-1 flex justify-center max-w-md w-full">
-              <img
-                src={home1}
-                alt="Illustration"
-                  className="hidden lg:block w-full max-w-xs sm:max-w-sm md:max-w-md"
-              />
-              <div
-                  className="
-                  hidden xl:block  2xl:block lg:block
-                  absolute
-                  xl:right-[-40px]  top-1/4   2xl:right-[-80px] lg:right-[-30px]
-                  -translate-y-1/2
-                  w-190  h-100
-                  rounded-full
-                  bg-gradient-to-br from-[#1F2B56] to-[#ffffff]     
-                 blur-3xl
-                  opacity-35
-                  z-0
-                "
-                  aria-hidden="true"
-                />
             </div>
           </div>
         </div>
@@ -316,26 +341,36 @@ function Home() {
           </div>
           <div className="px-4 py-10 md:py-16">
             <div className="text-center mb-10">
-              <h1  className="text-4xl md:text-5xl lg:text-5xl font-bold text-[#0f172a] mb-4">
-                Free Image to Text <br />Converter
+              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-[#0f172a] mb-4">
+                Free Image to Text <br />
+                Converter
               </h1>
-              <p    className="text-gray-700 max-w-2xl mx-auto">
-                Digitize your documents and save time with this smart and reliable tool.
+              <p className="text-gray-700 max-w-2xl mx-auto">
+                Digitize your documents and save time with this smart and
+                reliable tool.
               </p>
             </div>
             <div className="bg-white rounded-3xl shadow-lg p-16 max-w-7xl mx-auto">
               <h2 className="text-2xl md:text-2xl font-semibold text-center mb-6">
                 Free Image To Text Converter
               </h2>
-              <p  className="text-gray-700 leading-relaxed text-justify">
-                Convert images to editable text instantly with our Free Image to Text Converter. Using powerful OCR (Optical Character Recognition) technology, this tool allows you to extract text from any image - including scanned documents, photos, screenshots, or handwritten notes - with just a few clicks. No sign-up, no fees, and no hassle.
+              <p className="text-gray-700 leading-relaxed text-justify">
+                Convert images to editable text instantly with our Free Image to
+                Text Converter. Using powerful OCR (Optical Character
+                Recognition) technology, this tool allows you to extract text
+                from any image - including scanned documents, photos,
+                screenshots, or handwritten notes - with just a few clicks. No
+                sign-up, no fees, and no hassle.
               </p>
             </div>
           </div>
         </div>
 
         {/* Featured Tools Section */}
-        <div ref={featuredToolsRef} className="bg-[#16283E] w-full overflow-hidden py-12 md:py-16">
+        <div
+          ref={featuredToolsRef}
+          className="bg-[#16283E] w-full overflow-hidden py-12 md:py-16"
+        >
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="mb-0 lg:mb-0 w-full md:w-2/4 lg:w-1/5">
@@ -346,7 +381,8 @@ function Home() {
                   Top Tools, Handpicked for You
                 </p>
                 <p className="text-gray-400 mt-2">
-                  It's professional, user-focused, and conveys trust and quality.
+                  It's professional, user-focused, and conveys trust and
+                  quality.
                 </p>
               </div>
               <div className="flex-shrink-0 mb-8 lg:mb-0">
@@ -369,11 +405,11 @@ function Home() {
                     const content = (
                       <div
                         key={index}
-                        className={`${tool.bgColor} rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105`}
+                        className={`${tool.bgColor}  mt-2 rounded-2xl min-w-[260px] max-w-xs p-4 md:p-5 flex items-center space-x-3 transition-transform hover:scale-105 relative`}
                       >
                         <img
                           src={tool.icon}
-                          className="w-10 h-10"
+                          className="absolute hover:scale-125  z-50 w-10 h-10  -top-2 left-0 "
                           alt={tool.title}
                         />
                         <p className="text-sm font-semibold text-indigo-900 text-center w-full">
@@ -396,12 +432,15 @@ function Home() {
         </div>
 
         {/* Tool Categories Marquee */}
-        <div id="tool-categories" className="w-full py-6 bg-[#16283E] overflow-hidden relative">
+        <div
+          id="tool-categories"
+          className="w-full py-6 bg-[#16283E] overflow-hidden relative"
+        >
           <div className="flex items-center justify-center rounded-lg overflow-hidden z-50 relative">
             <img
               src={tool}
               alt="Tool Background"
-              className="opacity-100 relative h-[150px] md:h-[13rem]"
+              className="opacity-20 relative h-[150px] md:h-[13rem]"
             />
             <div className="absolute md:top-12 left-0 w-full flex flex-col items-center justify-center px-4">
               <div className="text-center mb-8">
@@ -420,7 +459,7 @@ function Home() {
                   {[...categories, ...categories].map((cat, idx) => (
                     <div
                       key={idx}
-                      className="relative flex items-center px-6 py-3 cursor-pointer rounded-[2rem] bg-[#273D58] text-white transition-all hover:bg-[#D5C7FF] hover:text-black border border-gray-200 opacity-80 duration-200 min-w-[200px] md:min-w-[260px] max-w-xs"
+                      className="relative flex items-center px-6 py-3 cursor-pointer rounded-[2rem] bg-[#273D58] text-white transition-all hover:bg-[#D5C7FF] hover:text-black   duration-200 min-w-[200px] md:min-w-[260px] max-w-xs"
                       onClick={() => handleCategoryClick(cat.name)}
                     >
                       <img
@@ -434,9 +473,8 @@ function Home() {
                 </div>
               </div>
             </div>
-            
           </div>
-          
+
           <style>
             {`
               @keyframes marquee {
@@ -450,7 +488,7 @@ function Home() {
         {/* All Tools Sections */}
         <div className="max-w-7xl mx-auto">
           <div ref={Textool1Ref}>
-            <Textool1/>
+            <Textool1 />
           </div>
           <div ref={Imagestools1Ref}>
             <Imagestools1 />
@@ -470,6 +508,9 @@ function Home() {
           <div ref={MiscTools1Ref}>
             <Miscellaneoustool1 />
           </div>
+        </div>
+        <div className="p-2">
+        <Support />
         </div>
         <Footer />
       </div>
